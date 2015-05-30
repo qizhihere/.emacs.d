@@ -13,6 +13,10 @@
 (setq sml/theme 'respectful)
 (sml/setup)
 
+;; nyan cat on mode line
+(lqz/require 'nyan-mode)
+(nyan-mode t)
+
 ;; relative line number
 (lqz/require 'linum-relative)
 (global-linum-mode t)

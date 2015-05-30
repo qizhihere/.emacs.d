@@ -1,5 +1,8 @@
 (lqz/require 'window-numbering)
 
+(window-numbering-mode -1)
+(window-numbering-mode t)
+
 (defun other-window-move-down(&optional arg)
   "Other window move-down 2 lines."
   (interactive "p")
