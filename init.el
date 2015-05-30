@@ -5,6 +5,9 @@
 ;; to prevent emacs automatically add things to here, don't delete the line.
 ;; (package-initialize)
 
+;; (add-to-list 'load-path "~/.emacs.d/elpa/esup-20150519.1701")
+;; (autoload 'esup "esup" "Emacs Start Up Profiler." nil)
+
 (defun lqz/init-dir (path)
   "simply return absolute path of subdirectory reference to ~/.emacs.d "
   (expand-file-name path user-emacs-directory))
