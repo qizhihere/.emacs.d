@@ -3,7 +3,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ag-executable "/home/qizhi/.emacs.d/utils/bin/ag" t)
+ '(ag-executable (lqz/init-dir "utils/bin/ag") t)
  '(ansi-color-names-vector
    ["#3F3F3F" "#CC9393" "#7F9F7F" "#F0DFAF" "#8CD0D3" "#DC8CC3" "#93E0E3" "#DCDCCC"])
  '(auto-revert-interval 1)
@@ -31,16 +31,16 @@
     " --nocolor --nogroup --ignore-case"))
  '(helm-ag-command-option "--all-text")
  '(helm-ag-insert-at-point (quote symbol))
- '(helm-dash-docsets-path "~/.emacs.d/docs" t)
+ '(helm-dash-docsets-path (lqz/init-dir "docs") t)
  '(highlight-symbol-idle-delay 0.5)
  '(highlight-symbol-on-navigation-p t)
  '(highlight-symbol-print-occurrence-count (quote explicit))
  '(package-selected-packages
    (quote
     (company company-mode info+ zenburn-theme youdao-dictionary yasnippet window-numbering wgrep-ag web-mode vimrc-mode sudo-edit smart-mode-line simpleclip rainbow-mode pos-tip php-extras nginx-mode multiple-cursors linum-relative key-chord indent-guide iedit highlight-symbol highlight-sexp highlight-parentheses highlight-chars helm-projectile helm-mode-manager helm-flyspell helm-flymake helm-flycheck helm-emmet helm-descbinds helm-bm helm-anything helm-ag guide-key google-translate flycheck-tip fish-mode fiplr evil-surround evil-snipe evil-nerd-commenter evil-matchit evil-leader evil-exchange evil-args evil-anzu drag-stuff dired-rainbow dired-filter dired-efap dired-details+ dired+ autopair)))
- '(php-manual-path "~/.emacs.d/manuals/php-chunked-xhtml/")
+ '(php-manual-path (lqz/init-dir "manuals/php-chunked-xhtml/"))
  '(php-manual-url "http://www.php.net/manual/zh/")
- '(projectile-known-projects-file "~/.emacs.d/tmp/projectile-bookmarks.eld")
+ '(projectile-known-projects-file (lqz/init-dir "tmp/projectile-bookmarks.eld"))
  '(pyim-dicts
    (quote
     ((:name "fcitx-sogou" :file
@@ -60,7 +60,7 @@
 	    :coding utf-8-unix))))
  '(pyim-dicts-directory (quote (lqz/init-dir "dicts/pyim/")))
  '(pyim-directory (quote (lqz/init-dir "configs/pyim/")))
- '(pyim-personal-file "~/.emacs.d/dicts/pyim/pyim-personal.txt")
+ '(pyim-personal-file (lqz/init-dir "dicts/pyim/pyim-personal.txt"))
  '(safe-local-variable-values
    (quote
     ((no-byte-compile t)
@@ -69,7 +69,7 @@
 	    (quote rainbow-mode)
 	    nil t)
 	   (rainbow-mode 1)))))
- '(session-save-file "~/.emacs.d/session/emacs.session")
+ '(session-save-file (lqz/init-dir "session/emacs.session"))
  '(sml/battery-format " %p%%")
  '(sml/mode-width (quote 20))
  '(sml/prefix-face-list
