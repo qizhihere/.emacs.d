@@ -5,6 +5,10 @@
 ;; to prevent emacs automatically add things to here, don't delete the line.
 ;; (package-initialize)
 
+(defun lqz/init-dir (path)
+  "simply return absolute path of subdirectory reference to ~/.emacs.d "
+  (expand-file-name path user-emacs-directory))
+
 (setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
 (when (file-exists-p custom-file)
   (load custom-file))
@@ -14,12 +18,6 @@
 (let ((minver "23.3"))
   (when (version<= emacs-version "23.1")
     (error "Your Emacs is too old -- this config requires v%s or higher" minver)))
-
-
-(defun lqz/init-dir (path)
-  "simply return absolute path of subdirectory reference to ~/.emacs.d "
-  (expand-file-name path user-emacs-directory))
-
 
 ;; add lisp load path
 (add-to-list 'load-path (lqz/init-dir "lisp"))
