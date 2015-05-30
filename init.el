@@ -57,6 +57,7 @@
 (require 'init-dictionary)
 (require 'init-input-method)
 (require 'init-flycheck)
+(require 'init-flyspell)
 (require 'init-company)
 
 ;; yasnippet costs most of startup time so we load it at last.
