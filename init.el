@@ -1,15 +1,16 @@
 ;;; This file bootstraps the configuration, which is divided into
 ;;; a number of other files.
 
+;; comment out the below line because i will run it in lisp/init-elpa.el,
+;; to prevent emacs automatically add things to here, don't delete the line.
+;; (package-initialize)
+
+(setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
+(when (file-exists-p custom-file)
+  (load custom-file))
+
 
 ;; simple emacs version checker
-
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-(package-initialize)
-
 (let ((minver "23.3"))
   (when (version<= emacs-version "23.1")
     (error "Your Emacs is too old -- this config requires v%s or higher" minver)))
@@ -52,38 +53,14 @@
 (require 'init-lisp)
 (require 'init-other-minor-mode)
 
-(require 'init-flycheck)
 (require 'init-dictionary)
 (require 'init-input-method)
+(require 'init-flycheck)
+(require 'init-company)
 
 ;; yasnippet costs most of startup time so we load it at last.
 (require 'init-yasnippet)
 
-;; Variables configured via the interactive 'customize' interface
-(setq custom-file (lqz/init-dir "custom.el"))
-(when (file-exists-p custom-file)
-  (load custom-file))
-
 
 
 (provide 'init)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(helm-ag-base-command
-   (concat
-    (lqz/init-dir "utils/bin/ag")
-    " --nocolor --nogroup --ignore-case"))
- '(helm-ag-command-option "--all-text")
- '(helm-ag-insert-at-point (quote symbol))
- '(package-selected-packages
-   (quote
-    (chinese-pyim zenburn-theme youdao-dictionary yasnippet window-numbering wgrep-ag web-mode vimrc-mode sudo-edit smart-mode-line simpleclip rainbow-mode pos-tip php-extras nginx-mode multiple-cursors magit linum-relative key-chord info+ indent-guide iedit highlight-symbol highlight-sexp highlight-parentheses highlight-chars helm-projectile helm-mode-manager helm-flyspell helm-flymake helm-flycheck helm-emmet helm-descbinds helm-bm helm-anything helm-ag guide-key google-translate gitignore-mode flycheck-tip fish-mode fiplr evil-surround evil-snipe evil-nerd-commenter evil-matchit evil-leader evil-exchange evil-args evil-anzu drag-stuff dired-rainbow dired-filter dired-efap dired-details+ dired+ autopair))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

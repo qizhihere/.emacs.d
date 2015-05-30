@@ -37,19 +37,29 @@
  '(highlight-symbol-print-occurrence-count (quote explicit))
  '(package-selected-packages
    (quote
-    (info+ zenburn-theme youdao-dictionary yasnippet window-numbering wgrep-ag web-mode vimrc-mode sudo-edit smart-mode-line simpleclip rainbow-mode pos-tip php-extras nginx-mode multiple-cursors linum-relative key-chord indent-guide iedit highlight-symbol highlight-sexp highlight-parentheses highlight-chars helm-projectile helm-mode-manager helm-flyspell helm-flymake helm-flycheck helm-emmet helm-descbinds helm-bm helm-anything helm-ag guide-key google-translate flycheck-tip fish-mode fiplr evil-surround evil-snipe evil-nerd-commenter evil-matchit evil-leader evil-exchange evil-args evil-anzu drag-stuff dired-rainbow dired-filter dired-efap dired-details+ dired+ autopair)))
+    (company company-mode info+ zenburn-theme youdao-dictionary yasnippet window-numbering wgrep-ag web-mode vimrc-mode sudo-edit smart-mode-line simpleclip rainbow-mode pos-tip php-extras nginx-mode multiple-cursors linum-relative key-chord indent-guide iedit highlight-symbol highlight-sexp highlight-parentheses highlight-chars helm-projectile helm-mode-manager helm-flyspell helm-flymake helm-flycheck helm-emmet helm-descbinds helm-bm helm-anything helm-ag guide-key google-translate flycheck-tip fish-mode fiplr evil-surround evil-snipe evil-nerd-commenter evil-matchit evil-leader evil-exchange evil-args evil-anzu drag-stuff dired-rainbow dired-filter dired-efap dired-details+ dired+ autopair)))
  '(php-manual-path "~/.emacs.d/manuals/php-chunked-xhtml/")
  '(php-manual-url "http://www.php.net/manual/zh/")
  '(projectile-known-projects-file "~/.emacs.d/tmp/projectile-bookmarks.eld")
  '(pyim-dicts
    (quote
-    ((:name "fcitx-sogou" :file "/home/qizhi/.emacs.d/dicts/pyim/fcitx-sogou.txt" :coding utf-8-unix)
-     (:name "网络流行新词" :file "/home/qizhi/.emacs.d/dicts/pyim/网络流行新词.txt" :coding utf-8-unix)
-     (:name "bigdict" :file "/home/qizhi/.emacs.d/dicts/pyim/pyim-bigdict.txt" :coding utf-8-unix)
-     (:name "诗词名句大全" :file "/home/qizhi/.emacs.d/dicts/pyim/诗词名句大全.txt" :coding utf-8-unix)
-     (:name "古诗成语俗语大全" :file "/home/qizhi/.emacs.d/dicts/pyim/古诗成语俗语大全.txt" :coding utf-8-unix))))
- '(pyim-dicts-directory "~/.emacs.d/dicts/pyim/")
- '(pyim-directory "~/.emacs.d/configs/pyim/")
+    ((:name "fcitx-sogou" :file
+	    (lqz/init-dir "dicts/pyim/fcitx-sogou.txt")
+	    :coding utf-8-unix)
+     (:name "网络流行新词" :file
+	    (lqz/init-dir "dicts/pyim/网络流行新词.txt")
+	    :coding utf-8-unix)
+     (:name "bigdict" :file
+	    (lqz/init-dir "dicts/pyim/pyim-bigdict.txt")
+	    :coding utf-8-unix)
+     (:name "诗词名句大全" :file
+	    (lqz/init-dir "dicts/pyim/诗词名句大全.txt")
+	    :coding utf-8-unix)
+     (:name "古诗成语俗语大全" :file
+	    (lqz/init-dir "dicts/pyim/古诗成语俗语大全.txt")
+	    :coding utf-8-unix))))
+ '(pyim-dicts-directory (quote (lqz/init-dir "dicts/pyim/")))
+ '(pyim-directory (quote (lqz/init-dir "configs/pyim/")))
  '(pyim-personal-file "~/.emacs.d/dicts/pyim/pyim-personal.txt")
  '(safe-local-variable-values
    (quote

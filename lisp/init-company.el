@@ -1,4 +1,4 @@
-(lqz/require 'company-mode)
+(lqz/require 'company)
 
 (add-hook 'after-init-hook 'global-company-mode)
 
