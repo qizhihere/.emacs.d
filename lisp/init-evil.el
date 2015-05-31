@@ -29,8 +29,8 @@
   "bm"	'bm-toggle
   "cc"  'evilnc-comment-or-uncomment-lines
   "cu"  'evilnc-comment-or-uncomment-lines
-  "cy"	'simpleclip-copy
-  "cp"	'simpleclip-paste
+  "cy"	'xsel-copy
+  "cp"	'xsel-paste
   "df"  'helm-dash
   "dg"  'helm-dash-at-point
   "dr"  'helm-dash-reset-connections

@@ -5,6 +5,7 @@
 ;; to prevent emacs automatically add things to here, don't delete the line.
 ;; (package-initialize)
 
+;; use esup to analysize startup time, current not used
 ;; (add-to-list 'load-path "~/.emacs.d/elpa/esup-20150519.1701")
 ;; (autoload 'esup "esup" "Emacs Start Up Profiler." nil)
 

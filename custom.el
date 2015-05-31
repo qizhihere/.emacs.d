@@ -40,7 +40,7 @@
  '(nyan-wavy-trail t)
  '(package-selected-packages
    (quote
-    (simpleclip window-numbering nyan-mode esup markdown-mode company company-mode info+ zenburn-theme youdao-dictionary yasnippet wgrep-ag web-mode vimrc-mode sudo-edit smart-mode-line rainbow-mode pos-tip php-extras nginx-mode multiple-cursors linum-relative key-chord indent-guide iedit highlight-symbol highlight-sexp highlight-parentheses highlight-chars helm-projectile helm-mode-manager helm-flyspell helm-flymake helm-flycheck helm-emmet helm-descbinds helm-bm helm-anything helm-ag guide-key google-translate flycheck-tip fish-mode fiplr evil-surround evil-snipe evil-nerd-commenter evil-matchit evil-leader evil-exchange evil-args evil-anzu drag-stuff dired-rainbow dired-filter dired-efap dired-details+ dired+ autopair)))
+    (hydra simpleclip window-numbering nyan-mode esup markdown-mode company company-mode info+ zenburn-theme youdao-dictionary yasnippet wgrep-ag web-mode vimrc-mode sudo-edit smart-mode-line rainbow-mode pos-tip php-extras nginx-mode multiple-cursors linum-relative key-chord indent-guide iedit highlight-symbol highlight-sexp highlight-parentheses highlight-chars helm-projectile helm-mode-manager helm-flyspell helm-flymake helm-flycheck helm-emmet helm-descbinds helm-bm helm-anything helm-ag guide-key google-translate flycheck-tip fish-mode fiplr evil-surround evil-snipe evil-nerd-commenter evil-matchit evil-leader evil-exchange evil-args evil-anzu drag-stuff dired-rainbow dired-filter dired-efap dired-details+ dired+ autopair)))
  '(php-manual-path (lqz/init-dir "manuals/php-chunked-xhtml/"))
  '(php-manual-url "http://www.php.net/manual/zh/")
  '(projectile-known-projects-file (lqz/init-dir "tmp/projectile-bookmarks.eld"))

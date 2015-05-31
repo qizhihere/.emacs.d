@@ -37,14 +37,12 @@
 ;;--------------------------
 ;; edit settings
 ;;--------------------------
-;; sudo edit(reopen with sudo)
-(lqz/require '(sudo-edit    ;; open current file with sudo
-	       simpleclip   ;; system clipboard support
-	       drag-stuff   ;; use M-arrow to move line or word
+(lqz/require '(sudo-edit       ;; open current file with sudo
+	       drag-stuff      ;; use M-arrow to move line or word
 	      ))
 
-;; system clipboard support
-(simpleclip-mode 1)
+;; system clipboard support(use xsel, linux only)
+(require 'init-clipboard)
 
 ;; enable shift+arrow key to select text
 (setq shift-select-mode t)
