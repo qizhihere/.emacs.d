@@ -5,6 +5,8 @@
 	("marmalade" . "http://marmalade-repo.org/packages/")
 	("gnu" . "http://elpa.gnu.org/packages/")))
 
+(setq package-check-signature nil)
+
 (package-initialize)
 
 (when (not package-archive-contents)
