@@ -7,7 +7,8 @@
 ;; disable evil in certain modes
 (add-more-to-list 'evil-emacs-state-modes
     '(dired-mode org-mode eww-mode package-menu-mode help-mode
-      Custom-mode custom-theme-choose-mode apropos-mode pyim-dicts-manager-mode))
+      Custom-mode custom-theme-choose-mode apropos-mode pyim-dicts-manager-mode
+      git-timemachine-mode))
 
 ;; remap escape key
 (lqz/require 'key-chord)
@@ -55,6 +56,9 @@
   "ti"  'imenu
   "tl"  'helm-semantic-or-imenu
   "un"  'undo-tree-visualize
+  "evb" 'eval-buffer
+  "evr" 'eval-region
+  "evf" 'eval-defun
   "eww"	'eww
   "ewf" 'eww-open-file
 )

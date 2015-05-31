@@ -1,4 +1,4 @@
-(lqz/require '(magit gitignore-mode))
+(lqz/require '(magit gitignore-mode git-timemachine))
 
 
 ;; disable magit startup messages

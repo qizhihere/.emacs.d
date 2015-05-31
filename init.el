@@ -46,6 +46,7 @@
 (require 'init-projectile)
 (require 'init-multi-edit)
 (require 'init-window-control)
+(require 'init-hydra)
 
 (require 'init-html)
 (require 'init-css)
