@@ -35,6 +35,7 @@
 
 ;; load specific modes and packages
 (require 'init-dired)
+(require 'init-speedbar)
 (require 'init-undotree)
 (require 'init-helm)
 (require 'init-find)
@@ -54,6 +55,7 @@
 (require 'init-markdown)
 (require 'init-org)
 (require 'init-lisp)
+(require 'init-fun)
 (require 'init-other-minor-mode)
 
 (require 'init-dictionary)

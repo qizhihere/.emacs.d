@@ -8,7 +8,7 @@
 (add-more-to-list 'evil-emacs-state-modes
     '(dired-mode org-mode eww-mode package-menu-mode help-mode
       Custom-mode custom-theme-choose-mode apropos-mode pyim-dicts-manager-mode
-      git-timemachine-mode))
+      git-timemachine-mode rxt-help-mode))
 
 ;; remap escape key
 (lqz/require 'key-chord)
@@ -38,6 +38,7 @@
   "el"  'helm-emmet
   "er"  'helm-flycheck
   "ff"	'find-file
+  "fe"  'sr-speedbar-toggle
   "gi"  'magit-status
   "lf"  'load-file
   "ml"	'helm-bm

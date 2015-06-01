@@ -28,13 +28,7 @@
 
 
 (defun php-doc-path-handler (base-path keyword)
-   (concat
-    (concat base-path "/")
-    (concat
-     "function."
-     (concat
-      (replace-regexp-in-string "_" "-" keyword) ".html"))))
-
+  (concat base-path "/function." (replace-regexp-in-string "_" "-" keyword) ".html"))
 
 (defun word-arround-cursor ()
   (interactive)

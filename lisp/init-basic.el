@@ -39,7 +39,9 @@
 ;;--------------------------
 (lqz/require '(sudo-edit       ;; open current file with sudo
 	       drag-stuff      ;; use M-arrow to move line or word
+	       pcre2el	       ;; use pcre in emacs
 	      ))
+(rxt-global-mode t)
 
 ;; system clipboard support(use xsel, linux only)
 (require 'init-clipboard)
