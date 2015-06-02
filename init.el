@@ -13,7 +13,7 @@
   "simply return absolute path of subdirectory reference to ~/.emacs.d "
   (expand-file-name path user-emacs-directory))
 
-(setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
+(setq custom-file (lqz/init-dir "custom.el"))
 (when (file-exists-p custom-file)
   (load custom-file))
 
@@ -64,8 +64,14 @@
 (require 'init-flyspell)
 (require 'init-company)
 
+
 ;; yasnippet costs most of startup time so we load it at last.
 (require 'init-yasnippet)
+
+;; self-defined keymaps
+(setq my-keymap (lqz/init-dir "my-keymap.el"))
+(when (file-exists-p my-keymap)
+  (load my-keymap))
 
 
 
