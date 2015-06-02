@@ -192,70 +192,151 @@ Line/Column: [_-_]  new line       [_|_]   new column      [_] hline
 )
 
 
-;; (defhydra hydra-org-insert (:color blue
-;;			   :hint   nil)
-;;   "
-;;  Insert: [_ti_] title  [_to_] _to_do   [_ta_] tags
-;;	 [_l_]  link   [_i_] img     [_b_]  blockquote
-;;	 [_d_]  Drawer [_c_] column
-;; "
-;;   ;; insert contents
-;;   ("to" org-insert-todo-heading)
-;;   ("ta" org-set-tags-commmand)
-;;   ("i" org-insert-heading-respect-content)
-;;   ("l" org-insert-link)
-;;   ("d" org-insert-drawer)
-;;   ("c" org-insert-columns-dblock)
-;;   ("m" hydra-org/body)
-;; )
+(defhydra hydra-org-insert (:color blue
+				   :hint   nil)
+  "
+_ST_ARTUP     C_EN_TER      _Q_UOTE     _EX_AMPLE
+_S_RC         _T_ODO        _ch_eckbox  _t_imestamp
+_M_eta        _b_lockquote  _F_ootnote  _La_tex
+_l_isp        _em_acs-lisp  _C_         C_+_+
+_py_thon2     _ph_p         _ng_inx     _sh_ell
+_ja_vascript  _ht_ml        _cs_s       l_u_a
+_I_ndex       _L_ink        _d_rawer    _co_lumn
+
+[_m_] return to main org menu
+"
+  ("ST" (progn
+	  (insert "#+STARTUP: ")))
+  ("EN" (hot-expand "<c"))
+  ("Q" (hot-expand "<q"))
+  ("EX" (hot-expand "<e"))
+
+  ("S" (hot-expand "<s"))
+  ("T" (org-insert-todo-heading))
+  ("ch" (progn
+	  (org-meta-return)
+	  (insert "[ ] ")))
+  ("t" (insert "TIMESTAMP"))
+
+  ("M" (insert "#+CAPTION: \n#+NAME:\t"))
+  ("b" (hot-expand "<b"))
+  ("F" (Footnote-add-footnote))
+  ("La" (hot-expand "<L"))
+
+  ("l" (progn
+	 (hot-expand "<s")
+	 (insert "lisp")
+	 (forward-line)))
+  ("em" (progn
+	 (hot-expand "<s")
+	 (insert "emacs-lisp")
+	 (forward-line)))
+  ("C" (progn
+	 (hot-expand "<s")
+	 (insert "c")
+	 (forward-line)))
+  ("+" (progn
+	  (hot-expand "<s")
+	  (insert "c++")
+	  (forward-line)))
+
+  ("py" (progn
+	  (hot-expand "<s")
+	  (insert "python2")
+	  (forward-line)))
+  ("ph" (progn
+	   (hot-expand "<s")
+	   (insert "php")
+	   (forward-line)))
+  ("ng" (progn
+	  (hot-expand "<s")
+	  (insert "nginx")
+	  (forward-line)))
+  ("sh" (progn
+	  (hot-expand "<s")
+	  (insert "shell")
+	  (forward-line)))
+
+  ("ja" (progn
+	  (hot-expand "<s")
+	  (insert "javascript")
+	  (forward-line)))
+  ("ht" (hot-expand "<h"))
+  ("cs" (progn
+	  (hot-expand "<s")
+	  (insert "css")
+	  (forward-line)))
+  ("u" (progn
+	  (hot-expand "<s")
+	  (insert "lua")
+	  (forward-line)))
+
+  ("I" (hot-expand "<i"))
+  ("L" org-insert-link)
+  ("d" org-insert-drawer)
+  ("co" org-insert-columns-dblock)
+
+  ("<" self-insert-command "INS")
+  ("q" nil)
+
+  ;; return to main org menu
+  ("m" hydra-org/body))
+
+(defun hot-expand (str)
+  "expand org template."
+  (insert str)
+  (org-try-structure-completion))
+
+(define-key org-mode-map "<"
+  (lambda () (interactive)
+     (if (looking-back "^")
+	 (hydra-org-insert/body)
+       (self-insert-command 1))))
 
 
-;; (defhydra hydra-org-template (:color blue :hint nil)
+;; (DEFHYDRA HYDRA-ORG-TEMPLATE (:COLOR BLUE :HINT NIL)
 ;;   "
-;; _C_ENTER  _Q_UOTE     _E_XAMPLE       _S_TARTUP
-;; _ti_tle   _to_do      _ta_gs          _ti_mestamp
-;; _L_ink    _I_MG	 _b_lockquote
-;; _l_isp    _e_macs-lisp
-;; _l_atex   _p_o=ython2     _i_ndex:
-;; _a_scii   _v_erse     _P_erl tangled  _I_NCLUDE:
-;; _s_rc     ^ ^         plant_u_ml      _H_TML:
-;; _h_tml    ^ ^         ^ ^             _A_SCII:
+;; _C_ENTER  _Q_UOTE     _E_MACS-LISP    _l_AtEx:
+;; _L_ATEX   _e_XAMPLE   _P_ERL          _I_NDEX:
+;; _A_SCII   _V_ERSE     _p_ERL TANGLED  _i_nclude:
+;; _S_RC     ^ ^         PLANT_U_ML      _h_tml:
+;; _H_TML    _O_RG       ^ ^             _a_scii:
 ;; "
-;;   ("s" (hot-expand "<s"))
-;;   ("E" (hot-expand "<e"))
-;;   ("q" (hot-expand "<q"))
-;;   ("v" (hot-expand "<v"))
-;;   ("c" (hot-expand "<c"))
-;;   ("l" (hot-expand "<l"))
-;;   ("h" (hot-expand "<h"))
-;;   ("a" (hot-expand "<a"))
-;;   ("L" (hot-expand "<L"))
-;;   ("i" (hot-expand "<i"))
-;;   ("ST" (progn
-;;	  (insert "#+STARTUP: overview")
-;;	  (forward-line)))
-;;   ("e" (progn
-;;	 (hot-expand "<s")
-;;	 (insert "emacs-lisp")
-;;	 (forward-line)))
-;;   ("p" (progn
-;;	 (hot-expand "<s")
-;;	 (insert "python2")
-;;	 (forward-line)))
-;;   ("u" (progn
-;;	 (hot-expand "<s")
-;;	 (insert "plantuml :file CHANGE.png")
-;;	 (forward-line)))
-;;   ("P" (progn
-;;	 (insert "#+HEADERS: :results output :exports both :shebang \"#!/usr/bin/env perl\"\n")
-;;	 (hot-expand "<s")
-;;	 (insert "perl")
-;;	 (forward-line)))
-;;   ("I" (hot-expand "<I"))
-;;   ("H" (hot-expand "<H"))
-;;   ("A" (hot-expand "<A"))
-;;   ("<" self-insert-command "ins")
-;;   ("o" nil "quit"))
+;;   ("S" (HOT-EXPAND "<S"))
+;;   ("e" (HOT-EXPAND "<E"))
+;;   ("Q" (HOT-EXPAND "<Q"))
+;;   ("V" (HOT-EXPAND "<V"))
+;;   ("C" (HOT-EXPAND "<C"))
+;;   ("L" (HOT-EXPAND "<L"))
+;;   ("H" (HOT-EXPAND "<H"))
+;;   ("A" (HOT-EXPAND "<A"))
+;;   ("l" (HOT-EXPAND "<l"))
+;;   ("I" (HOT-EXPAND "<I"))
+;;   ("E" (PROGN
+;;	 (HOT-EXPAND "<S")
+;;	 (INSERT "EMACS-LISP")
+;;	 (FORWARD-LINE)))
+;;   ("P" (PROGN
+;;	 (HOT-EXPAND "<S")
+;;	 (INSERT "PERL")
+;;	 (FORWARD-LINE)))
+;;   ("U" (PROGN
+;;	 (HOT-EXPAND "<S")
+;;	 (INSERT "PLANTUML :FILE change.PNG")
+;;	 (FORWARD-LINE)))
+;;   ("p" (PROGN
+;;	 (INSERT "#+headers: :RESULTS OUTPUT :EXPORTS BOTH :SHEBANG \"#!/USR/BIN/ENV PERL\"\N")
+;;	 (HOT-EXPAND "<S")
+;;	 (INSERT "PERL")
+;;	 (FORWARD-LINE)))
+;;   ("i" (HOT-EXPAND "<i"))
+;;   ("h" (HOT-EXPAND "<h"))
+;;   ("a" (HOT-EXPAND "<a"))
+;;   ("<" SELF-INSERT-COMMAND "INS")
+;;   ("O" (PROGN
+;;	 (HOT-EXPAND "<S")
+;;	 (insert "org")
+;;	 (forward-line))))
 
 ;; (defun hot-expand (str)
 ;;   "Expand org template."
@@ -269,64 +350,6 @@ Line/Column: [_-_]  new line       [_|_]   new column      [_] hline
 ;;      (if (looking-back "^")
 ;;	 (hydra-org-template/body)
 ;;        (self-insert-command 1))))
-
-
-(defhydra hydra-org-template (:color blue :hint nil)
-  "
-_c_enter  _q_uote     _e_macs-lisp    _L_aTeX:
-_l_atex   _E_xample   _p_erl          _i_ndex:
-_a_scii   _v_erse     _P_erl tangled  _I_NCLUDE:
-_s_rc     ^ ^         plant_u_ml      _H_TML:
-_h_tml    _o_rg       ^ ^             _A_SCII:
-"
-  ("s" (hot-expand "<s"))
-  ("E" (hot-expand "<e"))
-  ("q" (hot-expand "<q"))
-  ("v" (hot-expand "<v"))
-  ("c" (hot-expand "<c"))
-  ("l" (hot-expand "<l"))
-  ("h" (hot-expand "<h"))
-  ("a" (hot-expand "<a"))
-  ("L" (hot-expand "<L"))
-  ("i" (hot-expand "<i"))
-  ("e" (progn
-	 (hot-expand "<s")
-	 (insert "emacs-lisp")
-	 (forward-line)))
-  ("p" (progn
-	 (hot-expand "<s")
-	 (insert "perl")
-	 (forward-line)))
-  ("u" (progn
-	 (hot-expand "<s")
-	 (insert "plantuml :file CHANGE.png")
-	 (forward-line)))
-  ("P" (progn
-	 (insert "#+HEADERS: :results output :exports both :shebang \"#!/usr/bin/env perl\"\n")
-	 (hot-expand "<s")
-	 (insert "perl")
-	 (forward-line)))
-  ("I" (hot-expand "<I"))
-  ("H" (hot-expand "<H"))
-  ("A" (hot-expand "<A"))
-  ("<" self-insert-command "ins")
-  ("o" (progn
-	 (hot-expand "<s")
-	 (insert "org")
-	 (forward-line))))
-
-(defun hot-expand (str)
-  "Expand org template."
-  (insert str)
-  (org-try-structure-completion))
-
-;; I bind it for myself like this:
-
-(define-key org-mode-map "<"
-  (lambda () (interactive)
-     (if (looking-back "^")
-	 (hydra-org-template/body)
-       (self-insert-command 1))))
 
 
 
