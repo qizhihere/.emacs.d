@@ -104,6 +104,7 @@ Submenu: [_i_]  _i_nsert         [_t_]   _t_able control
    View: [_v_]  _v_iew toggle    [_gg_]  top heading
 	 [_n_]  next heading   [_N_]   next heading in the same level
 	 [_p_]  prev heading   [_P_]   next heading in the same level
+	 [Tab]  toggle subtree
 
   Level: [_+_]  add            [_=_]   reduce
 History: [_u_]  undo           [_C-r_] redo
@@ -117,6 +118,7 @@ History: [_u_]  undo           [_C-r_] redo
   ("p" outline-previous-visible-heading :exit nil)
   ("N" org-forward-heading-same-level :exit nil)
   ("P" org-backward-heading-same-level :exit nil)
+  ("TAB" org-cycle :exit nil)
 
   ;; submenus
   ("i" hydra-org-insert/body)

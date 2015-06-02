@@ -1,8 +1,10 @@
-(setq org-support-shift-select  'always
+(setq org-support-shift-select   nil
       org-catch-invisible-edits 'error
       org-footnote-define-inline t
       org-footnote-auto-label   'random
-      org-footnote-auto-adjust  nil)
+      org-footnote-auto-adjust  nil
+      org-todo-keywords		'((sequence "TODO(t)" "|" "DOING" "DELAY" "DONE(d)" "CANCEL(c)"))
+      org-todo-keyword-faces    '(("DELAY" . "orange") ("CANCEL" . "gray")))
 (add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
 (add-hook 'message-mode-hook 'turn-on-orgtbl)
 (add-hook 'text-mode-hook 'turn-on-orgtbl)

@@ -41,8 +41,7 @@
   "fe"  'sr-speedbar-toggle
   "gi"  'magit-status
   "lf"  'load-file
-  "ml"	'helm-bm
-  "mm"	'bm-toggle
+  "ml"	'helm-all-mark-rings
   "ot"  'org-insert-todo-heading
   "pd"  'helm-projectile-find-dir
   "pf"  'helm-projectile-find-file
