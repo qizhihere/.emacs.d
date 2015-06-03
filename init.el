@@ -69,9 +69,9 @@
 (require 'init-yasnippet)
 
 ;; self-defined keymaps
-(setq my-keymap (lqz/init-dir "my-keymap.el"))
-(when (file-exists-p my-keymap)
-  (load my-keymap))
+(setq my-keymap-file (lqz/init-dir "my-keymap.el"))
+(when (file-exists-p my-keymap-file)
+  (load my-keymap-file))
 
 
 

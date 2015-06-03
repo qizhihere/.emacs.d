@@ -32,6 +32,7 @@
   "cu"  'evilnc-comment-or-uncomment-lines
   "cy"	'xsel-copy
   "cp"	'xsel-paste
+  "cx"  'xsel-cut
   "df"  'helm-dash
   "dg"  'helm-dash-at-point
   "dr"  'helm-dash-reset-connections

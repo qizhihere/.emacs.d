@@ -104,10 +104,13 @@ Submenu: [_i_]  _i_nsert         [_t_]   _t_able control
    View: [_v_]  _v_iew toggle    [_gg_]  top heading
 	 [_n_]  next heading   [_N_]   next heading in the same level
 	 [_p_]  prev heading   [_P_]   next heading in the same level
-	 [Tab]  toggle subtree
+	 [\^]  go up          [Tab] toggle subtree
 
   Level: [_+_]  add            [_=_]   reduce
 History: [_u_]  undo           [_C-r_] redo
+
+Export&  [_eh_] html
+Import : []
 
 [_m_] return to main org menu
 "
@@ -118,6 +121,8 @@ History: [_u_]  undo           [_C-r_] redo
   ("p" outline-previous-visible-heading :exit nil)
   ("N" org-forward-heading-same-level :exit nil)
   ("P" org-backward-heading-same-level :exit nil)
+  ("^" org-up-element :exit nil)
+  ;; ("`" org-up-element :exit nil)
   ("TAB" org-cycle :exit nil)
 
   ;; submenus
@@ -131,6 +136,9 @@ History: [_u_]  undo           [_C-r_] redo
   ;; others
   ("u" undo-tree-undo :exit nil)
   ("C-r" undo-tree-redo :exit nil)
+
+  ;; export and emport
+  ("eh" org-html-export-to-html :exit nil)
 
   ;; return to main org menu
   ("m" hydra-org/body)
@@ -197,11 +205,13 @@ Line/Column: [_-_]  new line       [_|_]   new column      [_] hline
   "
 _ST_ARTUP     C_EN_TER      _Q_UOTE     _EX_AMPLE
 _S_RC         _T_ODO        _ch_eckbox  _t_imestamp
-_M_eta        _b_lockquote  _F_ootnote  _La_tex
+_Me_ta        _b_lockquote  _f_ootnote  _F_ootnote definition
 _l_isp        _em_acs-lisp  _C_         C_+_+
 _py_thon2     _ph_p         _ng_inx     _sh_ell
 _ja_vascript  _ht_ml        _cs_s       l_u_a
-_I_ndex       _L_ink        _d_rawer    _co_lumn
+_IM_G         _L_ink        _d_rawer    _co_lumn
+L_a_tex       _O_rg         _V_ERSE     COM_ME_NT
+I_NC_LUDE     I_ND_EX       _MA_CRO
 
 [_m_] return to main org menu
 "
@@ -218,10 +228,10 @@ _I_ndex       _L_ink        _d_rawer    _co_lumn
 	  (insert "[ ] ")))
   ("t" (insert "TIMESTAMP"))
 
-  ("M" (insert "#+CAPTION: \n#+NAME:\t"))
+  ("Me" (insert "#+CAPTION: \n#+NAME:\t"))
   ("b" (hot-expand "<b"))
-  ("F" (Footnote-add-footnote))
-  ("La" (hot-expand "<L"))
+  ("f" (org-footnote-action))
+  ("F" (org-footnote-create-definition))
 
   ("l" (progn
 	 (hot-expand "<s")
@@ -271,10 +281,29 @@ _I_ndex       _L_ink        _d_rawer    _co_lumn
 	  (insert "lua")
 	  (forward-line)))
 
-  ("I" (hot-expand "<i"))
+  ("IM" (progn
+	(let ((file (file-relative-name
+		(read-file-name "Select an image:") default-directory)))
+	(insert (concat "[[./" file "]]")))))
   ("L" org-insert-link)
   ("d" org-insert-drawer)
   ("co" org-insert-columns-dblock)
+
+  ("a" (hot-expand "<L"))
+  ("O" (progn
+	  (hot-expand "<s")
+	  (insert "org")
+	  (forward-line)))
+  ("V" (hot-expand "<v"))
+  ("ME" (progn
+	(next-line)
+	(beginning-of-line)
+	(insert "#+BEGIN_COMMENT\n\n#+END_COMMENT"
+	(previous-line))))
+
+  ("NC" (hot-expand "<I"))
+  ("ND" (hot-expand "<i"))
+  ("MA" (insert "#+MACRO: "))
 
   ("<" self-insert-command "INS")
   ("q" nil)

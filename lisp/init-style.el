@@ -19,8 +19,9 @@
 
 ;; relative line number
 (lqz/require 'linum-relative)
-(global-linum-mode t)
+(add-hook 'prog-mode-hook 'linum-mode)
 ;; adjust space between line number and content
+(setq linum-relative-current-symbol "")
 (setq linum-relative-format "%3s ")
 
 ;; show column number, file size and battery on mode line
@@ -55,7 +56,7 @@
 (lqz/require 'indent-guide)
 ;; (set-face-background 'indent-guide-face "dimgray")
 ;; (setq indent-guide-delay 0.1)
-(indent-guide-global-mode)
+(add-hook 'prog-mode-hook 'indent-guide-mode)
 (setq indent-guide-recursive t)
 (setq indent-guide-char "│")
 (setq indent-guide-inhibit-modes '(dired-mode package-menu-mode))
