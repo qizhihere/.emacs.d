@@ -14,6 +14,8 @@
 (lqz/require 'key-chord)
 (setq key-chord-two-keys-delay 0.2)
 (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
+(key-chord-define evil-emacs-state-map "jk" 'evil-normal-state)
+(key-chord-define evil-visual-state-map "jk" 'evil-normal-state)
 (key-chord-mode 1)
 
 
@@ -107,7 +109,7 @@
 ;; evil-snipe
 ;;-----------------------
 (lqz/require 'evil-snipe)
-(global-evil-snipe-mode 1)
+(evil-snipe-mode 1)
 (setq evil-snipe-repeat-keys t)
 (setq evil-snipe-scope 'visible)
 (setq evil-snipe-repeat-scope 'whole-visible)

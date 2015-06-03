@@ -17,11 +17,21 @@
 (lqz/require 'nyan-mode)
 (nyan-mode t)
 
+
 ;; relative line number
 (lqz/require 'linum-relative)
-(add-hook 'prog-mode-hook 'linum-mode)
+
+(defun lqz/relative-linum-on ()
+  "switch on relative line number."
+  (interactive)
+  (linum-mode 1)
+  (if (not (eq linum-format 'linum-relative))
+      (setq linum-relative-user-format linum-format)
+    (setq linum-format 'linum-relative)))
+
+(add-hook 'prog-mode-hook 'lqz/relative-linum-on)
 ;; adjust space between line number and content
-(setq linum-relative-current-symbol "")
+(setq linum-relative-current-symbol "=>")
 (setq linum-relative-format "%3s ")
 
 ;; show column number, file size and battery on mode line

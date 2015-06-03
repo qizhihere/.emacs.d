@@ -5,7 +5,10 @@
       (global-set-key (kbd (nth n keymap)) (nth (+ n 1) keymap))))
 
 (setq lqz/keymap
-      '("C-c m l" helm-all-mark-rings))
+      '("C-c m l" helm-all-mark-rings
+	"C-c u y" xsel-copy
+	"C-c u p" xsel-paste
+	"C-c u x" xsel-cut))
 
 (lqz/global-set-key lqz/keymap)
 

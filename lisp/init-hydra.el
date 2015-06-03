@@ -1,4 +1,4 @@
-(lqz/require 'hydra)
+(lqz/require '(hydra org))
 
 ;; text zoom
 (defhydra hydra-zoom (global-map "<f2>")
@@ -293,7 +293,8 @@ I_NC_LUDE     I_ND_EX       _MA_CRO
   ("O" (progn
 	  (hot-expand "<s")
 	  (insert "org")
-	  (forward-line)))
+	  (forward-line)
+	  (org-edit-src-code)))
   ("V" (hot-expand "<v"))
   ("ME" (progn
 	(next-line)
