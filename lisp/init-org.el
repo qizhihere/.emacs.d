@@ -1,3 +1,5 @@
+(lqz/require 'htmlize)
+
 (setq org-support-shift-select   nil
       org-catch-invisible-edits 'error
       org-footnote-define-inline t
@@ -6,6 +8,7 @@
       org-footnote-auto-label   'random
       org-footnote-auto-adjust  nil
       org-export-with-sub-superscripts '{}
+      org-html-htmlize-output-type 'css
       org-todo-keywords		'((sequence "TODO(t)" "|" "DOING" "DELAY" "DONE(d)" "CANCEL(c)"))
       org-todo-keyword-faces    '(("DELAY" . "orange") ("CANCEL" . "gray"))
       org-tag-alist		'(
@@ -47,6 +50,10 @@
     (set-face-attribute 'org-level-1 nil :height 1.1 :bold t)
     (set-face-attribute 'org-level-2 nil :height 1.0 :bold t)
     (set-face-attribute 'org-level-3 nil :height 0.8 :bold nil))
+
+;; fix org html export bug
+(defun org-font-lock-ensure ()
+  (font-lock-fontify-buffer))
 
 
 

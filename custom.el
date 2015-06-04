@@ -19,7 +19,7 @@
  '(company-show-numbers t)
  '(custom-safe-themes
    (quote
-    ("05c3bc4eb1219953a4f182e10de1f7466d28987f48d647c01f1f0037ff35ab9a" "9558f71c706fba7b136e75d9c5e73ddd2c9d91e76e2b18f733d4ab2f388f3b72" "a0feb1322de9e26a4d209d1cfa236deaf64662bb604fa513cca6a057ddf0ef64" "ab04c00a7e48ad784b52f34aa6bfa1e80d0c3fcacc50e1189af3651013eb0d58" "04dd0236a367865e591927a3810f178e8d33c372ad5bfef48b5ce90d4b476481" "7356632cebc6a11a87bc5fcffaa49bae528026a78637acd03cae57c091afd9b9" "a2e7b508533d46b701ad3b055e7c708323fb110b6676a8be458a758dd8f24e27" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "6a9606327ecca6e772fba6ef46137d129e6d1888dcfc65d0b9b27a7a00a4af20" "26614652a4b3515b4bbbb9828d71e206cc249b67c9142c06239ed3418eff95e2" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
+    ("b0d8a712e3a337c8f2a21923f1669119a40ee18d493fb04e1a51f2fda1f9fb6f" "05c3bc4eb1219953a4f182e10de1f7466d28987f48d647c01f1f0037ff35ab9a" "9558f71c706fba7b136e75d9c5e73ddd2c9d91e76e2b18f733d4ab2f388f3b72" "a0feb1322de9e26a4d209d1cfa236deaf64662bb604fa513cca6a057ddf0ef64" "ab04c00a7e48ad784b52f34aa6bfa1e80d0c3fcacc50e1189af3651013eb0d58" "04dd0236a367865e591927a3810f178e8d33c372ad5bfef48b5ce90d4b476481" "7356632cebc6a11a87bc5fcffaa49bae528026a78637acd03cae57c091afd9b9" "a2e7b508533d46b701ad3b055e7c708323fb110b6676a8be458a758dd8f24e27" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "6a9606327ecca6e772fba6ef46137d129e6d1888dcfc65d0b9b27a7a00a4af20" "26614652a4b3515b4bbbb9828d71e206cc249b67c9142c06239ed3418eff95e2" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
  '(display-battery-mode t)
  '(fci-rule-color "#383838")
  '(flymake-fringe-indicator-position (quote right-fringe))
@@ -41,7 +41,7 @@
  '(nyan-wavy-trail nil)
  '(package-selected-packages
    (quote
-    (undohist css-eldoc php-eldoc projectile-speedbar sr-speedbar pcre2el 2048-game color-theme-zenburn emacs-color-themes monokai-theme solarized-theme naquadah-theme alect-black-theme flatland-theme alect-themes git-timemachine hydra simpleclip window-numbering nyan-mode esup markdown-mode company company-mode info+ zenburn-theme youdao-dictionary yasnippet wgrep-ag web-mode vimrc-mode sudo-edit smart-mode-line rainbow-mode pos-tip php-extras nginx-mode multiple-cursors linum-relative key-chord indent-guide iedit highlight-symbol highlight-sexp highlight-parentheses highlight-chars helm-projectile helm-mode-manager helm-flyspell helm-flymake helm-flycheck helm-emmet helm-descbinds helm-bm helm-anything helm-ag guide-key google-translate flycheck-tip fish-mode fiplr evil-surround evil-snipe evil-nerd-commenter evil-matchit evil-leader evil-exchange evil-args evil-anzu drag-stuff dired-rainbow dired-filter dired-efap dired-details+ dired+ autopair)))
+    (js2-mode htmlize undohist css-eldoc php-eldoc projectile-speedbar sr-speedbar pcre2el 2048-game color-theme-zenburn emacs-color-themes monokai-theme solarized-theme naquadah-theme alect-black-theme flatland-theme alect-themes git-timemachine hydra simpleclip window-numbering nyan-mode esup markdown-mode company company-mode info+ zenburn-theme youdao-dictionary yasnippet wgrep-ag web-mode vimrc-mode sudo-edit smart-mode-line rainbow-mode pos-tip php-extras nginx-mode multiple-cursors linum-relative key-chord indent-guide iedit highlight-symbol highlight-sexp highlight-parentheses highlight-chars helm-projectile helm-mode-manager helm-flyspell helm-flymake helm-flycheck helm-emmet helm-descbinds helm-bm helm-anything helm-ag guide-key google-translate flycheck-tip fish-mode fiplr evil-surround evil-snipe evil-nerd-commenter evil-matchit evil-leader evil-exchange evil-args evil-anzu drag-stuff dired-rainbow dired-filter dired-efap dired-details+ dired+ autopair)))
  '(php-manual-path (lqz/init-dir "manuals/php-chunked-xhtml/"))
  '(php-manual-url "http://www.php.net/manual/zh/")
  '(projectile-known-projects-file (lqz/init-dir "tmp/projectile-bookmarks.eld"))
@@ -109,6 +109,7 @@
  '(sml/prefix-regexp (quote ("\\[.*]" ":\\(.*:\\)" "~/")))
  '(sml/projectile-replacement-format "[%s]")
  '(sml/size-indication-format " %I ")
+ '(undohist-directory "/home/qizhi/.emacs.d/tmp/undohist")
  '(vc-annotate-background "#2B2B2B")
  '(vc-annotate-color-map
    (quote

@@ -109,7 +109,7 @@ Submenu: [_i_]  _i_nsert         [_t_]   _t_able control
   Level: [_+_]  add            [_=_]   reduce
 History: [_u_]  undo           [_C-r_] redo
 
-Export&  [_eh_] html
+Export&  [_eh_] html           [_em_] markdown         [_ea_] ascii         [_eu_] utf8
 Import : []
 
 [_m_] return to main org menu
@@ -137,8 +137,11 @@ Import : []
   ("u" undo-tree-undo :exit nil)
   ("C-r" undo-tree-redo :exit nil)
 
-  ;; export and emport
+  ;; export and import
   ("eh" org-html-export-to-html :exit nil)
+  ("em" org-md-export-to-markdown :exit nil)
+  ("ea" org-ascii-export-to-ascii :exit nil)
+  ("eu" org-html-export-to-html :exit nil)
 
   ;; return to main org menu
   ("m" hydra-org/body)
@@ -205,13 +208,13 @@ Line/Column: [_-_]  new line       [_|_]   new column      [_] hline
   "
 _ST_ARTUP     C_EN_TER      _Q_UOTE     _EX_AMPLE
 _S_RC         _T_ODO        _ch_eckbox  _t_imestamp
-_Me_ta        _b_lockquote  _f_ootnote  _F_ootnote definition
+_Me_ta        N_A_ME        _f_ootnote  _F_ootnote definition
 _l_isp        _em_acs-lisp  _C_         C_+_+
 _py_thon2     _ph_p         _ng_inx     _sh_ell
 _ja_vascript  _ht_ml        _cs_s       l_u_a
 _IM_G         _L_ink        _d_rawer    _co_lumn
 L_a_tex       _O_rg         _V_ERSE     COM_ME_NT
-I_NC_LUDE     I_ND_EX       _MA_CRO
+I_NC_LUDE     I_ND_EX       _MA_CRO     _HT_ML
 
 [_m_] return to main org menu
 "
@@ -229,7 +232,7 @@ I_NC_LUDE     I_ND_EX       _MA_CRO
   ("t" (insert "TIMESTAMP"))
 
   ("Me" (insert "#+CAPTION: \n#+NAME:\t"))
-  ("b" (hot-expand "<b"))
+  ("A" (insert "#+NAME: "))
   ("f" (org-footnote-action))
   ("F" (org-footnote-create-definition))
 
@@ -271,7 +274,10 @@ I_NC_LUDE     I_ND_EX       _MA_CRO
 	  (hot-expand "<s")
 	  (insert "javascript")
 	  (forward-line)))
-  ("ht" (hot-expand "<h"))
+  ("ht" (progn
+	  (hot-expand "<s")
+	  (insert "html")
+	  (forward-line)))
   ("cs" (progn
 	  (hot-expand "<s")
 	  (insert "css")
@@ -305,6 +311,7 @@ I_NC_LUDE     I_ND_EX       _MA_CRO
   ("NC" (hot-expand "<I"))
   ("ND" (hot-expand "<i"))
   ("MA" (insert "#+MACRO: "))
+  ("HT" (hot-expand "<h"))
 
   ("<" self-insert-command "INS")
   ("q" nil)

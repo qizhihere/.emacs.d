@@ -49,9 +49,8 @@
 (require 'init-window-control)
 (require 'init-hydra)
 
-(require 'init-html)
-(require 'init-css)
 (require 'init-php)
+(require 'init-web)
 (require 'init-markdown)
 (require 'init-org)
 (require 'init-lisp)
