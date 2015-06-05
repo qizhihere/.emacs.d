@@ -49,12 +49,13 @@
 (require 'init-window-control)
 (require 'init-hydra)
 
-(require 'init-php)
 (require 'init-web)
+(require 'init-php)
 (require 'init-markdown)
 (require 'init-org)
 (require 'init-lisp)
 (require 'init-fun)
+;; minor modes which need only very little configuration
 (require 'init-other-minor-mode)
 
 (require 'init-dictionary)

@@ -1,4 +1,4 @@
-(lqz/require 'htmlize)
+(lqz/require '(org htmlize))
 
 (setq org-support-shift-select   nil
       org-catch-invisible-edits 'error
@@ -8,6 +8,7 @@
       org-footnote-auto-label   'random
       org-footnote-auto-adjust  nil
       org-export-with-sub-superscripts '{}
+      org-odt-preferred-output-format  "pdf"
       org-html-htmlize-output-type 'css
       org-todo-keywords		'((sequence "TODO(t)" "|" "DOING" "DELAY" "DONE(d)" "CANCEL(c)"))
       org-todo-keyword-faces    '(("DELAY" . "orange") ("CANCEL" . "gray"))

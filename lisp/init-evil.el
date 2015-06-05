@@ -89,6 +89,9 @@
 ;; bind evil-jump-out-args
 (define-key evil-normal-state-map "K" 'evil-jump-out-args)
 
+;; use Q to quit window in evil mode
+(define-key evil-normal-state-map "Q" 'quit-window)
+
 
 ;;-----------------------
 ;; evil-matchit
