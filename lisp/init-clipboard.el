@@ -6,11 +6,11 @@
   (interactive)
   (unless (use-region-p)
     (error "No region to copy"))
-  (let ((pos (list (region-beginning) (region-end))) (act "copied"))
+  (let ((pos (list (region-beginning) (region-end))) (act "Copied"))
     (print pos)
     (call-process-region (car pos) (cadr pos) "xsel" nil 0 nil "--clipboard" "--input")
     (if del (and (setf act "cut") (delete-region (car pos) (cadr pos))))
-  (message "%s to clipboard" act)))
+  (message "%s to clipboard." act)))
 
 (defun xsel-paste ()
   "Paste system clipboard's contents into buffer."
@@ -18,7 +18,7 @@
   (if (use-region-p)
       (delete-region (region-beginning) (region-end)))
   (insert (shell-command-to-string "xsel --clipboard --output"))
-  (message "pasted from clipboard"))
+  (message "Pasted from clipboard."))
 
 (defun xsel-cut () (interactive) (xsel-copy t))
 
