@@ -55,6 +55,7 @@
 ;; highlight-symbol
 (lqz/require 'highlight-symbol)
 ;; (highlight-symbol-mode t)
+(setq highlight-symbol-idle-delay 0.3)
 (add-hook 'prog-mode-hook 'highlight-symbol-mode)
 
 (lqz/require 'indent-guide)
