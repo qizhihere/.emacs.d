@@ -1,7 +1,11 @@
-(lqz/require '(dired+ dired-details+ dired-efap dired-filter dired-rainbow))
+(lqz/require '(dired+ dired-details+ dired-efap dired-filter dired-rainbow async))
 
 ;; make dired only use single buffer
 (toggle-diredp-find-file-reuse-dir 1)
+
+;; execute actions asynchronously
+(autoload 'dired-async-mode "dired-async.el" nil t)
+(dired-async-mode 1)
 
 ;; use the directory in the next dired window as default directory
 (setq dired-dwim-target t)

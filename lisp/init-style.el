@@ -21,18 +21,12 @@
 ;; relative line number
 (lqz/require 'linum-relative)
 
-(defun lqz/relative-linum-on ()
-  "switch on relative line number."
-  (interactive)
-  (linum-mode 1)
-  (if (not (eq linum-format 'linum-relative))
-      (setq linum-relative-user-format linum-format)
-    (setq linum-format 'linum-relative)))
-
-(add-hook 'prog-mode-hook 'lqz/relative-linum-on)
 ;; adjust space between line number and content
 (setq linum-relative-current-symbol "=>")
 (setq linum-relative-format "%3s ")
+(global-linum-mode)
+(defun lqz/linum-off () (linum-mode -1))
+(add-hook 'org-mode-hook 'lqz/linum-off)
 
 ;; show column number, file size and battery on mode line
 (column-number-mode t)
@@ -69,7 +63,7 @@
 (defun lqz/smart-indent-guide () (if (< (count-lines (point-min) (point-max)) 500) (indent-guide-mode)))
 (add-hook 'prog-mode-hook 'lqz/smart-indent-guide)
 (setq indent-guide-recursive t)
-(setq indent-guide-char "│")
+;; (setq indent-guide-char "│")
 (setq indent-guide-inhibit-modes '(dired-mode package-menu-mode))
 
 

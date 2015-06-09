@@ -8,7 +8,8 @@
       '("C-c m l" helm-all-mark-rings
 	"C-c u y" xsel-copy
 	"C-c u p" xsel-paste
-	"C-c u x" xsel-cut))
+	"C-c u x" xsel-cut
+	"C-c C-f" helm-recentf))
 
 (lqz/global-set-key lqz/keymap)
 

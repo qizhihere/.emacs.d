@@ -7,7 +7,7 @@
  '(ansi-color-names-vector
    ["#3F3F3F" "#CC9393" "#7F9F7F" "#F0DFAF" "#8CD0D3" "#DC8CC3" "#93E0E3" "#DCDCCC"])
  '(auto-revert-interval 1)
- '(battery-mode-line-format "🔌 %p")
+ '(battery-mode-line-format "Bat: %p")
  '(battery-update-interval 10)
  '(company-backends
    (quote
@@ -32,6 +32,8 @@
  '(helm-ag-command-option "--all-text")
  '(helm-ag-insert-at-point (quote symbol))
  '(helm-dash-docsets-path (lqz/init-dir "docs") t)
+ '(helm-ff-auto-update-initial-value nil)
+ '(helm-file-cache-fuzzy-match t)
  '(highlight-symbol-idle-delay 0.5)
  '(highlight-symbol-on-navigation-p t)
  '(highlight-symbol-print-occurrence-count (quote explicit))
@@ -47,13 +49,15 @@
  '(projectile-known-projects-file (lqz/init-dir "tmp/projectile-bookmarks.eld"))
  '(pyim-dicts
    (quote
-    ((:name "fcitx-sogou" :file "~/.emacs.d/dicts/pyim/fcitx-sogou.txt" :coding utf-8-unix)
-     (:name "网络流行新词" :file "~/.emacs.d/dicts/pyim/网络流行新词.txt" :coding utf-8-unix)
-     (:name "bigdict" :file "~/.emacs.d/dicts/pyim/pyim-bigdict.txt" :coding utf-8-unix)
-     (:name "诗词名句大全" :file "~/.emacs.d/dicts/pyim/诗词名句大全.txt" :coding utf-8-unix)
-     (:name "古诗成语俗语大全" :file "~/.emacs.d/dicts/pyim/古诗成语俗语大全.txt" :coding utf-8-unix))))
- '(pyim-dicts-directory (quote (lqz/init-dir "dicts/pyim/")))
- '(pyim-directory (quote (lqz/init-dir "configs/pyim/")))
+    ((:name "sougou-phrases-full" :file "/home/qizhi/.emacs.d/dicts/pyim/sougou-phrases-full.txt" :coding utf-8-unix)
+     (:name "中国历代职官" :file "/home/qizhi/.emacs.d/dicts/pyim/中国历代职官.pyim" :coding utf-8)
+     (:name "地质大词典" :file "/home/qizhi/.emacs.d/dicts/pyim/地质大词典.pyim" :coding utf-8)
+     (:name "搜狗颜文字表情包" :file "/home/qizhi/.emacs.d/dicts/pyim/搜狗颜文字表情包.pyim" :coding utf-8)
+     (:name "新浪微博通用颜文字" :file "/home/qizhi/.emacs.d/dicts/pyim/新浪微博通用颜文字.pyim" :coding utf-8)
+     (:name "网络流行新词【官方推荐】" :file "/home/qizhi/.emacs.d/dicts/pyim/网络流行新词【官方推荐】.pyim" :coding utf-8)
+     (:name "诗词名句大全" :file "/home/qizhi/.emacs.d/dicts/pyim/诗词名句大全.pyim" :coding utf-8))))
+ '(pyim-dicts-directory (lqz/init-dir "dicts/pyim/"))
+ '(pyim-directory (lqz/init-dir "configs/pyim/"))
  '(pyim-personal-file (lqz/init-dir "dicts/pyim/pyim-personal.txt"))
  '(pyim-punctuation-dict
    (quote

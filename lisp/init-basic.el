@@ -19,13 +19,13 @@
 
 ;; automatically save and restore sessions
 (setq-default
-	  desktop-dirname             (lqz/init-dir "session/")
-	  desktop-base-file-name      "emacs.session"
-	  desktop-base-lock-name      "session-lock"
-	  desktop-path                (list desktop-dirname)
-	  desktop-save                t
-	  desktop-files-not-to-save   "^$" ;reload tramp path
-	  desktop-load-locked-desktop nil)
+      desktop-dirname             (lqz/init-dir "session/")
+      desktop-base-file-name      "emacs.session"
+      desktop-base-lock-name      "session-lock"
+      desktop-path                (list desktop-dirname)
+      desktop-save                t
+      desktop-files-not-to-save   "^$" ;reload tramp path
+      desktop-load-locked-desktop nil)
 (desktop-save-mode 1)
 
 ;; store all backup and autosave files in the tmp dir
@@ -37,11 +37,13 @@
 ;;--------------------------
 ;; edit settings
 ;;--------------------------
-(lqz/require '(sudo-edit       ;; open current file with sudo
-	       drag-stuff      ;; use M-arrow to move line or word
-	       pcre2el	       ;; use pcre in emacs
-	      ))
+(lqz/require '(drag-stuff      ;; use M-arrow to move line or word
+           pcre2el))       ;; use pcre in emacs
+
 (rxt-global-mode t)
+
+;; open current file with sudo
+(require 'init-sudo-edit)
 
 ;; system clipboard support(use xsel, linux only)
 (require 'init-clipboard)
@@ -50,13 +52,18 @@
 (setq shift-select-mode t)
 
 ;; set tab width
-(setq tab-width 4)
-(setq indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq c-basic-offset 4)
 
-;; make tab key call indent command or insert tab character,
-;; depending on cursor position
-(setq-default tab-always-indent nil)
+;; automaticaly save
+(defun save-all ()
+  (interactive)
+  (save-some-buffers t))
 
+(setq auto-save-interval 1
+      auto-save-timeout 1)
+(add-hook 'focus-out-hook 'save-all)
 
 ;;------------------------------
 ;; window settings
