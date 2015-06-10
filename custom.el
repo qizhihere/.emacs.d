@@ -30,6 +30,7 @@
       (".#*" "*~" "*.so" "*.jpg" "*.png" "*.gif" "*.pdf" "*.gz" "*.zip")))))
  '(fiplr-root-markers (quote (".git" ".svn" ".hg" ".bzr" "composer.json")))
  '(flymake-fringe-indicator-position (quote right-fringe))
+ '(git-gutter:update-interval 2)
  '(global-company-mode t)
  '(helm-M-x-always-save-history t)
  '(helm-ag-base-command
@@ -150,5 +151,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(flymake-errline ((t (:background "color-88" :foreground "yellow" :underline (:color foreground-color :style wave) :weight bold))))
+ '(git-gutter:added ((t (:background "green" :foreground "#383838" :inverse-video t :weight bold))))
+ '(git-gutter:deleted ((t (:background "red" :foreground "#383838" :inverse-video t :weight bold))))
+ '(git-gutter:modified ((t (:background "yellow" :foreground "#383838" :inverse-video t :weight bold))))
+ '(git-gutter:unchanged ((t (:foreground "#DCDCCC" :inverse-video t :weight bold))))
  '(hc-trailing-whitespace ((t (:background "HotPink"))))
  '(window-numbering-face ((t nil)) t))
