@@ -1,4 +1,4 @@
-(lqz/require '(magit gitignore-mode git-timemachine))
+(lqz/require '(magit gitignore-mode git-timemachine git-gutter))
 
 
 ;; disable magit startup messages
@@ -6,6 +6,11 @@
 
 ;; magit shortcut key
 (global-set-key (kbd "C-c g s") 'magit-status)
+
+;; git-gutter
+(add-hook 'prog-mode-hook 'git-gutter-mode)
+(add-hook 'fish-mode-hook 'git-gutter-mode)
+(add-hook 'vimrc-mode-hook 'git-gutter-mode)
 
 
 
