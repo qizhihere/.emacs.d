@@ -14,6 +14,9 @@
 (lqz/require 'nginx-mode)
 (add-to-list 'auto-mode-alist '("/etc/nginx/.*" . nginx-mode))
 
+;; yaml mode
+(lqz/require 'yaml-mode)
+
 
 
 (provide 'init-other-minor-mode)
