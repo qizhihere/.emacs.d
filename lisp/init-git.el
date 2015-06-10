@@ -17,6 +17,13 @@
 (add-hook 'fish-mode-hook 'git-gutter-mode)
 (add-hook 'vimrc-mode-hook 'git-gutter-mode)
 
+;; update interval seconds
+(custom-set-variables
+ '(git-gutter:update-interval 1)
+ '(git-gutter:modified-sign "m")
+ '(git-gutter:added-sign "+")
+ '(git-gutter:deleted-sign "-"))
+
 ;; background
 (set-face-background 'git-gutter:modified "#383838")
 (set-face-foreground 'git-gutter:added "#383838")
@@ -29,10 +36,6 @@
 (global-set-key (kbd "C-x n") 'git-gutter:next-hunk)
 (global-set-key (kbd "C-x v s") 'git-gutter:stage-hunk)
 (global-set-key (kbd "C-x v r") 'git-gutter:revert-hunk)
-
-;; update interval seconds
-(custom-set-variables
- '(git-gutter:update-interval 2))
 
 
 
