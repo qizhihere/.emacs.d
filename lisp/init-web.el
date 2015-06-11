@@ -16,7 +16,8 @@
 
 ;; js
 (add-hook 'js-mode-hook 'js2-minor-mode)
-(setq-default js2-basic-offset 2)
+(setq-default js2-basic-offset 2
+              js-indent-level  2)
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
 
 ;; asp

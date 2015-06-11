@@ -39,6 +39,7 @@
 ;;--------------------------
 (lqz/require '(drag-stuff      ;; use M-arrow to move line or word
                pcre2el))       ;; use pcre in emacs
+(add-hook 'prog-mode-hook 'drag-stuff-mode)
 
 (rxt-global-mode t)
 
