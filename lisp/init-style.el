@@ -63,6 +63,7 @@
 ;; (setq indent-guide-delay 0.1)
 (defun lqz/smart-indent-guide () (if (< (count-lines (point-min) (point-max)) 500) (indent-guide-mode)))
 (add-hook 'prog-mode-hook 'lqz/smart-indent-guide)
+(add-hook 'jade-mode-hook 'lqz/smart-indent-guide)
 (setq indent-guide-recursive t)
 ;; (setq indent-guide-char "│")
 (setq indent-guide-inhibit-modes '(dired-mode package-menu-mode))
