@@ -125,6 +125,7 @@
  '(sml/prefix-regexp (quote ("\\[.*]" ":\\(.*:\\)" "~/")))
  '(sml/projectile-replacement-format "[%s]")
  '(sml/size-indication-format " %I ")
+ '(undo-tree-incompatible-major-modes (quote (term-mode\ magit-status-mode)))
  '(undohist-directory "/home/qizhi/.emacs.d/tmp/undohist")
  '(vc-annotate-background "#2B2B2B")
  '(vc-annotate-color-map

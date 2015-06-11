@@ -1,6 +1,7 @@
 (lqz/require '(web-mode web-beautify
                 emmet-mode helm-emmet
-                css-eldoc js2-mode))
+                css-eldoc js2-mode
+                jade-mode))
 
 ;; html
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))

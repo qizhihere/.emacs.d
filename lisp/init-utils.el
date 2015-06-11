@@ -14,7 +14,7 @@
   "create subdirectories relative to ~/.emacs.d"
   (lqz/iter-eval dir
     '(if (not (file-exists-p x))
-	(make-directory (lqz/init-dir x) t))))
+    (make-directory (lqz/init-dir x) t))))
 
 (defun lqz/load-file (path)
   "load file according to its relative path to init.el"
@@ -27,9 +27,9 @@
 (defun lqz/require (package)
   (lqz/iter-eval package
     '(let ((x (if (stringp x) (intern x) x)))
-	(if (not (package-installed-p x))
-	    (package-install x))
-	(require x))))
+    (if (not (package-installed-p x))
+        (package-install x))
+    (require x))))
 
 
 
