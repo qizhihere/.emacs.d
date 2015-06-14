@@ -16,7 +16,11 @@
 (add-hook 'web-mode-hook 'emmet-mode)
 
 ;; js
-(add-hook 'js-mode-hook 'js2-minor-mode)
+(defun lqz/js-mode ()
+  (js2-minor-mode 1)
+  (setq comment-start "/*"
+        comment-end "*/"))
+(add-hook 'js-mode-hook 'lqz/js-mode)
 (setq-default js2-basic-offset 2
               js-indent-level  2)
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))

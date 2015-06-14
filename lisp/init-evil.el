@@ -8,7 +8,7 @@
 (add-more-to-list 'evil-emacs-state-modes
     '(dired-mode org-mode eww-mode package-menu-mode help-mode
       Custom-mode custom-theme-choose-mode apropos-mode pyim-dicts-manager-mode
-      git-timemachine-mode rxt-help-mode))
+      git-timemachine-mode rxt-help-mode org-src-mode))
 
 ;; remap escape key
 (lqz/require 'key-chord)

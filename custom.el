@@ -9,6 +9,7 @@
  '(auto-revert-interval 1)
  '(battery-mode-line-format "Bat: %p")
  '(battery-update-interval 10)
+ '(comment-style (quote extra-line))
  '(company-backends
    (quote
     (php-extras-company company-bbdb company-nxml company-css company-eclim company-semantic company-clang company-xcode company-cmake company-capf

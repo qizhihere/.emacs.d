@@ -219,7 +219,10 @@ I_NC_LUDE    I_ND_EX      _MA_CRO    _HT_ML
 
 [_m_] return to main org menu
 "
-  ("HE" (insert "#+TITLE: \n#+AUTHOR: littleqz\n#+STARTUP: overview\n#+OPTIONS: ^:{} toc:2"))
+  ("HE" (progn
+          (insert "#+TITLE: \n#+AUTHOR: littleqz\n#+STARTUP: overview\n#+OPTIONS: ^:{} toc:2")
+          (goto-line 1)
+          (evil-append-line 1)))
   ("TI" (insert "#+TITLE: "))
   ("AU" (insert "#+AUTHOR: littleqz"))
   ("OP" (insert "#+OPTIONS: ^:{} toc:2"))
@@ -252,11 +255,11 @@ I_NC_LUDE    I_ND_EX      _MA_CRO    _HT_ML
          (forward-line)))
   ("C" (progn
          (hot-expand "<s")
-         (insert "c")
+         (insert "C")
          (forward-line)))
   ("+" (progn
           (hot-expand "<s")
-          (insert "c++")
+          (insert "cpp")
           (forward-line)))
 
   ("py" (progn
@@ -273,12 +276,12 @@ I_NC_LUDE    I_ND_EX      _MA_CRO    _HT_ML
           (forward-line)))
   ("sh" (progn
           (hot-expand "<s")
-          (insert "shell")
+          (insert "sh")
           (forward-line)))
 
   ("ja" (progn
           (hot-expand "<s")
-          (insert "javascript")
+          (insert "js")
           (forward-line)))
   ("ht" (progn
           (hot-expand "<s")
