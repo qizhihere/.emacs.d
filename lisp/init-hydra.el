@@ -214,8 +214,9 @@ _l_isp       _em_acs-lisp _C_        C_+_+
 _py_thon2    _ph_p        _ng_inx    _sh_ell
 _ja_vascript _ht_ml       _cs_s      l_u_a
 _IM_G        _L_ink       _d_rawer   _co_lumn
-L_a_tex      _O_rg        _V_ERSE    COM_ME_NT
+L_a_tex      _O_rg        _VE_RSE    COM_ME_NT
 I_NC_LUDE    I_ND_EX      _MA_CRO    _HT_ML
+_Vi_deo
 
 [_m_] return to main org menu
 "
@@ -310,7 +311,7 @@ I_NC_LUDE    I_ND_EX      _MA_CRO    _HT_ML
           (insert "org")
           (forward-line)
           (org-edit-src-code)))
-  ("V" (hot-expand "<v"))
+  ("VE" (hot-expand "<v"))
   ("ME" (progn
         (next-line)
         (beginning-of-line)
@@ -321,6 +322,19 @@ I_NC_LUDE    I_ND_EX      _MA_CRO    _HT_ML
   ("ND" (hot-expand "<i"))
   ("MA" (insert "#+MACRO: "))
   ("HT" (hot-expand "<h"))
+
+   ("Vi" (progn
+            (let ((file
+                      (concat "http://v.sudotry.com/"
+                         (file-name-nondirectory
+                         (lqz/select-file "Select an video: ")))))
+            (insert (concat
+               "#+BEGIN_HTML \n"
+                 "<video autoplay loop>\n"
+                  "\t<source src='" file "' type='video/mp4'/>\n"
+                  "\tYour browser does not support the video tag.\n"
+                 "</video>\n"
+               "#+END_HTML")))))
 
   ("<" self-insert-command "INS")
   ("q" nil)
@@ -338,64 +352,6 @@ I_NC_LUDE    I_ND_EX      _MA_CRO    _HT_ML
     (if (looking-back "^")
         (hydra-org-insert/body)
       (self-insert-command 1))))
-
-
-;; (DEFHYDRA HYDRA-ORG-TEMPLATE (:COLOR BLUE :HINT NIL)
-;;   "
-;; _C_ENTER  _Q_UOTE     _E_MACS-LISP    _l_AtEx:
-;; _L_ATEX   _e_XAMPLE   _P_ERL          _I_NDEX:
-;; _A_SCII   _V_ERSE     _p_ERL TANGLED  _i_nclude:
-;; _S_RC     ^ ^         PLANT_U_ML      _h_tml:
-;; _H_TML    _O_RG       ^ ^             _a_scii:
-;; "
-;;   ("S" (HOT-EXPAND "<S"))
-;;   ("e" (HOT-EXPAND "<E"))
-;;   ("Q" (HOT-EXPAND "<Q"))
-;;   ("V" (HOT-EXPAND "<V"))
-;;   ("C" (HOT-EXPAND "<C"))
-;;   ("L" (HOT-EXPAND "<L"))
-;;   ("H" (HOT-EXPAND "<H"))
-;;   ("A" (HOT-EXPAND "<A"))
-;;   ("l" (HOT-EXPAND "<l"))
-;;   ("I" (HOT-EXPAND "<I"))
-;;   ("E" (PROGN
-;;   (HOT-EXPAND "<S")
-;;   (INSERT "EMACS-LISP")
-;;   (FORWARD-LINE)))
-;;   ("P" (PROGN
-;;   (HOT-EXPAND "<S")
-;;   (INSERT "PERL")
-;;   (FORWARD-LINE)))
-;;   ("U" (PROGN
-;;   (HOT-EXPAND "<S")
-;;   (INSERT "PLANTUML :FILE change.PNG")
-;;   (FORWARD-LINE)))
-;;   ("p" (PROGN
-;;   (INSERT "#+headers: :RESULTS OUTPUT :EXPORTS BOTH :SHEBANG \"#!/USR/BIN/ENV PERL\"\N")
-;;   (HOT-EXPAND "<S")
-;;   (INSERT "PERL")
-;;   (FORWARD-LINE)))
-;;   ("i" (HOT-EXPAND "<i"))
-;;   ("h" (HOT-EXPAND "<h"))
-;;   ("a" (HOT-EXPAND "<a"))
-;;   ("<" SELF-INSERT-COMMAND "INS")
-;;   ("O" (PROGN
-;;   (HOT-EXPAND "<S")
-;;   (insert "org")
-;;   (forward-line))))
-
-;; (defun hot-expand (str)
-;;   "Expand org template."
-;;   (insert str)
-;;   (org-try-structure-completion))
-
-;; ;; I bind it for myself like this:
-
-;; (define-key org-mode-map "<"
-;;   (lambda () (interactive)
-;;      (if (looking-back "^")
-;;   (hydra-org-template/body)
-;;        (self-insert-command 1))))
 
 
 

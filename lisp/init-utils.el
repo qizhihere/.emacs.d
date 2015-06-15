@@ -6,15 +6,21 @@
     (dolist (x target) (eval cmd))
     (let ((x target)) (eval cmd))))
 
-(defun lqz/mkdir (dir)
-  "check directories and create them if not exists."
-  )
-
 (defun lqz/mkrdir (dir)
   "create subdirectories relative to ~/.emacs.d"
   (lqz/iter-eval dir
     '(if (not (file-exists-p x))
     (make-directory (lqz/init-dir x) t))))
+
+(defun lqz/select-file (msg)
+  (let ((file (file-relative-name
+               (read-file-name msg
+                 (if (and (boundp 'lqz/last-dir) (file-exists-p lqz/last-dir))
+                     lqz/last-dir
+                   default-directory))
+               default-directory)))
+    (setq lqz/last-dir (file-name-directory (file-truename file)))
+    file))
 
 (defun lqz/load-file (path)
   "load file according to its relative path to init.el"
