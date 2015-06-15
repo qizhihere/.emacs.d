@@ -54,7 +54,6 @@
 (require 'init-markdown)
 (require 'init-org)
 (require 'init-lisp)
-(require 'init-csharp)
 (require 'init-fun)
 ;; minor modes which need only very little configuration
 (require 'init-other-minor-mode)
