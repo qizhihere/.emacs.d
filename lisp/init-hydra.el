@@ -138,7 +138,7 @@ Import : []
   ("C-r" undo-tree-redo :exit nil)
 
   ;; export and import
-  ("eh" org-html-export-to-html :exit nil)
+  ("eh" org-publish-current-file)
   ("em" org-md-export-to-markdown :exit nil)
   ("ea" org-ascii-export-to-ascii :exit nil)
   ("eu" org-html-export-to-html :exit nil)
@@ -216,7 +216,7 @@ _ja_vascript _ht_ml       _cs_s      l_u_a
 _IM_G        _L_ink       _d_rawer   _co_lumn
 L_a_tex      _O_rg        _VE_RSE    COM_ME_NT
 I_NC_LUDE    I_ND_EX      _MA_CRO    _HT_ML
-_Vi_deo
+_VI_DEO
 
 [_m_] return to main org menu
 "
@@ -323,7 +323,7 @@ _Vi_deo
   ("MA" (insert "#+MACRO: "))
   ("HT" (hot-expand "<h"))
 
-   ("Vi" (progn
+   ("VI" (progn
             (let ((file
                       (concat "http://v.sudotry.com/"
                          (file-name-nondirectory

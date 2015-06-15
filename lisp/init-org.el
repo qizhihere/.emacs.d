@@ -13,12 +13,12 @@
       org-todo-keywords		'((sequence "TODO(t)" "|" "DOING" "DELAY" "DONE(d)" "CANCEL(c)"))
       org-todo-keyword-faces    '(("DELAY" . "orange") ("CANCEL" . "gray"))
       org-tag-alist		'(
-				  ("@笔记" . ?n) ("@感悟" . ?m)  ("@经验" . ?x) ("@教程" . ?u)
-				  ("@转载" . ?p) ("@翻译" . ?t)
-				  (:startgroup . nil)
-				  ("linux" . ?l) ("数据库" . ?d) ("php" . ?h) ("python" . ?y)
-				  ("ruby" . ?r)  ("emacs" . ?e)  ("vim" . ?v)
-				  (:endgroup . nil)))
+                  ("@笔记" . ?n) ("@感悟" . ?m)  ("@经验" . ?x) ("@教程" . ?u)
+                  ("@转载" . ?p) ("@翻译" . ?t)
+                  (:startgroup . nil)
+                  ("linux" . ?l) ("数据库" . ?d) ("php" . ?h) ("python" . ?y)
+                  ("ruby" . ?r)  ("emacs" . ?e)  ("vim" . ?v)
+                  (:endgroup . nil)))
 
 (org-babel-do-load-languages
  'org-babel-load-languages
@@ -47,15 +47,22 @@
 (add-hook 'text-mode-hook    'turn-on-orgtbl)
 (add-hook 'mail-mode-hook    'turn-on-orgtbl)
 
-(if (display-graphic-p)
-    (set-face-attribute 'org-level-1 nil :height 1.1 :bold t)
-    (set-face-attribute 'org-level-2 nil :height 1.0 :bold t)
-    (set-face-attribute 'org-level-3 nil :height 0.8 :bold nil))
-
 ;; fix org html export bug
 (defun org-font-lock-ensure ()
   (font-lock-fontify-buffer))
 
+
+;; export settings
+(setq org-publish-project-alist
+      '(("blog"
+         :base-directory "~/sync/Dropbox/notes/"
+         :html-extension "html"
+         :base-extension "org"
+         :publishing-directory "~/sync/Dropbox/public/html"
+         :publishing-function (org-html-publish-to-html)
+         ;; :publishing-function org-twbs-publish-to-html
+         :html-preamble nil
+         :html-postamble nil)))
 
 
 (provide 'init-org)

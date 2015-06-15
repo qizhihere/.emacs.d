@@ -41,7 +41,6 @@
       nil)))
 
 (setq php-doc-path (lqz/init-dir "manuals/php_manual_cn_html"))
-(lqz/mkdir php-doc-path)
 
 (defun lookup-php-doc ()
   (interactive)
