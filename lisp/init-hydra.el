@@ -221,8 +221,10 @@ _VI_DEO
 [_m_] return to main org menu
 "
   ("HE" (progn
-          (insert "#+TITLE: \n#+AUTHOR: littleqz\n#+STARTUP: overview\n#+OPTIONS: ^:{} toc:2")
-          (goto-line 1)
+          (insert (concat "#+TITLE: \n#+AUTHOR: littleqz\n"
+                          "#+STARTUP: overview\n#+OPTIONS: ^:{} toc:2\n"
+                          "#+SETUPFILE: ../public/themes/simpleblog.setup\n"))
+          (previous-line 5)
           (evil-append-line 1)))
   ("TI" (insert "#+TITLE: "))
   ("AU" (insert "#+AUTHOR: littleqz"))
@@ -300,7 +302,7 @@ _VI_DEO
   ("IM" (progn
         (let ((file (file-relative-name
                 (read-file-name "Select an image:") default-directory)))
-        (insert (concat "[[./" file "]]")))))
+        (insert (concat "[[" file "]]")))))
   ("L" org-insert-link)
   ("d" org-insert-drawer)
   ("co" org-insert-columns-dblock)

@@ -79,7 +79,7 @@
 
 ;; directly show colors like hex colors and so on
 (lqz/require 'rainbow-mode)
-(rainbow-mode t)
+(add-hook 'prog-mode-hook 'rainbow-mode)
 
 ;; autoclose brackets and quotes
 (lqz/require 'autopair)

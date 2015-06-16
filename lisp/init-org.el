@@ -1,8 +1,9 @@
 (lqz/require '(org htmlize))
 
 (setq org-support-shift-select   nil
-      org-catch-invisible-edits 'error
-      org-footnote-define-inline t
+      org-catch-invisible-edits 'org
+      org-html-footnote-format  "<sup>%s</sup>"
+      error-footnote-define-inline t
       org-src-fontify-natively   t
       org-startup-align-all-tables t
       org-footnote-auto-label   'random
@@ -54,15 +55,29 @@
 
 ;; export settings
 (setq org-publish-project-alist
-      '(("blog"
-         :base-directory "~/sync/Dropbox/notes/"
-         :html-extension "html"
+      '(
+        ("org-notes"
+         :author "littleqz"
+         :email "qizhihere@gmail.com"
+         :base-directory "~/org"
          :base-extension "org"
-         :publishing-directory "~/sync/Dropbox/public/html"
-         :publishing-function (org-html-publish-to-html)
-         ;; :publishing-function org-twbs-publish-to-html
-         :html-preamble nil
-         :html-postamble nil)))
+         :html-extension "html"
+         :publishing-directory "~/sync/Dropbox/public/blog"
+         :recursive t
+         :publishing-function org-html-publish-to-html
+         :headline-levels 4             ; Just the default for this project.
+         :section-numbers nil
+         :html-postamble nil
+         )
+        ("org-static"
+         :base-directory "~/org"
+         :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|mp4\\|ogg\\|swf"
+         :publishing-directory "~/sync/Dropbox/public/blog"
+         :recursive t
+         :publishing-function org-publish-attachment
+         )
+        ("org" :components ("org-notes" "org-static"))))
+
 
 
 (provide 'init-org)
