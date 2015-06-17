@@ -56,6 +56,16 @@
 (setq org-html-preamble-format (list (list "en" (get-string-from-file "~/org/layouts/header.org"))))
 (setq org-html-postamble-format (list (list "en" (get-string-from-file "~/org/layouts/footer.org"))))
 
+(defun lqz/new-note (file)
+  (interactive "sPlease input the note file name: ")
+  (find-file (concat "~/sync/Dropbox/writing/" file))
+  (lqz/send-keys "M-o iHE"))
+
+(defun hello (someone)
+      "Say hello to SOMEONE via M-x hello."
+      (interactive "sWho do you want to say hello to? ")
+      (message "Hello %s!" someone))
+
 (defun lqz/org-update-index (&rest x)
   (shell-command "touch ~/org/index.org")
   (shell-command "touch ~/org/sitemap.org"))
@@ -89,7 +99,7 @@
          :base-directory "~/org"
          :base-extension "org"
          :html-extension "html"
-         :publishing-directory "~/sync/Dropbox/public/blog"
+         :publishing-directory "~/sync/Dropbox/public/blog/html"
          :recursive nil
          :publishing-function (lqz/org-update-index org-html-publish-to-html)
          :html-postamble nil
@@ -97,7 +107,7 @@
         ("static"
          :base-directory "~/org"
          :base-extension "ico\\|css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|mp4\\|ogg\\|swf"
-         :publishing-directory "~/sync/Dropbox/public/blog"
+         :publishing-directory "~/sync/Dropbox/public/blog/html"
          :recursive t
          :publishing-function org-publish-attachment
          )

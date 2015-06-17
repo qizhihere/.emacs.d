@@ -33,6 +33,9 @@
   "load file according to its relative path to init.el"
   (load-file (lqz/init-dir path)))
 
+(defun lqz/send-keys (keys)
+  (execute-kbd-macro (read-kbd-macro keys)))
+
 (defun get-string-from-file (filePath)
   "Return filePath's file content."
   (if (file-exists-p filePath)
