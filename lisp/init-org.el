@@ -57,14 +57,15 @@
 (setq org-html-postamble-format (list (list "en" (get-string-from-file "~/org/layouts/footer.org"))))
 
 (defun lqz/new-note (file)
+  "create a new note in ~/sync/Dropbox/writing/posts."
   (interactive "sPlease input the note file name: ")
-  (find-file (concat "~/sync/Dropbox/writing/" file))
+  (find-file (concat "~/org/posts/" file))
   (lqz/send-keys "M-o iHE"))
 
-(defun hello (someone)
-      "Say hello to SOMEONE via M-x hello."
-      (interactive "sWho do you want to say hello to? ")
-      (message "Hello %s!" someone))
+(defun lqz/open-note ()
+  "open a note in ~/sync/Dropbox/writing/posts."
+  (interactive)
+  (find-file (read-file-name "Select a note: " "~/org/posts/")))
 
 (defun lqz/org-update-index (&rest x)
   (shell-command "touch ~/org/index.org")
