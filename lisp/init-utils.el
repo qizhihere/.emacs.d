@@ -12,19 +12,28 @@
     '(if (not (file-exists-p x))
     (make-directory (lqz/init-dir x) t))))
 
-(defun lqz/select-file (msg)
+(defun lqz/select-file (msg &optional dir)
   (let ((file (file-relative-name
                (read-file-name msg
-                 (if (and (boundp 'lqz/last-dir) (file-exists-p lqz/last-dir))
+                  (if (and dir (file-exists-p dir))
+                      dir
+                   (if (and (boundp 'lqz/last-dir) (file-exists-p lqz/last-dir))
                      lqz/last-dir
-                   default-directory))
-               default-directory)))
+                   default-directory))))))
     (setq lqz/last-dir (file-name-directory (file-truename file)))
     file))
 
 (defun lqz/load-file (path)
   "load file according to its relative path to init.el"
   (load-file (lqz/init-dir path)))
+
+(defun get-string-from-file (filePath)
+  "Return filePath's file content."
+  (if (file-exists-p filePath)
+      (with-temp-buffer
+        (insert-file-contents filePath)
+        (buffer-string))
+    ""))
 
 (defun add-more-to-list (target source)
   "append source list to target list."

@@ -209,7 +209,7 @@ Line/Column: [_-_]  new line       [_|_]   new column      [_] hline
 _HE_ADER     _TI_TLE      _AU_THOR   _OP_TIONS
 _ST_ARTUP    C_EN_TER     _Q_UOTE    _EX_AMPLE
 _S_RC        _TO_DO       _ch_eckbox _t_imestamp
-_Me_ta       _NA_ME       _f_ootnote _F_ootnote definition
+_Me_ta       _NA_ME       _fo_otnote _Fo_otnote definition
 _l_isp       _em_acs-lisp _C_        C_+_+
 _py_thon2    _ph_p        _ng_inx    _sh_ell
 _ja_vascript _ht_ml       _cs_s      l_u_a
@@ -223,7 +223,7 @@ _VI_DEO
   ("HE" (progn
           (insert (concat "#+TITLE: \n#+AUTHOR: littleqz\n"
                           "#+STARTUP: overview\n#+OPTIONS: ^:{} toc:2\n"
-                          "#+SETUPFILE: ../public/themes/simpleblog.setup\n"))
+                          "#+SETUPFILE: ~/org/layouts/blog.setup\n"))
           (previous-line 5)
           (evil-append-line 1)))
   ("TI" (insert "#+TITLE: "))
@@ -245,8 +245,10 @@ _VI_DEO
 
   ("Me" (insert "#+CAPTION: \n#+NAME:\t"))
   ("NA" (insert "#+NAME: "))
-  ("f" (org-footnote-action))
-  ("F" (org-footnote-create-definition))
+  ("fo" (progn
+         (insert (concat "[fn::]"))
+         (backward-char)))
+  ("Fo" (org-footnote-action))
 
   ("l" (progn
          (hot-expand "<s")
@@ -329,7 +331,7 @@ _VI_DEO
             (let ((file
                       (concat "http://v.sudotry.com/"
                          (file-name-nondirectory
-                         (lqz/select-file "Select an video: ")))))
+                         (lqz/select-file "Select an video: " "~/sync/Dropbox/video/")))))
             (insert (concat
                "#+BEGIN_HTML \n"
                  "<video autoplay loop>\n"

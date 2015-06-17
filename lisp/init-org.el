@@ -52,31 +52,53 @@
 (defun org-font-lock-ensure ()
   (font-lock-fontify-buffer))
 
+;; set blog page header and footer html raw string
+(setq org-html-preamble-format (list (list "en" (get-string-from-file "~/org/header.html"))))
+(setq org-html-postamble-format (list (list "en" (get-string-from-file "~/org/footer.html"))))
+
 
 ;; export settings
 (setq org-publish-project-alist
       '(
-        ("org-notes"
+        ("notes"
          :author "littleqz"
          :email "qizhihere@gmail.com"
-         :base-directory "~/org"
+         :base-directory "~/org/posts"
          :base-extension "org"
          :html-extension "html"
          :publishing-directory "~/sync/Dropbox/public/blog"
          :recursive t
          :publishing-function org-html-publish-to-html
-         :headline-levels 4             ; Just the default for this project.
+         :auto-sitemap t                  ; Generate sitemap.org automagically...
+         :sitemap-filename "post-list.org"  ; ... call it sitemap.org (it's the default)...
+         :sitemap-title "Blog"         ; ... with title 'Sitemap'.
+         :sitemap-sort-files "anti-chronologically"  ; sort file time reversely
+         :sitemap-sort-folders last
+         :sitemap-file-entry-format "%d » %t"
+         :sitemap-date-format "%Y.%m.%d"
+         :exclude "footer.org\\|header.org\\|blog.setup\\|sitemap.org"
+         :headline-levels 4               ; Just the default for this project.
          :section-numbers nil
+         :html-preamble t
+         :html-postamble t
+         )
+        ("meta"
+         :base-directory "~/org"
+         :base-extension "org"
+         :html-extension "html"
+         :publishing-directory "~/sync/Dropbox/public/blog"
+         :recursive nil
+         :publishing-function org-html-publish-to-html
          :html-postamble nil
          )
-        ("org-static"
+        ("static"
          :base-directory "~/org"
          :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|mp4\\|ogg\\|swf"
          :publishing-directory "~/sync/Dropbox/public/blog"
          :recursive t
          :publishing-function org-publish-attachment
          )
-        ("org" :components ("org-notes" "org-static"))))
+        ("blog" :components ("notes" "static" "meta"))))
 
 
 

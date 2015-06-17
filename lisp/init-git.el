@@ -25,7 +25,7 @@
  '(git-gutter:deleted-sign "-"))
 
 ;; background
-(set-face-background 'git-gutter:modified "#383838")
+(set-face-background 'git-gutter:modified "#cdcd00")
 (set-face-foreground 'git-gutter:added "#383838")
 (set-face-foreground 'git-gutter:deleted  "#383838")
 
