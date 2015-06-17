@@ -1,13 +1,10 @@
-(lqz/require '(undo-tree undohist))
+(lqz/require '(undo-tree))
 
 (defadvice undo-tree-visualize (around undo-tree-split-side-by-side activate)
   "Split undo-tree side-by-side"
   (let ((split-height-threshold nil)
     (split-width-threshold 10))
       ad-do-it))
-
-(customize-set-variable 'undohist-directory (lqz/init-dir "tmp/undohist"))
-(undohist-initialize)
 
 ;; set undotree history file directories
 (setq undo-tree-auto-save-history t
