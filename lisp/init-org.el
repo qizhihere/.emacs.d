@@ -53,9 +53,12 @@
   (font-lock-fontify-buffer))
 
 ;; set blog page header and footer html raw string
-(setq org-html-preamble-format (list (list "en" (get-string-from-file "~/org/header.html"))))
-(setq org-html-postamble-format (list (list "en" (get-string-from-file "~/org/footer.html"))))
+(setq org-html-preamble-format (list (list "en" (get-string-from-file "~/org/layouts/header.org"))))
+(setq org-html-postamble-format (list (list "en" (get-string-from-file "~/org/layouts/footer.org"))))
 
+(defun lqz/org-update-index (&rest x)
+  (shell-command "touch ~/org/index.org")
+  (shell-command "touch ~/org/sitemap.org"))
 
 ;; export settings
 (setq org-publish-project-alist
@@ -71,12 +74,12 @@
          :publishing-function org-html-publish-to-html
          :auto-sitemap t                  ; Generate sitemap.org automagically...
          :sitemap-filename "post-list.org"  ; ... call it sitemap.org (it's the default)...
-         :sitemap-title "Blog"         ; ... with title 'Sitemap'.
+         :sitemap-title " "         ; ... with title 'Sitemap'.
          :sitemap-sort-files "anti-chronologically"  ; sort file time reversely
          :sitemap-sort-folders last
          :sitemap-file-entry-format "%d » %t"
          :sitemap-date-format "%Y.%m.%d"
-         :exclude "footer.org\\|header.org\\|blog.setup\\|sitemap.org"
+         :exclude "footer.org\\|header.org\\|blog.setup\\|sitemap.org\\|.*draft.org"
          :headline-levels 4               ; Just the default for this project.
          :section-numbers nil
          :html-preamble t
@@ -88,12 +91,12 @@
          :html-extension "html"
          :publishing-directory "~/sync/Dropbox/public/blog"
          :recursive nil
-         :publishing-function org-html-publish-to-html
+         :publishing-function (lqz/org-update-index org-html-publish-to-html)
          :html-postamble nil
          )
         ("static"
          :base-directory "~/org"
-         :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|mp4\\|ogg\\|swf"
+         :base-extension "ico\\|css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|mp4\\|ogg\\|swf"
          :publishing-directory "~/sync/Dropbox/public/blog"
          :recursive t
          :publishing-function org-publish-attachment

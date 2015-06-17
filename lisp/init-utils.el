@@ -23,6 +23,12 @@
     (setq lqz/last-dir (file-name-directory (file-truename file)))
     file))
 
+(defun lqz/delete-file (file)
+  (and (file-exists-p file) (delete-file file)))
+
+(defun lqz/delete-directory (dir)
+  (and (file-exists-p dir) (delete-directory dir t)))
+
 (defun lqz/load-file (path)
   "load file according to its relative path to init.el"
   (load-file (lqz/init-dir path)))
