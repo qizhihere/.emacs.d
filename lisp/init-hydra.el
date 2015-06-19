@@ -222,7 +222,7 @@ _VI_DEO
 "
   ("HE" (progn
           (insert (concat "#+TITLE: \n#+AUTHOR: littleqz\n"
-                          "#+STARTUP: overview\n#+OPTIONS: ^:{} toc:2\n"
+                          "#+STARTUP: overview\n#+OPTIONS: ^:{} toc:nil\n"
                           "#+SETUPFILE: ~/org/layouts/blog.setup\n"))
           (previous-line 5)
           (evil-append-line 1)))

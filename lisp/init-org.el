@@ -37,7 +37,8 @@
    ))
 
 (setq org-babel-python-command "python2")
-
+;; set default shell type
+(sh-set-shell "bash")
 
 (defun lqz/org-mode-hook ()
   (setq truncate-lines nil)
@@ -80,13 +81,13 @@
          :base-directory "~/org/posts"
          :base-extension "org"
          :html-extension "html"
-         :publishing-directory "~/sync/Dropbox/public/blog"
+         :publishing-directory "~/sync/Dropbox/public/blog/html"
          :recursive t
          :publishing-function org-html-publish-to-html
          :auto-sitemap t                  ; Generate sitemap.org automagically...
          :sitemap-filename "post-list.org"  ; ... call it sitemap.org (it's the default)...
          :sitemap-title " "         ; ... with title 'Sitemap'.
-         :sitemap-sort-files "anti-chronologically"  ; sort file time reversely
+         :sitemap-sort-files anti-chronologically  ; sort file time reversely
          :sitemap-sort-folders last
          :sitemap-file-entry-format "%d » %t"
          :sitemap-date-format "%Y.%m.%d"
