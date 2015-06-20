@@ -54,6 +54,7 @@
  '(nyan-cat-face-number 3)
  '(nyan-mode t)
  '(nyan-wavy-trail nil)
+ '(org-startup-indented t)
  '(package-selected-packages
    (quote
     (web-beautify js2-mode htmlize undohist css-eldoc php-eldoc projectile-speedbar sr-speedbar pcre2el 2048-game color-theme-zenburn emacs-color-themes monokai-theme solarized-theme naquadah-theme alect-black-theme flatland-theme alect-themes git-timemachine hydra simpleclip window-numbering nyan-mode esup markdown-mode company company-mode info+ zenburn-theme youdao-dictionary yasnippet wgrep-ag web-mode vimrc-mode sudo-edit smart-mode-line rainbow-mode pos-tip php-extras nginx-mode multiple-cursors linum-relative key-chord indent-guide iedit highlight-symbol highlight-sexp highlight-parentheses highlight-chars helm-projectile helm-mode-manager helm-flyspell helm-flymake helm-flycheck helm-emmet helm-descbinds helm-bm helm-anything helm-ag guide-key google-translate flycheck-tip fish-mode fiplr evil-surround evil-snipe evil-nerd-commenter evil-matchit evil-leader evil-exchange evil-args evil-anzu drag-stuff dired-rainbow dired-filter dired-efap dired-details+ dired+ autopair)))
