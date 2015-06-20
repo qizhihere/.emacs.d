@@ -20,7 +20,7 @@
 ;; update interval seconds
 (custom-set-variables
  '(git-gutter:update-interval 1)
- '(git-gutter:modified-sign "m")
+ '(git-gutter:modified-sign "~")
  '(git-gutter:added-sign "+")
  '(git-gutter:deleted-sign "-"))
 

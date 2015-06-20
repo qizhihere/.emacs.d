@@ -36,7 +36,8 @@
    (C      . t)
    ))
 
-(setq org-babel-python-command "python2")
+(setq org-babel-python-command "python2"
+      org-babel-sh-command     "bash")
 ;; set default shell type
 (sh-set-shell "bash")
 
@@ -77,25 +78,25 @@
       '(
         ("notes"
          :author "littleqz"
-         :email "qizhihere@gmail.com"
+         :auto-sitemap t                  ; Generate sitemap.org automagically...
          :base-directory "~/org/posts"
          :base-extension "org"
-         :html-extension "html"
-         :publishing-directory "~/sync/Dropbox/public/blog/html"
-         :recursive t
-         :publishing-function org-html-publish-to-html
-         :auto-sitemap t                  ; Generate sitemap.org automagically...
-         :sitemap-filename "post-list.org"  ; ... call it sitemap.org (it's the default)...
-         :sitemap-title " "         ; ... with title 'Sitemap'.
-         :sitemap-sort-files anti-chronologically  ; sort file time reversely
-         :sitemap-sort-folders last
-         :sitemap-file-entry-format "%d » %t"
-         :sitemap-date-format "%Y.%m.%d"
+         :email "qizhihere@gmail.com"
          :exclude "footer.org\\|header.org\\|blog.setup\\|sitemap.org\\|.*draft.org"
          :headline-levels 4               ; Just the default for this project.
-         :section-numbers nil
-         :html-preamble t
+         :html-extension "html"
          :html-postamble t
+         :html-preamble t
+         :publishing-directory "~/sync/Dropbox/public/blog/html"
+         :publishing-function org-html-publish-to-html
+         :recursive t
+         :section-numbers nil
+         :sitemap-date-format "%Y.%m.%d"
+         :sitemap-file-entry-format "%d » %t"
+         :sitemap-filename "post-list.org"  ; ... call it sitemap.org (it's the default)...
+         :sitemap-sort-files anti-chronologically  ; sort file time reversely
+         :sitemap-sort-folders last
+         :sitemap-title " "         ; ... with title 'Sitemap'.
          )
         ("meta"
          :base-directory "~/org"

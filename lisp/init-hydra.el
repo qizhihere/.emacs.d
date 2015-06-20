@@ -281,7 +281,7 @@ _VI_DEO
           (forward-line)))
   ("sh" (progn
           (hot-expand "<s")
-          (insert "sh")
+          (insert "sh :shebang #!/usr/bin/env bash")
           (forward-line)))
 
   ("ja" (progn

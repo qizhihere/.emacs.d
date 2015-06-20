@@ -33,7 +33,7 @@
  '(flymake-fringe-indicator-position (quote right-fringe))
  '(git-gutter:added-sign "+")
  '(git-gutter:deleted-sign "-")
- '(git-gutter:modified-sign "m")
+ '(git-gutter:modified-sign "~")
  '(git-gutter:update-interval 1)
  '(global-company-mode t)
  '(helm-M-x-always-save-history t)
@@ -156,6 +156,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(Man-overstrike ((t (:inherit bold :foreground "color-202"))))
+ '(Man-reverse ((t (:inherit highlight :background "color-38" :foreground "color-231"))))
+ '(Man-underline ((t (:inherit underline :foreground "color-41"))))
  '(flymake-errline ((t (:background "color-88" :foreground "yellow" :underline (:color foreground-color :style wave) :weight bold))))
  '(git-gutter:added ((t (:background "green" :foreground "#383838" :inverse-video t :weight bold))))
  '(git-gutter:deleted ((t (:background "red" :foreground "#383838" :inverse-video t :weight bold))))
