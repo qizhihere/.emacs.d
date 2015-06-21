@@ -208,7 +208,7 @@ Line/Column: [_-_]  new line       [_|_]   new column      [_] hline
   "
 _HE_ADER     _TI_TLE      _AU_THOR   _OP_TIONS
 _ST_ARTUP    C_EN_TER     _Q_UOTE    _EX_AMPLE
-_S_RC        _TO_DO       _ch_eckbox _t_imestamp
+_SR_C        _TO_DO       _ch_eckbox _t_imestamp
 _Me_ta       _NA_ME       _fo_otnote _Fo_otnote definition
 _l_isp       _em_acs-lisp _C_        C_+_+
 _py_thon2    _ph_p        _ng_inx    _sh_ell
@@ -216,7 +216,7 @@ _ja_vascript _ht_ml       _cs_s      l_u_a
 _IM_G        _L_ink       _d_rawer   _co_lumn
 L_a_tex      _O_rg        _VE_RSE    COM_ME_NT
 I_NC_LUDE    I_ND_EX      _MA_CRO    _HT_ML
-_VI_DEO
+_VI_DEO      _SP_ACE(​)
 
 [_m_] return to main org menu
 "
@@ -236,7 +236,7 @@ _VI_DEO
   ("Q" (hot-expand "<q"))
   ("EX" (hot-expand "<e"))
 
-  ("S" (hot-expand "<s"))
+  ("SR" (hot-expand "<s"))
   ("TO" (org-insert-todo-heading))
   ("ch" (progn
           (org-meta-return)
@@ -253,53 +253,65 @@ _VI_DEO
   ("l" (progn
          (hot-expand "<s")
          (insert "lisp")
-         (forward-line)))
+         (forward-line)
+         (lqz/send-keys "C-c e i")))
   ("em" (progn
          (hot-expand "<s")
          (insert "emacs-lisp")
-         (forward-line)))
+         (forward-line)
+         (lqz/send-keys "C-c e i")))
   ("C" (progn
          (hot-expand "<s")
          (insert "C")
-         (forward-line)))
+         (forward-line)
+         (lqz/send-keys "C-c e i")))
   ("+" (progn
           (hot-expand "<s")
           (insert "cpp")
-          (forward-line)))
+          (forward-line)
+          (lqz/send-keys "C-c e i")))
 
   ("py" (progn
           (hot-expand "<s")
           (insert "python2")
-          (forward-line)))
+          (forward-line)
+          (lqz/send-keys "C-c e i")))
   ("ph" (progn
            (hot-expand "<s")
            (insert "php")
-           (forward-line)))
+           (forward-line)
+           (lqz/send-keys "C-c e i")))
   ("ng" (progn
           (hot-expand "<s")
           (insert "nginx")
-          (forward-line)))
+          (forward-line)
+          (lqz/send-keys "C-c e i")))
   ("sh" (progn
           (hot-expand "<s")
           (insert "sh :shebang #!/usr/bin/env bash")
-          (forward-line)))
+          (forward-line)
+          (lqz/send-keys "C-c e i")))
 
   ("ja" (progn
           (hot-expand "<s")
           (insert "js")
-          (forward-line)))
+          (forward-line)
+          (lqz/send-keys "C-c e i")))
   ("ht" (progn
           (hot-expand "<s")
           (insert "html")
-          (forward-line)))
+          (forward-line)
+          (lqz/send-keys "C-c e i")))
   ("cs" (progn
           (hot-expand "<s")
           (insert "css")
-          (forward-line)))
+          (forward-line)
+          (lqz/send-keys "C-c e i")))
   ("u" (progn
           (hot-expand "<s")
           (insert "lua")
-          (forward-line)))
+          (forward-line)
+          (lqz/send-keys "C-c e i")))
 
   ("IM" (progn
         (let ((file (file-relative-name
@@ -327,18 +339,20 @@ _VI_DEO
   ("MA" (insert "#+MACRO: "))
   ("HT" (hot-expand "<h"))
 
-   ("VI" (progn
-            (let ((file
-                      (concat "http://v.sudotry.com/"
-                         (file-name-nondirectory
-                         (lqz/select-file "Select an video: " "~/sync/Dropbox/video/")))))
-            (insert (concat
-               "#+BEGIN_HTML \n"
-                 "<video autoplay loop>\n"
-                  "\t<source src='" file "' type='video/mp4'/>\n"
-                  "\tYour browser does not support the video tag.\n"
-                 "</video>\n"
-               "#+END_HTML")))))
+  ("VI" (progn
+           (let ((file
+                     (concat "http://v.sudotry.com/"
+                        (file-name-nondirectory
+                        (lqz/select-file "Select an video: " "~/sync/Dropbox/video/")))))
+           (insert (concat
+              "#+BEGIN_HTML \n"
+                "<video autoplay loop>\n"
+                 "\t<source src='" file "' type='video/mp4'/>\n"
+                 "\tYour browser does not support the video tag.\n"
+                "</video>\n"
+              "#+END_HTML")))))
+
+  ("SP" (insert "\u200B"))
 
   ("<" self-insert-command "INS")
   ("q" nil)
