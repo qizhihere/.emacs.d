@@ -2,11 +2,11 @@
 (lqz/require 'evil-anzu) ;; show search info in evil-mode
 
 ;; enable evil in most programming modes
-(add-hook 'prog-mode-hook 'evil-mode)
+(evil-mode 1)
 
 ;; disable evil in certain modes
 (add-more-to-list 'evil-emacs-state-modes
-    '(dired-mode org-mode eww-mode package-menu-mode help-mode
+    '(dired-mode org-mode eww-mode package-menu-mode help-mode Man-mode
       Custom-mode custom-theme-choose-mode apropos-mode pyim-dicts-manager-mode
       git-timemachine-mode rxt-help-mode org-src-mode))
 
