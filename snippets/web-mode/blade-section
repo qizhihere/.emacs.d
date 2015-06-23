@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: blade section
+# key: @sec
+# binding: direct-keybinding
+# --
+@section('$0')
+
+@endsection

@@ -38,12 +38,12 @@
 
 (setq org-babel-python-command "python2"
       org-babel-sh-command     "bash")
-;; set default shell type
-(sh-set-shell "bash")
+
 
 (defun lqz/org-mode-hook ()
   (setq truncate-lines nil)
-  (define-key org-mode-map (kbd "C-c e") 'org-edit-src-code))
+  (define-key org-mode-map (kbd "C-c e") 'org-edit-src-code)
+  (sh-set-shell "bash"))
 
 (add-hook 'org-mode-hook     'lqz/org-mode-hook)
 (add-hook 'message-mode-hook 'turn-on-orgtbl)
