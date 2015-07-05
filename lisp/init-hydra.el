@@ -210,10 +210,13 @@ _HE_ADER     _TI_TLE      _AU_THOR   _OP_TIONS
 _ST_ARTUP    C_EN_TER     _Q_UOTE    _EX_AMPLE
 _SR_C        _TO_DO       _ch_eckbox _t_imestamp
 _Me_ta       _NA_ME       _fo_otnote _Fo_otnote definition
-_l_isp       _em_acs-lisp _C_        C_+_+
+
+_li_sp       _em_acs-lisp _C_        C_+_+
 _py_thon2    _ph_p        _ng_inx    _sh_ell
-_ja_vascript _ht_ml       _cs_s      l_u_a
-_IM_G        _L_ink       _d_rawer   _co_lumn
+_js_         _ht_ml       _cs_s      _sa_ss
+_co_ffee     _lu_a
+
+_IM_G        _L_ink       _d_rawer   colu_mn_
 L_a_tex      _O_rg        _VE_RSE    COM_ME_NT
 I_NC_LUDE    I_ND_EX      _MA_CRO    _HT_ML
 _VI_DEO      _SP_ACE(​)
@@ -250,68 +253,24 @@ _VI_DEO      _SP_ACE(​)
          (backward-char)))
   ("Fo" (org-footnote-action))
 
-  ("l" (progn
-         (hot-expand "<s")
-         (insert "lisp")
-         (forward-line)
-         (lqz/send-keys "C-c e i")))
-  ("em" (progn
-         (hot-expand "<s")
-         (insert "emacs-lisp")
-         (forward-line)
-         (lqz/send-keys "C-c e i")))
-  ("C" (progn
-         (hot-expand "<s")
-         (insert "C")
-         (forward-line)
-         (lqz/send-keys "C-c e i")))
-  ("+" (progn
-          (hot-expand "<s")
-          (insert "cpp")
-          (forward-line)
-          (lqz/send-keys "C-c e i")))
+  ("li" (insert-src "lisp"))
+  ("em" (insert-src "emacs-lisp"))
+  ("C"  (insert-src "C"))
+  ("+"  (insert-src "cpp"))
 
-  ("py" (progn
-          (hot-expand "<s")
-          (insert "python2")
-          (forward-line)
-          (lqz/send-keys "C-c e i")))
-  ("ph" (progn
-           (hot-expand "<s")
-           (insert "php")
-           (forward-line)
-           (lqz/send-keys "C-c e i")))
-  ("ng" (progn
-          (hot-expand "<s")
-          (insert "nginx")
-          (forward-line)
-          (lqz/send-keys "C-c e i")))
-  ("sh" (progn
-          (hot-expand "<s")
-          (insert "sh :shebang #!/usr/bin/env bash")
-          (forward-line)
-          (lqz/send-keys "C-c e i")))
+  ("py" (insert-src "python2"))
+  ("ph" (insert-src "php"))
+  ("ng" (insert-src "nginx"))
+  ("sh" (insert-src "sh :shebang #!/usr/bin/env bash"))
 
-  ("ja" (progn
-          (hot-expand "<s")
-          (insert "js")
-          (forward-line)
-          (lqz/send-keys "C-c e i")))
-  ("ht" (progn
-          (hot-expand "<s")
-          (insert "html")
-          (forward-line)
-          (lqz/send-keys "C-c e i")))
-  ("cs" (progn
-          (hot-expand "<s")
-          (insert "css")
-          (forward-line)
-          (lqz/send-keys "C-c e i")))
-  ("u" (progn
-          (hot-expand "<s")
-          (insert "lua")
-          (forward-line)
-          (lqz/send-keys "C-c e i")))
+  ("js" (insert-src "js"))
+  ("ht" (insert-src "html"))
+  ("cs" (insert-src "css"))
+  ("sa" (insert-src "sass"))
+
+  ("co" (insert-src "coffee"))
+
+  ("lu" (insert-src "lua"))
 
   ("IM" (progn
         (let ((file (file-relative-name
@@ -319,7 +278,7 @@ _VI_DEO      _SP_ACE(​)
         (insert (concat "[[" file "]]")))))
   ("L" org-insert-link)
   ("d" org-insert-drawer)
-  ("co" org-insert-columns-dblock)
+  ("mn" org-insert-columns-dblock)
 
   ("a" (hot-expand "<L"))
   ("O" (progn
@@ -359,6 +318,14 @@ _VI_DEO      _SP_ACE(​)
 
   ;; return to main org menu
   ("m" hydra-org/body))
+
+(defun insert-src (lang)
+  "insert source code."
+  (progn
+    (hot-expand "<s")
+    (insert lang)
+    (forward-line)
+    (lqz/send-keys "C-c e i")))
 
 (defun hot-expand (str)
   "expand org template."

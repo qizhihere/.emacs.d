@@ -1,7 +1,7 @@
 (lqz/require '(web-mode web-beautify
                 emmet-mode helm-emmet
                 css-eldoc js2-mode
-                jade-mode))
+                jade-mode coffee-mode))
 
 ;; html
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
@@ -9,6 +9,8 @@
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.blade.php\\'" . web-mode))
+;; html indent offset
+(setq web-mode-markup-indent-offset 2)
 
 ;; css
 (add-hook 'css-mode-hook 'emmet-mode)
@@ -26,9 +28,9 @@
               js-indent-level  2)
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
 
-;; asp
-(add-to-list 'auto-mode-alist '("\\.aspx?\\'" . web-mode))
-
+;; coffeescript
+(custom-set-variables '(coffee-tab-width 2))
+(define-key coffee-mode-map (kbd "M-r") 'coffee-compile-buffer)
 
 
 (provide 'init-web)

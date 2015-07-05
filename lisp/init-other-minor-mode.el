@@ -17,6 +17,8 @@
 ;; yaml mode
 (lqz/require 'yaml-mode)
 
+;; lua mode
+(lqz/require 'lua-mode)
 
 
 (provide 'init-other-minor-mode)

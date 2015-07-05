@@ -42,8 +42,7 @@
 
 (defun lqz/org-mode-hook ()
   (setq truncate-lines nil)
-  (define-key org-mode-map (kbd "C-c e") 'org-edit-src-code)
-  (sh-set-shell "bash"))
+  (define-key org-mode-map (kbd "C-c e") 'org-edit-src-code))
 
 (add-hook 'org-mode-hook     'lqz/org-mode-hook)
 (add-hook 'message-mode-hook 'turn-on-orgtbl)
@@ -105,7 +104,8 @@
          :publishing-directory "~/sync/Dropbox/public/blog/html"
          :recursive nil
          :publishing-function (lqz/org-update-index org-html-publish-to-html)
-         :html-postamble nil
+         :html-postamble t
+         :html-preamble t
          )
         ("static"
          :base-directory "~/org"

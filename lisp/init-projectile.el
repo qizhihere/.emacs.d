@@ -1,6 +1,6 @@
 (lqz/require '(helm-projectile))
 
-(projectile-global-mode)
+(add-hook 'prog-mode-hook 'projectile-mode)
 (setq projectile-completion-system 'helm)
 (setq projectile-enable-caching t)
 (helm-projectile-on)

@@ -1,6 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: bash script header
-# key: py2
+# key: py
 # binding: direct-keybinding
 # --
 #!/usr/bin/env python2
