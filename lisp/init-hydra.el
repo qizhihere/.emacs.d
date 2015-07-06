@@ -230,7 +230,7 @@ _VI_DEO      _SP_ACE(​)
                           "#+KEYWORDS: \n"
                           "#+AUTHOR: littleqz\n"
                           "#+EMAIL: qizhihere@gmail.com\n"
-                          "#+DATE: <" (format-time-string "%Y-%m-%d %b %H:%M:%S") ">\n"
+                          "#+DATE: <" (format-time-string "%Y-%m-%d %b %H:%M") ">\n"
                           "#+STARTUP: indent hideblocks content\n"
                           "#+OPTIONS: ^:{} toc:nil\n"
                           "#+SETUPFILE: ~/org/layouts/blog.setup\n"))
@@ -259,7 +259,7 @@ _VI_DEO      _SP_ACE(​)
          (backward-char)))
   ("Fo" (org-footnote-action))
 
-  ("ti" (insert (concat "<" (format-time-string "%Y-%m-%d %b %H:%M:%S") ">")))
+  ("ti" (insert (concat "<" (format-time-string "%Y-%m-%d %b %H:%M") ">")))
   ("DA" (call-interactively 'org-time-stamp))
 
   ("li" (insert-src "lisp"))
