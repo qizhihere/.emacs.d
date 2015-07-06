@@ -72,6 +72,11 @@
   (shell-command "touch ~/org/index.org")
   (shell-command "touch ~/org/sitemap.org"))
 
+(defun lqz/current-timestamp ()
+  "insert current timestamp."
+  (interactive)
+  (insert (format-time-string "%Y-%m-%d %b %H:%M:%S")))
+
 ;; export settings
 (setq org-publish-project-alist
       '(

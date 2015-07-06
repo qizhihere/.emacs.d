@@ -2,6 +2,9 @@
 ;; so i add it here.
 (lqz/require '(key-chord popup pos-tip))
 
+;; emacs default language (such as org-mode timestamp)
+(setq system-time-locale "C")
+
 ;;--------------------------
 ;; directories settings
 ;;--------------------------

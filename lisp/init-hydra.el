@@ -208,8 +208,9 @@ Line/Column: [_-_]  new line       [_|_]   new column      [_] hline
   "
 _HE_ADER     _TI_TLE      _AU_THOR   _OP_TIONS
 _ST_ARTUP    C_EN_TER     _Q_UOTE    _EX_AMPLE
-_SR_C        _TO_DO       _ch_eckbox _t_imestamp
-_Me_ta       _NA_ME       _fo_otnote _Fo_otnote definition
+_Me_ta       _NA_ME       _ch_eckbox _TO_DO
+_SR_C        _fo_otnote   _Fo_otnote definition
+_ti_mestamp  _DA_TE
 
 _li_sp       _em_acs-lisp _C_        C_+_+
 _py_thon2    _ph_p        _ng_inx    _sh_ell
@@ -225,7 +226,13 @@ _VI_DEO      _SP_ACE(​)
 "
   ("HE" (progn
           (insert (concat "#+TITLE: \n#+AUTHOR: littleqz\n"
-                          "#+STARTUP: indent\n#+OPTIONS: ^:{} toc:nil\n"
+                          "#+DESCRIPTION: \n"
+                          "#+KEYWORDS: \n"
+                          "#+AUTHOR: littleqz\n"
+                          "#+EMAIL: qizhihere@gmail.com\n"
+                          "#+DATE: <" (format-time-string "%Y-%m-%d %b %H:%M:%S") ">\n"
+                          "#+STARTUP: indent hideblocks content\n"
+                          "#+OPTIONS: ^:{} toc:nil\n"
                           "#+SETUPFILE: ~/org/layouts/blog.setup\n"))
           (previous-line 5)
           (evil-append-line 1)))
@@ -239,19 +246,21 @@ _VI_DEO      _SP_ACE(​)
   ("Q" (hot-expand "<q"))
   ("EX" (hot-expand "<e"))
 
-  ("SR" (hot-expand "<s"))
-  ("TO" (org-insert-todo-heading))
+  ("Me" (insert "#+CAPTION: \n#+NAME:\t"))
+  ("NA" (insert "#+NAME: "))
   ("ch" (progn
           (org-meta-return)
           (insert "[ ] ")))
-  ("t" (insert "TIMESTAMP"))
+  ("TO" (org-insert-todo-heading))
 
-  ("Me" (insert "#+CAPTION: \n#+NAME:\t"))
-  ("NA" (insert "#+NAME: "))
+  ("SR" (hot-expand "<s"))
   ("fo" (progn
          (insert (concat "[fn::]"))
          (backward-char)))
   ("Fo" (org-footnote-action))
+
+  ("ti" (insert (concat "<" (format-time-string "%Y-%m-%d %b %H:%M:%S") ">")))
+  ("DA" (call-interactively 'org-time-stamp))
 
   ("li" (insert-src "lisp"))
   ("em" (insert-src "emacs-lisp"))
