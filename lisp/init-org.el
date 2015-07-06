@@ -69,6 +69,8 @@
   (find-file (read-file-name "Select a note: " "~/org/posts/")))
 
 (defun lqz/org-update-index (&rest x)
+  (interactive)
+  (shell-command "touch ~/org/posts/post-list.org")
   (shell-command "touch ~/org/index.org")
   (shell-command "touch ~/org/sitemap.org"))
 

@@ -225,7 +225,7 @@ _VI_DEO      _SP_ACE(​)
 [_m_] return to main org menu
 "
   ("HE" (progn
-          (insert (concat "#+TITLE: \n#+AUTHOR: littleqz\n"
+          (insert (concat "#+TITLE: \n"
                           "#+DESCRIPTION: \n"
                           "#+KEYWORDS: \n"
                           "#+AUTHOR: littleqz\n"
@@ -234,7 +234,7 @@ _VI_DEO      _SP_ACE(​)
                           "#+STARTUP: indent hideblocks content\n"
                           "#+OPTIONS: ^:{} toc:nil\n"
                           "#+SETUPFILE: ~/org/layouts/blog.setup\n"))
-          (previous-line 5)
+          (previous-line 9)
           (evil-append-line 1)))
   ("TI" (insert "#+TITLE: "))
   ("AU" (insert "#+AUTHOR: littleqz"))
