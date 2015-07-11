@@ -94,61 +94,6 @@ Buffer: [_bd_] delete     [_bl_] list
 
 ;; org-mode
 (global-unset-key (kbd "M-o"))
-(define-key org-mode-map (kbd "M-o")
-  (defhydra hydra-org (:color blue
-                              :hint  nil
-                              :exit  nil)
-    "
-Submenu: [_i_]  _i_nsert         [_t_]   _t_able control
-
-   View: [_v_]  _v_iew toggle    [_gg_]  top heading
-         [_n_]  next heading   [_N_]   next heading in the same level
-         [_p_]  prev heading   [_P_]   next heading in the same level
-         [\^]  go up          [Tab] toggle subtree
-
-  Level: [_+_]  add            [_=_]   reduce
-History: [_u_]  undo           [_C-r_] redo
-
-Export&  [_eh_] html           [_em_] markdown         [_ea_] ascii         [_eu_] utf8
-Import : []
-
-[_m_] return to main org menu
-"
-  ;; view
-  ("v" org-shifttab :exit nil)
-  ("gg" outline-up-heading :exit nil)
-  ("n" outline-next-visible-heading :exit nil)
-  ("p" outline-previous-visible-heading :exit nil)
-  ("N" org-forward-heading-same-level :exit nil)
-  ("P" org-backward-heading-same-level :exit nil)
-  ("^" org-up-element :exit nil)
-  ;; ("`" org-up-element :exit nil)
-  ("TAB" org-cycle :exit nil)
-
-  ;; submenus
-  ("i" hydra-org-insert/body)
-  ("t" hydra-org-table/body)
-
-  ;; level control
-  ("+" org-metaright :exit nil)
-  ("=" org-metaleft :exit nil)
-
-  ;; others
-  ("u" undo-tree-undo :exit nil)
-  ("C-r" undo-tree-redo :exit nil)
-
-  ;; export and import
-  ("eh" org-publish-current-file)
-  ("em" org-md-export-to-markdown :exit nil)
-  ("ea" org-ascii-export-to-ascii :exit nil)
-  ("eu" org-html-export-to-html :exit nil)
-
-  ;; return to main org menu
-  ("m" hydra-org/body)
-  )
-)
-
-
 (defhydra hydra-org-table (:color blue
                                   :hint   nil)
   "
@@ -197,6 +142,60 @@ Line/Column: [_-_]  new line       [_|_]   new column      [_] hline
   ("L" org-table-move-column-right :exit nil)
   ("K" org-table-move-row-up :exit nil)
   ("J" org-table-move-row-down :exit nil)
+
+  ;; return to main org menu
+  ("m" hydra-org/body)
+)
+
+
+(define-key org-mode-map (kbd "M-o") 'hydra-org/body)
+(defhydra hydra-org (:color blue
+                            :hint  nil
+                            :exit  nil)
+  "
+Submenu: [_i_]  _i_nsert         [_t_]   _t_able control
+
+   View: [_v_]  _v_iew toggle    [_gg_]  top heading
+         [_n_]  next heading   [_N_]   next heading in the same level
+         [_p_]  prev heading   [_P_]   next heading in the same level
+         [\^]  go up          [Tab] toggle subtree
+
+  Level: [_+_]  add            [_=_]   reduce
+History: [_u_]  undo           [_C-r_] redo
+
+Export&  [_eh_] html           [_em_] markdown         [_ea_] ascii         [_eu_] utf8
+Import : []
+
+[_m_] return to main org menu
+"
+  ;; view
+  ("v" org-shifttab :exit nil)
+  ("gg" outline-up-heading :exit nil)
+  ("n" outline-next-visible-heading :exit nil)
+  ("p" outline-previous-visible-heading :exit nil)
+  ("N" org-forward-heading-same-level :exit nil)
+  ("P" org-backward-heading-same-level :exit nil)
+  ("^" org-up-element :exit nil)
+  ;; ("`" org-up-element :exit nil)
+  ("TAB" org-cycle :exit nil)
+
+  ;; submenus
+  ("i" hydra-org-insert/body)
+  ("t" hydra-org-table/body)
+
+  ;; level control
+  ("+" org-metaright :exit nil)
+  ("=" org-metaleft :exit nil)
+
+  ;; others
+  ("u" undo-tree-undo :exit nil)
+  ("C-r" undo-tree-redo :exit nil)
+
+  ;; export and import
+  ("eh" org-publish-current-file)
+  ("em" org-md-export-to-markdown :exit nil)
+  ("ea" org-ascii-export-to-ascii :exit nil)
+  ("eu" org-html-export-to-html :exit nil)
 
   ;; return to main org menu
   ("m" hydra-org/body)

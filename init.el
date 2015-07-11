@@ -53,6 +53,7 @@
 (require 'init-php)
 (require 'init-markdown)
 (require 'init-org)
+(require 'init-outline)
 (require 'init-lisp)
 (require 'init-fun)
 ;; minor modes which need only very little configuration

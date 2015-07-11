@@ -44,6 +44,9 @@
                pcre2el))       ;; use pcre in emacs
 (add-hook 'prog-mode-hook 'drag-stuff-mode)
 
+;; enable code folding
+(add-hook 'prog-mode-hook 'hs-minor-mode)
+
 (rxt-global-mode t)
 
 ;; enable eldoc
