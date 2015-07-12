@@ -337,6 +337,9 @@
    `(compilation-mode-line-fail ((,class (:foreground ,red))))
    `(compilation-mode-line-run ((,class (:foreground ,blue))))
 
+   ;; helm
+   `(helm-selection-line ((,class (:foreground ,foreground))))
+
    ;; Grep
    `(grep-context-face ((,class (:foreground ,comment))))
    `(grep-error-face ((,class (:foreground ,red :weight bold :underline t))))
