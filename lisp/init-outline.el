@@ -1,7 +1,6 @@
 (lqz/require 'outline-magic)
 
 (add-hook 'prog-mode-hook 'outline-minor-mode)
-
 (add-hook 'outline-mode-hook
           (lambda ()
             (require 'outline-cycle)))

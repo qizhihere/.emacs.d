@@ -1,5 +1,13 @@
-;; Reference url: http://emacswiki.org/emacs/PuTTY
+(lqz/require 'zenburn-theme)
 
+;; load theme
+(setq lqz/theme 'zenburn)
+(load-theme lqz/theme t)
+
+;; enable mouse mode
+(xterm-mouse-mode t)
+
+;; Reference url: http://emacswiki.org/emacs/PuTTY
 (defun map-xterm-escape-sequence ()
   (interactive)
 
@@ -41,20 +49,29 @@
   (define-key input-decode-map "\e[1;6D" [C-S-left])
 )
 
-(defun lqz/term-init ()
-  ;; enable mouse in terminal
-  (xterm-mouse-mode t)
-  (map-xterm-escape-sequence))
+(defun lqz/set-xterm-faces ()
+  (custom-set-faces
+   '(git-gutter:added ((t (:background "green" :foreground "#3a3a3a" :inverse-video t :weight bold))))
+   '(git-gutter:deleted ((t (:background "red" :foreground "#3a3a3a" :inverse-video t :weight bold))))
+   '(git-gutter:modified ((t (:background "yellow" :foreground "#3a3a3a" :inverse-video t :weight bold))))
+   '(git-gutter:unchanged ((t (:foreground "#3a3a3a" :inverse-video t :weight bold))))
+   '(Man-overstrike ((t (:inherit bold :foreground "color-202"))))
+   '(Man-reverse ((t (:inherit highlight :background "color-38" :foreground "color-231"))))
+   '(Man-underline ((t (:inherit underline :foreground "color-41"))))
+   '(flymake-errline ((t (:background "color-88" :foreground "yellow" :underline (:color foreground-color :style wave) :weight bold))))
+   ))
+
+(lqz/set-xterm-faces)
 
 
 ;; map some keys when TERM=screen-256color
 (defadvice terminal-init-screen(around lqz/map-terminal-keys activate)
-  (lqz/term-init)
+  (map-xterm-escape-sequence)
   ad-do-it)
 
 ;; map some keys when TERM=xterm-256color
 (defadvice terminal-init-xterm(around lqz/map-terminal-keys activate)
-  (lqz/term-init)
+  (map-xterm-escape-sequence)
   ad-do-it)
 
 

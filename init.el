@@ -13,7 +13,7 @@
   "simply return absolute path of subdirectory reference to ~/.emacs.d "
   (expand-file-name path user-emacs-directory))
 
-(setq custom-file (lqz/init-dir "custom.el"))
+(setq custom-file (lqz/init-dir (if (display-graphic-p) "custom-gui.el" "custom.el")))
 (when (file-exists-p custom-file)
   (load custom-file))
 
@@ -30,12 +30,11 @@
 (require 'init-utils)
 (require 'init-elpa)
 (require 'init-basic)
-(require 'init-style)
 (require 'init-frame)
+(require 'init-style)
 
 ;; load specific modes and packages
 (require 'init-dired)
-(require 'init-speedbar)
 (require 'init-undotree)
 (require 'init-helm)
 (require 'init-find)
@@ -47,13 +46,14 @@
 (require 'init-projectile)
 (require 'init-multi-edit)
 (require 'init-window-control)
+(require 'init-outline)
 (require 'init-hydra)
 
 (require 'init-web)
 (require 'init-php)
+(require 'init-python)
 (require 'init-markdown)
 (require 'init-org)
-(require 'init-outline)
 (require 'init-lisp)
 (require 'init-fun)
 ;; minor modes which need only very little configuration
