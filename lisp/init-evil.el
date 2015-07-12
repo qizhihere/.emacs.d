@@ -26,45 +26,6 @@
 
 (global-evil-leader-mode t)
 (evil-leader/set-leader ";")
-(evil-leader/set-key
-  "al"  'align-regexp
-  "bl"	'helm-bm
-  "bm"	'bm-toggle
-  "cc"  'evilnc-comment-or-uncomment-lines
-  "cu"  'evilnc-comment-or-uncomment-lines
-  "cy"	'xsel-copy
-  "cp"	'xsel-paste
-  "cx"  'xsel-cut
-  "df"  'helm-dash
-  "dg"  'helm-dash-at-point
-  "dr"  'helm-dash-reset-connections
-  "el"  'helm-emmet
-  "er"  'helm-flycheck
-  "ff"	'find-file
-  "fe"  'sr-speedbar-toggle
-  "gi"  'magit-status
-  "lf"  'load-file
-  "ml"	'helm-all-mark-rings
-  "ot"  'org-insert-todo-heading
-  "pd"  'helm-projectile-find-dir
-  "pf"  'helm-projectile-find-file
-  "pg"  'helm-projectile-grep
-  "qa"	'save-buffers-kill-terminal
-  "qq"  'delete-window
-  "re"	'highlight-symbol-query-replace
-  "sh"  'eshell
-  "ss"  'helm-do-ag
-  "sf"  'helm-ag-this-file
-  "su"  'suspend-emacs
-  "ti"  'imenu
-  "tl"  'helm-semantic-or-imenu
-  "un"  'undo-tree-visualize
-  "evb" 'eval-buffer
-  "evr" 'eval-region
-  "evf" 'eval-defun
-  "eww"	'eww
-  "ewf" 'eww-open-file
-)
 
 ;; remap * and #
 (define-key evil-motion-state-map "*" 'highlight-symbol-next)
