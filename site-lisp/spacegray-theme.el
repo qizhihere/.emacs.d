@@ -338,7 +338,8 @@
    `(compilation-mode-line-run ((,class (:foreground ,blue))))
 
    ;; helm
-   `(helm-selection-line ((,class (:foreground ,foreground))))
+   `(helm-selection-line ((,class (:foreground ,foreground :background ,subtle))))
+   `(helm-ff-directory ((,class (:foreground ,blue :background ,background))))
 
    ;; Grep
    `(grep-context-face ((,class (:foreground ,comment))))
