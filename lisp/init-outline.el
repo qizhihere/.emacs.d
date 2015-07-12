@@ -8,7 +8,7 @@
 (add-hook 'outline-minor-mode-hook
           (lambda ()
             (require 'outline-magic)
-            (define-key evil-normal-state-map [S-tab] 'outline-cycle)
+            (define-key evil-normal-state-map [backtab] 'outline-cycle)
             (define-key evil-normal-state-map [M-up] 'outline-move-subtree-up)
             (define-key evil-normal-state-map [M-down] 'outline-move-subtree-down)
             (define-key evil-normal-state-map [M-left] 'outline-promote)

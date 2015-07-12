@@ -67,14 +67,6 @@
 (setq-default tab-width 4)
 (setq c-basic-offset 4)
 
-;; automaticaly save
-;; (lqz/require 'real-auto-save)
-;; (add-hook 'prog-mode-hook 'real-auto-save-mode)
-;; (add-hook 'org-mode-hook 'real-auto-save-mode)
-;; (setq real-auto-save-interval 5) ;; in seconds
-;; (setq auto-save-interval 5
-;;       auto-save-timeout 5)
-
 
 ;;------------------------------
 ;; window settings

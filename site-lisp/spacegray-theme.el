@@ -182,8 +182,9 @@
    ;; Emacs interface
    `(cursor ((,class (:background ,orange))))
    `(fringe ((,class (:background ,background))))
-   `(linum ((,class (:background ,background :foreground ,subtle))))
+   `(linum ((,class (:background ,background :foreground ,selection :weight semi-bold))))
    `(linum-highlight-face ((,class (:background ,current-line :foreground ,foreground))))
+   `(linum-relative-current-face ((,class (:background ,background-2))))
    `(border ((,class (:background ,current-line))))
    `(border-glyph ((,class (nil))))
    `(highlight ((,class (:inverse-video nil :background ,current-line))))
@@ -296,6 +297,8 @@
    `(magit-diff-add ((,class (:inherit diff-added))))
    `(magit-diff-del ((,class (:inherit diff-removed))))
    `(magit-diff-file-heading ((,class (:weight normal))))
+   `(magit-diff-context-highlight ((,class (:weight normal :background ,background-2))))
+   `(magit-diff-hunk-heading-highlight ((,class (:weight normal :background ,background))))
    `(magit-header ((,class (:inherit nil :weight bold))))
    `(magit-item-highlight ((,class (:inherit highlight :background nil))))
    `(magit-log-author ((,class (:foreground ,aqua))))
@@ -321,7 +324,9 @@
    `(git-gutter-fr:deleted ((,class (:foreground ,red :weight bold))))
 
    `(link ((,class (:foreground ,green :underline t))))
-   `(widget-button ((,class (:underline t))))
+   `(custom-button ((,class (:underline t :box (:line-width 1 :color ,comment)))))
+   `(custom-field ((,class (:underline nil :box nil))))
+   `(widget-button ((,class (:underline t :box (:line-width 1 :color ,comment)))))
    `(widget-field ((,class (:background ,background-2 :box (:line-width 1 :color ,comment)))))
 
    ;; Compilation (most faces politely inherit from 'success, 'error, 'warning etc.)

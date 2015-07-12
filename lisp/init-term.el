@@ -20,7 +20,6 @@
   (define-key input-decode-map "\e[1;2F" [S-end])
   (define-key input-decode-map "\e[5;2~" [S-prior])
   (define-key input-decode-map "\e[6;2~" [S-next])
-  (define-key key-translation-map [backtab] [S-tab])
 
   ;; alt/meta map
   (define-key input-decode-map "\e[1;3A" [M-up])

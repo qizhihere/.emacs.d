@@ -6,6 +6,18 @@
     (dolist (x target) (eval cmd))
     (let ((x target)) (eval cmd))))
 
+(defun if-gui (cmd &optional cmd1)
+  "execute cmd if in gui, otherwise execute cmd1."
+  (if (display-graphic-p)
+      (eval cmd)
+    ( eval cmd1)))
+
+(defun is-theme (theme)
+  "check if current theme is the theme."
+  (and (stringp theme)
+       (boundp 'lqz/theme)
+       (string= theme lqz/theme)))
+
 (defun lqz/mkrdir (dir)
   "create subdirectories relative to ~/.emacs.d"
   (lqz/iter-eval dir

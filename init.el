@@ -13,7 +13,7 @@
   "simply return absolute path of subdirectory reference to ~/.emacs.d "
   (expand-file-name path user-emacs-directory))
 
-(setq custom-file (lqz/init-dir (if (display-graphic-p) "custom-gui.el" "custom.el")))
+(setq custom-file (lqz/init-dir (if (display-graphic-p) "custom-gui.el" "custom-term.el")))
 (when (file-exists-p custom-file)
   (load custom-file))
 
@@ -25,6 +25,7 @@
 
 ;; add lisp load path
 (add-to-list 'load-path (lqz/init-dir "lisp"))
+(add-to-list 'load-path (lqz/init-dir "site-lisp"))
 
 ;; load basic init files
 (require 'init-utils)
@@ -60,7 +61,7 @@
 (require 'init-other-minor-mode)
 
 (require 'init-dictionary)
-(require 'init-input-method)
+;; (require 'init-input-method)
 (require 'init-flycheck)
 (require 'init-flyspell)
 (require 'init-hippie-expand)
@@ -68,6 +69,9 @@
 
 ;; yasnippet costs most of startup time so we load it at last.
 (require 'init-yasnippet)
+
+;; reload theme custom options
+(if (boundp 'lqz/theme) (load-theme lqz/theme))
 
 ;; self-defined keymaps
 (setq my-keymap-file (lqz/init-dir "my-keymap.el"))

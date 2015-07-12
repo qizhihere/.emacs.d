@@ -41,29 +41,23 @@
 (show-paren-mode t)
 (setq show-paren-style 'mixed)
 (global-highlight-parentheses-mode t)
-(and (display-graphic-p) (set-face-background 'show-paren-match "#4F5B66"))
 
 ;; highlight-sexp
 (lqz/require 'highlight-sexp)
 (add-hook 'lisp-mode-hook 'highlight-sexp-mode)
 (add-hook 'emacs-lisp-mode-hook 'highlight-sexp-mode)
-(setq hl-sexp-background-color (if (display-graphic-p) "#343D46" "#333333"))
 
 ;; highlight-symbol
 (lqz/require 'highlight-symbol)
 ;; (highlight-symbol-mode t)
 (setq highlight-symbol-idle-delay 0.3)
 (add-hook 'prog-mode-hook 'highlight-symbol-mode)
-(and (display-graphic-p) (set-face-background 'highlight-symbol-face "#343D46"))
 
 
 (lqz/require 'indent-guide)
-;; (set-face-background 'indent-guide-face "dimgray")
-;; (setq indent-guide-delay 0.1)
 (defun lqz/indent-guide () (if (< (count-lines (point-min) (point-max)) 500) (indent-guide-mode)))
-;; (add-hook 'prog-mode-hook 'lqz/indent-guide)
-;; (add-hook 'jade-mode-hook 'lqz/indent-guide)
-(indent-guide-global-mode)
+(add-hook 'prog-mode-hook 'lqz/indent-guide)
+(add-hook 'web-mode-hook 'lqz/indent-guide)
 (setq indent-guide-recursive t)
 ;; (setq indent-guide-char "│")
 (setq indent-guide-inhibit-modes '(dired-mode package-menu-mode))
