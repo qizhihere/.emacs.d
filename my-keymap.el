@@ -1,3 +1,5 @@
+(lqz/require 'comment-dwim-2)
+
 (defun lqz/global-set-key (keymap &optional cmd)
   (setf keymap (if (not (listp keymap)) (list keymap cmd) keymap))
     (do ((n 0 (+ n 2)))
@@ -13,26 +15,46 @@
     "C-c C-f" helm-recentf))
 
 (defun lqz/set-evil-keymaps ()
+  ;; basic
+  (define-key evil-insert-state-map (kbd "C-n") 'next-line)
+  (define-key evil-insert-state-map (kbd "C-p") 'previous-line)
+  (define-key evil-insert-state-map (kbd "C-e") 'end-of-line)
+
   ;; project related
   (evil-leader/set-key
     "pd"  'helm-projectile-find-dir
     "pf"  'helm-projectile-find-file
     "pg"  'helm-projectile-grep
-    "pp"  'helm-projectile-switch-project
-    )
-  ;; marks related
+    "pp"  'helm-projectile-switch-project)
+
+  ;; mark related
   (evil-leader/set-key
     "ml"  'helm-bm
     "mm"  'bm-toggle
     "mj"  'bm-next
     "mk"  'bm-previous
     "md"  'bm-remove-all-current-buffer
-    "mD"  'bm-remove-all-all-buffers
+    "mD"  'bm-remove-all-all-buffers)
+
+  ;; outline minor mode
+  (evil-leader/set-key
+    ;; hide
+    "oha"  'outline-hide-sublevels
+    "ohb"  'outline-hide-body
+    "ohe"  'outline-hide-entry
+    "ohs"  'outline-hide-subtree
+    "ohh"  'outline-hide-subtree
+    "ohl"  'outline-hide-leaves
+    ;; show
+    "osa"  'outline-show-all
+    "ose"  'outline-show-entry
+    "osb"  'outline-show-branches
+    "osc"  'outline-show-children
+    "oss"  'outline-show-subtree
     )
+
   (evil-leader/set-key
     "al"  'align-regexp
-    "cc"  'evilnc-comment-or-uncomment-lines
-    "cu"  'evilnc-comment-or-uncomment-lines
     "cy"	'xsel-copy
     "cp"	'xsel-paste
     "cx"  'xsel-cut
@@ -65,6 +87,7 @@
   )
 
 
+(global-set-key (kbd "M-'")	'comment-dwim-2)
 (with-eval-after-load 'evil-leader (lqz/set-evil-keymaps))
 
 

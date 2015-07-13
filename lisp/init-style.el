@@ -13,6 +13,11 @@
 (lqz/require 'nyan-mode)
 (nyan-mode t)
 
+;; show battery status on mode line
+(lqz/require 'fancy-battery)
+(add-hook 'after-init-hook #'fancy-battery-mode)
+(display-battery-mode -1)
+
 
 ;; relative line number
 (lqz/require 'linum-relative)
@@ -24,10 +29,9 @@
 (defun lqz/linum-off () (linum-mode -1))
 (add-hook 'org-mode-hook 'lqz/linum-off)
 
-;; show column number, file size and battery on mode line
+;; show column number and file size on mode line
 (column-number-mode t)
 (size-indication-mode t)
-(display-battery-mode t)
 
 ;; disable menubar
 (menu-bar-mode -1)

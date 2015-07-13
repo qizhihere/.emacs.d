@@ -88,15 +88,5 @@
 (global-evil-surround-mode 1)
 
 
-;;-----------------------
-;; evil-nerd-commenter
-;;-----------------------
-(lqz/require 'evil-nerd-commenter)
-(evilnc-default-hotkeys)
-;; emacs key bindings
-(global-set-key (kbd "M-;")	'evilnc-comment-or-uncomment-lines)
-(global-set-key (kbd "C-c l")	'evilnc-quick-comment-or-uncomment-to-the-line)
-
-
 
 (provide 'init-evil)

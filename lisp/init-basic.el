@@ -5,22 +5,13 @@
 ;; emacs default language (such as org-mode timestamp)
 (setq system-time-locale "C")
 
-;;--------------------------
-;; directories settings
-;;--------------------------
-;; create some essential directories
 (lqz/mkrdir '("session" "tmp/undodir" "tmp/auto-save"))
 
-;; set emacs temporary directory
+
 (setq temporary-file-directory (lqz/init-dir "tmp/"))
-
-;; auto-save files path
 (setq auto-save-list-file-prefix (lqz/init-dir "tmp/auto-save/.saves-"))
-
-;; recent files list path
 (setq recentf-save-file (lqz/init-dir "tmp/recentf"))
 
-;; automatically save and restore sessions
 (setq-default
       desktop-dirname             (lqz/init-dir "session/")
       desktop-base-file-name      "emacs.session"
@@ -44,6 +35,11 @@
                pcre2el))       ;; use pcre in emacs
 (add-hook 'prog-mode-hook 'drag-stuff-mode)
 
+;; auto fill prefix
+(setq adaptive-fill-regexp "[ \t]+\\|[ \t]*\\([0-9]+\\.\\|\\*+\\|[ \t]*[\\+\\-]\\)[ \t]*")
+(setq adaptive-fill-first-line-regexp "^\\* *$")
+
+
 ;; enable code folding
 (add-hook 'prog-mode-hook 'hs-minor-mode)
 
@@ -63,9 +59,14 @@
 (setq shift-select-mode t)
 
 ;; set tab width
-(setq-default indent-tabs-mode nil)
-(setq-default tab-width 4)
+(setq indent-tabs-mode nil)
+(setq tab-width 4)
 (setq c-basic-offset 4)
+
+;; disable page jump when cursor scrolling to the margin
+(setq scroll-margin 3
+      scroll-conservatively 10000)
+
 
 
 ;;------------------------------
@@ -80,6 +81,9 @@
 ;; startup scratch text
 (setq initial-scratch-message
       (concat ";; Happy hacking " (or user-login-name "") " - Emacs ♥ you!\n\n"))
+
+;; set title bar text format
+(setq frame-title-format "emacs@%b")
 
 ;; turn off alarms
 (setq ring-bell-function 'ignore)
