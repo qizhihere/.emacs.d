@@ -190,12 +190,12 @@
    `(highlight ((,class (:inverse-video nil :background ,current-line))))
    `(gui-element ((,class (:background ,current-line :foreground ,foreground))))
    `(mode-line ((,class (:foreground ,foreground :background ,far-background
-                                     :family "Lucida Grande"))))
+				     :family "Lucida Grande"))))
    `(mode-line-buffer-id ((,class (:foreground ,foreground :background nil))))
    `(mode-line-inactive ((,class (:inherit mode-line
-                                           :foreground ,subtle
-                                           :background ,far-background :weight normal
-                                           :box nil))))
+					   :foreground ,subtle
+					   :background ,far-background :weight normal
+					   :box nil))))
    `(mode-line-emphasis ((,class (:foreground ,foreground :slant italic))))
    `(mode-line-highlight ((,class (:foreground ,purple :box nil))))
    `(minibuffer-prompt ((,class (:foreground ,blue))))
@@ -298,7 +298,8 @@
    `(magit-diff-del ((,class (:inherit diff-removed))))
    `(magit-diff-file-heading ((,class (:weight normal))))
    `(magit-diff-context-highlight ((,class (:weight normal :background ,background-2))))
-   `(magit-diff-hunk-heading-highlight ((,class (:weight normal :background ,background))))
+   `(magit-diff-hunk-heading ((,class (:weight normal :foreground ,foreground :background ,background-1))))
+   `(magit-diff-hunk-heading-highlight ((,class (:weight normal :foreground ,yellow :background ,background-2))))
    `(magit-header ((,class (:inherit nil :weight bold))))
    `(magit-item-highlight ((,class (:inherit highlight :background nil))))
    `(magit-log-author ((,class (:foreground ,aqua))))
@@ -649,10 +650,10 @@
 
 ;;;###autoload
 (when (and (boundp 'custom-theme-load-path)
-           load-file-name)
+	   load-file-name)
   ;; add theme folder to `custom-theme-load-path' when installing over MELPA
   (add-to-list 'custom-theme-load-path
-               (file-name-as-directory (file-name-directory load-file-name))))
+	       (file-name-as-directory (file-name-directory load-file-name))))
 
 
 
