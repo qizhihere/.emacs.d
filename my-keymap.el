@@ -53,6 +53,7 @@
   (evil-leader/set-key
     "ww"   'hydra-window/body
     "wl"   'persp-switch
+    "wb"   'persp-switch-to-buffer
     "wd"   'persp-remove-buffer
     "wD"   'persp-kill
     "wr"   'persp-rename
@@ -132,6 +133,7 @@
 
 
 (global-set-key (kbd "M-'")	'comment-dwim-2)
+(global-set-key [f12]	'persp-switch)
 (with-eval-after-load 'evil-leader (lqz/set-evil-keymaps))
 
 
