@@ -1,7 +1,11 @@
-(lqz/require 'window-numbering)
+(lqz/require '(window-numbering perspective))
 
+;; fix unknown bug
 (window-numbering-mode -1)
 (window-numbering-mode t)
+
+;; perspective(for workspace)
+(persp-mode)
 
 (defun other-window-move-down(&optional arg)
   "Other window move-down 2 lines."
@@ -15,6 +19,7 @@
       (scroll-other-window-down arg)
     (scroll-other-window-down 2)))
 
+;; shortcut key for other window move
 (global-set-key (kbd "C-M-v")	'other-window-move-down)
 (global-set-key (kbd "C-M-b")	'other-window-move-up)
 

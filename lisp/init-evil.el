@@ -4,11 +4,8 @@
 ;; enable evil in most programming modes
 (evil-mode 1)
 
-;; disable evil in certain modes
-(add-more-to-list 'evil-emacs-state-modes
-    '(dired-mode org-mode eww-mode package-menu-mode help-mode Man-mode
-      Custom-mode custom-theme-choose-mode apropos-mode pyim-dicts-manager-mode
-      git-timemachine-mode rxt-help-mode org-src-mode))
+;; set evil default state to emacs
+(setq evil-default-state 'emacs)
 
 ;; remap escape key
 (lqz/require 'key-chord)

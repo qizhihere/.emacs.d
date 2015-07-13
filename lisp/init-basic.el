@@ -1,6 +1,6 @@
 ;; these packages is commonly used by other packages,
 ;; so i add it here.
-(lqz/require '(key-chord popup pos-tip))
+(lqz/require '(key-chord popup pos-tip ag))
 
 ;; emacs default language (such as org-mode timestamp)
 (setq system-time-locale "C")
@@ -32,7 +32,7 @@
 ;; edit settings
 ;;--------------------------
 (lqz/require '(drag-stuff      ;; use M-arrow to move line or word
-               pcre2el))       ;; use pcre in emacs
+	       pcre2el))       ;; use pcre in emacs
 (add-hook 'prog-mode-hook 'drag-stuff-mode)
 
 ;; auto fill prefix

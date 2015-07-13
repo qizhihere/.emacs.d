@@ -20,19 +20,55 @@
   (define-key evil-insert-state-map (kbd "C-p") 'previous-line)
   (define-key evil-insert-state-map (kbd "C-e") 'end-of-line)
 
+  ;; file and directory related
+  (evil-leader/set-key
+    "ff"  'find-file
+    "fs"  'fiplr-find-file
+    "fg"  'helm-do-grep
+    "ss"  'helm-do-grep
+    "df"  'dired
+    "ds"  'fiplr-find-directory)
+
   ;; project related
   (evil-leader/set-key
+    "pb"  'helm-projectile-switch-to-buffer
+    "pk"  'projectile-kill-buffers
     "pd"  'helm-projectile-find-dir
+    "pD"  'projectile-dired
     "pf"  'helm-projectile-find-file
+    "pF"  'helm-projectile-recentf
     "pg"  'helm-projectile-grep
-    "pp"  'helm-projectile-switch-project)
+    "pp"  'projectile-persp-switch-project
+    "pl"  'projectile-persp-switch-project
+    "pP"  'helm-projectile-switch-project
+    "po"  'projectile-multi-occur
+    "ps"  'helm-projectile-ag
+    "pc"  'projectile-commander
+    "pr"  'projectile-replace
+    "pt"  'projectile-regenerate-tags
+    "p!"  'projectile-run-async-shell-command-in-root
+  )
+
+  ;; window and workspace(use perspective)
+  (evil-leader/set-key
+    "ww"   'hydra-window/body
+    "wl"   'persp-switch
+    "wd"   'persp-remove-buffer
+    "wD"   'persp-kill
+    "wr"   'persp-rename
+    "wa"   'persp-add-buffer
+    "wA"   'persp-set-buffer
+    "wi"   'persp-import
+    "wn"   'persp-next
+    "wp"   'persp-prev
+    )
 
   ;; mark related
   (evil-leader/set-key
     "ml"  'helm-bm
     "mm"  'bm-toggle
-    "mj"  'bm-next
-    "mk"  'bm-previous
+    "mn"  'bm-next
+    "mp"  'bm-previous
     "md"  'bm-remove-all-current-buffer
     "mD"  'bm-remove-all-all-buffers)
 
@@ -53,37 +89,45 @@
     "oss"  'outline-show-subtree
     )
 
+  ;; git related
   (evil-leader/set-key
-    "al"  'align-regexp
-    "cy"	'xsel-copy
-    "cp"	'xsel-paste
-    "cx"  'xsel-cut
-    "df"  'helm-dash
-    "dg"  'helm-dash-at-point
-    "dr"  'helm-dash-reset-connections
-    "el"  'helm-emmet
-    "er"  'helm-flycheck
-    "ff"	'find-file
-    "fe"  'sr-speedbar-toggle
-    "gi"  'magit-status
-    "lf"  'load-file
-    "ot"  'org-insert-todo-heading
-    "qa"	'save-buffers-kill-terminal
-    "qq"  'delete-window
-    "re"	'highlight-symbol-query-replace
-    "sh"  'eshell
-    "ss"  'helm-do-ag
-    "sf"  'helm-ag-this-file
-    "su"  'suspend-emacs
-    "ti"  'imenu
-    "tl"  'helm-semantic-or-imenu
-    "un"  'undo-tree-visualize
+    "gi" 'magit-status
+    "ggn" 'git-gutter:next-hunk
+    "ggp" 'git-gutter:previous-hunk
+    "ggs" 'git-gutter:stage-hunk
+    "ggr" 'git-gutter:revert-hunk
+    "gt"  'git-timemachine-toggle
+    )
+
+  ;; clipboard related
+  (evil-leader/set-key
+    "cy"  'xsel-copy
+    "cp"  'xsel-paste
+    "cx"  'xsel-cut)
+
+  ;; helm
+  (evil-leader/set-key
+    "hi"  'helm-semantic-or-imenu
+    "hI"  'helm-imenu-in-all-buffers
+    "hr"  'helm-regexp
+    "ho"  'helm-occur)
+
+  ;; eval
+  (evil-leader/set-key
     "evb" 'eval-buffer
     "evr" 'eval-region
-    "evf" 'eval-defun
-    "eww"	'eww
+    "evf" 'eval-defun)
+
+  ;; others
+  (evil-leader/set-key
+    "al"  'align-regexp
+    "er"  'helm-flycheck
+    "el"  'helm-emmet
+    "eww" 'eww
     "ewf" 'eww-open-file
-    )
+    "re"  'highlight-symbol-query-replace
+    "sh"  'eshell
+    "un"  'undo-tree-visualize)
   )
 
 
