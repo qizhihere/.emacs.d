@@ -25,7 +25,6 @@
     "ff"  'find-file
     "fs"  'fiplr-find-file
     "fg"  'helm-do-grep
-    "ss"  'helm-do-grep
     "df"  'dired
     "ds"  'fiplr-find-directory)
 
@@ -90,6 +89,14 @@
     "oss"  'outline-show-subtree
     )
 
+  ;; version control
+  (evil-leader/set-key
+    "vd"  'vc-diff
+    "vh"  'vc-annotate
+    "vl"  'vc-print-log
+    "vr"  'vc-revert
+    "vm"  'vc-merge)
+
   ;; git related
   (evil-leader/set-key
     "gi" 'magit-status
@@ -119,6 +126,22 @@
     "evr" 'eval-region
     "evf" 'eval-defun)
 
+  ;; register
+  (evil-leader/set-key
+    "rw"  'window-configuration-to-register
+    "rf"  'frame-configuration-to-register
+    "rs"  'copy-to-register
+    "rj"  'jump-to-register
+    )
+
+  ;; in-buffer search
+  (evil-leader/set-key
+    "ss"  'phi-search
+    "sr"  'phi-search-backward
+    "C-s" 'phi-search
+    "C-r" 'phi-search-backward
+    )
+
   ;; others
   (evil-leader/set-key
     "al"  'align-regexp
@@ -134,6 +157,8 @@
 
 (global-set-key (kbd "M-'")	'comment-dwim-2)
 (global-set-key [f12]	'persp-switch)
+(global-set-key (kbd "C-S-s") 'phi-search)
+(global-set-key (kbd "C-S-r") 'phi-search-backward)
 (with-eval-after-load 'evil-leader (lqz/set-evil-keymaps))
 
 
