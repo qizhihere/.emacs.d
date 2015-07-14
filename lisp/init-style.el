@@ -13,12 +13,6 @@
 (lqz/require 'nyan-mode)
 (nyan-mode t)
 
-;; show battery status on mode line
-(lqz/require 'fancy-battery)
-(add-hook 'after-init-hook #'fancy-battery-mode)
-(display-battery-mode -1)
-
-
 ;; relative line number
 (lqz/require 'linum-relative)
 

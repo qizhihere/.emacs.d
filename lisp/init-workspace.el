@@ -64,9 +64,9 @@ the nil one. Default is t.
 (window-numbering-mode t)
 
 ;; set persp keys(`s` means super)
-(global-set-key (kbd "s-\\")	'persp-switch)
-(global-set-key (kbd "s-[")	'lqz/persp-prev)
-(global-set-key (kbd "s-]")	'lqz/persp-next)
+(global-set-key (kbd "M-\\")	'persp-switch)
+(global-set-key (kbd "M-[")	'lqz/persp-prev)
+(global-set-key (kbd "M-]")	'lqz/persp-next)
 
 
 

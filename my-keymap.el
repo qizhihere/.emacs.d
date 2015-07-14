@@ -6,6 +6,20 @@
     ((> n (- (length keymap) 1)) t)
       (global-set-key (kbd (nth n keymap)) (nth (+ n 1) keymap))))
 
+(defun highlight-symbol-query-replace (replacement)
+  "Replace the symbol at point with REPLACEMENT."
+  (interactive (let ((symbol (or (thing-at-point 'symbol)
+				 (error "No symbol at point"))))
+		 (highlight-symbol-temp-highlight)
+		 (set query-replace-to-history-variable
+		      (cons (substring-no-properties symbol)
+			    (eval query-replace-to-history-variable)))
+		 (list
+		  (read-from-minibuffer "Replacement: " nil nil nil
+					query-replace-to-history-variable))))
+  (goto-char (beginning-of-thing 'symbol))
+  (query-replace-regexp (symbol-name (symbol-at-point)) replacement))
+
 (setq lqz/keymaps
       '(
     "C-c m l" helm-all-mark-rings

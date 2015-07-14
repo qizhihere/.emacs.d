@@ -26,12 +26,12 @@
 
 (defun lqz/select-file (msg &optional dir)
   (let ((file (file-relative-name
-               (read-file-name msg
-                  (if (and dir (file-exists-p dir))
-                      dir
-                   (if (and (boundp 'lqz/last-dir) (file-exists-p lqz/last-dir))
-                     lqz/last-dir
-                   default-directory))))))
+	       (read-file-name msg
+		  (if (and dir (file-exists-p dir))
+		      dir
+		   (if (and (boundp 'lqz/last-dir) (file-exists-p lqz/last-dir))
+		     lqz/last-dir
+		   default-directory))))))
     (setq lqz/last-dir (file-name-directory (file-truename file)))
     file))
 
@@ -52,8 +52,8 @@
   "Return filePath's file content."
   (if (file-exists-p filePath)
       (with-temp-buffer
-        (insert-file-contents filePath)
-        (buffer-string))
+	(insert-file-contents filePath)
+	(buffer-string))
     ""))
 
 (defun add-more-to-list (target source)
@@ -64,7 +64,7 @@
   (lqz/iter-eval package
     '(let ((x (if (stringp x) (intern x) x)))
     (if (not (package-installed-p x))
-        (package-install x))
+	(package-install x))
     (require x))))
 
 
