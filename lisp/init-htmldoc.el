@@ -30,21 +30,11 @@
 (defun php-doc-path-handler (base-path keyword)
   (concat base-path "/function." (replace-regexp-in-string "_" "-" keyword) ".html"))
 
-(defun word-arround-cursor ()
-  (interactive)
-  (let ((bounds
-	 (if (use-region-p)
-	     (list (region-beginning) (region-end))
-	   (bounds-of-thing-at-point 'symbol))))
-    (if bounds
-	(buffer-substring-no-properties (car bounds) (cdr bounds))
-      nil)))
-
 (setq php-doc-path (lqz/init-dir "manuals/php_manual_cn_html"))
 
 (defun lookup-php-doc ()
   (interactive)
-  (let ((word (word-arround-cursor)))
+  (let ((word (lqz/current-word)))
     (if word
 	(eww-open-doc
 	 #'edoc-right

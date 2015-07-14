@@ -56,6 +56,13 @@
 	(buffer-string))
     ""))
 
+(defun lqz/current-word ()
+  (interactive)
+  (if (use-region-p)
+      (let ((bounds (list (region-beginning) (region-end))))
+	(buffer-substring-no-properties (car bounds) (car (cdr bounds))))
+    (current-word)))
+
 (defun add-more-to-list (target source)
   "append source list to target list."
   (dolist (x source) (add-to-list target x)))

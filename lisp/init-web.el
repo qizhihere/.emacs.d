@@ -1,8 +1,8 @@
 (lqz/require '(web-mode web-beautify
-                emmet-mode helm-emmet
-                css-eldoc js2-mode
-                jade-mode coffee-mode
-                sass-mode))
+		emmet-mode helm-emmet
+		css-eldoc js2-mode
+		jade-mode coffee-mode
+		sass-mode))
 
 ;; html
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
@@ -20,13 +20,13 @@
 (add-hook 'web-mode-hook 'emmet-mode)
 
 ;; js
-(defun lqz/js-mode ()
-  (js2-minor-mode 1)
-  (setq comment-start "/*"
-        comment-end "*/"))
-(add-hook 'js-mode-hook 'lqz/js-mode)
+(defun lqz/js2-setup ()
+  (setq comment-start "/*" comment-end "*/")
+  (subword-mode 1))
+(add-hook 'js2-mode-hook 'lqz/js2-setup)
 (setq-default js2-basic-offset 2
-              js-indent-level  2)
+	      js-indent-level  2)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
 
 ;; coffeescript

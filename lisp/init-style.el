@@ -38,6 +38,7 @@
 (lqz/require 'highlight-parentheses)
 (show-paren-mode t)
 (setq show-paren-style 'mixed)
+;; (set blink-matching-paren nil)
 (global-highlight-parentheses-mode t)
 
 ;; highlight-sexp

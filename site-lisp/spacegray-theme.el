@@ -218,8 +218,8 @@
    `(whitespace-hspace ((,class (:background nil :foreground ,selection))))
 
    ;; Parenthesis matching (built-in)
-   `(show-paren-match-face ((,class (:background  "#4F5B66":foreground "white"))))
-   `(show-paren-mismatch-face ((,class (:background "red1" :foreground "white"))))
+   `(show-paren-match-face ((,class (:background "#4F5B66"))))
+   `(show-paren-mismatch-face ((,class (:background "red1"))))
 
    ;; Smartparens paren matching
    `(sp-show-pair-match-face ((,class (:foreground nil :background nil :inherit show-paren-match))))
