@@ -46,7 +46,7 @@
 (require 'init-git)
 (require 'init-projectile)
 (require 'init-multi-edit)
-(require 'init-window-control)
+(require 'init-workspace)
 (require 'init-outline)
 (require 'init-hydra)
 

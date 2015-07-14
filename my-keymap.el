@@ -37,9 +37,7 @@
     "pf"  'helm-projectile-find-file
     "pF"  'helm-projectile-recentf
     "pg"  'helm-projectile-grep
-    "pp"  'projectile-persp-switch-project
-    "pl"  'projectile-persp-switch-project
-    "pP"  'helm-projectile-switch-project
+    "pp"  'helm-projectile-switch-project
     "po"  'projectile-multi-occur
     "ps"  'helm-projectile-ag
     "pc"  'projectile-commander
@@ -48,20 +46,20 @@
     "p!"  'projectile-run-async-shell-command-in-root
   )
 
-  ;; window and workspace(use perspective)
+  ;; window and workspace(use persp-mode)
   (evil-leader/set-key
     "ww"   'hydra-window/body
     "wl"   'persp-switch
-    "wb"   'persp-switch-to-buffer
     "wd"   'persp-remove-buffer
     "wD"   'persp-kill
     "wr"   'persp-rename
     "wa"   'persp-add-buffer
     "wA"   'persp-set-buffer
     "wi"   'persp-import
-    "wn"   'persp-next
-    "wp"   'persp-prev
-    )
+    "wn"   'lqz/persp-next
+    "wp"   'lqz/persp-prev
+    "ws"   'persp-save-state-to-file
+    "wR"   'persp-load-state-from-file)
 
   ;; mark related
   (evil-leader/set-key
@@ -86,8 +84,7 @@
     "ose"  'outline-show-entry
     "osb"  'outline-show-branches
     "osc"  'outline-show-children
-    "oss"  'outline-show-subtree
-    )
+    "oss"  'outline-show-subtree)
 
   ;; version control
   (evil-leader/set-key
@@ -104,8 +101,7 @@
     "ggp" 'git-gutter:previous-hunk
     "ggs" 'git-gutter:stage-hunk
     "ggr" 'git-gutter:revert-hunk
-    "gt"  'git-timemachine-toggle
-    )
+    "gt"  'git-timemachine-toggle)
 
   ;; clipboard related
   (evil-leader/set-key
@@ -155,11 +151,11 @@
   )
 
 
-(global-set-key (kbd "M-'")	'comment-dwim-2)
-(global-set-key [f12]	'persp-switch)
-(global-set-key (kbd "C-S-s") 'phi-search)
-(global-set-key (kbd "C-S-r") 'phi-search-backward)
-(with-eval-after-load 'evil-leader (lqz/set-evil-keymaps))
+(global-set-key (kbd "M-'")	 'comment-dwim-2)
+(global-set-key [f12]		 'persp-switch)
+(global-set-key (kbd "C-S-s")    'phi-search)
+(global-set-key (kbd "C-S-r")    'phi-search-backward)
+(with-eval-after-load            'evil-leader (lqz/set-evil-keymaps))
 
 
 

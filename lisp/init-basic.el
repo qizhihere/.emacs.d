@@ -7,11 +7,12 @@
 
 (lqz/mkrdir '("session" "tmp/undodir" "tmp/auto-save"))
 
-
+;; temporary files
 (setq temporary-file-directory (lqz/init-dir "tmp/"))
 (setq auto-save-list-file-prefix (lqz/init-dir "tmp/auto-save/.saves-"))
 (setq recentf-save-file (lqz/init-dir "tmp/recentf"))
 
+;; desktop
 (setq-default
       desktop-dirname             (lqz/init-dir "session/")
       desktop-base-file-name      "emacs.session"
@@ -20,6 +21,7 @@
       desktop-save                t
       desktop-files-not-to-save   "^$" ;reload tramp path
       desktop-load-locked-desktop nil)
+;; enable desktop save
 (desktop-save-mode 1)
 
 ;; store all backup and autosave files in the tmp dir
@@ -27,12 +29,21 @@
       backup-directory-alist		`((".*" . ,lqz/backup-dir))
       auto-save-file-name-transforms    `((".*" ,lqz/backup-dir t)))
 
+;; auto save
+(defun lqz/desktop-save ()
+  (interactive)
+  (when (and desktop-save-mode desktop-dirname)
+    (desktop-save-in-desktop-dir)))
+
+(add-hook 'auto-save-hook 'lqz/desktop-save)
+(setq auto-save-interval 60
+      auto-save-timeout 60)
 
 ;;--------------------------
 ;; edit settings
 ;;--------------------------
 (lqz/require '(drag-stuff      ;; use M-arrow to move line or word
-	       pcre2el))       ;; use pcre in emacs
+           pcre2el))       ;; use pcre in emacs
 (add-hook 'prog-mode-hook 'drag-stuff-mode)
 
 ;; auto fill prefix
@@ -42,7 +53,6 @@
 
 ;; enable code folding
 (add-hook 'prog-mode-hook 'hs-minor-mode)
-
 (rxt-global-mode t)
 
 ;; enable eldoc

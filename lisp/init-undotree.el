@@ -7,7 +7,8 @@
       ad-do-it))
 
 ;; set undotree history file directories
-(setq undo-tree-auto-save-history t
+(setq history-length 1000
+      undo-tree-auto-save-history t
       undo-tree-history-directory-alist `(("." . ,(lqz/init-dir "tmp/undodir/")))
       undo-tree-incompatible-major-modes '(term-mode magit-status-mode))
 
