@@ -68,11 +68,7 @@
 (global-set-key (kbd "C-x b")                    'helm-mini)
 (global-set-key (kbd "C-x C-f")                  'helm-find-files)
 (global-set-key (kbd "C-c h o")                  'helm-occur)
-(global-set-key (kbd "C-h SPC")                  'helm-all-mark-rings)
 (global-set-key (kbd "C-c h x")                  'helm-register)
-(global-set-key (kbd "C-c h g")                  'helm-google-suggest)
-(global-set-key (kbd "C-c h M-l")                'helm-eval-expression-with-eldoc)
-(define-key minibuffer-local-map (kbd "C-c C-l") 'helm-minibuffer-history)
 
 
 ;;--------------
@@ -121,17 +117,6 @@
 ;; Optional face for line numbers
 ;; Face name is `helm-swoop-line-number-face`
 (setq helm-swoop-use-line-number-face t)
-
-
-;;--------------
-;; smex
-;;--------------
-;; (lqz/require 'smex)
-;; (global-set-key (kbd "M-x") 'smex)
-;; (global-set-key (kbd "M-X") 'smex-major-mode-commands)
-
-
-
 
 
 

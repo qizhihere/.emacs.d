@@ -39,20 +39,44 @@ will be used."
   (browse-url-default-browser
    (concat "https://www.google.com/#q=" keywords)))
 
+(defun lqz/open-next-line ()
+  "Open next line without cursor move."
+  (interactive)
+  (newline)
+  (previous-line)
+  (end-of-line))
+
+(defun lqz/open-previous-line ()
+  "Open previous line without cursor move."
+  (interactive)
+  (let ((pos (point))
+	(cur-max (point-max)))
+    (beginning-of-line)
+    (newline)
+    (goto-char (+ pos (- (point-max) cur-max)))))
 
   (setq lqz/keymaps
 	'(
 	  "C-c m l" helm-all-mark-rings
-	  "C-c u y" xsel-copy
-	  "C-c u p" xsel-paste
-	  "C-c u x" xsel-cut
-	  "C-c C-f" helm-recentf))
+	  "C-c c y" xsel-copy
+	  "C-c c p" xsel-paste
+	  "C-c c x" xsel-cut
+	  "C-c C-f" helm-recentf
+	  "C-M-<backspace>" kill-this-buffer
+	  "M-n"     next-buffer
+	  "M-p"     previous-buffer
+	  "S-<return>" lqz/open-next-line
+	  "C-<return>" lqz/open-previous-line))
 
+(global-set-key (kbd "C-<return>") (lambda ()
+				     (interactive)
+				     ))
   (defun lqz/set-evil-keymaps ()
     ;; basic
     (define-key evil-insert-state-map (kbd "C-n") 'next-line)
     (define-key evil-insert-state-map (kbd "C-p") 'previous-line)
     (define-key evil-insert-state-map (kbd "C-e") 'end-of-line)
+    (define-key evil-insert-state-map (kbd "C-k") 'kill-line)
 
     ;; file and directory related
     (evil-leader/set-key
@@ -101,8 +125,9 @@ will be used."
       "mm"  'bm-toggle
       "mn"  'bm-next
       "mp"  'bm-previous
-      "md"  'bm-remove-all-current-buffer
-      "mD"  'bm-remove-all-all-buffers)
+      "md"  'bm-toggle
+      "mD"  'bm-remove-all-current-buffers
+      "mR"  'bm-remove-all-all-buffers)
 
     ;; outline minor mode
     (evil-leader/set-key
@@ -162,10 +187,13 @@ will be used."
       "rf"  'frame-configuration-to-register
       "rs"  'copy-to-register
       "rj"  'jump-to-register
+      "rl"  'helm-register
       )
 
     ;; search related
     (evil-leader/set-key
+      "ag"  'ag
+      "hag" 'helm-ag
       "gr"  'grep
       "gf"  'grep-find
       "sgi"  'lqz/search-github-code
@@ -175,7 +203,7 @@ will be used."
     (evil-leader/set-key
       "ysf" 'yas-visit-snippet-file
       "ysn" 'yas-new-snippet
-      "yaR" 'yas-reload-all)
+      "ysR" 'yas-reload-all)
 
     ;; others
     (evil-leader/set-key

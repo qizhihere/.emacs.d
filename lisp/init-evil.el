@@ -5,7 +5,8 @@
 (evil-mode 1)
 
 ;; set evil default state to emacs
-(setq evil-default-state 'emacs)
+(setq evil-default-state 'emacs
+      evil-move-cursor-back nil)
 
 ;; remap escape key
 (lqz/require 'key-chord)
@@ -71,11 +72,11 @@
 ;;-----------------------
 (lqz/require 'evil-snipe)
 (evil-snipe-mode 1)
-(setq evil-snipe-repeat-keys t)
-(setq evil-snipe-scope 'visible)
-(setq evil-snipe-repeat-scope 'whole-visible)
-(setq evil-snipe-enable-highlight t)
-(setq evil-snipe-enable-incremental-highlight t)
+(setq evil-snipe-repeat-keys t
+      evil-snipe-scope 'visible
+      evil-snipe-repeat-scope 'whole-visible
+      evil-snipe-enable-highlight t
+      evil-snipe-enable-incremental-highlight t)
 
 
 ;;-----------------------
