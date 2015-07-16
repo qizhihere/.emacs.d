@@ -5,6 +5,7 @@
 *~
 
 *.elc
+.#*
 
 /dicts/pyim/pyim-personal.txt
 /configs/pyim/pyim-personal.txt

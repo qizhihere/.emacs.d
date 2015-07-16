@@ -71,6 +71,7 @@
 ;; autoclose brackets and quotes
 (lqz/require 'autopair)
 (electric-pair-mode t)
+(electric-quote-mode t)
 
 ;; show search counts in mode line
 (lqz/require 'anzu)
