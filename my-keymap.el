@@ -1,4 +1,9 @@
-(lqz/require 'comment-dwim-2)
+(lqz/require '(comment-dwim-2 swiper smex))
+
+;; a little simple settings
+(ivy-mode 1)
+(setq ivy-use-virtual-buffers t)
+(define-key dired-mode-map (kbd "M-i") 'swiper)
 
 (defun lqz/global-set-key (keymap &optional cmd)
   (setf keymap (if (not (listp keymap)) (list keymap cmd) keymap))
@@ -66,18 +71,17 @@ will be used."
 	  "M-n"     next-buffer
 	  "M-p"     previous-buffer
 	  "S-<return>" lqz/open-next-line
-	  "C-<return>" lqz/open-previous-line))
+	  "C-<return>" lqz/open-previous-line
+	  "M-x" smex
+	  "M-i" swiper))
+(define-key markdown-mode-map (kbd "M-p") 'previous-buffer)
+(define-key markdown-mode-map (kbd "M-n") 'next-buffer)
+
 
 (global-set-key (kbd "C-<return>") (lambda ()
 				     (interactive)
 				     ))
   (defun lqz/set-evil-keymaps ()
-    ;; basic
-    (define-key evil-insert-state-map (kbd "C-n") 'next-line)
-    (define-key evil-insert-state-map (kbd "C-p") 'previous-line)
-    (define-key evil-insert-state-map (kbd "C-e") 'end-of-line)
-    (define-key evil-insert-state-map (kbd "C-k") 'kill-line)
-
     ;; file and directory related
     (evil-leader/set-key
       "ff"  'find-file
@@ -85,6 +89,10 @@ will be used."
       "fg"  'helm-do-grep
       "df"  'dired
       "ds"  'fiplr-find-directory)
+
+    ;; buffer related
+    (evil-leader/set-key
+      ";"  'ivy-switch-buffer)
 
     ;; project related
     (evil-leader/set-key
@@ -160,7 +168,8 @@ will be used."
       "ggp" 'git-gutter:previous-hunk
       "ggs" 'git-gutter:stage-hunk
       "ggr" 'git-gutter:revert-hunk
-      "gt"  'git-timemachine-toggle)
+      "gt"  'git-timemachine-toggle
+      "gl"  'magit-log-all)
 
     ;; clipboard related
     (evil-leader/set-key

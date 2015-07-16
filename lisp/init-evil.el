@@ -7,6 +7,8 @@
 ;; set evil default state to emacs
 (setq evil-default-state 'emacs
       evil-move-cursor-back nil)
+;; don't modify emacs state map in evil inert state
+(setcdr evil-insert-state-map nil)
 
 ;; remap escape key
 (lqz/require 'key-chord)
