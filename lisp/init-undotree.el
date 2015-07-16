@@ -7,10 +7,12 @@
       ad-do-it))
 
 ;; set undotree history file directories
-(setq history-length 10000
+(setq history-length 100000
       undo-tree-auto-save-history t
       undo-tree-history-directory-alist `(("." . ,(lqz/init-dir "tmp/undodir/")))
       undo-tree-incompatible-major-modes '(term-mode magit-status-mode))
+
+(global-undo-tree-mode)
 
 ;; integrate undotree history with session
 (add-to-list 'desktop-locals-to-save 'buffer-undo-list)

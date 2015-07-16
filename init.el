@@ -44,6 +44,7 @@
 (require 'init-htmldoc)
 (require 'init-bookmark)
 (require 'init-git)
+(require 'init-sql)
 (require 'init-projectile)
 (require 'init-multi-edit)
 (require 'init-workspace)
@@ -61,7 +62,7 @@
 (require 'init-other-minor-mode)
 
 (require 'init-dictionary)
-;; (require 'init-input-method)
+(require 'init-input-method)
 (require 'init-flycheck)
 (require 'init-flyspell)
 (require 'init-hippie-expand)

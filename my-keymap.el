@@ -4,6 +4,8 @@
 (ivy-mode 1)
 (setq ivy-use-virtual-buffers t)
 (define-key dired-mode-map (kbd "M-i") 'swiper)
+(define-key ivy-minibuffer-map (kbd "C-o") 'ivy-recentf)
+(setq smex-save-file (lqz/init-dir "tmp/smex-items"))
 
 (defun lqz/global-set-key (keymap &optional cmd)
   (setf keymap (if (not (listp keymap)) (list keymap cmd) keymap))

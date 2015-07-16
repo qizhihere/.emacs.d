@@ -9,6 +9,9 @@
 (setq sml/theme 'respectful)
 (sml/setup)
 
+;; show current time in mode line
+(display-time-mode t)
+
 ;; nyan cat on mode line
 (lqz/require 'nyan-mode)
 (nyan-mode t)

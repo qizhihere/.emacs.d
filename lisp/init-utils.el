@@ -74,6 +74,8 @@
 	(package-install x))
     (require x))))
 
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 
 
 (provide 'init-utils)

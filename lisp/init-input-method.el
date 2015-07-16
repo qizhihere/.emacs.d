@@ -1,11 +1,18 @@
 (lqz/require '(chinese-pyim pos-tip))
 
-(setq default-input-method "chinese-pyim")
+;; company auto complete
+(require 'chinese-pyim-company)
 
-(setq pyim-use-tooltip t)
-(setq pyim-dicts-manager-scel2pyim-command (lqz/init-dir "utils/bin/scel2pyim"))
-(global-set-key (kbd "C-M-<SPC>") 'toggle-input-method)
-(global-set-key (kbd "C-;") 'pyim-toggle-full-width-punctuation)
+(defun pyim-helm-buffer-active-p ()
+  (string-prefix-p "helm" (buffer-name (window-buffer (active-minibuffer-window)))))
+
+(setq pyim-company-predict-words-number 10
+      default-input-method "chinese-pyim"
+      pyim-use-tooltip t
+      pyim-dicts-manager-scel2pyim-command (lqz/init-dir "utils/bin/scel2pyim"))
+
+(define-key org-mode-map (kbd "M-f") 'pyim-forward-word)
+(define-key org-mode-map (kbd "M-b") 'pyim-backward-word)
 
 
 (provide 'init-input-method)

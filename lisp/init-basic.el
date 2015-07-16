@@ -43,7 +43,7 @@
 ;; edit settings
 ;;--------------------------
 (lqz/require '(drag-stuff      ;; use M-arrow to move line or word
-           pcre2el))       ;; use pcre in emacs
+	   pcre2el))       ;; use pcre in emacs
 (add-hook 'prog-mode-hook 'drag-stuff-mode)
 
 ;; auto fill prefix
@@ -58,6 +58,7 @@
 ;; enable eldoc
 (lqz/require 'eldoc)
 (eldoc-mode 1)
+
 
 ;; open current file with sudo
 (require 'init-sudo-edit)

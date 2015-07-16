@@ -1,14 +1,38 @@
 (lqz/require 'evil)
 (lqz/require 'evil-anzu) ;; show search info in evil-mode
 
-;; enable evil in most programming modes
-(evil-mode 1)
+;; Disable evil for certain major-modes
+(setq evil-disabled-modes-list
+      '(eshell-mode
+	wl-summary-mode
+	compilation-mode
+	completion-list-mode
+	help-mode
+	edit-server-edit-mode))
+
+;; check if in disabled modes, else enable evil
+(defun evil-initialize ()
+  (unless (or (minibufferp) (member major-mode evil-disabled-modes-list))
+    (evil-local-mode 1)))
 
 ;; set evil default state to emacs
 (setq evil-default-state 'emacs
       evil-move-cursor-back nil)
-;; don't modify emacs state map in evil inert state
-(setcdr evil-insert-state-map nil)
+
+;; set default state for modes
+(defun lqz/evil-init-normal-state ()
+  (evil-set-initial-state major-mode 'normal))
+(add-hook 'prog-mode-hook 'lqz/evil-init-normal-state)
+
+;; keep some common keys of emacs in insert state
+(define-key evil-insert-state-map (kbd "C-a") 'beginning-of-line)
+(define-key evil-insert-state-map (kbd "C-e") 'end-of-line)
+(define-key evil-insert-state-map (kbd "C-p") 'previous-line)
+(define-key evil-insert-state-map (kbd "C-n") 'next-line)
+(define-key evil-insert-state-map (kbd "C-k") 'kill-line)
+(define-key evil-insert-state-map (kbd "M-a") 'backward-sentence)
+(define-key evil-insert-state-map (kbd "M-e") 'forward-sentence)
+
 
 ;; remap escape key
 (lqz/require 'key-chord)
