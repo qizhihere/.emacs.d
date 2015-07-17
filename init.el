@@ -57,7 +57,6 @@
 (require 'init-markdown)
 (require 'init-org)
 (require 'init-lisp)
-(require 'init-fun)
 ;; minor modes which need only very little configuration
 (require 'init-other-minor-mode)
 
@@ -67,6 +66,9 @@
 (require 'init-flyspell)
 (require 'init-hippie-expand)
 (require 'init-company)
+;; for fun
+(require 'init-fun)
+(require 'init-emms)
 
 ;; yasnippet costs most of startup time so we load it at last.
 (require 'init-yasnippet)

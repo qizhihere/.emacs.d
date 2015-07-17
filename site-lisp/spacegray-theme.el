@@ -184,7 +184,7 @@
    `(fringe ((,class (:background ,background))))
    `(linum ((,class (:background ,background :foreground ,selection :weight semi-bold))))
    `(linum-highlight-face ((,class (:background ,current-line :foreground ,foreground))))
-   `(linum-relative-current-face ((,class (:background ,background-2))))
+   `(linum-relative-current-face ((,class (:background ,background-2 :inherit linum :foreground "#CAE682" :weight bold))))
    `(border ((,class (:background ,current-line))))
    `(border-glyph ((,class (nil))))
    `(highlight ((,class (:inverse-video nil :background ,current-line))))
@@ -292,6 +292,17 @@
    `(diredp-symlink ((,class (:foreground ,purple))))
    `(diredp-write-priv ((,class (:foreground ,yellow :background nil))))
 
+   ;; smart mode line
+   `(sml/col-number ((,class (:inherit sml/global))))
+   `(sml/filename ((,class (:inherit mode-line-buffer-id :weight normal))))
+   `(sml/global ((,class (:inherit font-lock-preprocessor-face :foreground "#438bfd"))))
+   `(sml/line-number ((,class (:inherit sml/modes))))
+   `(sml/modified ((,class (:inherit sml/not-modified :foreground "Red" :weight bold))))
+   `(sml/not-modified ((,class (:inherit sml/col-number))))
+
+   ;; window numbering color
+   `(window-numbering-face ((,class (:foreground ,orange))))
+
    ;; Magit (a patch is pending in magit to make these standard upstream)
    `(magit-branch ((,class (:foreground ,green))))
    `(magit-diff-add ((,class (:inherit diff-added))))
@@ -312,6 +323,7 @@
    `(magit-log-head-label-tags ((,class (:foreground ,aqua :box nil :weight bold))))
    `(magit-log-sha1 ((,class (:foreground ,yellow))))
    `(magit-section-title ((,class (:foreground ,blue :weight bold))))
+   `(magit-section-highlight ((,class (:background ,background-2))))
 
    ;; git-gutter
    '(git-gutter:added ((t (,class (:background "green" :foreground ,background  :weight bold)))))
@@ -341,6 +353,16 @@
    ;; helm
    `(helm-selection-line ((,class (:foreground ,foreground :background ,subtle))))
    `(helm-ff-directory ((,class (:foreground ,blue :background ,background))))
+   `(helm-candidate-number ((t (:background ,far-background :foreground ,green))))
+   `(helm-header ((t (:inherit header-line :background ,background))))
+   `(helm-match ((t (:background ,background-2 :foreground ,foreground :weight bold))))
+   `(helm-selection ((t (:background ,background-2 :distant-foreground "black"))))
+   `(helm-source-header ((t (:background ,far-background :foreground ,foreground :weight semi-bold))))
+
+   ;; Man page colors
+   `(Man-overstrike ((t (:inherit bold :foreground "#ff5f00"))))
+   `(Man-reverse ((t (:inherit highlight :background "#00afd7" :foreground "color-231"))))
+   `(Man-underline ((t (:inherit underline :foreground "#00d75f"))))
 
    ;; Grep
    `(grep-context-face ((,class (:foreground ,comment))))

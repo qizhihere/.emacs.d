@@ -192,6 +192,10 @@ will be used."
       "evr" 'eval-region
       "evf" 'eval-defun)
 
+    ;; emms
+    (evil-leader/set-key
+      "em" 'emms-playlist-mode-go)
+
     ;; register
     (evil-leader/set-key
       "rw"  'window-configuration-to-register

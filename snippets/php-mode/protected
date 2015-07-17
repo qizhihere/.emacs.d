@@ -1,0 +1,9 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: protected function
+# key: protected
+# binding: direct-keybinding
+# --
+protected function _$1 (${2:Request $req})
+{
+    $0
+}
