@@ -326,10 +326,10 @@
    `(magit-section-highlight ((,class (:background ,background-2))))
 
    ;; git-gutter
-   '(git-gutter:added ((t (,class (:background "green" :foreground ,background  :weight bold)))))
-   '(git-gutter:deleted ((t (,class  (:background "red" :foreground ,background  :weight bold)))))
-   '(git-gutter:modified ((t (,class  (:background ,purple :foreground ,background :weight bold)))))
-   '(git-gutter:unchanged ((t (,class (:foreground ,background :weight bold)))))
+   `(git-gutter:added ((,class (:foreground "green" :background ,background  :weight bold))))
+   `(git-gutter:deleted ((,class  (:foreground "red" :background ,background  :weight bold))))
+   `(git-gutter:modified ((,class  (:foreground ,purple :background ,background :weight bold))))
+   `(git-gutter:unchanged ((,class (:background ,background :weight bold))))
 
    ;; git-gutter-fringe
    `(git-gutter-fr:modified ((,class (:foreground ,purple :weight bold))))
@@ -353,11 +353,11 @@
    ;; helm
    `(helm-selection-line ((,class (:foreground ,foreground :background ,subtle))))
    `(helm-ff-directory ((,class (:foreground ,blue :background ,background))))
-   `(helm-candidate-number ((t (:background ,far-background :foreground ,green))))
-   `(helm-header ((t (:inherit header-line :background ,background))))
-   `(helm-match ((t (:background ,background-2 :foreground ,foreground :weight bold))))
-   `(helm-selection ((t (:background ,background-2 :distant-foreground "black"))))
-   `(helm-source-header ((t (:background ,far-background :foreground ,foreground :weight semi-bold))))
+   `(helm-candidate-number ((,class (:background ,far-background :foreground ,green))))
+   `(helm-header ((,class (:inherit header-line :background ,background))))
+   `(helm-match ((,class (:background ,background-2 :foreground ,foreground :weight bold))))
+   `(helm-selection ((,class (:background ,background-2 :distant-foreground "black"))))
+   `(helm-source-header ((,class (:background ,far-background :foreground ,foreground :weight semi-bold))))
 
    ;; Man page colors
    `(Man-overstrike ((t (:inherit bold :foreground "#ff5f00"))))
