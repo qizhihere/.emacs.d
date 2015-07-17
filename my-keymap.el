@@ -198,8 +198,7 @@ will be used."
       "rf"  'frame-configuration-to-register
       "rs"  'copy-to-register
       "rj"  'jump-to-register
-      "rl"  'helm-register
-      )
+      "rl"  'helm-register)
 
     ;; search related
     (evil-leader/set-key

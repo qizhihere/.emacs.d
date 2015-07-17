@@ -44,7 +44,7 @@
 
 (defun php-doc-keymap ()
   "bind php doc related keys."
-  (define-key php-mode-map (kbd "C-c dg") 'lookup-php-doc))
+  (define-key php-mode-map (kbd "C-c d") 'lookup-php-doc))
 
 
 (add-hook 'php-mode-hook 'php-doc-keymap)

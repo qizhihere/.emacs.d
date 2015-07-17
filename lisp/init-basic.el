@@ -43,13 +43,15 @@
 ;; edit settings
 ;;--------------------------
 (lqz/require '(drag-stuff      ;; use M-arrow to move line or word
-	   pcre2el))       ;; use pcre in emacs
+	       pcre2el))       ;; use pcre in emacs
 (add-hook 'prog-mode-hook 'drag-stuff-mode)
 
 ;; auto fill prefix
 (setq adaptive-fill-regexp "[ \t]+\\|[ \t]*\\([0-9]+\\.\\|\\*+\\|[ \t]*[\\+\\-]\\)[ \t]*")
 (setq adaptive-fill-first-line-regexp "^\\* *$")
 
+;; replace selection with typed text if the selection is active
+(delete-selection-mode 1)
 
 ;; enable code folding
 (add-hook 'prog-mode-hook 'hs-minor-mode)

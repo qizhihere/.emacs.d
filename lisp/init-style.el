@@ -11,7 +11,9 @@
 
 ;; hide some minor modes from mode line
 (setq lqz/rm-blacklist-regexps
-      '("Guide" "Git" "Outl" "snipe" "Anzu" "company" "Undo-Tree" "hs" "ivy" "yas" "hl-p" "Helm"))
+      '("Guide" "Git" "Outl" "snipe" "Anzu" "company"
+	"Undo-Tree" "hs" "ivy" "yas" "hl-" "Helm"
+	"Rbow" "drag"))
 (setq rm-blacklist (mapconcat 'identity lqz/rm-blacklist-regexps "\\|"))
 
 ;; show current time in mode line
