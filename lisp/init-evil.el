@@ -2,27 +2,35 @@
 (lqz/require 'evil-anzu) ;; show search info in evil-mode
 
 ;; Disable evil for certain major-modes
-(setq evil-disabled-modes-list
+(setq lqz/evil-disabled-modes
       '(eshell-mode
 	wl-summary-mode
 	compilation-mode
 	completion-list-mode
 	help-mode
-	edit-server-edit-mode))
+	edit-server-edit-mode)
+      lqz/evil-normal-state-modes
+      '(org-mode))
 
-;; check if in disabled modes, else enable evil
-(defun evil-initialize ()
-  (unless (or (minibufferp) (member major-mode evil-disabled-modes-list))
-    (evil-local-mode 1)))
+(dolist (mode lqz/evil-disabled-modes)
+  (add-to-list 'evil-emacs-state-modes mode))
+(dolist (mode lqz/evil-normal-state-modes)
+  (add-to-list 'evil-normal-state-modes mode))
 
 ;; set evil default state to emacs
 (setq evil-default-state 'emacs
       evil-move-cursor-back nil)
 
-;; set default state for modes
-(defun lqz/evil-init-normal-state ()
-  (evil-set-initial-state major-mode 'normal))
-(add-hook 'prog-mode-hook 'lqz/evil-init-normal-state)
+;; redefine the evil initialize function
+(defun evil-initialize ()
+  (unless (or (minibufferp) (member major-mode evil-emacs-state-modes))
+    (evil-local-mode 1)
+    (evil-set-initial-state major-mode 'normal)))
+
+;; initialize evil
+(evil-mode 1)
+
+(add-hook 'prog-mode-hook 'evil-initialize)
 
 ;; keep some common keys of emacs in insert state
 (define-key evil-insert-state-map (kbd "C-a") 'beginning-of-line)

@@ -65,9 +65,9 @@ will be used."
   (setq lqz/keymaps
 	'(
 	  "C-c m l" helm-all-mark-rings
-	  "C-c c y" xsel-copy
-	  "C-c c p" xsel-paste
-	  "C-c c x" xsel-cut
+	  "C-c c y" xcopy
+	  "C-c c p" xpaste
+	  "C-c c x" xcut
 	  "C-c C-f" helm-recentf
 	  "C-M-<backspace>" kill-this-buffer
 	  "M-n"     next-buffer
@@ -175,9 +175,9 @@ will be used."
 
     ;; clipboard related
     (evil-leader/set-key
-      "cy"  'xsel-copy
-      "cp"  'xsel-paste
-      "cx"  'xsel-cut)
+      "cy"  'xcopy
+      "cp"  'xpaste
+      "cx"  'xcut)
 
     ;; helm
     (evil-leader/set-key
