@@ -5,9 +5,14 @@
 ;; smart mode line
 (lqz/require 'smart-mode-line)
 ;; (setq sml/vc-mode-show-backend t)
-(setq sml/no-confirm-load-theme t)
-(setq sml/theme 'respectful)
+(setq sml/no-confirm-load-theme t
+      sml/theme 'respectful)
 (sml/setup)
+
+;; hide some minor modes from mode line
+(setq lqz/rm-blacklist-regexps
+      '("Guide" "Git" "Outl" "snipe" "Anzu" "company" "Undo-Tree" "hs" "ivy" "yas" "hl-p" "Helm"))
+(setq rm-blacklist (mapconcat 'identity lqz/rm-blacklist-regexps "\\|"))
 
 ;; show current time in mode line
 (display-time-mode t)

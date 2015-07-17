@@ -12,10 +12,8 @@
       lqz/evil-normal-state-modes
       '(org-mode))
 
-(dolist (mode lqz/evil-disabled-modes)
-  (add-to-list 'evil-emacs-state-modes mode))
-(dolist (mode lqz/evil-normal-state-modes)
-  (add-to-list 'evil-normal-state-modes mode))
+(add-more-to-list 'evil-emacs-state-modes lqz/evil-disabled-modes)
+(add-more-to-list 'evil-normal-state-modes lqz/evil-normal-state-modes)
 
 ;; set evil default state to emacs
 (setq evil-default-state 'emacs
