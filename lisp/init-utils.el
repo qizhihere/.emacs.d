@@ -18,6 +18,19 @@
        (boundp 'lqz/theme)
        (string= theme lqz/theme)))
 
+(defun lqz/system-notify (title &optional msg timeout)
+  "Use external program to send a system notification. Including
+  title and message.
+
+Message and timeout is optional, the unit of timeout is seconds.
+If no timeout specified, the timeout value will depends on the
+external program."
+  (let* ((timeout (if timeout (concat " -t " timeout)))
+	 (cmd (concat "notify-send" " -i Emacs" timeout " '" title "' '" msg "'")))
+    (start-process-shell-command
+     "*Output*" nil
+     (replace-regexp-in-string "&" "&amp;" cmd))))
+
 (defun lqz/mkrdir (dir)
   "create subdirectories relative to ~/.emacs.d"
   (lqz/iter-eval dir

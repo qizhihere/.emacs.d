@@ -1,15 +1,54 @@
 (lqz/require 'emms)
 
 (require 'emms-setup)
+(require 'emms-playlist-sort)
+(require 'emms-history)
+(require 'emms-mode-line)
+
+(lqz/mkrdir '("session/emms"))
+
+(setq emms-directory (lqz/init-dir "session/emms")
+      emms-lyrics-dir "~/Music/lyrics"
+      emms-source-file-default-directory "~/Music/"
+      emms-playlist-buffer-name "*Music*"
+      emms-history-file (lqz/init-dir "session/emms/emms-history"))
 
 (emms-standard)
 (emms-default-players)
+(emms-history-load)
+(emms-mode-line 1)
 
-(setq emms-directory (lqz/init-dir "emms")
-      emms-lyrics-dir "~/Music/lyrics"
-      emms-source-file-default-directory "~/Music/")
+;; set mode line
+(defun lqz/emms-mode-line-function ()
+  (let* ((str (emms-info-track-description
+	       (emms-playlist-current-selected-track)))
+	 (str (replace-regexp-in-string "/.*/" "" str))
+	 (str (replace-regexp-in-string " +" ""
+		 (replace-regexp-in-string "\.[a-zA-Z0-9]+$" "" str)))
+	 (is-abbr (<= (length str) 8))
+	 (len (if is-abbr (length str) 8)))
+    (concat " [" (substring str 0 len) (if is-abbr " ") "]")))
+(setq emms-mode-line-mode-line-function
+      'lqz/emms-mode-line-function
+      emms-mode-line-format "%s")
+
+;; set hooks
+(defun lqz/emms-started-hooks ()
+  (if (string= (buffer-name) emms-playlist-buffer-name)
+      (emms-playlist-mode-center-current))
+  (lqz/system-notify
+   "Emms playing..."
+   (emms-track-description (emms-playlist-current-selected-track))))
+
+(add-hook 'emms-player-started-hook 'lqz/emms-started-hooks)
 
 ;; bind keys
+(define-key emms-playlist-mode-map (kbd "R") 'emms-toggle-random-playlist)
+(define-key emms-playlist-mode-map (kbd "Sa") 'emms-playlist-sort-by-info-artist)
+(define-key emms-playlist-mode-map (kbd "Sn") 'emms-playlist-sort-by-name)
+(define-key emms-playlist-mode-map (kbd "St") 'emms-playlist-sort-by-info-title)
+(define-key emms-playlist-mode-map (kbd "+") 'emms-volume-mode-plus)
+(define-key emms-playlist-mode-map (kbd "-") 'emms-volume-mode-minus)
 (global-set-key (kbd "<XF86AudioPlay>") 'emms-pause)
 (global-set-key (kbd "<XF86AudioStop>") 'emms-stop)
 (global-set-key (kbd "<XF86AudioPrev>") 'emms-previous)

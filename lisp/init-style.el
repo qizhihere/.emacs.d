@@ -6,7 +6,8 @@
 (lqz/require 'smart-mode-line)
 ;; (setq sml/vc-mode-show-backend t)
 (setq sml/no-confirm-load-theme t
-      sml/theme 'respectful)
+      sml/theme 'respectful
+      sml/mode-width 25)
 (sml/setup)
 
 ;; hide some minor modes from mode line

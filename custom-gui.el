@@ -18,7 +18,7 @@
  '(company-show-numbers t)
  '(custom-safe-themes
    (quote
-    ("95ca92917c3104a21b0ca53aacd8a078a7f2b2dfd2fdea4a03b66b8a221379c8" "a766f853da047828950697c7a54d6767e590772d7222b0ef94db38a1edc7e67f" "eeff689a7d087484b6f17b9564f3ed2ce322365873ce7b404d57d11c45d989fc" "bbaffa6a34aa087194dad4b32d9b11fa2b3ca24e1fe569c6fa5f30c7ee969534" default)))
+    ("2359ec39c6f44bc8b339ae5322f4bd2d87f0af94fa5ce604cb3838c7a0a558aa" "95ca92917c3104a21b0ca53aacd8a078a7f2b2dfd2fdea4a03b66b8a221379c8" "a766f853da047828950697c7a54d6767e590772d7222b0ef94db38a1edc7e67f" "eeff689a7d087484b6f17b9564f3ed2ce322365873ce7b404d57d11c45d989fc" "bbaffa6a34aa087194dad4b32d9b11fa2b3ca24e1fe569c6fa5f30c7ee969534" default)))
  '(display-battery-mode nil)
  '(fci-rule-color "#323a42")
  '(fiplr-ignored-globs

@@ -194,7 +194,13 @@ will be used."
 
     ;; emms
     (evil-leader/set-key
-      "em" 'emms-playlist-mode-go)
+      "emm" 'emms-playlist-mode-go
+      "emn" 'emms-next
+      "emp" 'emms-previous
+      "emP" 'emms-pause
+      "emR" 'emms-random-playlist
+      "em+" 'emms-volume-mode-plus
+      "em-" 'emms-volume-mode-minus)
 
     ;; register
     (evil-leader/set-key
