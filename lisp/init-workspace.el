@@ -16,19 +16,16 @@
   (let ((s (concat " [" (concat (int-to-string (window-numbering-get-number window)) "]"))))
     (propertize s 'face 'window-numbering-face)))
 
-(defun lqz/persp-cycle (&optional num delnil)
+(defun lqz/persp-cycle (&optional num)
   "Cycling `persp' workspaces.
 
 If `num' is negative, then switch to previous workspace, else the
 next one.
-
-If `delnil' is nil, then switch between all workspaces, including
-the nil one. Default is t.
   "
   (interactive)
   (let* ((neg? (and num (< num 0)))
 	 (cur (safe-persp-name (get-frame-persp)))
-	 (persps (if (not delnil) (delete persp-nil-name (persp-names-sorted)) (persp-names-sorted)))
+	 (persps (persp-names-sorted))
 	 (pos (cl-position cur persps :test #'string=))
 	 (trail (if neg? 0 (1- (length persps))))
 	 (cycle (if neg? (1- (length persps)) 0))
