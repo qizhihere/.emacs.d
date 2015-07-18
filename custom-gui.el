@@ -11,6 +11,7 @@
  '(battery-mode-line-format "Bat: %p")
  '(battery-update-interval 10)
  '(coffee-tab-width 2)
+ '(column-number-mode t)
  '(comment-style (quote extra-line))
  '(company-idle-delay 0)
  '(company-minimum-prefix-length 2)
@@ -55,7 +56,7 @@
  '(org-startup-indented t)
  '(package-selected-packages
    (quote
-    (emms helm-wgrep chinese-pyim edit-server sqlup-mode kivy-mode smex smart-tabs-mode jquery-doc workgroups2 helm-project-persist persp-mode helm-zhihu-daily ag comment-dwim-2 eide zenburn-theme youdao-dictionary yasnippet yaml-mode window-numbering wgrep-ag web-mode web-beautify vimrc-mode sr-speedbar solarized-theme smart-mode-line sass-mode real-auto-save rainbow-mode projectile-speedbar php-extras php-eldoc pcre2el outline-magic nyan-mode nginx-mode multiple-cursors markdown-mode magit lua-mode linum-relative key-chord js2-mode jade-mode info+ indent-guide iedit hydra htmlize highlight-symbol highlight-sexp highlight-parentheses highlight-chars helm-swoop helm-projectile helm-mode-manager helm-flyspell helm-flymake helm-flycheck helm-emmet helm-descbinds helm-bm helm-anything helm-ag guide-key google-translate gitignore-mode git-timemachine git-gutter flycheck-tip fish-mode firecode-theme firebelly-theme fiplr evil-surround evil-snipe evil-matchit evil-leader evil-exchange evil-args evil-anzu drag-stuff dired-rainbow dired-filter dired-efap dired-details+ dired+ cyberpunk-theme css-eldoc company-web company-statistics company-jedi color-theme-sanityinc-tomorrow coffee-mode autopair anti-zenburn-theme 2048-game)))
+    (unicode-fonts emms helm-wgrep chinese-pyim edit-server sqlup-mode kivy-mode smex smart-tabs-mode jquery-doc workgroups2 helm-project-persist persp-mode helm-zhihu-daily ag comment-dwim-2 eide zenburn-theme youdao-dictionary yasnippet yaml-mode window-numbering wgrep-ag web-mode web-beautify vimrc-mode sr-speedbar solarized-theme smart-mode-line sass-mode real-auto-save rainbow-mode projectile-speedbar php-extras php-eldoc pcre2el outline-magic nyan-mode nginx-mode multiple-cursors markdown-mode magit lua-mode linum-relative key-chord js2-mode jade-mode info+ indent-guide iedit hydra htmlize highlight-symbol highlight-sexp highlight-parentheses highlight-chars helm-swoop helm-projectile helm-mode-manager helm-flyspell helm-flymake helm-flycheck helm-emmet helm-descbinds helm-bm helm-anything helm-ag guide-key google-translate gitignore-mode git-timemachine git-gutter flycheck-tip fish-mode firecode-theme firebelly-theme fiplr evil-surround evil-snipe evil-matchit evil-leader evil-exchange evil-args evil-anzu drag-stuff dired-rainbow dired-filter dired-efap dired-details+ dired+ cyberpunk-theme css-eldoc company-web company-statistics company-jedi color-theme-sanityinc-tomorrow coffee-mode autopair anti-zenburn-theme 2048-game)))
  '(persp-auto-resume-time 1.0)
  '(persp-filter-save-buffers-functions
    (quote
@@ -84,6 +85,7 @@
      (:name "网络流行新词" :file "/home/qizhi/.emacs.d/dicts/pyim/网络流行新词.pyim" :coding utf-8-unix :dict-type pinyin-dict))))
  '(semantic-mode nil)
  '(session-save-file (lqz/init-dir "session/emacs.session"))
+ '(sml/show-eol t)
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote

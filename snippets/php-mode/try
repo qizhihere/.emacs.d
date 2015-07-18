@@ -1,6 +1,13 @@
-#contributor : Andrew Gwozdziewycz <web@apgwoz.com>
-#name : try { ... }
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: try
+# key: try
+# binding: direct-keybinding
 # --
-try {
-  $0
+try
+{
+    $1
+}
+catch(${2:\Exception ${3:$e}})
+{
+    $0
 }

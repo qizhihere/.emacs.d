@@ -24,10 +24,11 @@
 	       (emms-playlist-current-selected-track)))
 	 (str (replace-regexp-in-string "/.*/" "" str))
 	 (str (replace-regexp-in-string " +" ""
-		 (replace-regexp-in-string "\.[a-zA-Z0-9]+$" "" str)))
+		(replace-regexp-in-string "\.[a-zA-Z0-9]+$" "" str)))
+	 (str (replace-regexp-in-string ".+?-" "" str))
 	 (is-abbr (<= (length str) 8))
 	 (len (if is-abbr (length str) 8)))
-    (concat " [" (substring str 0 len) (if is-abbr " ") "]")))
+    (concat " \u266a " (substring str 0 len) (if is-abbr "+") " ")))
 (setq emms-mode-line-mode-line-function
       'lqz/emms-mode-line-function
       emms-mode-line-format "%s")

@@ -7,7 +7,8 @@
 ;; (setq sml/vc-mode-show-backend t)
 (setq sml/no-confirm-load-theme t
       sml/theme 'respectful
-      sml/mode-width 25)
+      sml/mode-width 'full
+      sml/name-width (cons 1 20))
 (sml/setup)
 
 ;; hide some minor modes from mode line
