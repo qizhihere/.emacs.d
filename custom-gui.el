@@ -10,6 +10,7 @@
  '(auto-revert-interval 1)
  '(battery-mode-line-format "Bat: %p")
  '(battery-update-interval 10)
+ '(cfs--current-profile-name "org-mode" t)
  '(coffee-tab-width 2)
  '(column-number-mode t)
  '(comment-style (quote extra-line))

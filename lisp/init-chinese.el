@@ -15,4 +15,4 @@
 (define-key org-mode-map (kbd "M-b") 'pyim-backward-word)
 
 
-(provide 'init-input-method)
+(provide 'init-chinese)

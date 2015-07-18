@@ -61,7 +61,7 @@
 (require 'init-other-minor-mode)
 
 (require 'init-dictionary)
-(require 'init-input-method)
+(require 'init-chinese)
 (require 'init-flycheck)
 (require 'init-flyspell)
 (require 'init-hippie-expand)

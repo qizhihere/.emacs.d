@@ -47,12 +47,8 @@
 (add-hook 'prog-mode-hook 'drag-stuff-mode)
 
 ;; set defualt coding system
-(setq-default buffer-file-coding-system 'utf-8-unix)
-(setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
-
-;; auto fill prefix
-(setq adaptive-fill-regexp "[ \t]+\\|[ \t]*\\([0-9]+\\.\\|\\*+\\|[ \t]*[\\+\\-]\\)[ \t]*")
-(setq adaptive-fill-first-line-regexp "^\\* *$")
+(prefer-coding-system 'utf-8)
+(setq-default buffer-file-coding-system 'utf-8)
 
 ;; replace selection with typed text if the selection is active
 (delete-selection-mode 1)

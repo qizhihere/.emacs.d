@@ -12,8 +12,17 @@
 ;; Chinese font
 (dolist (charset '(kana han symbol cjk-misc bopomofo))
   (set-fontset-font (frame-parameter nil 'font)
-                    charset
-                    (font-spec :family "WenQuanYi Micro Hei Mono Regular" :size 12)))
+		    charset
+		    (font-spec :family "WenQuanYi Micro Hei" :size 17)))
+
+;; specify font for all unicode characters
+(when (member "Symbola" (font-family-list))
+  (set-fontset-font t 'unicode "Symbola" nil 'prepend))
+
+;; set Unicode data file location. (used by what-cursor-position and describe-char)
+(let ((x (lqz/init-dir "configs/UnicodeData.txt")))
+  (when (file-exists-p x)
+    (setq describe-char-unicodedata-file x)))
 
 ;; font scale shortcut key
 (global-set-key (kbd "C-+") 'text-scale-increase)
