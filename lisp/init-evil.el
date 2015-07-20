@@ -8,7 +8,8 @@
 	compilation-mode
 	completion-list-mode
 	help-mode
-	edit-server-edit-mode)
+	edit-server-edit-mode
+	undo-tree-visualizer-mode)
       lqz/evil-normal-state-modes
       '(org-mode))
 
