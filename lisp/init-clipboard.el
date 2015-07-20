@@ -1,3 +1,5 @@
+;; disable automatically copy selected region to x clipboard
+
 (defun xcopy (&optional del)
   "Copy or cut the active region (from BEG to END) to the system
 clipboard."
@@ -7,13 +9,13 @@ clipboard."
   (let ((pos (list (region-beginning) (region-end)))
 	(act "Copied")
 	(cmd (if (executable-find "xclip") '("xclip" "-selection clipboard -i") '("xsel" "-bi"))))
-    ;; (if (display-graphic-p)
-    ;;	(x-set-selection 'CLIPBOARD (buffer-substring (car pos) (cadr pos)))
+    (if (display-graphic-p)
+	(x-set-selection 'CLIPBOARD (buffer-substring (car pos) (cadr pos)))
       (cond ((executable-find "xclip")
 	     (call-process-region (car pos) (cadr pos) "xclip" nil 0 nil "-selection" "clipboard" "-i"))
 	    ((executable-find "xsel")
 	     (call-process-region (car pos) (cadr pos) "xsel" nil 0 nil "-b" "-i"))
-	    (t (error "Niether xclip nor xclip installed!")))
+	    (t (error "Niether xclip nor xclip installed!"))))
     (if del (and (setq act "Cut") (delete-region (car pos) (cadr pos))))
     (message "%s to clipboard." act)))
 
@@ -21,18 +23,16 @@ clipboard."
   "Paste system clipboard's contents into buffer."
   (interactive)
   (let ((content ""))
-    ;; (if (display-graphic-p)
-    ;;	(setq content (x-get-clipboard))
+    (if (display-graphic-p)
+	(setq content (x-get-clipboard))
       (let* ((cmd
 	      (if (executable-find "xclip")
 		  "xclip -selection clipboard -o"
 		"xsel -bo")))
-	(setq content (shell-command-to-string cmd)))
-    (print content)
+	(setq content (shell-command-to-string cmd))))
     (if (use-region-p)
 	(delete-region (region-beginning) (region-end)))
-    (insert content)
-    (message "Pasted from clipboard.")))
+    (insert content)))
 
 
 (defun xcut ()

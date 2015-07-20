@@ -1,5 +1,5 @@
-(lqz/require 'evil)
-(lqz/require 'evil-anzu) ;; show search info in evil-mode
+(lqz/require '(evil
+	       evil-anzu)) ;; show search info in evil-mode
 
 ;; Disable evil for certain major-modes
 (setq lqz/evil-disabled-modes
@@ -31,13 +31,18 @@
 (add-hook 'prog-mode-hook 'evil-initialize)
 
 ;; keep some common keys of emacs in insert state
-(define-key evil-insert-state-map (kbd "C-a") 'beginning-of-line)
-(define-key evil-insert-state-map (kbd "C-e") 'end-of-line)
-(define-key evil-insert-state-map (kbd "C-p") 'previous-line)
-(define-key evil-insert-state-map (kbd "C-n") 'next-line)
-(define-key evil-insert-state-map (kbd "C-k") 'kill-line)
-(define-key evil-insert-state-map (kbd "M-a") 'backward-sentence)
-(define-key evil-insert-state-map (kbd "M-e") 'forward-sentence)
+(let ((evil-common-keys
+       '(("C-a"  beginning-of-line)
+	 ("C-e"  end-of-line)
+	 ("C-p"  previous-line)
+	 ("C-n"  next-line)
+	 ("C-k"  kill-line)
+	 ("M-a"  backward-sentence)
+	 ("M-e"  forward-sentence))))
+  (dolist (bind evil-common-keys)
+    (define-key evil-insert-state-map (kbd (car bind)) (cadr bind))
+    (define-key evil-operator-state-map (kbd (car bind)) (cadr bind))
+    (define-key evil-replace-state-map (kbd (car bind)) (cadr bind))))
 
 
 ;; remap escape key

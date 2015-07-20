@@ -1,4 +1,4 @@
- :(lqz/require '(undo-tree))
+(lqz/require '(undo-tree))
 
 (defadvice undo-tree-visualize (around undo-tree-split-side-by-side activate)
   "Split undo-tree side-by-side"
