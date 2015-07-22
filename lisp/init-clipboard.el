@@ -1,4 +1,7 @@
 ;; disable automatically copy selected region to x clipboard
+(setq x-select-enable-clipboard nil)
+(setq xcopy-prefer-gui t
+      xpaste-prefer-gui nil)
 
 (defun xcopy (&optional del)
   "Copy or cut the active region (from BEG to END) to the system
@@ -9,7 +12,7 @@ clipboard."
   (let ((pos (list (region-beginning) (region-end)))
 	(act "Copied")
 	(cmd (if (executable-find "xclip") '("xclip" "-selection clipboard -i") '("xsel" "-bi"))))
-    (if (display-graphic-p)
+    (if (and (display-graphic-p) (boundp 'xcopy-prefer-gui) xcopy-prefer-gui)
 	(x-set-selection 'CLIPBOARD (buffer-substring (car pos) (cadr pos)))
       (cond ((executable-find "xclip")
 	     (call-process-region (car pos) (cadr pos) "xclip" nil 0 nil "-selection" "clipboard" "-i"))
@@ -23,7 +26,7 @@ clipboard."
   "Paste system clipboard's contents into buffer."
   (interactive)
   (let ((content ""))
-    (if (display-graphic-p)
+    (if (and (display-graphic-p) (boundp 'xpaste-prefer-gui) xpaste-prefer-gui)
 	(setq content (x-get-clipboard))
       (let* ((cmd
 	      (if (executable-find "xclip")

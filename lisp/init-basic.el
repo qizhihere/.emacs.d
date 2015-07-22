@@ -43,12 +43,18 @@
 ;; edit settings
 ;;--------------------------
 (lqz/require '(drag-stuff      ;; use M-arrow to move line or word
-	       pcre2el))       ;; use pcre in emacs
+           pcre2el))       ;; use pcre in emacs
 (add-hook 'prog-mode-hook 'drag-stuff-mode)
 
 ;; set defualt coding system
 (prefer-coding-system 'utf-8)
-(setq-default buffer-file-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-clipboard-coding-system 'utf-8)
+(set-buffer-file-coding-system 'utf-8)
+(setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
+
 
 ;; replace selection with typed text if the selection is active
 (delete-selection-mode 1)

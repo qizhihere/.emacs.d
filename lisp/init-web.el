@@ -5,20 +5,38 @@
 		jade-mode coffee-mode
 		sass-mode))
 
-;; html
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html\\.twig\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.blade.php\\'" . web-mode))
-;; html indent offset
-(setq web-mode-markup-indent-offset 2)
+;; set template engines
+(setq web-mode-engines-alist
+      '(("php"    . "\\.tpl\\'")
+	("blade"  . "\\.blade\\."))
+)
+
+;; set some common args
+(defun lqz/setup-webmode ()
+  (setq web-mode-markup-indent-offset 2
+	web-mode-code-indent-offset 2
+	web-mode-css-indent-offset 2
+	web-mode-comment-style 2
+	web-mode-enable-auto-pairing t
+	web-mode-enable-current-element-highlight t
+	web-mode-enable-current-column-highlight nil))
+
+(add-hook 'web-mode-hook 'lqz/setup-webmode)
 
 ;; css
 (add-hook 'css-mode-hook 'emmet-mode)
 
 ;; emmet
 (add-hook 'web-mode-hook 'emmet-mode)
+
+;; html/template
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html\\.twig\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.blade.php\\'" . web-mode))
+
+
 
 ;; js
 

@@ -198,7 +198,7 @@ will be used."
       "emn" 'emms-next
       "emp" 'emms-previous
       "emP" 'emms-pause
-      "emR" 'emms-random-playlist
+      "emR" 'emms-toggle-random-playlist
       "em+" 'emms-volume-mode-plus
       "em-" 'emms-volume-mode-minus)
 
@@ -238,7 +238,8 @@ will be used."
     )
 
 
-  (global-set-key (kbd "M-'")	 'comment-dwim-2)
+  (global-unset-key (kbd "M-;"))
+  (global-set-key (kbd "M-;")	 'comment-dwim-2)
   (global-set-key [f12]		 'persp-switch)
   (global-set-key (kbd "C-S-s")    'phi-search)
   (global-set-key (kbd "C-S-r")    'phi-search-backward)

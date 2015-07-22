@@ -1,0 +1,11 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: docblockr
+# key: /**
+# binding: direct-keybinding
+# --
+/**
+ * ${1:Description}
+ *
+ * @param  ${2:type} ${3:$argv}
+ * @return ${4:return}
+ */

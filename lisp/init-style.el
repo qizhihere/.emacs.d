@@ -64,7 +64,6 @@
 (setq highlight-symbol-idle-delay 0.3)
 (add-hook 'prog-mode-hook 'highlight-symbol-mode)
 
-
 (lqz/require 'indent-guide)
 (defun lqz/indent-guide () (if (< (count-lines (point-min) (point-max)) 500) (indent-guide-mode)))
 ;; (add-hook 'prog-mode-hook 'lqz/indent-guide)

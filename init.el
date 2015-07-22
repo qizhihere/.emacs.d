@@ -50,6 +50,7 @@
 (require 'init-workspace)
 (require 'init-outline)
 (require 'init-hydra)
+(require 'init-indent)
 
 (require 'init-web)
 (require 'init-php)
