@@ -1,17 +1,4 @@
-(lqz/require '(indent-guide aggressive-indent))
-
-;;----------------------------------------------------------------------------
-;; indent guide
-;;----------------------------------------------------------------------------
-(defun lqz/indent-guide ()
-  (if (< (count-lines (point-min) (point-max)) 500)
-      (indent-guide-mode)))
-;; (add-hook 'prog-mode-hook 'lqz/indent-guide)
-(add-hook 'web-mode-hook 'lqz/indent-guide)
-(setq indent-guide-recursive t
-      ;; indent-guide-char "│"
-      indent-guide-inhibit-modes
-      '(dired-mode package-menu-mode))
+(lqz/require '(aggressive-indent))
 
 ;;----------------------------------------------------------------------------
 ;; aggressive indent
