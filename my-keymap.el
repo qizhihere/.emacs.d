@@ -176,6 +176,7 @@ will be used."
   ;; git related
   (evil-leader/set-key
 	"gis" 'magit-status
+	"gii" 'magit-status
 	"gil" 'magit-log-current
 	"gir" 'magit-reflog-current
 	"ggn" 'git-gutter:next-hunk

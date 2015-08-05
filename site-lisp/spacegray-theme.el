@@ -48,25 +48,25 @@
   "A Hyperminimal UI Theme for Emacs")
 (display-color-cells (selected-frame))
 (let* ((class '((class color) (min-colors 89)))
-       (256color (eq (display-color-cells (selected-frame)) 256))
+	   (256color (eq (display-color-cells (selected-frame)) 256))
 
-       (background "#2B303B") ;; sidebar-container
-       (background-1 "#333D46")
-       (background-2 "#343D46")
-       (current-line "#323a42") ;; tree-row
-       (far-background "#1c1f26") ;; panel-control
-       (subtle "#a7adba") ;; tree-row-hover-disclosure-button-control
-       (selection "#4F5B66") ;; tab-control-dirty-tab-close-button
-       (secondary-selection "#c000c0") ;; tab-control-hover-tab-close-button
-       (foreground "#ffffff")
-       (comment "#4f5b67") ;; table-row
-       (red "#bf616a") ;; tab-control-hover-tab-close-button
-       (orange "#DCA432") ;; darker tab-control-dirty-tab-close-butto
-       (yellow "#ebcb8b") ;; tab-control-dirty-tab-close-button
-       (green "#B4EB89") ;; complement tab-control-dirty-tab-close-button
-       (aqua "#89EBCA") ;; lighter complement tab-control-dirty-tab-close-button
-       (blue "#89AAEB") ;; complement tab-control-dirty-tab-close-button
-       (purple "#C189EB")) ;; complement tab-control-dirty-tab-close-button
+	   (background "#2B303B") ;; sidebar-container
+	   (background-1 "#333D46")
+	   (background-2 "#343D46")
+	   (current-line "#323a42") ;; tree-row
+	   (far-background "#1c1f26") ;; panel-control
+	   (subtle "#a7adba") ;; tree-row-hover-disclosure-button-control
+	   (selection "#4F5B66") ;; tab-control-dirty-tab-close-button
+	   (secondary-selection "#c000c0") ;; tab-control-hover-tab-close-button
+	   (foreground "#ffffff")
+	   (comment "#4f5b67") ;; table-row
+	   (red "#bf616a") ;; tab-control-hover-tab-close-button
+	   (orange "#DCA432") ;; darker tab-control-dirty-tab-close-butto
+	   (yellow "#ebcb8b") ;; tab-control-dirty-tab-close-button
+	   (green "#B4EB89") ;; complement tab-control-dirty-tab-close-button
+	   (aqua "#89EBCA") ;; lighter complement tab-control-dirty-tab-close-button
+	   (blue "#89AAEB") ;; complement tab-control-dirty-tab-close-button
+	   (purple "#C189EB")) ;; complement tab-control-dirty-tab-close-button
 
   (setq hl-sexp-background-color background-2)
 
@@ -110,9 +110,9 @@
    `(company-tooltip ((t (:foreground "#65737E" :background ,background-1))))
    `(company-tooltip-annotation ((t (:foreground "#65737E" :background ,background-1))))
    `(company-tooltip-selection ((t (:foreground "#A7ADBA" :background "#4F5B67"))))
-   `(company-tooltip-mouse ((t (:background "#4F5b67"))))
-   `(company-tooltip-common ((t (:foreground "#CDCDCD" :weight bold))))
-   `(company-tooltip-common-selection ((t (:weight bold))))
+   `(company-tooltip-mouse ((t (:background "#4F5B67"))))
+   `(company-tooltip-common ((t (:foreground "#CDCDCD" :background "#232830" :weight bold))))
+   `(company-tooltip-common-selection ((t (:background "#4F5B67" :weight bold))))
    `(company-scrollbar-fg ((t (:background ,background-2))))
    `(company-scrollbar-bg ((t (:background "#232830"))))
    `(company-preview ((t (:background "#CDCDCD"))))
@@ -190,12 +190,12 @@
    `(highlight ((,class (:inverse-video nil :background ,current-line))))
    `(gui-element ((,class (:background ,current-line :foreground ,foreground))))
    `(mode-line ((,class (:foreground ,foreground :background ,far-background
-				     :family "Lucida Grande"))))
+									 :family "Lucida Grande"))))
    `(mode-line-buffer-id ((,class (:foreground ,foreground :background nil))))
    `(mode-line-inactive ((,class (:inherit mode-line
-					   :foreground ,subtle
-					   :background ,far-background :weight normal
-					   :box nil))))
+										   :foreground ,subtle
+										   :background ,far-background :weight normal
+										   :box nil))))
    `(mode-line-emphasis ((,class (:foreground ,foreground :slant italic))))
    `(mode-line-highlight ((,class (:foreground ,purple :box nil))))
    `(minibuffer-prompt ((,class (:foreground ,blue))))
@@ -647,24 +647,24 @@
    'spacegray
    `(fci-rule-color ,current-line)
    `(vc-annotate-color-map
-     '((20  . ,red)
-       (40  . ,orange)
-       (60  . ,yellow)
-       (80  . ,green)
-       (100 . ,aqua)
-       (120 . ,blue)
-       (140 . ,purple)
-       (160 . ,red)
-       (180 . ,orange)
-       (200 . ,yellow)
-       (220 . ,green)
-       (240 . ,aqua)
-       (260 . ,blue)
-       (280 . ,purple)
-       (300 . ,red)
-       (320 . ,orange)
-       (340 . ,yellow)
-       (360 . ,green)))
+	 '((20  . ,red)
+	   (40  . ,orange)
+	   (60  . ,yellow)
+	   (80  . ,green)
+	   (100 . ,aqua)
+	   (120 . ,blue)
+	   (140 . ,purple)
+	   (160 . ,red)
+	   (180 . ,orange)
+	   (200 . ,yellow)
+	   (220 . ,green)
+	   (240 . ,aqua)
+	   (260 . ,blue)
+	   (280 . ,purple)
+	   (300 . ,red)
+	   (320 . ,orange)
+	   (340 . ,yellow)
+	   (360 . ,green)))
    `(vc-annotate-very-old-color nil)
    `(vc-annotate-background nil)
    `(ansi-color-names-vector (vector ,foreground ,red ,green ,yellow ,blue ,purple ,aqua ,background))
@@ -675,7 +675,7 @@
 	   load-file-name)
   ;; add theme folder to `custom-theme-load-path' when installing over MELPA
   (add-to-list 'custom-theme-load-path
-	       (file-name-as-directory (file-name-directory load-file-name))))
+		   (file-name-as-directory (file-name-directory load-file-name))))
 
 
 
