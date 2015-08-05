@@ -43,7 +43,7 @@
 ;; edit settings
 ;;--------------------------
 (lqz/require '(drag-stuff      ;; use M-arrow to move line or word
-           pcre2el))       ;; use pcre in emacs
+	   pcre2el))       ;; use pcre in emacs
 (add-hook 'prog-mode-hook 'drag-stuff-mode)
 
 ;; set defualt coding system
@@ -77,10 +77,9 @@
 ;; enable shift+arrow key to select text
 (setq shift-select-mode t)
 
-;; set tab width
+;; no evil tabs
+(setq-default tab-width 4)
 (setq indent-tabs-mode nil)
-(setq tab-width 4)
-(setq c-basic-offset 4)
 
 ;; disable page jump when cursor scrolling to the margin
 (setq scroll-margin 3

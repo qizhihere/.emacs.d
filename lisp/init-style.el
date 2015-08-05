@@ -6,16 +6,16 @@
 (lqz/require 'smart-mode-line)
 ;; (setq sml/vc-mode-show-backend t)
 (setq sml/no-confirm-load-theme t
-      sml/theme 'respectful
-      sml/mode-width 'full
-      sml/name-width (cons 1 20))
+	  sml/theme 'respectful
+	  sml/mode-width 'full
+	  sml/name-width (cons 1 20))
 (sml/setup)
 
 ;; hide some minor modes from mode line
 (setq lqz/rm-blacklist-regexps
-      '("Guide" "Git" "Outl" "snipe" "Anzu" "company"
-	"Undo-Tree" "hs" "ivy" "yas" "hl-" "Helm"
-	"Rbow" "drag"))
+	  '("Guide" "Git" "Outl" "snipe" "Anzu" "company"
+		"Undo-Tree" "hs" "ivy" "yas" "hl-" "Helm"
+		"Rbow" "drag"))
 (setq rm-blacklist (mapconcat 'identity lqz/rm-blacklist-regexps "\\|"))
 
 ;; show current time in mode line

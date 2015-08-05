@@ -9,12 +9,12 @@
   "Other window move-down 2 lines."
   (interactive "P")
   (if arg
-      (scroll-other-window-down arg)
-    (scroll-other-window-down 2)))
+	  (scroll-other-window-down arg)
+	(scroll-other-window-down 2)))
 
 (defun window-numbering-get-number-string (&optional window)
-  (let ((s (concat " [" (concat (int-to-string (window-numbering-get-number window)) "]"))))
-    (propertize s 'face 'window-numbering-face)))
+  (let ((s (concat " [" (concat (int-to-string (window-numbering-get-number window)) "] "))))
+	(propertize s 'face 'window-numbering-face)))
 
 (defun lqz/persp-cycle (&optional num)
   "Cycling `persp' workspaces.
@@ -30,11 +30,11 @@ next one.
 	 (trail (if neg? 0 (1- (length persps))))
 	 (cycle (if neg? (1- (length persps)) 0))
 	 (target (if neg? (1- pos) (1+ pos))))
-    (cond
-     ((null pos) (persp-switch))
-    ((= pos trail)
-     (persp-switch (nth cycle persps)))
-    (t (persp-switch (nth target persps))))))
+	(cond
+	 ((null pos) (persp-switch))
+	((= pos trail)
+	 (persp-switch (nth cycle persps)))
+	(t (persp-switch (nth target persps))))))
 
 (defun lqz/persp-next ()
   "Switch to the next persp workspace."

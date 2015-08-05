@@ -20,5 +20,8 @@
 ;; lua mode
 (lqz/require 'lua-mode)
 
+;; Dockerfile mode
+(lqz/require 'dockerfile-mode)
+
 
 (provide 'init-other-minor-mode)

@@ -20,15 +20,15 @@
  '(company-show-numbers t)
  '(custom-safe-themes
    (quote
-    ("2359ec39c6f44bc8b339ae5322f4bd2d87f0af94fa5ce604cb3838c7a0a558aa" "95ca92917c3104a21b0ca53aacd8a078a7f2b2dfd2fdea4a03b66b8a221379c8" "a766f853da047828950697c7a54d6767e590772d7222b0ef94db38a1edc7e67f" "eeff689a7d087484b6f17b9564f3ed2ce322365873ce7b404d57d11c45d989fc" "bbaffa6a34aa087194dad4b32d9b11fa2b3ca24e1fe569c6fa5f30c7ee969534" default)))
+	("2359ec39c6f44bc8b339ae5322f4bd2d87f0af94fa5ce604cb3838c7a0a558aa" "95ca92917c3104a21b0ca53aacd8a078a7f2b2dfd2fdea4a03b66b8a221379c8" "a766f853da047828950697c7a54d6767e590772d7222b0ef94db38a1edc7e67f" "eeff689a7d087484b6f17b9564f3ed2ce322365873ce7b404d57d11c45d989fc" "bbaffa6a34aa087194dad4b32d9b11fa2b3ca24e1fe569c6fa5f30c7ee969534" default)))
  '(display-battery-mode nil)
  '(fci-rule-color "#323a42")
  '(fiplr-ignored-globs
    (quote
-    ((directories
-      (".git" ".svn" ".hg" ".bzr" "vendor"))
-     (files
-      (".#*" "*~" "*.so" "*.jpg" "*.png" "*.gif" "*.pdf" "*.gz" "*.zip")))))
+	((directories
+	  (".git" ".svn" ".hg" ".bzr" "vendor"))
+	 (files
+	  (".#*" "*~" "*.so" "*.jpg" "*.png" "*.gif" "*.pdf" "*.gz" "*.zip")))))
  '(fiplr-root-markers (quote (".git" ".svn" ".hg" ".bzr" "composer.json")))
  '(flymake-fringe-indicator-position (quote right-fringe))
  '(git-gutter:added-sign "+")
@@ -39,8 +39,8 @@
  '(helm-M-x-always-save-history t)
  '(helm-ag-base-command
    (concat
-    (lqz/init-dir "utils/bin/ag")
-    " --nocolor --nogroup --ignore-case"))
+	(lqz/init-dir "utils/bin/ag")
+	" --nocolor --nogroup --ignore-case"))
  '(helm-ag-command-option "--all-text")
  '(helm-ag-insert-at-point (quote symbol))
  '(helm-dash-docsets-path (lqz/init-dir "docs") t)
@@ -57,59 +57,59 @@
  '(org-startup-indented t)
  '(package-selected-packages
    (quote
-    (aggressive-indent indent-guide company-tern tern
-		       (quote evil-anzu)
-		       unicode-fonts emms helm-wgrep chinese-pyim edit-server sqlup-mode kivy-mode smex smart-tabs-mode jquery-doc workgroups2 helm-project-persist persp-mode helm-zhihu-daily ag comment-dwim-2 eide zenburn-theme youdao-dictionary yasnippet yaml-mode window-numbering wgrep-ag web-mode web-beautify vimrc-mode sr-speedbar solarized-theme smart-mode-line sass-mode real-auto-save rainbow-mode projectile-speedbar php-extras php-eldoc pcre2el outline-magic nyan-mode nginx-mode multiple-cursors markdown-mode magit lua-mode linum-relative key-chord js2-mode jade-mode info+ iedit hydra htmlize highlight-symbol highlight-sexp highlight-parentheses highlight-chars helm-swoop helm-projectile helm-mode-manager helm-flyspell helm-flymake helm-flycheck helm-emmet helm-descbinds helm-bm helm-anything helm-ag guide-key google-translate gitignore-mode git-timemachine git-gutter flycheck-tip fish-mode firecode-theme firebelly-theme fiplr evil-surround evil-snipe evil-matchit evil-leader evil-exchange evil-args evil-anzu drag-stuff dired-rainbow dired-filter dired-efap dired-details+ dired+ cyberpunk-theme css-eldoc company-web company-statistics company-jedi color-theme-sanityinc-tomorrow coffee-mode autopair anti-zenburn-theme 2048-game)))
+	(dockerfile-mode json-reformat aggressive-indent indent-guide company-tern tern
+					 (quote evil-anzu)
+					 unicode-fonts emms helm-wgrep chinese-pyim edit-server sqlup-mode kivy-mode smex smart-tabs-mode jquery-doc workgroups2 helm-project-persist persp-mode helm-zhihu-daily ag comment-dwim-2 eide zenburn-theme youdao-dictionary yasnippet yaml-mode window-numbering wgrep-ag web-mode web-beautify vimrc-mode sr-speedbar solarized-theme smart-mode-line sass-mode real-auto-save rainbow-mode projectile-speedbar php-extras php-eldoc pcre2el outline-magic nyan-mode nginx-mode multiple-cursors markdown-mode magit lua-mode linum-relative key-chord js2-mode jade-mode info+ iedit hydra htmlize highlight-symbol highlight-sexp highlight-parentheses highlight-chars helm-swoop helm-projectile helm-mode-manager helm-flyspell helm-flymake helm-flycheck helm-emmet helm-descbinds helm-bm helm-anything helm-ag guide-key google-translate gitignore-mode git-timemachine git-gutter flycheck-tip fish-mode firecode-theme firebelly-theme fiplr evil-surround evil-snipe evil-matchit evil-leader evil-exchange evil-args evil-anzu drag-stuff dired-rainbow dired-filter dired-efap dired-details+ dired+ cyberpunk-theme css-eldoc company-web company-statistics company-jedi color-theme-sanityinc-tomorrow coffee-mode autopair anti-zenburn-theme 2048-game)))
  '(persp-auto-resume-time 1.0)
  '(persp-filter-save-buffers-functions
    (quote
-    ((lambda
-       (b)
-       (string-prefix-p " "
-			(buffer-name b)))
-     (lambda
-       (b)
-       (string-prefix-p "*"
-			(buffer-name b)))
-     (lambda
-       (b)
-       (stringp b)))))
+	((lambda
+	   (b)
+	   (string-prefix-p " "
+						(buffer-name b)))
+	 (lambda
+	   (b)
+	   (string-prefix-p "*"
+						(buffer-name b)))
+	 (lambda
+	   (b)
+	   (stringp b)))))
  '(persp-nil-name "main")
  '(php-lineup-cascaded-calls t)
  '(projectile-known-projects-file (lqz/init-dir "tmp/projectile-bookmarks.eld"))
  '(pyim-dicts
    (quote
-    ((:name "pyim-bigdict" :file "/home/qizhi/.emacs.d/dicts/pyim/pyim-bigdict.pyim" :coding utf-8-unix :dict-type pinyin-dict)
-     (:name "sogou" :file "/home/qizhi/.emacs.d/dicts/pyim/sougou-phrases-full.txt" :coding utf-8-unix :dict-type pinyin-dict)
-     (:name "pyim-guessdict" :file "/home/qizhi/.emacs.d/dicts/pyim/pyim-guessdict.gpyim" :coding utf-8-unix :dict-type guess-dict)
-     (:name "地质大词典" :file "/home/qizhi/.emacs.d/dicts/地质大词典.pyim" :coding utf-8-unix :dict-type pinyin-dict)
-     (:name "诗词名句大全" :file "/home/qizhi/.emacs.d/dicts/pyim/诗词名句大全.pyim" :coding utf-8-unix :dict-type pinyin-dict)
-     (:name "搜狗颜文字表情包" :file "/home/qizhi/.emacs.d/dicts/pyim/搜狗颜文字表情包.pyim" :coding utf-8-unix :dict-type pinyin-dict)
-     (:name "网络流行新词" :file "/home/qizhi/.emacs.d/dicts/pyim/网络流行新词.pyim" :coding utf-8-unix :dict-type pinyin-dict))))
+	((:name "pyim-bigdict" :file "/home/qizhi/.emacs.d/dicts/pyim/pyim-bigdict.pyim" :coding utf-8-unix :dict-type pinyin-dict)
+	 (:name "sogou" :file "/home/qizhi/.emacs.d/dicts/pyim/sougou-phrases-full.txt" :coding utf-8-unix :dict-type pinyin-dict)
+	 (:name "pyim-guessdict" :file "/home/qizhi/.emacs.d/dicts/pyim/pyim-guessdict.gpyim" :coding utf-8-unix :dict-type guess-dict)
+	 (:name "地质大词典" :file "/home/qizhi/.emacs.d/dicts/地质大词典.pyim" :coding utf-8-unix :dict-type pinyin-dict)
+	 (:name "诗词名句大全" :file "/home/qizhi/.emacs.d/dicts/pyim/诗词名句大全.pyim" :coding utf-8-unix :dict-type pinyin-dict)
+	 (:name "搜狗颜文字表情包" :file "/home/qizhi/.emacs.d/dicts/pyim/搜狗颜文字表情包.pyim" :coding utf-8-unix :dict-type pinyin-dict)
+	 (:name "网络流行新词" :file "/home/qizhi/.emacs.d/dicts/pyim/网络流行新词.pyim" :coding utf-8-unix :dict-type pinyin-dict))))
  '(semantic-mode nil)
  '(session-save-file (lqz/init-dir "session/emacs.session"))
  '(sml/show-eol t)
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
-    ((20 . "#bf616a")
-     (40 . "#DCA432")
-     (60 . "#ebcb8b")
-     (80 . "#B4EB89")
-     (100 . "#89EBCA")
-     (120 . "#89AAEB")
-     (140 . "#C189EB")
-     (160 . "#bf616a")
-     (180 . "#DCA432")
-     (200 . "#ebcb8b")
-     (220 . "#B4EB89")
-     (240 . "#89EBCA")
-     (260 . "#89AAEB")
-     (280 . "#C189EB")
-     (300 . "#bf616a")
-     (320 . "#DCA432")
-     (340 . "#ebcb8b")
-     (360 . "#B4EB89"))))
+	((20 . "#bf616a")
+	 (40 . "#DCA432")
+	 (60 . "#ebcb8b")
+	 (80 . "#B4EB89")
+	 (100 . "#89EBCA")
+	 (120 . "#89AAEB")
+	 (140 . "#C189EB")
+	 (160 . "#bf616a")
+	 (180 . "#DCA432")
+	 (200 . "#ebcb8b")
+	 (220 . "#B4EB89")
+	 (240 . "#89EBCA")
+	 (260 . "#89AAEB")
+	 (280 . "#C189EB")
+	 (300 . "#bf616a")
+	 (320 . "#DCA432")
+	 (340 . "#ebcb8b")
+	 (360 . "#B4EB89"))))
  '(vc-annotate-very-old-color nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
