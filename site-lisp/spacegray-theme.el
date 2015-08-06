@@ -116,7 +116,7 @@
    `(company-scrollbar-fg ((t (:background ,background-2))))
    `(company-scrollbar-bg ((t (:background "#232830"))))
    `(company-preview ((t (:background "#CDCDCD"))))
-   `(company-preview-common ((t (:foreground "#CDCDCD" :background "#4F5B67"))))
+   `(company-preview-common ((t (:foreground "#ababab" :underline purple))))
 
    ;; Clojure errors
    `(clojure-test-failure-face ((,class (:background nil :inherit flymake-warnline))))

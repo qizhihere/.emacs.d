@@ -20,7 +20,7 @@
  '(company-show-numbers t)
  '(custom-safe-themes
    (quote
-	("2359ec39c6f44bc8b339ae5322f4bd2d87f0af94fa5ce604cb3838c7a0a558aa" "95ca92917c3104a21b0ca53aacd8a078a7f2b2dfd2fdea4a03b66b8a221379c8" "a766f853da047828950697c7a54d6767e590772d7222b0ef94db38a1edc7e67f" "eeff689a7d087484b6f17b9564f3ed2ce322365873ce7b404d57d11c45d989fc" "bbaffa6a34aa087194dad4b32d9b11fa2b3ca24e1fe569c6fa5f30c7ee969534" default)))
+	("3992b9753bdaa3f2ca5960717b04e0357b725f2ca9c68bcfb5ae860917acf9c7" "2359ec39c6f44bc8b339ae5322f4bd2d87f0af94fa5ce604cb3838c7a0a558aa" "95ca92917c3104a21b0ca53aacd8a078a7f2b2dfd2fdea4a03b66b8a221379c8" "a766f853da047828950697c7a54d6767e590772d7222b0ef94db38a1edc7e67f" "eeff689a7d087484b6f17b9564f3ed2ce322365873ce7b404d57d11c45d989fc" "bbaffa6a34aa087194dad4b32d9b11fa2b3ca24e1fe569c6fa5f30c7ee969534" default)))
  '(display-battery-mode nil)
  '(fci-rule-color "#323a42")
  '(fiplr-ignored-globs
@@ -57,9 +57,9 @@
  '(org-startup-indented t)
  '(package-selected-packages
    (quote
-	(dockerfile-mode json-reformat aggressive-indent company-tern tern
-					 (quote evil-anzu)
-					 unicode-fonts emms helm-wgrep chinese-pyim edit-server sqlup-mode kivy-mode smex smart-tabs-mode jquery-doc workgroups2 helm-project-persist persp-mode helm-zhihu-daily ag comment-dwim-2 eide zenburn-theme youdao-dictionary yasnippet yaml-mode window-numbering wgrep-ag web-mode web-beautify vimrc-mode sr-speedbar solarized-theme smart-mode-line sass-mode real-auto-save rainbow-mode projectile-speedbar php-extras php-eldoc pcre2el outline-magic nyan-mode nginx-mode multiple-cursors markdown-mode magit lua-mode linum-relative key-chord js2-mode jade-mode info+ iedit hydra htmlize highlight-symbol highlight-sexp highlight-parentheses highlight-chars helm-swoop helm-projectile helm-mode-manager helm-flyspell helm-flymake helm-flycheck helm-emmet helm-descbinds helm-bm helm-anything helm-ag guide-key google-translate gitignore-mode git-timemachine git-gutter flycheck-tip fish-mode firecode-theme firebelly-theme fiplr evil-surround evil-snipe evil-matchit evil-leader evil-exchange evil-args evil-anzu drag-stuff dired-rainbow dired-filter dired-efap dired-details+ dired+ cyberpunk-theme css-eldoc company-web company-statistics company-jedi color-theme-sanityinc-tomorrow coffee-mode autopair anti-zenburn-theme 2048-game)))
+	(expand-region jinja2-mode dockerfile-mode json-reformat aggressive-indent company-tern tern
+				   (quote evil-anzu)
+				   unicode-fonts emms helm-wgrep chinese-pyim edit-server sqlup-mode kivy-mode smex smart-tabs-mode jquery-doc workgroups2 helm-project-persist persp-mode helm-zhihu-daily ag comment-dwim-2 eide zenburn-theme youdao-dictionary yasnippet yaml-mode window-numbering wgrep-ag web-mode web-beautify vimrc-mode sr-speedbar solarized-theme smart-mode-line sass-mode real-auto-save rainbow-mode projectile-speedbar php-extras php-eldoc pcre2el outline-magic nyan-mode nginx-mode multiple-cursors markdown-mode magit lua-mode linum-relative key-chord js2-mode jade-mode info+ iedit hydra htmlize highlight-symbol highlight-sexp highlight-parentheses highlight-chars helm-swoop helm-projectile helm-mode-manager helm-flyspell helm-flymake helm-flycheck helm-emmet helm-descbinds helm-bm helm-anything helm-ag guide-key google-translate gitignore-mode git-timemachine git-gutter flycheck-tip fish-mode firecode-theme firebelly-theme fiplr evil-surround evil-snipe evil-matchit evil-leader evil-exchange evil-args evil-anzu drag-stuff dired-rainbow dired-filter dired-efap dired-details+ dired+ cyberpunk-theme css-eldoc company-web company-statistics company-jedi color-theme-sanityinc-tomorrow coffee-mode autopair anti-zenburn-theme 2048-game)))
  '(persp-auto-resume-time 1.0)
  '(persp-filter-save-buffers-functions
    (quote

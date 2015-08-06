@@ -14,30 +14,30 @@
 
 ;; desktop
 (setq-default
-      desktop-dirname             (lqz/init-dir "session/")
-      desktop-base-file-name      "emacs.session"
-      desktop-base-lock-name      "session-lock"
-      desktop-path                (list desktop-dirname)
-      desktop-save                t
-      desktop-files-not-to-save   "^$" ;reload tramp path
-      desktop-load-locked-desktop nil)
+	  desktop-dirname             (lqz/init-dir "session/")
+	  desktop-base-file-name      "emacs.session"
+	  desktop-base-lock-name      "session-lock"
+	  desktop-path                (list desktop-dirname)
+	  desktop-save                t
+	  desktop-files-not-to-save   "^$" ;reload tramp path
+	  desktop-load-locked-desktop nil)
 ;; enable desktop save
 (desktop-save-mode 1)
 
 ;; store all backup and autosave files in the tmp dir
 (setq lqz/backup-dir (lqz/init-dir "tmp/backup")
-      backup-directory-alist		`((".*" . ,lqz/backup-dir))
-      auto-save-file-name-transforms    `((".*" ,lqz/backup-dir t)))
+	  backup-directory-alist		`((".*" . ,lqz/backup-dir))
+	  auto-save-file-name-transforms    `((".*" ,lqz/backup-dir t)))
 
 ;; auto save
 (defun lqz/desktop-save ()
   (interactive)
   (when (and desktop-save-mode desktop-dirname)
-    (desktop-save-in-desktop-dir)))
+	(desktop-save-in-desktop-dir)))
 
 (add-hook 'auto-save-hook 'lqz/desktop-save)
 (setq auto-save-interval 60
-      auto-save-timeout 60)
+	  auto-save-timeout 60)
 
 ;;--------------------------
 ;; edit settings
@@ -67,6 +67,7 @@
 (lqz/require 'eldoc)
 (eldoc-mode 1)
 
+(lqz/require 'expand-region)
 
 ;; open current file with sudo
 (require 'init-sudo-edit)
@@ -83,7 +84,7 @@
 
 ;; disable page jump when cursor scrolling to the margin
 (setq scroll-margin 3
-      scroll-conservatively 10000)
+	  scroll-conservatively 10000)
 
 
 
@@ -98,7 +99,7 @@
 ;;--------------------------
 ;; startup scratch text
 (setq initial-scratch-message
-      (concat ";; Happy hacking " (or user-login-name "") " - Emacs ♥ you!\n\n"))
+	  (concat ";; Happy hacking " (or user-login-name "") " - Emacs ♥ you!\n\n"))
 
 ;; set title bar text format
 (setq frame-title-format "emacs@%b")
