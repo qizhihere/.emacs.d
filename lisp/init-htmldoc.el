@@ -1,5 +1,5 @@
 ;; htmldoc package
-(lqz/require 'thingatpt)
+(my/require 'thingatpt)
 
 (defun edoc-right (url)
   "split new right window and open documentation with eww."
@@ -30,11 +30,11 @@
 (defun php-doc-path-handler (base-path keyword)
   (concat base-path "/function." (replace-regexp-in-string "_" "-" keyword) ".html"))
 
-(setq php-doc-path (lqz/init-dir "manuals/php_manual_cn_html"))
+(setq php-doc-path (my/init-dir "manuals/php_manual_cn_html"))
 
 (defun lookup-php-doc ()
   (interactive)
-  (let ((word (lqz/current-word)))
+  (let ((word (my/current-word)))
     (if word
 	(eww-open-doc
 	 #'edoc-right

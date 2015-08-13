@@ -1,111 +1,81 @@
-;; these packages is commonly used by other packages,
-;; so i add it here.
-(lqz/require '(key-chord popup pos-tip ag))
+;;----------------------------------------------------------------------------
+;; the most basic settings
+;;----------------------------------------------------------------------------
+;; add custom bin directory to PATH
+(add-to-list 'exec-path (my/init-dir "utils/bin"))
 
-;; emacs default language (such as org-mode timestamp)
-(setq system-time-locale "C")
+;; replace default M-x with smex
+(my/install 'smex)
+(global-set-key [remap execute-extended-command] 'smex)
+(setq smex-save-file (my/init-dir "tmp/smex-items"))
 
-(lqz/mkrdir '("session" "tmp/undodir" "tmp/auto-save"))
+(dolist (x '("tmp" "tmp/auto-save" "tmp/backup"))
+  (let ((dir (my/init-dir x)))
+	(or (file-exists-p dir) (mkdir dir))))
 
-;; temporary files
-(setq temporary-file-directory (lqz/init-dir "tmp/"))
-(setq auto-save-list-file-prefix (lqz/init-dir "tmp/auto-save/.saves-"))
-(setq recentf-save-file (lqz/init-dir "tmp/recentf"))
+;; move into temporary directories
+(setq temporary-file-directory (my/init-dir "tmp/")
+	  recentf-save-file (my/init-dir "tmp/recentf")
+	  my/backup-dir (my/init-dir "tmp/backup")
+	  backup-directory-alist		`((".*" . ,my/backup-dir))
+	  auto-save-list-file-prefix (my/init-dir "tmp/auto-save/.saves-")
+	  auto-save-file-name-transforms    `((".*" ,my/backup-dir t))
+	  tramp-histfile-override (my/init-dir "tmp/.tramp_history")
+	  tramp-persistency-file-name (my/init-dir "tmp/tramp"))
 
-;; desktop
-(setq-default
-	  desktop-dirname             (lqz/init-dir "session/")
-	  desktop-base-file-name      "emacs.session"
-	  desktop-base-lock-name      "session-lock"
-	  desktop-path                (list desktop-dirname)
-	  desktop-save                t
-	  desktop-files-not-to-save   "^$" ;reload tramp path
-	  desktop-load-locked-desktop nil)
-;; enable desktop save
-(desktop-save-mode 1)
-
-;; store all backup and autosave files in the tmp dir
-(setq lqz/backup-dir (lqz/init-dir "tmp/backup")
-	  backup-directory-alist		`((".*" . ,lqz/backup-dir))
-	  auto-save-file-name-transforms    `((".*" ,lqz/backup-dir t)))
-
-;; auto save
-(defun lqz/desktop-save ()
-  (interactive)
-  (when (and desktop-save-mode desktop-dirname)
-	(desktop-save-in-desktop-dir)))
-
-(add-hook 'auto-save-hook 'lqz/desktop-save)
 (setq auto-save-interval 60
 	  auto-save-timeout 60)
 
-;;--------------------------
+(defadvice recentf-cleanup (around recentf-cleanup-silently activate)
+  (silently-do ad-do-it))
+(after-init (ad-deactivate #'recentf-cleanup))
+
+
+;;----------------------------------------------------------------------------
 ;; edit settings
-;;--------------------------
-(lqz/require '(drag-stuff      ;; use M-arrow to move line or word
-	   pcre2el))       ;; use pcre in emacs
-(add-hook 'prog-mode-hook 'drag-stuff-mode)
+;;----------------------------------------------------------------------------
+;; System locale to use for formatting time values.
+(setq system-time-locale "C")
 
 ;; set defualt coding system
-(prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
+(prefer-coding-system 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
-(set-clipboard-coding-system 'utf-8)
 (set-buffer-file-coding-system 'utf-8)
+(set-clipboard-coding-system 'utf-8)
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 
-
-;; replace selection with typed text if the selection is active
-(delete-selection-mode 1)
-
-;; enable code folding
-(add-hook 'prog-mode-hook 'hs-minor-mode)
-(rxt-global-mode t)
-
-;; enable eldoc
-(lqz/require 'eldoc)
-(eldoc-mode 1)
-
-(lqz/require 'expand-region)
+;; disable automatically copy selected region to x clipboard
+(setq x-select-enable-clipboard nil)
 
 ;; open current file with sudo
-(require 'init-sudo-edit)
-
-;; system clipboard support(use xsel, linux only)
-(require 'init-clipboard)
-
-;; enable shift+arrow key to select text
-(setq shift-select-mode t)
-
-;; no evil tabs
-(setq-default tab-width 4)
-(setq indent-tabs-mode nil)
+(require 'sudo-edit)
 
 ;; disable page jump when cursor scrolling to the margin
 (setq scroll-margin 3
 	  scroll-conservatively 10000)
 
-
-
-;;------------------------------
-;; window settings
-;;------------------------------
+;;----------------------------------------------------------------------------
+;; other settings
+;;----------------------------------------------------------------------------
+;; enable window undo/redo
 (winner-mode t)
 
-
-;;--------------------------
-;; other settings
-;;--------------------------
-;; startup scratch text
+;; startup settings
 (setq initial-scratch-message
-	  (concat ";; Happy hacking " (or user-login-name "") " - Emacs ♥ you!\n\n"))
+	  (concat ";; Happy hacking " (or user-login-name "") " - Emacs ♥ you!\n\n")
+	  inhibit-startup-screen t
+	  inhibit-startup-message t
+	  inhibit-startup-echo-area-message t)
 
 ;; set title bar text format
 (setq frame-title-format "emacs@%b")
 
 ;; turn off alarms
-(setq ring-bell-function 'ignore)
+(setq ring-bell-function 'nil)
+
+(defalias 'yes-or-no-p 'y-or-n-p)
 
 
 

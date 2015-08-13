@@ -16,19 +16,19 @@
 				 (sql-database "compass_master"))))
 
 
-(defun lqz/sql-local-conn ()
+(defun my/sql-local-conn ()
   (interactive)
-  (lqz/sql-connect 'mysql 'localhost))
+  (my/sql-connect 'mysql 'localhost))
 
-(defun lqz/sql-project-conn ()
+(defun my/sql-project-conn ()
   (interactive)
-  (lqz/sql-connect 'mysql 'project))
+  (my/sql-connect 'mysql 'project))
 
-(defun lqz/sql-vps-conn ()
+(defun my/sql-vps-conn ()
   (interactive)
-  (lqz/sql-connect 'mysql 'vps))
+  (my/sql-connect 'mysql 'vps))
 
-(defun lqz/sql-connect (product connection)
+(defun my/sql-connect (product connection)
   (setq sql-product product)
   (sql-connect connection))
 

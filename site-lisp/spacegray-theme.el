@@ -51,14 +51,20 @@
 	   (256color (eq (display-color-cells (selected-frame)) 256))
 
 	   (background "#2B303B") ;; sidebar-container
+	   (background+1 "#232830")
 	   (background-1 "#333D46")
 	   (background-2 "#343D46")
+	   (background-3 "#343843")
 	   (current-line "#323a42") ;; tree-row
-	   (far-background "#1c1f26") ;; panel-control
+	   ;; (far-background "#1c1f26") ;; panel-control
+	   (far-background "#333D46") ;; panel-control
 	   (subtle "#a7adba") ;; tree-row-hover-disclosure-button-control
 	   (selection "#4F5B66") ;; tab-control-dirty-tab-close-button
 	   (secondary-selection "#c000c0") ;; tab-control-hover-tab-close-button
 	   (foreground "#ffffff")
+	   (foreground-1 "#dedede")
+	   (foreground-2 "#cdcdcd")
+	   (foreground-3 "#8a8aae")
 	   (comment "#4f5b67") ;; table-row
 	   (red "#bf616a") ;; tab-control-hover-tab-close-button
 	   (orange "#DCA432") ;; darker tab-control-dirty-tab-close-butto
@@ -116,7 +122,7 @@
    `(company-scrollbar-fg ((t (:background ,background-2))))
    `(company-scrollbar-bg ((t (:background "#232830"))))
    `(company-preview ((t (:background "#CDCDCD"))))
-   `(company-preview-common ((t (:foreground "#ababab" :underline purple))))
+   `(company-preview-common ((t (:foreground "#ababab" :underline "purple"))))
 
    ;; Clojure errors
    `(clojure-test-failure-face ((,class (:background nil :inherit flymake-warnline))))
@@ -180,7 +186,7 @@
    `(which-func ((,class (:foreground ,blue :background nil))))
 
    ;; Emacs interface
-   `(cursor ((,class (:background ,orange))))
+   `(cursor ((,class (:background "moccasin"))))
    `(fringe ((,class (:background ,background))))
    `(linum ((,class (:background ,background :foreground ,selection :weight semi-bold))))
    `(linum-highlight-face ((,class (:background ,current-line :foreground ,foreground))))
@@ -189,20 +195,22 @@
    `(border-glyph ((,class (nil))))
    `(highlight ((,class (:inverse-video nil :background ,current-line))))
    `(gui-element ((,class (:background ,current-line :foreground ,foreground))))
-   `(mode-line ((,class (:foreground ,foreground :background ,far-background
+   `(mode-line ((,class (:foreground ,foreground-3 :background ,far-background
 									 :family "Lucida Grande"))))
-   `(mode-line-buffer-id ((,class (:foreground ,foreground :background nil))))
+   `(mode-line-buffer-id ((,class (:foreground ,purple :background nil))))
    `(mode-line-inactive ((,class (:inherit mode-line
 										   :foreground ,subtle
-										   :background ,far-background :weight normal
+										   :background ,background :weight normal
 										   :box nil))))
-   `(mode-line-emphasis ((,class (:foreground ,foreground :slant italic))))
+   `(mode-line-emphasis ((,class (:foreground ,foreground-2 :slant italic))))
    `(mode-line-highlight ((,class (:foreground ,purple :box nil))))
    `(minibuffer-prompt ((,class (:foreground ,blue))))
    `(region ((,class (:background ,selection))))
    `(secondary-selection ((,class (:background ,secondary-selection))))
 
    `(header-line ((,class (:inherit mode-line :foreground ,purple :background nil))))
+   `(hs-face ((,class (:background nil))))
+
 
    `(trailing-whitespace ((,class (:background "magenta" :inverse-video nil :underline nil))))
    `(hc-trailing-whitespace ((,class (:background "magenta" :inverse-video nil :underline nil))))
@@ -357,7 +365,7 @@
    `(helm-header ((,class (:inherit header-line :background ,background))))
    `(helm-match ((,class (:background ,background-2 :foreground ,foreground :weight bold))))
    `(helm-selection ((,class (:background ,background-2 :distant-foreground "black"))))
-   `(helm-source-header ((,class (:background ,far-background :foreground ,foreground :weight semi-bold))))
+   `(helm-source-header ((,class (:background ,background-3 :foreground ,foreground :weight semi-bold))))
 
    ;; Man page colors
    `(Man-overstrike ((t (:inherit bold :foreground "#ff5f00"))))
@@ -373,8 +381,8 @@
    `(regex-tool-matched-face ((,class (:foreground nil :background nil :inherit match))))
 
    ;; mark-multiple
-   `(mm/master-face ((,class (:inherit region :foreground nil :background nil))))
-   `(mm/mirror-face ((,class (:inherit region :foreground nil :background nil))))
+   `(mm/master-face ((,class (:inherit region :background nil))))
+   `(mm/mirror-face ((,class (:inherit region :background nil))))
 
    ;; org mode
    `(org-agenda-structure ((,class (:foreground ,purple))))

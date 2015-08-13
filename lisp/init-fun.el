@@ -1,4 +1,4 @@
-(lqz/require '(2048-game edit-server))
+(my/require '(2048-game edit-server))
 
 ;; edit server (use emacs as browser text editor)
 (when (require 'edit-server nil t)

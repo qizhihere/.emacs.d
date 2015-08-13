@@ -1,8 +1,13 @@
-(lqz/require 'zenburn-theme)
+(my/install '(spacemacs-theme color-theme-sanityinc-solarized))
 
 ;; load theme
-(setq lqz/theme 'zenburn)
-(load-theme lqz/theme t)
+(setq my/current-theme 'sanityinc-solarized-light)
+(load-theme my/current-theme t)
+
+(after-load 'color-theme-sanityinc-solarized
+  (custom-set-faces
+   '(highlight-symbol-face ((t (:background "#435640" :foreground "#cdcdcd"))))
+   '(linum-relative-current-face ((t (:inherit linum :foreground "#5F8787" :weight bold))))))
 
 ;; enable mouse mode
 (xterm-mouse-mode t)
@@ -46,30 +51,15 @@
   (define-key input-decode-map "\e[1;6B" [C-S-down])
   (define-key input-decode-map "\e[1;6C" [C-S-right])
   (define-key input-decode-map "\e[1;6D" [C-S-left])
-)
-
-(defun lqz/set-xterm-faces ()
-  (custom-set-faces
-   '(git-gutter:added ((t (:background "green" :foreground "#3a3a3a" :inverse-video t :weight bold))))
-   '(git-gutter:deleted ((t (:background "red" :foreground "#3a3a3a" :inverse-video t :weight bold))))
-   '(git-gutter:modified ((t (:background "yellow" :foreground "#3a3a3a" :inverse-video t :weight bold))))
-   '(git-gutter:unchanged ((t (:foreground "#3a3a3a" :inverse-video t :weight bold))))
-   '(Man-overstrike ((t (:inherit bold :foreground "color-202"))))
-   '(Man-reverse ((t (:inherit highlight :background "color-38" :foreground "color-231"))))
-   '(Man-underline ((t (:inherit underline :foreground "color-41"))))
-   '(flymake-errline ((t (:background "color-88" :foreground "yellow" :underline (:color foreground-color :style wave) :weight bold))))
-   ))
-
-(lqz/set-xterm-faces)
-
+  )
 
 ;; map some keys when TERM=screen-256color
-(defadvice terminal-init-screen(around lqz/map-terminal-keys activate)
+(defadvice terminal-init-screen (around my/map-terminal-keys activate)
   (map-xterm-escape-sequence)
   ad-do-it)
 
 ;; map some keys when TERM=xterm-256color
-(defadvice terminal-init-xterm(around lqz/map-terminal-keys activate)
+(defadvice terminal-init-xterm (around my/map-terminal-keys activate)
   (map-xterm-escape-sequence)
   ad-do-it)
 

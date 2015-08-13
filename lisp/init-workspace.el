@@ -1,4 +1,4 @@
-(lqz/require '(window-numbering persp-mode))
+(my/require '(window-numbering persp-mode))
 
 (defun other-window-move-down(&optional arg)
   "Other window move-down 2 lines."
@@ -16,7 +16,7 @@
   (let ((s (concat " [" (concat (int-to-string (window-numbering-get-number window)) "] "))))
 	(propertize s 'face 'window-numbering-face)))
 
-(defun lqz/persp-cycle (&optional num)
+(defun my/persp-cycle (&optional num)
   "Cycling `persp' workspaces.
 
 If `num' is negative, then switch to previous workspace, else the
@@ -36,34 +36,35 @@ next one.
 	 (persp-switch (nth cycle persps)))
 	(t (persp-switch (nth target persps))))))
 
-(defun lqz/persp-next ()
+(defun my/persp-next ()
   "Switch to the next persp workspace."
   (interactive)
-  (lqz/persp-cycle))
+  (my/persp-cycle))
 
-(defun lqz/persp-prev ()
+(defun my/persp-prev ()
   "Switch to the previous persp workspace."
   (interactive)
-  (lqz/persp-cycle -1))
+  (my/persp-cycle -1))
 
 (customize-set-variable 'persp-nil-name "main")
-(with-eval-after-load "persp-mode-autoloads"
-  (setq wg-morph-on nil ;; switch off animation
-	persp-save-dir (lqz/init-dir "session/"))
-  (add-hook 'after-init-hook #'(lambda () (persp-mode 1))))
+(after-load "persp-mode-autoloads"
+  (after-load "persp-mode-autoloads"
+	(setq wg-morph-on nil ;; switch off animation
+		  persp-save-dir (my/init-dir "session/"))
+	(after-init (persp-mode 1))))
 
 ;; shortcut key for other window move
 (global-set-key (kbd "C-M-v")	'other-window-move-down)
 (global-set-key (kbd "C-M-b")	'other-window-move-up)
 
 ;; fix unknown bug
-(window-numbering-mode -1)
+;; (window-numbering-mode -1)
 (window-numbering-mode t)
 
 ;; set persp keys(`s` means super)
 (global-set-key (kbd "M-\\")	'persp-switch)
-(global-set-key (kbd "M-[")	'lqz/persp-prev)
-(global-set-key (kbd "M-]")	'lqz/persp-next)
+(global-set-key (kbd "M-[")	'my/persp-prev)
+(global-set-key (kbd "M-]")	'my/persp-next)
 
 
 

@@ -1,17 +1,17 @@
-(lqz/require 'emms)
+(my/require 'emms)
 
 (require 'emms-setup)
 (require 'emms-playlist-sort)
 (require 'emms-history)
 (require 'emms-mode-line)
 
-(lqz/mkrdir '("session/emms"))
+(my/mkrdir '("session/emms"))
 
-(setq emms-directory (lqz/init-dir "session/emms")
+(setq emms-directory (my/init-dir "session/emms")
       emms-lyrics-dir "~/Music/lyrics"
       emms-source-file-default-directory "~/Music/"
       emms-playlist-buffer-name "*Music*"
-      emms-history-file (lqz/init-dir "session/emms/emms-history"))
+      emms-history-file (my/init-dir "session/emms/emms-history"))
 
 (emms-standard)
 (emms-default-players)
@@ -19,7 +19,7 @@
 (emms-mode-line 1)
 
 ;; set mode line
-(defun lqz/emms-mode-line-function ()
+(defun my/emms-mode-line-function ()
   (let* ((str (emms-info-track-description
 	       (emms-playlist-current-selected-track)))
 	 (str (replace-regexp-in-string "/.*/" "" str))
@@ -30,18 +30,18 @@
 	 (len (if is-abbr (length str) 8)))
     (concat " \u266a " (substring str 0 len) (if is-abbr "+") " ")))
 (setq emms-mode-line-mode-line-function
-      'lqz/emms-mode-line-function
+      'my/emms-mode-line-function
       emms-mode-line-format "%s")
 
 ;; set hooks
-(defun lqz/emms-started-hooks ()
+(defun my/emms-started-hooks ()
   (if (string= (buffer-name) emms-playlist-buffer-name)
       (emms-playlist-mode-center-current))
-  (lqz/system-notify
+  (my/system-notify
    "Emms playing..."
    (emms-track-description (emms-playlist-current-selected-track))))
 
-(add-hook 'emms-player-started-hook 'lqz/emms-started-hooks)
+(add-hook 'emms-player-started-hook 'my/emms-started-hooks)
 
 ;; bind keys
 (define-key emms-playlist-mode-map (kbd "R") 'emms-toggle-random-playlist)

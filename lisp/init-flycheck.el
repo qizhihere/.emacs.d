@@ -1,14 +1,12 @@
-(lqz/require '(flycheck flycheck-tip))
+(my/install 'flycheck)
 
-(add-hook 'after-init-hook #'global-flycheck-mode)
+(after-init (global-flycheck-mode))
 
-(with-eval-after-load 'flycheck
-  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
-
-;; (require 'flycheck-tip)
-;; (define-key prog-mode-map (kbd "C-c C-n") 'flycheck-tip-cycle)
-;; (define-key prog-mode-map (kbd "C-c C-p") 'flycheck-tip-cycle)
-
+(after-load 'flycheck
+  (with-installed 'helm
+	(my/try-install 'helm-flycheck))
+  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+  (setq flycheck-idle-change-delay 2))
 
 
 (provide 'init-flycheck)

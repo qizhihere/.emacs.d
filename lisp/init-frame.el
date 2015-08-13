@@ -1,7 +1,4 @@
-(if (display-graphic-p)
-    (require 'init-gui)
-    (require 'init-term))
-
+(after-init (require (if *is-gui* 'init-gui 'init-term)))
 
 
 (provide 'init-frame)
