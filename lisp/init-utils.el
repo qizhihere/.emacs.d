@@ -4,8 +4,9 @@
 		(my/install x))
 	(when (not package-archive-contents)
 	  (package-refresh-contents))
-	(when (not (package-installed-p package))
-	  (package-install package))))
+	(if (not (package-installed-p package))
+		(package-install package)
+	  t)))
 
 (defun my/require (package)
   (if (listp package)

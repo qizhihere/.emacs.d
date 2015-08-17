@@ -1,9 +1,11 @@
-(my/install '(magit gitignore-mode git-timemachine git-gutter))
+(my/install '(gitignore-mode git-timemachine git-gutter))
 
-;; disable magit startup messages
-(setq magit-last-seen-setup-instructions "1.4.0"
-	  magit-push-always-verify nil
-	  magit-status-buffer-switch-function 'switch-to-buffer)
+(unless (version< emacs-version "24.4")
+  (when (my/try-install 'magit)
+	;; disable magit startup messages
+	(setq magit-last-seen-setup-instructions "1.4.0"
+		  magit-push-always-verify nil
+		  magit-status-buffer-switch-function 'switch-to-buffer)))
 
 ;; git-gutter
 ;; use git-gutter.el with linum-mode
