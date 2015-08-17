@@ -1,22 +1,3 @@
-;;----------------------------------------------------------------------------
-;; mode line
-;;----------------------------------------------------------------------------
-;; smart mode line
-;; (my/require 'smart-mode-line)
-;; (setq sml/vc-mode-show-backend t)
-;; (setq sml/no-confirm-load-theme t
-;;	  sml/theme 'respectful
-;;	  sml/mode-width 'full
-;;	  sml/name-width (cons 1 20))
-;; (sml/setup)
-
-;; hide some minor modes from mode line
-(setq my/rm-blacklist-regexps
-	  '("Guide" "Git" "Outl" "snipe" "Anzu" "company"
-		"Undo-Tree" "hs" "ivy" "yas" "hl-" "Helm"
-		"Rbow" "drag" "ElDoc" "Fly$"))
-(setq rm-blacklist (mapconcat 'identity my/rm-blacklist-regexps "\\|"))
-
 ;; show current time in mode line
 (display-time-mode t)
 
@@ -44,9 +25,6 @@
 				  (member major-mode linum-disable-mode-list)))
 	ad-do-it))
 (global-linum-mode)
-
-;; disable menubar
-(menu-bar-mode -1)
 
 
 

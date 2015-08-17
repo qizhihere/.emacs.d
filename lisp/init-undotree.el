@@ -13,9 +13,9 @@
 	  undohist-directory (my/init-dir "tmp/undodir"))
 
 
-(after-init
-  (global-undo-tree-mode)
-  (diminish 'undo-tree-mode))
+;; (after-init
+;;   (global-undo-tree-mode)
+;;   (diminish 'undo-tree-mode))
 
 ;; undo history persistent
 (my/require 'undohist)

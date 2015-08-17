@@ -12,6 +12,9 @@
 ;; enable mouse mode
 (xterm-mouse-mode t)
 
+;; disable menu bar
+(menu-bar-mode -1)
+
 ;; Reference url: http://emacswiki.org/emacs/PuTTY
 (defun map-xterm-escape-sequence ()
   (interactive)
