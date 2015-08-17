@@ -149,7 +149,7 @@ Line/Column: [_-_]  new line       [_|_]   new column      [_] hline
 
 
 (after-load "org"
-			(define-key org-mode-map (kbd "M-o") 'hydra-org/body))
+  (define-key org-mode-map (kbd "M-o") 'hydra-org/body))
 (defhydra hydra-org (:color blue
 							:hint  nil
 							:exit  nil)

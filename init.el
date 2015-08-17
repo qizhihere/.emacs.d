@@ -57,7 +57,7 @@
 (require 'init-python)
 (require 'init-markdown)
 ;; (require 'init-sql)
-;; (require 'init-org)
+(require 'init-org)
 (require 'init-lisp)
 ;; ;; minor modes which need only very little configuration
 (require 'init-small-minor-modes)
@@ -67,8 +67,6 @@
 (require 'init-flyspell)
 (require 'init-hippie-expand)
 (require 'init-company)
-;; just for fun
-;; (require 'init-emms)
 (require 'init-yasnippet)
 
 

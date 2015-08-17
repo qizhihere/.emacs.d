@@ -41,24 +41,31 @@
 (autoload 'xpaste "system-clipboard" "Paste content of system clipboard into buffer." t)
 (autoload 'xcut "system-clipboard" "Cut region to system clipboard." t)
 
+
 ;;----------------------------------------------------------------------------
-;; multiple edit
+;; multiple/region edit
 ;;----------------------------------------------------------------------------
-(my/install '(multiple-cursors iedit))
+(my/install 'multiple-cursors)
+(cua-selection-mode t)
+(setq cua-keep-region-after-copy t)
 
 (after-load 'multiple-cursors
   (set mc/list-file (my/init-dir "tmp/.mc-lists.el")))
 
 ;; multiple cursors
-(global-set-key (kbd "C-c m e")	'mc/edit-lines)
-(global-set-key (kbd "M-{")	'mc/mark-previous-like-this)
-(global-set-key (kbd "M-}")	'mc/mark-next-like-this)
-(global-set-key (kbd "C-c m a")	'mc/mark-all-like-this)
 (global-unset-key (kbd "C-<down-mouse-1>"))
 (global-set-key (kbd "C-<mouse-1>") 'mc/add-cursor-on-click)
 
-;; iedit
-(global-set-key (kbd "C-c i e")	'iedit-mode)
+;; multiple-cursors
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-+") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+;; From active region to multiple cursors:
+(global-set-key (kbd "C-c c r") 'set-rectangular-region-anchor)
+(global-set-key (kbd "C-c c c") 'mc/edit-lines)
+(global-set-key (kbd "C-c c e") 'mc/edit-ends-of-lines)
+(global-set-key (kbd "C-c c a") 'm-beginnings-of-lines)
 
 
 ;;----------------------------------------------------------------------------
@@ -123,6 +130,13 @@
 (when (fboundp 'global-prettify-symbols-mode)
   (global-prettify-symbols-mode))
 
+;; use regex tool to test regular expression
+(my/install 'regex-tool)
+(after-load 'regex-tool
+  (setq regex-tool-backend 'perl)
+  (with-installed 'evil
+	(add-hook 'regex-tool-mode-hook
+			  (lambda () (evil-local-set-key 'normal [remap evil-record-macro] 'regex-tool-quit)))))
 
 
 (provide 'init-edit)

@@ -1,4 +1,4 @@
-(my/require '(org htmlize))
+(my/install '(org htmlize pangu-spacing))
 
 (setq org-support-shift-select   nil
 	  org-catch-invisible-edits 'org
@@ -14,30 +14,30 @@
 	  org-todo-keywords		'((sequence "TODO(t)" "|" "DOING" "DELAY" "DONE(d)" "CANCEL(c)"))
 	  org-todo-keyword-faces    '(("DELAY" . "orange") ("CANCEL" . "gray"))
 	  org-tag-alist		'(
-				  ("@笔记" . ?n) ("@感悟" . ?m)  ("@经验" . ?x) ("@教程" . ?u)
-				  ("@转载" . ?p) ("@翻译" . ?t)
-				  (:startgroup . nil)
-				  ("linux" . ?l) ("数据库" . ?d) ("php" . ?h) ("python" . ?y)
-				  ("ruby" . ?r)  ("emacs" . ?e)  ("vim" . ?v)
-				  (:endgroup . nil)))
+						  ("@笔记" . ?n) ("@感悟" . ?m)  ("@经验" . ?x) ("@教程" . ?u)
+						  ("@转载" . ?p) ("@翻译" . ?t)
+						  (:startgroup . nil)
+						  ("linux" . ?l) ("数据库" . ?d) ("php" . ?h) ("python" . ?y)
+						  ("ruby" . ?r)  ("emacs" . ?e)  ("vim" . ?v)
+						  (:endgroup . nil)))
 
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '(
-   (sh     . t)
-   (python . t)
-   (R      . t)
-   (ruby   . t)
-   (ditaa  . t)
-   (dot    . t)
-   (octave . t)
-   (sqlite . t)
-   (perl   . t)
-   (C      . t)
-   ))
+(after-load 'org
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '(
+	 (sh     . t)
+	 (python . t)
+	 (R      . t)
+	 (ruby   . t)
+	 (ditaa  . t)
+	 (dot    . t)
+	 (octave . t)
+	 (sqlite . t)
+	 (perl   . t)
+	 (C      . t)))
 
-(setq org-babel-python-command "python2"
-	  org-babel-sh-command     "bash")
+  (setq org-babel-python-command "python2"
+		org-babel-sh-command     "bash"))
 
 (add-hook 'message-mode-hook 'turn-on-orgtbl)
 (add-hook 'text-mode-hook    'turn-on-orgtbl)
@@ -136,13 +136,13 @@ holding export options."
 (add-hook 'org-mode-hook
 		  (lambda ()
 			(my/custom-org-html-funcs)
+			(pangu-spacing-mode 1)
 			(setq truncate-lines nil)
 			(linum-mode -1)))
 
 ;; export settings
 (setq org-publish-project-alist
-	  '(
-		("notes"
+	  '(("notes"
 		 :author "littleqz"
 		 :auto-sitemap t                  ; Generate sitemap.org automagically...
 		 :base-directory "~/org/posts"
