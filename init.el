@@ -5,7 +5,7 @@
 ;; to prevent emacs automatically add things to here, don't delete the line.
 ;; (package-initialize)
 
-(defconst *is-gui* (or (getenv "EMACS_USE_GUI") window-system))
+(defconst *is-gui* (if (getenv "EMACS_NO_GUI") nil window-system))
 (defvar *startup-silently* t)
 (defvar *start-at-time* (float-time))
 
