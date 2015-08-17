@@ -24,3 +24,4 @@
 !/lisp/
 !/site-lisp/
 !/init.el
+!/.mc-lists.el
