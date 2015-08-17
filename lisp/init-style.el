@@ -5,6 +5,10 @@
 (column-number-mode t)
 (size-indication-mode t)
 
+;; hide bars
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
 
 ;;----------------------------------------------------------------------------
 ;; line/column number
