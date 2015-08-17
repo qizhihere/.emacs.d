@@ -11,6 +11,7 @@
 		evil-delete
 		evil-digit-argument-or-evil-beginning-of-line
 		evil-end-of-line
+		evil-find-char
 		evil-forward-char
 		evil-insert
 		evil-insert-line
