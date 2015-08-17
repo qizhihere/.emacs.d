@@ -26,6 +26,7 @@
 	`(eval-after-load ,package
 	   '(progn ,@body))))
 
+
 (my/require 'dash)
 (after-load 'dash (dash-enable-font-lock))
 
@@ -70,7 +71,13 @@
 	  (silently-do (apply orig-func ARGS))
 	(apply orig-func ARGS)))
 
-(advice-add 'load :around #'silently-load)
+(defadvice load (around silently-load activate)
+  (if (and (boundp '*startup-silently*)
+		   *startup-silently*)
+	  (silently-do ad-do-it)
+	ad-do-it))
+
+;; (advice-add 'load :around #'silently-load)
 ;; (after-init (advice-remove 'load #'silently-load))
 
 (defun show-startup-time ()
