@@ -18,7 +18,7 @@
 (add-auto-mode 'jade-mode "\\.jade\\'")
 (add-auto-mode 'sws-mode "\\.styl\\'")
 (dolist (mode '(jade-mode web-mode sws-mode))
-  (eval `(after-load 'jade-mode
+  (eval `(after-load ',mode
 		   (derived-from-prog-mode ',mode))))
 
 

@@ -1,15 +1,27 @@
-(my/install 'js3-mode)
-(after-load "js3-mode"
-  (derived-from-prog-mode 'js3-mode)
-  (setq-default js-indent-level 2)
+(my/install 'js2-mode)
+
+(after-load "js2-mode"
+  (derive-from-prog-mode 'js2-mode)
+
+  (setq-default js2-mode-show-parse-errors nil
+				js2-mode-show-strict-warnings nil)
+
+  (setq js2-basic-offset 2
+		js2-highlight-level 3)
+
   (subword-mode 1)
-  (custom-set-variables
-   '(js3-indent-dots t)
-   '(js3-lazy-commas t)
-   '(js3-expr-indent-offset 2)
-   '(js3-paren-indent-offset 2)
-   '(js3-square-indent-offset 2)
-   '(js3-curly-indent-offset 2))
+
+  (with-installed 'flycheck
+	(autoload 'flycheck-get-checker-for-buffer "flycheck")
+	(defun my/disable-js2-checks-if-flycheck-active ()
+	  (unless (flycheck-get-checker-for-buffer)
+		(set (make-local-variable 'js2-mode-show-parse-errors) t)
+		(set (make-local-variable 'js2-mode-show-strict-warnings) t)))
+	(add-hook 'js2-mode-hook 'my/disable-js2-checks-if-flycheck-active))
+
+  (with-installed 'paredit
+	(define-key js2-mode-map "{" 'paredit-open-curly)
+	(define-key js2-mode-map "}" 'paredit-close-curly-and-newline))
 
   ;; company-tern(semantic completion for javascript)
   (with-installed 'company
@@ -17,10 +29,14 @@
 	(add-to-list 'company-backends 'company-tern)
 	(setq company-tern-meta-as-single-line t
 		  company-tooltip-align-annotations t)
-	(add-hook 'js3-mode-hook (lambda () (tern-mode 1)))))
+	(add-hook 'js2-mode-hook
+			  (lambda () (setq mode-name "js2") (tern-mode 1)))))
 
-(add-auto-mode 'js3-mode "\\.\\(js\\|json\\)\\'")
-(add-to-list 'interpreter-mode-alist '("node" . js3-mode))
+(my/install 'json-mode)
+(add-auto-mode 'json-mode "\\.\\(json\\)\\'")
+(add-auto-mode 'js2-mode "\\.\\(js\\)\\'")
+(dolist (mode '(js2-mode json-mode))
+  (add-to-list 'interpreter-mode-alist `("node" . ,mode)))
 
 
 ;; coffeescript

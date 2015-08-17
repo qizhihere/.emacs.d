@@ -28,7 +28,7 @@
 
 ;; use bug-hunter for debug purpose
 ;; more info see https://github.com/Malabarba/elisp-bug-hunter/
-;(my/install 'bug-hunter)
+;; (my/install 'bug-hunter)
 (my/install 'diminish)
 
 (require 'init-basic)

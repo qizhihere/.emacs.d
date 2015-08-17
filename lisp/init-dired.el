@@ -11,7 +11,7 @@
 
   ;; use the directory in the next dired window as default directory
   (setq dired-dwim-target t
-		dired-details-hidden-string "» ")
+		dired-filter-verbose nil)
 
   ;; make dired only use single buffer
   (toggle-diredp-find-file-reuse-dir 1)
@@ -24,13 +24,12 @@
 
   (add-hook 'dired-mode-hook
 			(lambda ()
-			  (silently-do
-			   (setq-local guide-key/idle-delay 0.4)
-			   (dired-filter-mode 1)
-			   (dired-filter-load-saved-filters "default")
-			   (guide-key/add-local-guide-key-sequence "%")
-			   (guide-key/add-local-guide-key-sequence "/")
-			   (guide-key/add-local-guide-key-sequence "F")))))
+			  (dired-filter-load-saved-filters "default")
+			  (setq-local guide-key/idle-delay 0.4)
+			  (guide-key/add-local-guide-key-sequence "%")
+			  (guide-key/add-local-guide-key-sequence "/")
+			  (guide-key/add-local-guide-key-sequence "F"))))
+
 
 (when (my/try-install 'diff-hl)
   (after-load 'dired

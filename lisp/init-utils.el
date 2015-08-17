@@ -55,9 +55,18 @@
 
 (add-hook 'after-init-hook 'my/run-init-hooks)
 
-(defun derived-from-prog-mode (mode)
+(defun concat-symbols (&rest symbols)
+  "Concat multiple symbols into one symbol."
+  (intern (apply #'concatenate 'string
+				 (mapcar #'symbol-name symbols))))
+
+(defun derive-from-prog-mode (mode &optional hook)
   "Make mode derived from `prog-mode'."
-  (put mode 'derived-mode-parent 'prog-mode))
+  (put mode 'derived-mode-parent 'prog-mode)
+  (or hook (setq hook (concat-symbols mode '-hook)))
+  (if (boundp hook)
+	  (add-hook hook (lambda () (run-hooks 'prog-mode-hook)))
+	(error "Hook %s not exist!" hook)))
 
 (require 'cl)
 (defmacro silently-do (&rest body)
