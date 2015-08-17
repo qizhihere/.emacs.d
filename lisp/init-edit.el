@@ -46,8 +46,6 @@
 ;; multiple/region edit
 ;;----------------------------------------------------------------------------
 (my/install 'multiple-cursors)
-(cua-selection-mode t)
-(setq cua-keep-region-after-copy t)
 
 (after-load 'multiple-cursors
   (set mc/list-file (my/init-dir "tmp/.mc-lists.el")))
