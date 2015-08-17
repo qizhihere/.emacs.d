@@ -10,23 +10,27 @@
 	(dired-async-mode 1))
 
   ;; use the directory in the next dired window as default directory
-  (setq dired-dwim-target t)
+  (setq dired-dwim-target t
+		dired-details-hidden-string "» ")
+
+  ;; make dired only use single buffer
+  (toggle-diredp-find-file-reuse-dir 1)
 
   ;; dired rename and filter
   (define-key dired-mode-map (kbd "r") 'dired-efap)
   (define-key dired-mode-map (kbd "F") dired-filter-map)
   (define-key dired-mode-map (kbd "/") dired-filter-map)
+  (define-key dired-mode-map (kbd "/P") 'dired-filter-pop-all)
 
   (add-hook 'dired-mode-hook
 			(lambda ()
-			  (setq-local guide-key/idle-delay 0.4)
-			  (dired-filter-mode 1)
-			  (dired-omit-mode 1)
-			  (guide-key/add-local-guide-key-sequence "%")
-			  (guide-key/add-local-guide-key-sequence "/")
-			  (guide-key/add-local-guide-key-sequence "F")
-			  ;; make dired only use single buffer
-			  (toggle-diredp-find-file-reuse-dir 1))))
+			  (silently-do
+			   (setq-local guide-key/idle-delay 0.4)
+			   (dired-filter-mode 1)
+			   (dired-filter-load-saved-filters "default")
+			   (guide-key/add-local-guide-key-sequence "%")
+			   (guide-key/add-local-guide-key-sequence "/")
+			   (guide-key/add-local-guide-key-sequence "F")))))
 
 (when (my/try-install 'diff-hl)
   (after-load 'dired
