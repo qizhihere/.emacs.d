@@ -6,7 +6,8 @@
   (with-installed 'helm
 	(my/try-install 'helm-flycheck))
   (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
-  (setq flycheck-idle-change-delay 2))
+  (setq flycheck-idle-change-delay 2
+		flycheck-temp-prefix ".flycheck"))
 
 
 (provide 'init-flycheck)
