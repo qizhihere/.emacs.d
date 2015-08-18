@@ -71,7 +71,7 @@
 (require 'cl)
 (defmacro silently-do (&rest body)
   "Do commands silently with `message' doing nothing."
-  `(cl-flet ((message (&rest args) nil))
+  `(flet ((message (&rest args) nil))
 	 ,@body))
 
 (defun silently-load (orig-func &rest ARGS)

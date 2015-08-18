@@ -1,4 +1,4 @@
-(my/require '(evil evil-anzu)) ;; show search info in evil-mode
+(after-init (my/require '(evil evil-anzu)))
 
 ;; Disable evil for certain major-modes
 (setq evil-normal-state-modes
@@ -121,7 +121,7 @@
 ;;-----------------------
 ;; evil-surround
 ;;-----------------------
-(my/require 'evil-surround)
+(my/install 'evil-surround)
 (after-load "evil"
   (global-evil-surround-mode 1))
 

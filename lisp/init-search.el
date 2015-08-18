@@ -46,7 +46,7 @@ will be used."
 
 ;; a little simple settings
 (my/install 'swiper)
-(ivy-mode 1)
+(after-init (ivy-mode 1))
 (after-load 'ivy
   (setq ivy-use-virtual-buffers t)
   (define-key ivy-minibuffer-map (kbd "C-o") 'ivy-recentf)
