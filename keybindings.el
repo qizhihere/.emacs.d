@@ -1,10 +1,11 @@
 (my/install 'comment-dwim-2)
 (my/install '(expand-region move-dup))
 
+;; quick switch window
 (my/install 'window-numbering)
 (defadvice window-numbering-get-number-string (around my/window-numbering-get-number-string
 													  (&optional window) activate)
-  (let ((s (concat " [" (concat (int-to-string (window-numbering-get-number window)) "] "))))
+  (let ((s (concat " [" (concat (int-to-string (window-numbering-get-number window)) "]"))))
 	(propertize s 'face 'window-numbering-face)))
 (after-init (window-numbering-mode 1))
 

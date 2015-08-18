@@ -6,6 +6,12 @@
 				  wg-session-file (my/init-dir "session/workgroups")
 				  wg-mess-with-buffer-list t)))
 
+(after-load 'workgroups2
+  (defadvice wg-barf-on-active-minibuffer
+	  (around my/wg-barf-on-active-minibuffer activate)
+	(when (wg-minibuffer-inactive-p)
+	  ad-do-it)))
+
 (global-set-key (kbd "<pause>")   'wg-reload-session)
 (global-set-key (kbd "C-<pause>") 'wg-save-session)
 (global-set-key (kbd "M-\\")      'wg-switch-to-workgroup)

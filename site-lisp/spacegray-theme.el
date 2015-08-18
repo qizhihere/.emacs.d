@@ -56,7 +56,7 @@
 	   (background-2 "#343D46")
 	   (background-3 "#343843")
 	   (current-line "#323a42") ;; tree-row
-	   ;; (far-background "#1c1f26") ;; panel-control
+	   ;; (far-background "#1c1f26") ;; default value
 	   (far-background "#333D46") ;; panel-control
 	   (subtle "#a7adba") ;; tree-row-hover-disclosure-button-control
 	   (selection "#4F5B66") ;; tab-control-dirty-tab-close-button
@@ -195,9 +195,9 @@
    `(border-glyph ((,class (nil))))
    `(highlight ((,class (:inverse-video nil :background ,current-line))))
    `(gui-element ((,class (:background ,current-line :foreground ,foreground))))
-   `(mode-line ((,class (:foreground ,foreground-3 :background ,far-background
+   `(mode-line ((,class (:foreground ,foreground-3 :background "#2D333D"
 									 :family "Lucida Grande"))))
-   `(mode-line-buffer-id ((,class (:foreground ,purple :background nil))))
+   `(mode-line-buffer-id ((,class (:foreground ,purple :background nil :weight semibold))))
    `(mode-line-inactive ((,class (:inherit mode-line
 										   :foreground ,subtle
 										   :background ,background :weight normal
