@@ -52,7 +52,7 @@
 
 (after-load 'multiple-cursors-core
   (defadvice mc/prompt-for-inclusion-in-whitelist (around my/cancel-mc-prompt activate)
-	(cl-flet ((y-or-n-p (orig-command) t))
+	(flet ((y-or-n-p (orig-command) t))
 	  ad-do-it)))
 
 ;; multiple cursors
