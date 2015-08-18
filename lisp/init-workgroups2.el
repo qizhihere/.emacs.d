@@ -15,6 +15,8 @@
 	(when (wg-minibuffer-inactive-p)
 	  ad-do-it)))
 
+(custom-set-default 'wg-first-wg-name "All")
+
 (global-set-key (kbd "C-<pause>") 'wg-reload-session)
 (global-set-key (kbd "<pause>")   'wg-save-session)
 (global-set-key (kbd "M-\\")      'wg-switch-to-workgroup)
