@@ -309,7 +309,7 @@
    `(sml/not-modified ((,class (:inherit sml/col-number))))
 
    ;; window numbering color
-   `(window-numbering-face ((,class (:foreground ,orange))))
+   `(window-numbering-face ((,class (:foreground ,foreground-3 :weight semi-bold))))
 
    ;; Magit (a patch is pending in magit to make these standard upstream)
    `(magit-branch ((,class (:foreground ,green))))
