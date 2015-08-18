@@ -20,7 +20,7 @@
 
 (my/install 'session)
 (custom-set-variables '(session-save-file (my/init-dir "session/.session")))
-(setq session-name-disable-regexp "\\(?:\\`'/tmp\\|\\.git/[A-Z_]+\\'\\)")
+(setq session-name-disable-regexp "\\(?:\\`'/tmp\\|\\.pdf\\|\\.git/[A-Z_]+\\'\\)")
 (after-init (session-initialize))
 
 (defadvice desktop-read (around my/desktop-read-show-startup-time activate)
