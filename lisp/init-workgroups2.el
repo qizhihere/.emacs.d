@@ -3,7 +3,8 @@
   (after-load 'workgroups2
 	(diminish 'workgroups-mode)
 	(setq wg-prefix-key (kbd "C-c z")
-		  wg-session-file (my/init-dir "session/workgroups")))
+		  wg-session-file (my/init-dir "session/workgroups")
+		  wg-mess-with-buffer-list t))
 
   (global-set-key (kbd "<pause>")   'wg-reload-session)
   (global-set-key (kbd "C-<pause>") 'wg-save-session)
