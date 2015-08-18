@@ -32,6 +32,7 @@
 		   ("C-p"  previous-line)
 		   ("C-n"  next-line)
 		   ("C-k"  kill-line)
+		   ("C-y"  yank)
 		   ("M-a"  backward-sentence)
 		   ("M-e"  forward-sentence)
 		   ("C-d"  delete-char)
