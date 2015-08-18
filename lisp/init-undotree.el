@@ -20,6 +20,10 @@
 ;; undo history persistent
 (my/require 'undohist)
 (undohist-initialize)
+(after-load 'undohist
+  (defadvice undohist-recover-1 (around my/undohist-no-confirm activate)
+	(cl-letf (((symbol-function 'y-or-n-p) (lambda (orig-cmd) t)))
+	  ad-do-it)))
 
 
 

@@ -3,22 +3,9 @@
 
 (setq mc/cmds-to-run-for-all
       '(
-		backward-word
-		eval-expression
-		evil-backward-char
-		evil-delete-char
-		evil-digit-argument-or-evil-beginning-of-line
-		evil-end-of-line
 		evil-forward-char
-		evil-insert
-		evil-next-line
-		evil-normal-state
-		evil-previous-line
-		evil-scroll-line-down
-		smex
 		))
 
 (setq mc/cmds-to-run-once
       '(
-		backward-word
 		))
