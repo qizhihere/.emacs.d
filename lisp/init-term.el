@@ -51,6 +51,12 @@
   (define-key input-decode-map "\e[1;6B" [C-S-down])
   (define-key input-decode-map "\e[1;6C" [C-S-right])
   (define-key input-decode-map "\e[1;6D" [C-S-left])
+
+  ;; home/end/pageup/pagedown etc
+  (define-key input-decode-map "\e[1~" [home])
+  (define-key input-decode-map "\e[4~" [end])
+  (define-key input-decode-map "\e[5~" [prior])
+  (define-key input-decode-map "\e[6~" [next])
   )
 
 ;; map some keys when TERM=screen-256color
