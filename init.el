@@ -45,7 +45,6 @@
 (require 'init-evil)
 ;; (require 'init-htmldoc)
 (require 'init-git)
-;; (require 'init-workspace)
 (require 'init-hydra)
 (require 'init-guide-key)
 (require 'init-session)
