@@ -33,8 +33,62 @@
 ;;----------------------------------------------------------------------------
 ;; mode line format
 ;;----------------------------------------------------------------------------
-;; (setq mode-line-format
-;;	  )
+(defvar my/window-numbering-mode-line
+  (when (my/try-install 'window-numbering)
+	'("​​​​"
+	  (:propertize
+	   (:eval (concat "[" (number-to-string (window-numbering-get-number)) "]"))
+	   face window-numbering-face)))
+  "Mode line format for window-numbering.")
+
+(defvar my/vc-mode-line
+  '(" " (:propertize
+		 (:eval (let ((backend (symbol-name (vc-backend (buffer-file-name)))))
+				  (substring vc-mode (+ (length backend) 2))))
+		 face font-lock-keyword-face))
+  "Mode line format for VC Mode.")
+
+(defvar my/projectile-mode-line
+  '(:propertize
+	(:eval (when (ignore-errors (projectile-project-root))
+			 (concat " " (projectile-project-name))))
+	face (font-lock-keyword-face bold))
+  "Mode line format for Projectile.")
+
+(dolist (var '(my/vc-mode-line
+			   my/window-numbering-mode-line
+			   my/projectile-mode-line))
+  (put var 'risky-local-variable t))
+
+(setq-default mode-line-position '(+12 (line-number-mode
+										(-12 "%l" (+3 (column-number-mode ":%c"))))
+									   (-4 " %p"))
+			  evil-mode-line-format '(after . my/window-numbering-mode-line))
+
+(setq-default mode-line-format
+			  '("%e"
+				my/window-numbering-mode-line
+				evil-mode-line-tag
+				" "
+				mode-line-mule-info
+				mode-line-client
+				mode-line-modified
+				mode-line-remote
+				mode-line-frame-identification
+				;; buffer file and file size
+				(-60 (+60
+					  (+22 (-40
+							(:eval (propertized-buffer-identification "%b")))
+						   "  " (size-indication-mode (-4 "%I")))
+					  "   "
+					  mode-line-position
+					  ;; projectile and git
+					  (+22 (-16 (:eval my/projectile-mode-line))
+						   (-6 (vc-mode my/vc-mode-line)))))
+				(+15 (-15 (:eval (wg-mode-line-string))))
+				(+24 (-24 (:eval mode-line-modes)))
+				mode-line-misc-info
+				mode-line-end-spaces))
 
 
 

@@ -4,7 +4,10 @@
 		  (lambda () (diminish 'workgroups-mode)
 			(setq wg-prefix-key (kbd "C-c w")
 				  wg-session-file (my/init-dir "session/workgroups")
-				  wg-mess-with-buffer-list t)))
+				  wg-mess-with-buffer-list t
+				  wg-mode-line-decor-left-brace "["
+				  wg-mode-line-decor-right-brace "]"
+				  wg-mode-line-display-on nil)))
 
 (after-load 'workgroups2
   (defadvice wg-barf-on-active-minibuffer
