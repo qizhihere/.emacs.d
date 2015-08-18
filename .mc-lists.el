@@ -3,7 +3,11 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+		evil-backward-char
+		evil-delete-char
+		evil-digit-argument-or-evil-beginning-of-line
 		evil-forward-char
+		evil-replace
 		))
 
 (setq mc/cmds-to-run-once

@@ -1,4 +1,4 @@
-(my/install '(dired+ dired-efap dired-filter diff-hl))
+(my/install '(dired+ dired-efap dired-filter diff-hl dired-k))
 
 ;; execute actions asynchronously
 (autoload 'dired-async-mode "dired-async" nil t)
@@ -21,7 +21,9 @@
   (define-key dired-mode-map (kbd "F") dired-filter-map)
   (define-key dired-mode-map (kbd "/") dired-filter-map)
   (define-key dired-mode-map (kbd "/P") 'dired-filter-pop-all)
+  (define-key dired-mode-map (kbd ")") 'dired-hide-details-mode)
 
+  (add-hook 'dired-initial-position-hook 'dired-k)
   (add-hook 'dired-mode-hook
 			(lambda ()
 			  (dired-filter-load-saved-filters "default")

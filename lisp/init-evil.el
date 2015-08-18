@@ -10,6 +10,10 @@
 		yaml-mode))
 
 (after-load 'evil
+  (dolist (mode '(view-mode))
+	(add-to-list 'evil-emacs-state-modes mode)))
+
+(after-load 'evil
   (defadvice evil-initialize (around my/evil-initialize activate)
 	ad-do-it
 	(dolist (mode evil-normal-state-modes)
@@ -73,7 +77,7 @@
 ;;-----------------------
 (my/install 'evil-args)
 
-(after-load "evil"
+(after-load 'evil
   ;; bind evil-args text objects
   (define-key evil-inner-text-objects-map "a" 'evil-inner-arg)
   (define-key evil-outer-text-objects-map "a" 'evil-outer-arg)
@@ -91,7 +95,7 @@
 ;; evil-matchit
 ;;-----------------------
 (my/install 'evil-matchit)
-(after-load "evil"
+(after-load 'evil
   (global-evil-matchit-mode 1))
 
 
@@ -99,7 +103,7 @@
 ;; evil-exchange
 ;;-----------------------
 (my/install 'evil-exchange)
-(after-load "evil"
+(after-load 'evil
   (setq evil-exchange-key (kbd "zx"))
   (evil-exchange-install))
 
@@ -108,9 +112,9 @@
 ;; evil-snipe
 ;;-----------------------
 (my/install 'evil-snipe)
-(after-load "evil"
+(after-load 'evil
+  (after-load' evil-snipe (diminish 'evil-snipe-mode))
   (evil-snipe-mode 1)
-  (diminish 'evil-snipe-mode)
   (setq evil-snipe-repeat-keys t
 		evil-snipe-scope 'visible
 		evil-snipe-repeat-scope 'whole-visible
@@ -122,7 +126,7 @@
 ;; evil-surround
 ;;-----------------------
 (my/install 'evil-surround)
-(after-load "evil"
+(after-load 'evil
   (global-evil-surround-mode 1))
 
 
