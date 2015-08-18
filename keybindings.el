@@ -2,7 +2,8 @@
 (my/install '(expand-region move-dup))
 
 (my/install 'window-numbering)
-(defun window-numbering-get-number-string (&optional window)
+(defadvice window-numbering-get-number-string (around my/window-numbering-get-number-string
+													  (&optional window) activate)
   (let ((s (concat " [" (concat (int-to-string (window-numbering-get-number window)) "] "))))
 	(propertize s 'face 'window-numbering-face)))
 (after-init (window-numbering-mode 1))

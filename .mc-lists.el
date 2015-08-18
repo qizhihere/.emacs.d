@@ -3,27 +3,22 @@
 
 (setq mc/cmds-to-run-for-all
       '(
-		cua-scroll-down
-		cua-scroll-up
-		evil-append
-		evil-append-line
+		backward-word
+		eval-expression
 		evil-backward-char
-		evil-delete
+		evil-delete-char
 		evil-digit-argument-or-evil-beginning-of-line
 		evil-end-of-line
-		evil-find-char
 		evil-forward-char
 		evil-insert
-		evil-insert-line
 		evil-next-line
 		evil-normal-state
 		evil-previous-line
 		evil-scroll-line-down
-		evil-snipe-s
-		evil-visual-char
-		evil-yank
+		smex
 		))
 
 (setq mc/cmds-to-run-once
       '(
+		backward-word
 		))

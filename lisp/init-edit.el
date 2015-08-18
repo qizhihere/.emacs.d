@@ -50,6 +50,11 @@
 (after-load 'multiple-cursors
   (set mc/list-file (my/init-dir "tmp/.mc-lists.el")))
 
+(after-load 'multiple-cursors-core
+  (defadvice mc/prompt-for-inclusion-in-whitelist (around my/cancel-mc-prompt activate)
+	(cl-flet ((y-or-n-p (orig-command) t))
+	  ad-do-it)))
+
 ;; multiple cursors
 (global-unset-key (kbd "C-<down-mouse-1>"))
 (global-set-key (kbd "C-<mouse-1>") 'mc/add-cursor-on-click)
@@ -59,6 +64,7 @@
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-+") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-c C->") 'mc/mark-all-like-this)
 ;; From active region to multiple cursors:
 (global-set-key (kbd "C-c c r") 'set-rectangular-region-anchor)
 (global-set-key (kbd "C-c c c") 'mc/edit-lines)
