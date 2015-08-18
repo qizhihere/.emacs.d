@@ -366,6 +366,7 @@
    `(helm-match ((,class (:background ,background-2 :foreground ,foreground :weight bold))))
    `(helm-selection ((,class (:background ,background-2 :distant-foreground "black"))))
    `(helm-source-header ((,class (:background ,background-3 :foreground ,foreground :weight semi-bold))))
+   `(helm-visible-mark ((,class (:background ,background+1 :foreground "#dca432"))))
 
    ;; Man page colors
    `(Man-overstrike ((t (:inherit bold :foreground "#ff5f00"))))
