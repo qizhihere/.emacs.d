@@ -1,10 +1,10 @@
 (my/install 'workgroups2)
 
-(after-load 'workgroups
-  (diminish 'workgroups-mode)
-  (setq wg-prefix-key (kbd "C-c z")
-		wg-session-file (my/init-dir "session/workgroups")
-		wg-mess-with-buffer-list t))
+(add-hook 'workgroups-mode-hook
+		  (lambda () (diminish 'workgroups-mode)
+			(setq wg-prefix-key (kbd "C-c w")
+				  wg-session-file (my/init-dir "session/workgroups")
+				  wg-mess-with-buffer-list t)))
 
 (global-set-key (kbd "<pause>")   'wg-reload-session)
 (global-set-key (kbd "C-<pause>") 'wg-save-session)

@@ -104,20 +104,22 @@
 	"pt"  'projectile-regenerate-tags
 	"p!"  'projectile-run-async-shell-command-in-root)
 
-  ;; window and workspace(use persp-mode)
+  ;; window and workspace(use workgroups2)
   (evil-leader/set-key
 	"ww"   'hydra-window/body
-	"wl"   'persp-switch
-	"wd"   'persp-remove-buffer
-	"wD"   'persp-kill
-	"wr"   'persp-rename
-	"wa"   'persp-add-buffer
-	"wA"   'persp-set-buffer
-	"wi"   'persp-import
-	"wn"   'my/persp-next
-	"wp"   'my/persp-prev
-	"ws"   'persp-save-state-to-file
-	"wR"   'persp-load-state-from-file)
+	"wl"   'wg-switch-to-workgroup
+	"wd"   'wg-kill-workgroup-and-buffers
+	"wD"   'wg-delete-other-workgroups
+	"wc"   'wg-create-workgroup
+	"wC"   'wg-clone-workgroup
+	"wr"   'wg-rename-workgroup
+	"wR"   'wg-revert-workgroup
+	"wn"   'wg-switch-to-workgroup-right
+	"wp"   'wg-switch-to-workgroup-left
+	"wi"   'wg-open-session
+	"wo"   'wg-open-session
+	"ws"   'wg-save-session
+	"wS"   'wg-save-session-as)
 
   ;; mark related
   (evil-leader/set-key
