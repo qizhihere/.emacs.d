@@ -19,9 +19,10 @@
 
 (global-set-key (kbd "C-<pause>") 'wg-reload-session)
 (global-set-key (kbd "<pause>")   'wg-save-session)
-(global-set-key (kbd "M-\\")      'wg-switch-to-workgroup)
-(global-set-key (kbd "M-[")       'wg-switch-to-previous-workgroup)
-(global-set-key (kbd "M-]")       'wg-switch-to-previous-workgroup)
+(if *is-gui*
+	(global-set-key (kbd "M-\\")      'wg-switch-to-workgroup)
+  (global-set-key (kbd "M-[")       'wg-switch-to-previous-workgroup)
+  (global-set-key (kbd "M-]")       'wg-switch-to-previous-workgroup))
 
 (after-init (workgroups-mode 1))
 
