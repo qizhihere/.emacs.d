@@ -35,7 +35,7 @@
 ;;----------------------------------------------------------------------------
 (defvar my/window-numbering-mode-line
   (when (my/try-install 'window-numbering)
-	'("​​​​"
+	'(" "
 	  (:propertize
 	   (:eval (concat "[" (number-to-string (window-numbering-get-number)) "]"))
 	   face window-numbering-face)))
@@ -83,7 +83,7 @@
 					  "   "
 					  mode-line-position
 					  ;; projectile and git
-					  (+22 (-16 (:eval my/projectile-mode-line))
+					  (+16 (-16 (:eval my/projectile-mode-line))
 						   (-6 (vc-mode my/vc-mode-line)))))
 				(+15 (-15 (:eval (wg-mode-line-string))))
 				(+24 (-24 (:eval mode-line-modes)))
