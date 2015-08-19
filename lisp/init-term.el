@@ -6,7 +6,8 @@
 
 (after-load 'color-theme-sanityinc-solarized
   (custom-set-faces
-   '(highlight-symbol-face ((t (:background "#435640" :foreground "#cdcdcd"))))
+   '(show-paren-match ((t (:underline t :inherit highlight :inverse-video nil))))
+   '(highlight-symbol-face ((t (:inherit highlight))))
    '(linum-relative-current-face ((t (:inherit linum :foreground "#5F8787" :weight bold))))))
 
 ;; enable mouse mode

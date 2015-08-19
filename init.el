@@ -36,6 +36,7 @@
 
 (require 'init-frame)
 (require 'init-style)
+(require 'init-mode-line)
 
 (require 'init-dired)
 (require 'init-ido)
