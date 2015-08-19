@@ -56,7 +56,7 @@
 (require 'init-php)
 (require 'init-python)
 (require 'init-markdown)
-;; (require 'init-sql)
+(require 'init-sql)
 (require 'init-org)
 (require 'init-lisp)
 ;; ;; minor modes which need only very little configuration
