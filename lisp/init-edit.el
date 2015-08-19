@@ -25,13 +25,13 @@
 
 (global-auto-revert-mode)
 (setq global-auto-revert-non-file-buffers t
-	  auto-revert-verbose nil)
+      auto-revert-verbose nil)
 
 (transient-mark-mode t)
 
 ;; no evil tabs
-(setq-default tab-width 4)
-(setq indent-tabs-mode nil)
+(setq-default tab-width 4
+              indent-tabs-mode nil)
 
 ;; strip whitespace when saving file
 (add-hook 'before-save-hook (lambda () (whitespace-cleanup)))
@@ -52,8 +52,8 @@
 
 (after-load 'multiple-cursors-core
   (defadvice mc/prompt-for-inclusion-in-whitelist (around my/cancel-mc-prompt activate)
-	(cl-letf (((symbol-function 'y-or-n-p) (lambda (orig-cmd) t)))
-	  ad-do-it)))
+    (cl-letf (((symbol-function 'y-or-n-p) (lambda (orig-cmd) t)))
+      ad-do-it)))
 
 ;; multiple cursors
 (global-unset-key (kbd "C-<down-mouse-1>"))
@@ -87,10 +87,10 @@
   (diminish 'highlight-symbol-mode)
   (setq highlight-symbol-idle-delay 0.3)
   (defadvice highlight-symbol-temp-highlight (around sanityinc/maybe-suppress activate)
-	"Suppress symbol highlighting while isearching."
-	(unless (or isearch-mode
-				(and (boundp 'multiple-cursors-mode) multiple-cursors-mode))
-	  ad-do-it)))
+    "Suppress symbol highlighting while isearching."
+    (unless (or isearch-mode
+                (and (boundp 'multiple-cursors-mode) multiple-cursors-mode))
+      ad-do-it)))
 
 (dolist (hook '(prog-mode-hook css-mode-hook html-mode-hook))
   (add-hook hook 'highlight-symbol-mode))
@@ -101,7 +101,7 @@
 (after-load 'rainbow-mode
   (diminish 'rainbow-mode))
 (add-hook 'prog-mode-hook
-		  (lambda () (rainbow-mode) (rainbow-delimiters-mode)))
+          (lambda () (rainbow-mode) (rainbow-delimiters-mode)))
 
 
 ;; code folding and auto pairs/brackets
@@ -110,21 +110,21 @@
   ;; highlight whitespace
   (setq show-trailing-whitespace t)
   (require 'smartparens-config)
-  (turn-on-smartparens-mode)
-  (hs-minor-mode 1)
-  (hideshowvis-enable)
-  (hideshowvis-symbols))
-(add-hook 'prog-mode-hook 'my/edit-hooks)
+  (turn-on-smartparens-mode))
+  ;; (hs-minor-mode 1)
+  ;; (hideshowvis-enable)
+  ;; (hideshowvis-symbols))
+(after-init (add-hook 'prog-mode-hook 'my/edit-hooks))
 (after-load 'hideshow (diminish 'hs-minor-mode))
 (after-load 'smartparens (diminish 'smartparens-mode))
 
 ;; automatically indent code on editing
 (my/install '(aggressive-indent))
 (dolist (x '(emacs-lisp-mode-hook
-			 css-mode-hook
-			 js2-mode-hook))
+             css-mode-hook
+             js2-mode-hook))
   (and (boundp x) (add-hook x (lambda () (when (< (count-lines (point-min) (point-max)) 500)
-									   (aggressive-indent-mode 1))))))
+                                       (aggressive-indent-mode 1))))))
 (after-load 'aggressive-indent
   (diminish 'aggressive-indent-mode))
 
@@ -139,8 +139,8 @@
 (after-load 'regex-tool
   (setq regex-tool-backend 'perl)
   (with-installed 'evil
-	(add-hook 'regex-tool-mode-hook
-			  (lambda () (evil-local-set-key 'normal [remap evil-record-macro] 'regex-tool-quit)))))
+    (add-hook 'regex-tool-mode-hook
+              (lambda () (evil-local-set-key 'normal [remap evil-record-macro] 'regex-tool-quit)))))
 
 
 (provide 'init-edit)
