@@ -21,6 +21,11 @@
 		  (return (evil-change-state 'normal))
 		(evil-change-state 'emacs))))
 
+  (defadvice evil-indent (around my/evil-indent activate)
+	(let ((pos (point)))
+	  ad-do-it
+	  (goto-char pos)))
+
   ;; set evil default state to emacs
   (setq evil-default-state 'emacs
 		evil-move-cursor-back nil)
