@@ -311,6 +311,10 @@
    ;; window numbering color
    `(window-numbering-face ((,class (:foreground ,foreground-3 :weight semi-bold))))
 
+   ;; edbi
+   `(ctbl:face-cell-select ((,class (:background ,background-1))))
+   `(ctbl:face-row-select ((,class (:background ,background-1))))
+
    ;; Magit (a patch is pending in magit to make these standard upstream)
    `(magit-branch ((,class (:foreground ,green))))
    `(magit-diff-add ((,class (:inherit diff-added))))

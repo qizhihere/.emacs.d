@@ -7,6 +7,8 @@
 		evil-delete-char
 		evil-digit-argument-or-evil-beginning-of-line
 		evil-forward-char
+		evil-insert
+		evil-normal-state
 		evil-replace
 		))
 
