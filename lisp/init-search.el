@@ -5,13 +5,13 @@
 If no symbol given or not use a region, then the symbol at point
 will be used."
   (interactive (let ((symbol (my/current-word)))
-				 (highlight-symbol-temp-highlight)
-				 (set query-replace-to-history-variable
-					  (cons (substring-no-properties symbol)
-							(eval query-replace-to-history-variable)))
-				 (list symbol
-					   (read-from-minibuffer (concat "Replace 「" symbol "」 to: ") nil nil nil
-											 query-replace-to-history-variable))))
+                 (highlight-symbol-temp-highlight)
+                 (set query-replace-to-history-variable
+                      (cons (substring-no-properties symbol)
+                            (eval query-replace-to-history-variable)))
+                 (list symbol
+                       (read-from-minibuffer (concat "Replace 「" symbol "」 to: ") nil nil nil
+                                             query-replace-to-history-variable))))
   (goto-char (beginning-of-thing 'symbol))
   (query-replace-regexp symbol replacement))
 
@@ -19,17 +19,17 @@ will be used."
   "Search code in GitHub."
   (interactive
    (list
-	(read-from-minibuffer "Keywords: " (my/current-word))
-	(read-from-minibuffer "Extension: ")))
+    (read-from-minibuffer "Keywords: " (my/current-word))
+    (read-from-minibuffer "Extension: ")))
   (browse-url-default-browser
    (concat "https://github.com/search?type=Code&q="
-		   keywords "+extension:" extension)))
+           keywords "+extension:" extension)))
 
 (defun my/search-google (keywords)
   "Search with google."
   (interactive
    (list
-	(read-from-minibuffer "Keywords: " (my/current-word))))
+    (read-from-minibuffer "Keywords: " (my/current-word))))
   (browse-url-default-browser
    (concat "https://www.google.com/#q=" keywords)))
 

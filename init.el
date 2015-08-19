@@ -15,7 +15,7 @@
 
 ;; if a different emacs init dir provided then use it
 (setq user-emacs-directory (or (getenv "EMACS_INIT_DIR")
-							   user-emacs-directory))
+                               user-emacs-directory))
 
 ;; add lisp load path
 (dolist (x (list (my/init-dir "lisp") (my/init-dir "site-lisp")))
@@ -39,9 +39,9 @@
 (require 'init-mode-line)
 
 (require 'init-dired)
-(require 'init-ido)
 (require 'init-helm)
 (require 'init-search)
+(require 'init-ido)
 (require 'init-undotree)
 (require 'init-evil)
 ;; (require 'init-htmldoc)
