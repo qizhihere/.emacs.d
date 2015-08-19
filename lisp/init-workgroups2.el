@@ -5,8 +5,9 @@
 			(setq wg-prefix-key (kbd "C-c w")
 				  wg-session-file (my/init-dir "session/workgroups")
 				  wg-mess-with-buffer-list t
-				  wg-mode-line-decor-left-brace "["
-				  wg-mode-line-decor-right-brace "]"
+				  wg-mode-line-decor-left-brace ""
+				  wg-mode-line-decor-right-brace ""
+				  wg-modeline-string ""
 				  wg-mode-line-display-on nil)))
 
 (after-load 'workgroups2

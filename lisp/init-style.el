@@ -85,8 +85,10 @@
 					  ;; projectile and git
 					  (+16 (-16 (:eval my/projectile-mode-line))
 						   (-6 (vc-mode my/vc-mode-line)))))
-				(+15 (-15 (:eval (wg-mode-line-string))))
+				(+15 "[" (-13 (:eval (replace-regexp-in-string "\\`[ \t\n]*" "" (wg-mode-line-string)))) "]")
+				" "
 				(+24 (-24 (:eval mode-line-modes)))
+				" "
 				mode-line-misc-info
 				mode-line-end-spaces))
 
