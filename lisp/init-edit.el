@@ -105,16 +105,20 @@
 
 
 ;; code folding and auto pairs/brackets
-(my/install '(smartparens hideshowvis))
+(my/install '(smartparens hideshowvis page-break-lines))
 (defun my/edit-hooks ()
   ;; highlight whitespace
   (setq show-trailing-whitespace t)
   (require 'smartparens-config)
-  (turn-on-smartparens-mode))
-  ;; (hs-minor-mode 1)
-  ;; (hideshowvis-enable)
-  ;; (hideshowvis-symbols))
+  (turn-on-smartparens-mode)
+  (page-break-lines-mode)
+(defun my/hs-mode-init ()
+  (hs-minor-mode 1)
+  (hideshowvis-enable)
+  (hideshowvis-symbols))
 (after-init (add-hook 'prog-mode-hook 'my/edit-hooks))
+(dolist (mode '(php-mode-hook sh-mode-hook))
+  (and (boundp mode) (add-hook mode 'my/hs-mode-init)))
 (after-load 'hideshow (diminish 'hs-minor-mode))
 (after-load 'smartparens (diminish 'smartparens-mode))
 
