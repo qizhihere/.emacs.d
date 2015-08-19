@@ -1,9 +1,10 @@
 (my/install '(company company-statistics))
 
 (setq company-statistics-file
-	  (my/init-dir "tmp/company-statistics-cache.el"))
+      (my/init-dir "tmp/company-statistics-cache.el"))
 
-(setq-default company-idle-delay 0.1)
+(setq-default company-idle-delay 0.1
+              company-show-numbers t)
 
 (after-load "company"
   (diminish 'company-mode)
