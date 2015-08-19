@@ -9,9 +9,13 @@
 ;;----------------------------------------------------------------------------
 ;; set gui font
 ;;----------------------------------------------------------------------------
+(my/require 'chinese-fonts-setup)
+(setq cfs-profiles '("program" "org-mode")
+	  cfs-profiles-directory (my/init-dir "configs/chinese-fonts"))
+
 ;; English font
 (set-face-attribute
- 'default nil :font "Source Code Pro For Powerline 12")
+ 'default nil :font "Source Code Pro 12")
 ;; Chinese font
 (dolist (charset '(kana han symbol cjk-misc bopomofo))
   (set-fontset-font (frame-parameter nil 'font)
