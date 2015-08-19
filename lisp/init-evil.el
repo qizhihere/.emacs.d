@@ -49,6 +49,24 @@
 	  (define-key evil-operator-state-map (kbd (car bind)) (cadr bind))
 	  (define-key evil-replace-state-map (kbd (car bind)) (cadr bind))))
 
+  ;; quick indent
+  (defun my/evil-indent-paragraph (&rest args)
+	(interactive)
+	(let* ((orig-state evil-state)
+		   (to-state (symbol-concat 'evil- orig-state '-state)))
+	  (evil-normal-state)
+	  (my/send-keys "=ap")
+	  (when (fboundp to-state)
+		(funcall to-state))))
+
+  (add-hook 'prog-mode-hook
+			(lambda () (dolist (mode '(evil-insert-state-local-map
+								   evil-emacs-state-local-map
+								   evil-normal-state-local-map))
+					 (define-key (symbol-value mode) (kbd "C-c C-c") 'my/evil-indent-paragraph))))
+
+
+  (define-key evil-normal-state-map (kbd "C-c C-c") 'my/evil-indent-paragraph)
   ;; text scale map
   (define-key evil-normal-state-map "+" 'text-scale-increase)
   (define-key evil-normal-state-map "-" 'text-scale-decrease))

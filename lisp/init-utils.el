@@ -172,5 +172,8 @@
 		(buffer-substring-no-properties (car bounds) (car (cdr bounds))))
 	(current-word)))
 
+(defun symbol-concat (&rest args)
+  (intern (apply #'concatenate  'string (mapcar #'symbol-name args))))
+
 
 (provide 'init-utils)
