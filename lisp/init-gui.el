@@ -15,7 +15,7 @@
 
 ;; English font
 (set-face-attribute
- 'default nil :font "Source Code Pro 12")
+ 'default nil :font "Source Code Pro for Powerline 12")
 ;; Chinese font
 (dolist (charset '(kana han symbol cjk-misc bopomofo))
   (set-fontset-font (frame-parameter nil 'font)
