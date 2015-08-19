@@ -4,6 +4,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(cfs--current-profile-name "program" t)
+ '(cfs--fontsize-steps (quote (4 2)) t)
  '(git-gutter:added-sign "+")
  '(git-gutter:deleted-sign "-")
  '(git-gutter:modified-sign "~")
