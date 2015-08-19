@@ -1,68 +1,78 @@
 (after-init (my/require '(evil evil-anzu)))
 
-;; Disable evil for certain major-modes
+;; enable evil normal state in these modes
 (setq evil-normal-state-modes
-	  '(prog-mode
-		web-mode
-		text-mode
-		nginx-mode
-		org-mode
-		yaml-mode))
+      '(prog-mode
+        web-mode
+        text-mode
+        nginx-mode
+        org-mode
+        yaml-mode))
 
 (after-load 'evil
   (dolist (mode '(view-mode))
-	(add-to-list 'evil-emacs-state-modes mode)))
+    (add-to-list 'evil-emacs-state-modes mode)))
+
+(defun should-be-evil-normal-state ()
+  "Check if we should change evil to normal state according to
+current active modes."
+  (cl-flet ((derived-p (a b) (let ((major-mode b))
+                               (derived-mode-p a))))
+    (let ((active-modes (append (list major-mode)
+                                (remove-if-not (lambda (x) (and (boundp x) (symbol-value x))) minor-mode-list)))
+          (allowed-modes evil-normal-state-modes)
+          (disallowed-modes evil-emacs-state-modes))
+      (and (not (intersection active-modes disallowed-modes :test #'derived-p))
+           (intersection active-modes allowed-modes :test #'derived-p)))))
 
 (after-load 'evil
-  (defadvice evil-initialize (around my/evil-initialize activate)
-	ad-do-it
-	(dolist (mode evil-normal-state-modes)
-	  (if (derived-mode-p mode)
-		  (return (evil-change-state 'normal))
-		(evil-change-state 'emacs))))
+  ;; check if evil should be normal state when initializing evil
+  (defadvice evil-initialize (after my/evil-initialize activate)
+    (and (should-be-evil-normal-state)
+         (evil-change-state 'normal)))
 
   (defadvice evil-indent (around my/evil-indent activate)
-	(let ((pos (point)))
-	  ad-do-it
-	  (goto-char pos)))
+    (let ((pos (point)))
+      ad-do-it
+      (goto-char pos)))
 
   ;; set evil default state to emacs
   (setq evil-default-state 'emacs
-		evil-move-cursor-back nil)
+        evil-move-cursor-back nil)
 
   ;; keep some common keys of emacs in insert state
   (let ((evil-common-keys
-		 '(("C-a"  beginning-of-line)
-		   ("C-e"  end-of-line)
-		   ("C-p"  previous-line)
-		   ("C-n"  next-line)
-		   ("C-k"  kill-line)
-		   ("C-y"  yank)
-		   ("M-a"  backward-sentence)
-		   ("M-e"  forward-sentence)
-		   ("C-d"  delete-char)
-		   ("M-d"  kill-word)
-		   ("M-<DEL>" backward-kill-word))))
+         '(("C-a"  beginning-of-line)
+           ("C-e"  end-of-line)
+           ("C-p"  previous-line)
+           ("C-n"  next-line)
+           ("C-k"  kill-line)
+           ("C-y"  yank)
+           ("M-a"  backward-sentence)
+           ("M-e"  forward-sentence)
+           ("C-d"  delete-char)
+           ("M-d"  kill-word)
+           ("M-<DEL>" backward-kill-word))))
 
-	(dolist (bind evil-common-keys)
-	  (define-key evil-insert-state-map (kbd (car bind)) (cadr bind))
-	  (define-key evil-operator-state-map (kbd (car bind)) (cadr bind))
-	  (define-key evil-replace-state-map (kbd (car bind)) (cadr bind))))
+    (dolist (bind evil-common-keys)
+      (define-key evil-insert-state-map (kbd (car bind)) (cadr bind))
+      (define-key evil-operator-state-map (kbd (car bind)) (cadr bind))
+      (define-key evil-replace-state-map (kbd (car bind)) (cadr bind))))
 
   ;; quick indent
   (defun my/evil-indent-paragraph (&rest args)
-	(interactive)
-	(let* ((orig-state evil-state)
-		   (to-state (symbol-concat 'evil- orig-state '-state)))
-	  (evil-normal-state)
-	  (my/send-keys "=ap")
-	  (when (fboundp to-state)
-		(funcall to-state))))
+    (interactive)
+    (let* ((orig-state evil-state)
+           (to-state (symbol-concat 'evil- orig-state '-state)))
+      (evil-normal-state)
+      (my/send-keys "=ap")
+      (when (fboundp to-state)
+        (funcall to-state))))
 
   (add-hook 'prog-mode-hook
-			(lambda () (dolist (mode '(evil-insert-state-local-map
-								   evil-normal-state-local-map))
-					 (define-key (symbol-value mode) (kbd "C-c C-c") 'my/evil-indent-paragraph))))
+            (lambda () (dolist (mode '(evil-insert-state-local-map
+                                   evil-normal-state-local-map))
+                     (define-key (symbol-value mode) (kbd "C-c C-c") 'my/evil-indent-paragraph))))
 
 
   (define-key evil-normal-state-map (kbd "C-c C-c") 'my/evil-indent-paragraph)
@@ -139,10 +149,10 @@
   (after-load' evil-snipe (diminish 'evil-snipe-mode))
   (evil-snipe-mode 1)
   (setq evil-snipe-repeat-keys t
-		evil-snipe-scope 'visible
-		evil-snipe-repeat-scope 'whole-visible
-		evil-snipe-enable-highlight t
-		evil-snipe-enable-incremental-highlight t))
+        evil-snipe-scope 'visible
+        evil-snipe-repeat-scope 'whole-visible
+        evil-snipe-enable-highlight t
+        evil-snipe-enable-incremental-highlight t))
 
 
 ;;-----------------------
