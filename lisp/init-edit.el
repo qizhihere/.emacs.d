@@ -111,16 +111,24 @@
   (setq show-trailing-whitespace t)
   (require 'smartparens-config)
   (turn-on-smartparens-mode)
-  (page-break-lines-mode)
+  (page-break-lines-mode 1))
+(after-init (add-hook 'prog-mode-hook 'my/edit-hooks))
+
 (defun my/hs-mode-init ()
   (hs-minor-mode 1)
   (hideshowvis-enable)
   (hideshowvis-symbols))
-(after-init (add-hook 'prog-mode-hook 'my/edit-hooks))
 (dolist (mode '(php-mode-hook sh-mode-hook))
   (and (boundp mode) (add-hook mode 'my/hs-mode-init)))
+
+(defun my/eval-expression-minibuffer-setup ()
+  (make-variable-buffer-local 'electric-pair-mode)
+  (electric-pair-mode 1)
+  (local-set-key (kbd "S-RET") 'newline))
+(add-hook 'eval-expression-minibuffer-setup-hook 'my/eval-expression-minibuffer-setup)
 (after-load 'hideshow (diminish 'hs-minor-mode))
 (after-load 'smartparens (diminish 'smartparens-mode))
+(after-load 'page-break-lines (diminish 'page-break-lines-mode))
 
 ;; automatically indent code on editing
 (my/install '(aggressive-indent))

@@ -3,17 +3,21 @@
 
 (setq mc/cmds-to-run-for-all
       '(
-		evil-backward-char
-		evil-delete-char
-		evil-digit-argument-or-evil-beginning-of-line
-		evil-forward-char
-		evil-insert
-		evil-next-line
-		evil-normal-state
-		evil-previous-line
-		evil-replace
-		))
+        evil-backward-char
+        evil-backward-word-begin
+        evil-delete-char
+        evil-digit-argument-or-evil-beginning-of-line
+        evil-emacs-state
+        evil-exit-emacs-state
+        evil-forward-char
+        evil-forward-word-begin
+        evil-insert
+        evil-next-line
+        evil-normal-state
+        evil-previous-line
+        evil-replace
+        ))
 
 (setq mc/cmds-to-run-once
       '(
-		))
+        ))
