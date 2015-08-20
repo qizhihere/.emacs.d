@@ -101,6 +101,7 @@
 (after-load 'highlight-symbol
   (diminish 'highlight-symbol-mode)
   (highlight-numbers-mode 1)
+  (highlight-numbers-mode 1)
   (setq highlight-symbol-idle-delay 0.3)
   (defadvice highlight-symbol-temp-highlight (around sanityinc/maybe-suppress activate)
     "Suppress symbol highlighting while isearching."
