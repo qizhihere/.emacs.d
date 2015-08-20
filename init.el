@@ -51,6 +51,13 @@
 (require 'init-session)
 (require 'init-workgroups2)
 
+(require 'init-dictionary)
+(require 'init-flycheck)
+(require 'init-flyspell)
+(require 'init-hippie-expand)
+(require 'init-company)
+(require 'init-yasnippet)
+
 (require 'init-html)
 (require 'init-css)
 (require 'init-javascript)
@@ -62,13 +69,6 @@
 (require 'init-lisp)
 ;; ;; minor modes which need only very little configuration
 (require 'init-small-minor-modes)
-
-(require 'init-dictionary)
-(require 'init-flycheck)
-(require 'init-flyspell)
-(require 'init-hippie-expand)
-(require 'init-company)
-(require 'init-yasnippet)
 
 
 (when (file-exists-p custom-file)
