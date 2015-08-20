@@ -63,12 +63,16 @@
                  (mapcar #'symbol-name symbols))))
 
 (defun derive-from-prog-mode (mode &optional hook)
-  "Make mode derived from `prog-mode'."
-  (put mode 'derived-mode-parent 'prog-mode)
-  (or hook (setq hook (concat-symbols mode '-hook)))
-  (if (boundp hook)
-      (add-hook hook (lambda () (run-hooks 'prog-mode-hook)))
-    (error "Hook %s not exist!" hook)))
+  "Make mode derived from `prog-mode'.
+
+If MODE is a list, then this function will be applied to all
+elements."
+  (if (listp mode)
+      (dolist (x mode) (derive-from-prog-mode x))
+    (put mode 'derived-mode-parent 'prog-mode)
+    (message "Hook: %s" (or hook (setq hook (concat-symbols mode '-hook))))
+    (when (boundp hook)
+      (add-hook hook (lambda () (run-hooks 'prog-mode-hook))))))
 
 (defmacro silently-do (&rest body)
   "Do commands silently with `message' doing nothing."
