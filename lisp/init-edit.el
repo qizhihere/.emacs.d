@@ -155,7 +155,7 @@
              css-mode-hook
              js2-mode-hook))
   (and (boundp x) (add-hook x (lambda () (when (< (count-lines (point-min) (point-max)) 500)
-                                           (aggressive-indent-mode 1))))))
+                                       (aggressive-indent-mode 1))))))
 (after-load 'aggressive-indent
   (diminish 'aggressive-indent-mode))
 
@@ -164,6 +164,11 @@
 
 (when (fboundp 'global-prettify-symbols-mode)
   (global-prettify-symbols-mode))
+
+;; quick navigate in Info/help mode...
+(my/install 'ace-link)
+(after-init (ace-link-setup-default))
+
 
 ;; use regex tool to test regular expression
 (my/install 'regex-tool)
