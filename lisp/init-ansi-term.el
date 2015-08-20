@@ -1,9 +1,11 @@
 ;; term settings
 (my/install 'multi-term)
 (setq multi-term-program "/usr/bin/fish")
-(global-set-key [f12] (if (featurep 'multi-term)
-                          'multi-term
-                        'ansi-term))
+
+(after-init
+  (let ((term (if (package-installed-p 'multi-term) 'multi-term 'ansi-term)))
+    (global-set-key [f12] term)))
+
 (add-hook 'term-mode-hook
           (lambda ()
             (setq show-trailing-whitespace nil)
