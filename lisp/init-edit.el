@@ -53,7 +53,21 @@
 (after-load 'multiple-cursors-core
   (defadvice mc/prompt-for-inclusion-in-whitelist (around my/cancel-mc-prompt activate)
     (cl-letf (((symbol-function 'y-or-n-p) (lambda (orig-cmd) t)))
-      ad-do-it)))
+      ad-do-it))
+  (with-installed 'evil
+    (defadvice multiple-cursors-mode (before my/evil-change-to-emacs-state activate)
+      (when (= (mc/num-cursors) 2)
+        (if (use-region-p)
+            (let ((beg (region-beginning))
+                  (end (region-end)))
+              (evil-change-state 'emacs)
+              (goto-char beg)
+              (set-mark-command nil)
+              (goto-char end)
+              (setq deactivate-mark nil))
+          (let ((last-pos (point)))
+            (evil-change-state 'emacs)
+            (goto-char last-pos)))))))
 
 ;; multiple cursors
 (global-unset-key (kbd "C-<down-mouse-1>"))
