@@ -113,7 +113,9 @@
 
 
 ;; directly show colors like hex colors and so on
-(my/install '(rainbow-mode rainbow-delimiters))
+(my/install '(rainbow-mode
+              rainbow-delimiters
+              fill-column-indicator))
 (after-load 'rainbow-mode
   (diminish 'rainbow-mode))
 (add-hook 'prog-mode-hook
@@ -153,7 +155,7 @@
              css-mode-hook
              js2-mode-hook))
   (and (boundp x) (add-hook x (lambda () (when (< (count-lines (point-min) (point-max)) 500)
-                                       (aggressive-indent-mode 1))))))
+                                           (aggressive-indent-mode 1))))))
 (after-load 'aggressive-indent
   (diminish 'aggressive-indent-mode))
 
