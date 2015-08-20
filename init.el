@@ -37,6 +37,7 @@
 (require 'init-frame)
 (require 'init-style)
 (require 'init-mode-line)
+(require 'init-ansi-term)
 
 (require 'init-dired)
 (require 'init-helm)
