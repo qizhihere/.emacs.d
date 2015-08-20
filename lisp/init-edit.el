@@ -95,10 +95,11 @@
 (global-highlight-parentheses-mode 1)
 (diminish 'highlight-parentheses-mode)
 
-;; symbol
-(my/install 'highlight-symbol)
+;; symbol/number
+(my/install '(highlight-symbol highlight-numbers))
 (after-load 'highlight-symbol
   (diminish 'highlight-symbol-mode)
+  (highlight-numbers-mode 1)
   (setq highlight-symbol-idle-delay 0.3)
   (defadvice highlight-symbol-temp-highlight (around sanityinc/maybe-suppress activate)
     "Suppress symbol highlighting while isearching."
