@@ -7,7 +7,7 @@
   (define-key yas-minor-mode-map (kbd "C-j") 'yas-expand))
 
 (add-hook 'prog-mode-hook 'yas-minor-mode)
-;; (after-init (silently-do (yas-global-mode t)))
+(after-init (silently-do (yas/reload-all)))
 
 
 
