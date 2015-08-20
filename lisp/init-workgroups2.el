@@ -25,10 +25,7 @@
   (global-set-key (kbd "M-[")       'wg-switch-to-previous-workgroup)
   (global-set-key (kbd "M-]")       'wg-switch-to-previous-workgroup))
 
-;; (add-hook 'desktop-save-hook 'wg-save-session)
-(after-init
-  (workgroups-mode 1)
-  (wg-open-session wg-session-file))
+(after-init (workgroups-mode 1))
 
 
 (provide 'init-workgroups2)
