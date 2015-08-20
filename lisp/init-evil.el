@@ -58,7 +58,8 @@ current active modes."
     (dolist (bind evil-common-keys)
       (define-key evil-insert-state-map (kbd (car bind)) (cadr bind))
       (define-key evil-operator-state-map (kbd (car bind)) (cadr bind))
-      (define-key evil-replace-state-map (kbd (car bind)) (cadr bind))))
+      (define-key evil-replace-state-map (kbd (car bind)) (cadr bind))
+      (define-key evil-normal-state-map (kbd (car bind)) (cadr bind))))
 
   ;; quick indent
   (defun my/evil-indent-paragraph (&rest args)
@@ -72,8 +73,8 @@ current active modes."
 
   (add-hook 'prog-mode-hook
             (lambda () (dolist (mode '(evil-insert-state-local-map
-                                       evil-normal-state-local-map))
-                         (define-key (symbol-value mode) (kbd "C-c C-c") 'my/evil-indent-paragraph))))
+                                   evil-normal-state-local-map))
+                     (define-key (symbol-value mode) (kbd "C-c C-c") 'my/evil-indent-paragraph))))
 
 
   (define-key evil-normal-state-map (kbd "C-c C-c") 'my/evil-indent-paragraph)
