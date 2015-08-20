@@ -129,17 +129,21 @@
   (page-break-lines-mode 1))
 (after-init (add-hook 'prog-mode-hook 'my/edit-hooks))
 
-(defun my/hs-mode-init ()
+(defun my/enable-hs-mode ()
   (hs-minor-mode 1)
   (hideshowvis-enable)
   (hideshowvis-symbols))
-(dolist (mode '(php-mode-hook sh-mode-hook))
-  (and (boundp mode) (add-hook mode 'my/hs-mode-init)))
+(add-hook 'prog-mode-hook 'my/enable-hs-mode)
 
 (defun my/eval-expression-minibuffer-setup ()
   (make-variable-buffer-local 'electric-pair-mode)
   (electric-pair-mode 1)
   (local-set-key (kbd "S-RET") 'newline))
+
+;; don't let the cursor go into minibuffer prompt
+;; tip taken from: http://ergoemacs.org/emacs/emacs_stop_cursor_enter_prompt.html
+(setq minibuffer-prompt-properties
+      '(read-only t point-entered minibuffer-avoid-prompt face minibuffer-prompt))
 (add-hook 'eval-expression-minibuffer-setup-hook 'my/eval-expression-minibuffer-setup)
 (after-load 'hideshow (diminish 'hs-minor-mode))
 (after-load 'smartparens (diminish 'smartparens-mode))
