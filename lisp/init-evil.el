@@ -163,6 +163,13 @@ current active modes."
 (after-load 'evil
   (global-evil-surround-mode 1))
 
+;;----------------------------------------------------------------------------
+;; evil jumper
+;;----------------------------------------------------------------------------
+(my/install 'evil-jumper)
+(after-load 'evil
+  (evil-jumper-mode 1))
+
 
 
 
