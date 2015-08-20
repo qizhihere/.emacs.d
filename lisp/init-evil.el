@@ -1,3 +1,4 @@
+(require 'cl)
 (after-init (my/require '(evil evil-anzu)))
 
 ;; enable evil normal state in these modes
@@ -28,8 +29,7 @@ current active modes."
 (after-load 'evil
   ;; check if evil should be normal state when initializing evil
   (defadvice evil-initialize (after my/evil-initialize activate)
-    (and (should-be-evil-normal-state)
-         (evil-change-state 'normal)))
+    (evil-change-state (if (should-be-evil-normal-state) 'normal 'emacs)))
 
   (defadvice evil-indent (around my/evil-indent activate)
     (let ((pos (point)))
@@ -72,8 +72,8 @@ current active modes."
 
   (add-hook 'prog-mode-hook
             (lambda () (dolist (mode '(evil-insert-state-local-map
-                                   evil-normal-state-local-map))
-                     (define-key (symbol-value mode) (kbd "C-c C-c") 'my/evil-indent-paragraph))))
+                                       evil-normal-state-local-map))
+                         (define-key (symbol-value mode) (kbd "C-c C-c") 'my/evil-indent-paragraph))))
 
 
   (define-key evil-normal-state-map (kbd "C-c C-c") 'my/evil-indent-paragraph)
