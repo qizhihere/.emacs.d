@@ -18,7 +18,7 @@
   (add-hook hook 'turn-on-elisp-slime-nav-mode)
   (add-hook hook 'eldoc-mode))
 
-(after-load 'elisp-slime-nav-mode (diminish 'elisp-slime-nav-mode))
+(after-load 'elisp-slime-nav (diminish 'elisp-slime-nav-mode))
 (after-load 'eldoc (diminish 'eldoc-mode))
 (add-hook 'lisp-interaction-mode-hook
           (lambda () (setq mode-name "Lisp")))

@@ -126,14 +126,11 @@
   (setq show-trailing-whitespace t)
   (require 'smartparens-config)
   (turn-on-smartparens-mode)
-  (page-break-lines-mode 1))
-(after-init (add-hook 'prog-mode-hook 'my/edit-hooks))
-
-(defun my/enable-hs-mode ()
+  (page-break-lines-mode 1)
   (hs-minor-mode 1)
   (hideshowvis-enable)
   (hideshowvis-symbols))
-(add-hook 'prog-mode-hook 'my/enable-hs-mode)
+(after-init (add-hook 'prog-mode-hook 'my/edit-hooks))
 
 (defun my/eval-expression-minibuffer-setup ()
   (make-variable-buffer-local 'electric-pair-mode)
