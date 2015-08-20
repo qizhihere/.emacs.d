@@ -5,6 +5,7 @@
       '(
         evil-backward-char
         evil-backward-word-begin
+        evil-delete
         evil-delete-char
         evil-digit-argument-or-evil-beginning-of-line
         evil-emacs-state

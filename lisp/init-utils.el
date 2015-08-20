@@ -1,12 +1,14 @@
-(defun my/install (package)
+(require 'cl)
+(defun my/install (package &optional lst)
   (if (listp package)
-      (dolist (x package)
-        (my/install x))
+      (dolist (x package lst)
+        (setq lst (union lst (my/install x))))
     (when (not package-archive-contents)
       (package-refresh-contents))
-    (if (not (package-installed-p package))
-        (package-install package)
-      t)))
+    (if (not (or (package-installed-p package)
+                 (featurep package)))
+        (and (package-install package) (list package))
+      (list package))))
 
 (defun my/require (package)
   (if (listp package)
@@ -68,7 +70,6 @@
       (add-hook hook (lambda () (run-hooks 'prog-mode-hook)))
     (error "Hook %s not exist!" hook)))
 
-(require 'cl)
 (defmacro silently-do (&rest body)
   "Do commands silently with `message' doing nothing."
   `(cl-letf (((symbol-function 'message) (lambda (&rest args) nil)))
