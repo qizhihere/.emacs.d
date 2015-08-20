@@ -70,7 +70,7 @@ elements."
   (if (listp mode)
       (dolist (x mode) (derive-from-prog-mode x))
     (put mode 'derived-mode-parent 'prog-mode)
-    (message "Hook: %s" (or hook (setq hook (concat-symbols mode '-hook))))
+    (or hook (setq hook (concat-symbols mode '-hook)))
     (when (boundp hook)
       (add-hook hook (lambda () (run-hooks 'prog-mode-hook))))))
 
