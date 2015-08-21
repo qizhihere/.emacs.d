@@ -2,6 +2,7 @@
 
 ;; eval-expression result pretty print
 (ipretty-mode 1)
+(global-set-key (kbd "M-:") 'pp-eval-expression)
 (defadvice pp-display-expression (after my/make-read-only (expression out-buffer-name) activate)
   "enable `view-mode' in the output buffer - if any - so it can be closed with `\"q\"."
   (when (get-buffer out-buffer-name)
