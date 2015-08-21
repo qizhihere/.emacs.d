@@ -102,7 +102,7 @@
   (diminish 'highlight-symbol-mode)
   (highlight-numbers-mode 1)
   (highlight-numbers-mode 1)
-  (setq highlight-symbol-idle-delay 0.3)
+  (setq highlight-symbol-idle-delay 1.0)
   (defadvice highlight-symbol-temp-highlight (around sanityinc/maybe-suppress activate)
     "Suppress symbol highlighting while isearching."
     (unless (or isearch-mode
@@ -130,10 +130,11 @@
   (setq show-trailing-whitespace t)
   (require 'smartparens-config)
   (turn-on-smartparens-mode)
-  (page-break-lines-mode 1))
- ; (hs-minor-mode 1)
- ; (hideshowvis-enable)
- ; (hideshowvis-symbols))
+  (page-break-lines-mode 1)
+  (ignore-errors
+    (hs-minor-mode 1)
+    (hideshowvis-enable)
+    (hideshowvis-symbols)))
 (after-init (add-hook 'prog-mode-hook 'my/edit-hooks))
 
 (defun my/eval-expression-minibuffer-setup ()
