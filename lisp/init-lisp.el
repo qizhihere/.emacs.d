@@ -21,8 +21,8 @@
 (custom-set-faces
  '(hdefd-functions ((t (:inherit font-lock-function-name-face))))
  '(hdefd-variables ((t (:inherit font-lock-variable-name-face)))))
-(after-init (add-hook 'emacs-lisp-mode-hook (lambda () (require 'hl-defined)
-                                              (hdefd-highlight-mode))))
+(add-hook 'emacs-lisp-mode-hook (lambda () (require 'hl-defined)
+                                  (hdefd-highlight-mode 1)))
 
 (after-load 'elisp-slime-nav (diminish 'elisp-slime-nav-mode))
 (after-load 'eldoc (diminish 'eldoc-mode))

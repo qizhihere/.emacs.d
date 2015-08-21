@@ -76,6 +76,7 @@
 (setq ring-bell-function 'nil)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
+(my/install 'fullframe)
 
 
 

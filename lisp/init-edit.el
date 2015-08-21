@@ -170,6 +170,7 @@
 (my/install 'ace-link)
 (after-init (ace-link-setup-default))
 
+(setq Man-notify-method 'bully)
 
 ;; use regex tool to test regular expression
 (my/install 'regex-tool)
@@ -178,6 +179,7 @@
   (with-installed 'evil
     (add-hook 'regex-tool-mode-hook
               (lambda () (evil-local-set-key 'normal [remap evil-record-macro] 'regex-tool-quit)))))
+
 
 
 (provide 'init-edit)
