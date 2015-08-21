@@ -1,7 +1,7 @@
 (my/install '(spacemacs-theme color-theme-sanityinc-solarized))
 
 ;; load theme
-(setq my/current-theme 'sanityinc-solarized-light)
+(setq my/current-theme 'spacemacs-dark)
 (load-theme my/current-theme t)
 
 (after-load 'color-theme-sanityinc-solarized
@@ -9,6 +9,10 @@
    '(show-paren-match ((t (:underline t :inherit highlight :inverse-video nil))))
    '(highlight-symbol-face ((t (:inherit highlight))))
    '(linum-relative-current-face ((t (:inherit linum :foreground "#5F8787" :weight bold))))))
+
+(after-load 'spacemacs-dark-theme
+  (custom-set-faces
+   '(highlight-symbol-face ((t (:background "#2c2c2c"))))))
 
 ;; enable mouse mode
 (xterm-mouse-mode t)

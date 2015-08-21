@@ -4,8 +4,8 @@
   (when (my/try-install 'magit)
     ;; disable magit startup messages
     (setq magit-last-seen-setup-instructions "1.4.0"
-          magit-push-always-verify nil)
-    (fullframe magit-status magit-mode-quit-window t)))
+          magit-push-always-verify nil
+          magit-status-buffer-switch-function 'switch-to-buffer)))
 
 ;; git-gutter
 ;; use git-gutter.el with linum-mode
