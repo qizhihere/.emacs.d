@@ -23,6 +23,7 @@
            (evil-change-state 'emacs)))))
 
 (my/install 'elisp-slime-nav)
+(after-load 'elisp-slime-nav (diminish 'elisp-slime-nav-mode))
 (with-installed 'evil
   (after-load 'evil
     (define-key evil-normal-state-map (kbd "M-.") 'elisp-slime-nav-find-elisp-thing-at-point)))
