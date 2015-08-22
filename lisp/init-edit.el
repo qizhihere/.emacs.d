@@ -21,9 +21,6 @@
 
 (put 'narrow-to-region 'disabled nil)
 
-(setq tramp-shell-prompt-pattern
-      "\\(?:^\\|\\)\\([^]#$%>\n]*#?[]#$%>]\\|»\\) *\\(\\[[0-9;]*[a-zA-Z] *\\)*")
-
 ;; try install helm-bm after init (because helm will be install after
 ;; this file but before init)
 (after-init (with-installed 'helm (my/try-install 'helm-bm)))

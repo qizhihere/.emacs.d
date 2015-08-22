@@ -52,6 +52,10 @@
 ;; open current file with sudo
 (require 'sudo-edit)
 
+;; set default shell
+(setenv "SHELL" "/bin/bash")
+(setq tramp-shell-prompt-pattern "^.*$")
+
 ;; disable page jump when cursor scrolling to the margin
 (setq scroll-margin 3
       scroll-conservatively 10000)
