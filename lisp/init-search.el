@@ -33,6 +33,9 @@ will be used."
   (browse-url-default-browser
    (concat "https://www.google.com/#q=" keywords)))
 
+;; grep/find
+(setq grep-find-command '("find . -type f -exec grep -nHIi -e \"\" \\{\\} \\+" . 37))
+(setq grep-command "grep -nHIir -e  ")
 ;; anzu(show search and replace info on mode line)
 (my/install '(anzu ag))
 (global-anzu-mode 1)
