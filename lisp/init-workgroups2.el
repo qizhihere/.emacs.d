@@ -14,7 +14,13 @@
   (defadvice wg-barf-on-active-minibuffer
       (around my/wg-barf-on-active-minibuffer activate)
     (when (wg-minibuffer-inactive-p)
-      ad-do-it)))
+      ad-do-it))
+
+  (defadvice wg-make-and-add-workgroup
+      (around my/wg-new-blank-workgroup (name &optional blank) activate)
+    "Create new empty workgroup without keeping current buffers."
+    (setq blank t)
+    ad-do-it))
 
 (custom-set-default 'wg-first-wg-name "All")
 
