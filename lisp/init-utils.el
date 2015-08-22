@@ -62,6 +62,14 @@
   (intern (apply #'concatenate 'string
                  (mapcar #'symbol-name symbols))))
 
+(defmacro with-temp-advice (function &rest body)
+  "Execute BODY with advice temporarily enabled."
+  `(unwind-protect
+       (progn
+         (ad-activate ,function)
+         ,@body)
+     (ad-deactivate ,function)))
+
 (defun derive-from-prog-mode (mode &optional hook)
   "Make mode derived from `prog-mode'.
 

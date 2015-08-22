@@ -22,10 +22,16 @@
     (setq blank t)
     ad-do-it)
 
-  (defadvice wg-switch-to-workgroup (around mytest activate)
-    (ad-activate #'wg-make-and-add-workgroup)
-    ad-do-it
-    (ad-deactivate #'wg-make-and-add-workgroup)))
+  (defun my/wg-create-workgroup ()
+    (interactive)
+    (with-temp-advice
+     'wg-make-and-add-workgroup
+     (call-interactively #'wg-create-workgroup)))
+
+  (defadvice wg-switch-to-workgroup (around my/wg-switch-to-new-empty activate)
+    (with-temp-advice
+     'wg-make-and-add-workgroup
+     ad-do-it)))
 
 (custom-set-default 'wg-first-wg-name "All")
 
