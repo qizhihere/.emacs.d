@@ -17,10 +17,15 @@
       ad-do-it))
 
   (defadvice wg-make-and-add-workgroup
-      (around my/wg-new-blank-workgroup (name &optional blank) activate)
+      (around my/wg-new-blank-workgroup (name &optional blank))
     "Create new empty workgroup without keeping current buffers."
     (setq blank t)
-    ad-do-it))
+    ad-do-it)
+
+  (defadvice wg-switch-to-workgroup (around mytest activate)
+    (ad-activate #'wg-make-and-add-workgroup)
+    ad-do-it
+    (ad-deactivate #'wg-make-and-add-workgroup)))
 
 (custom-set-default 'wg-first-wg-name "All")
 
