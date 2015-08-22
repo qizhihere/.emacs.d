@@ -40,6 +40,9 @@ current active modes."
   (setq evil-default-state 'emacs
         evil-move-cursor-back nil)
 
+  ;; abort company autocompletion when switch to normal state
+  (add-hook 'evil-insert-state-exit-hook 'company-abort)
+
   ;; keep some common keys of emacs in insert state
   (let ((evil-common-keys
          '(("C-a"  beginning-of-line)
