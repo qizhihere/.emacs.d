@@ -19,6 +19,8 @@
  truncate-partial-width-windows nil
  visible-bell nil)
 
+(put 'narrow-to-region 'disabled nil)
+
 ;; try install helm-bm after init (because helm will be install after
 ;; this file but before init)
 (after-init (with-installed 'helm (my/try-install 'helm-bm)))

@@ -3,8 +3,15 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        c-electric-colon
+        c-electric-paren
+        c-electric-semi&comma
+        c-electric-slash
+        comment-region
+        electric-pair-delete-pair
         evil-backward-char
         evil-backward-word-begin
+        evil-change
         evil-delete
         evil-delete-char
         evil-digit-argument-or-evil-beginning-of-line
@@ -17,6 +24,9 @@
         evil-normal-state
         evil-previous-line
         evil-replace
+        indent-for-tab-command
+        smex
+        yas-expand
         ))
 
 (setq mc/cmds-to-run-once

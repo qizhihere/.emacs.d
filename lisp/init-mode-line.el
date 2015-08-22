@@ -56,14 +56,15 @@
                 mode-line-frame-identification
                 ;; buffer file and file size
                 (-60 (+60
-                      (+22 (-40
+                      (+22 (-25
                             (:eval (propertized-buffer-identification "%b")))
                            "  " (size-indication-mode (-4 "%I")))
                       "   "
                       mode-line-position
                       ;; projectile and git
-                      (+16 (-16 (:eval my/projectile-mode-line))
-                           (-6 (vc-mode (:eval (my/vc-mode-line)))))))
+                      (+16 (-6 (vc-mode (:eval (my/vc-mode-line))))
+                           (-16 (:eval my/projectile-mode-line)))))
+                " "
                 (+15 (:eval (my/wg-mode-line)))
                 " "
                 (+24 (-24 (:eval mode-line-modes)))
