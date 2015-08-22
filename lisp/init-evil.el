@@ -56,10 +56,11 @@ current active modes."
            ("M-<DEL>" backward-kill-word))))
 
     (dolist (bind evil-common-keys)
-      (define-key evil-insert-state-map (kbd (car bind)) (cadr bind))
-      (define-key evil-operator-state-map (kbd (car bind)) (cadr bind))
-      (define-key evil-replace-state-map (kbd (car bind)) (cadr bind))
-      (define-key evil-normal-state-map (kbd (car bind)) (cadr bind))))
+      (dolist (m '(evil-insert-state-map
+                   evil-operator-state-map
+                   evil-replace-state-map
+                   evil-normal-state-map))
+        (define-key (symbol-value m) (kbd (car bind)) (cadr bind)))))
 
   ;; quick indent
   (defun my/evil-indent-paragraph (&rest args)
