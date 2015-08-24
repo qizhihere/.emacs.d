@@ -133,10 +133,11 @@
   (require 'smartparens-config)
   (turn-on-smartparens-mode)
   (page-break-lines-mode 1)
-  (ignore-errors
-    (hs-minor-mode 1)
-    (hideshowvis-enable)
-    (hideshowvis-symbols)))
+  ;; (ignore-errors
+  ;;   (hs-minor-mode 1)
+  ;;   (hideshowvis-enable)
+  ;;   (hideshowvis-symbols))
+  )
 (after-init (add-hook 'prog-mode-hook 'my/edit-hooks))
 
 (defun my/eval-expression-minibuffer-setup ()
