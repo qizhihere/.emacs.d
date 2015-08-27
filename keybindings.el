@@ -138,9 +138,13 @@
     "mm"  'bm-toggle
     "mn"  'bm-next
     "mp"  'bm-previous
-    "md"  'bm-toggle
-    "mD"  'bm-remove-all-current-buffers
-    "mR"  'bm-remove-all-all-buffers)
+    "md"  'bm-toggle)
+
+  ;; bookmark
+  (evil-leader/set-key
+    "bl"  'bookmark-bmenu-list
+    "bm"  'bmkp-bookmark-set-confirm-overwrite
+    "bj"   'bookmark-jump)
 
   ;; outline minor mode
   (evil-leader/set-key
