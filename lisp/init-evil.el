@@ -56,7 +56,8 @@ current active modes."
            ("M-e"  forward-sentence)
            ("C-d"  delete-char)
            ("M-d"  kill-word)
-           ("M-<DEL>" backward-kill-word))))
+           ("M-DEL" backward-kill-word)
+           )))
 
     (dolist (bind evil-common-keys)
       (dolist (m '(evil-insert-state-map
@@ -77,8 +78,8 @@ current active modes."
 
   (add-hook 'prog-mode-hook
             (lambda () (dolist (mode '(evil-insert-state-local-map
-                                   evil-normal-state-local-map))
-                     (define-key (symbol-value mode) (kbd "C-c C-c") 'my/evil-indent-paragraph))))
+                                       evil-normal-state-local-map))
+                         (define-key (symbol-value mode) (kbd "C-c C-c") 'my/evil-indent-paragraph))))
 
 
   (define-key evil-normal-state-map (kbd "C-c C-c") 'my/evil-indent-paragraph)
