@@ -127,12 +127,12 @@
 
 ;; code folding and auto pairs/brackets
 (my/install '(smartparens hideshowvis page-break-lines))
+(global-page-break-lines-mode 1)
 (defun my/edit-hooks ()
   ;; highlight whitespace
   (setq show-trailing-whitespace t)
   (require 'smartparens-config)
   (turn-on-smartparens-mode)
-  (page-break-lines-mode 1)
   (ignore-errors
     (hs-minor-mode 1)
     (hideshowvis-enable)
@@ -142,8 +142,7 @@
 ;; remove above `my/edit-hook' in compilation mode
 (defun my/compilation-mode-hooks ()
   (make-local-variable 'prog-mode-hook)
-  (remove-hook 'prog-mode-hook 'my/edit-hooks)
-  (page-break-lines-mode 1))
+  (remove-hook 'prog-mode-hook 'my/edit-hooks))
 (add-hook 'compilation-mode-hook 'my/compilation-mode-hooks)
 
 (defun my/eval-expression-minibuffer-setup ()
