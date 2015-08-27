@@ -18,16 +18,26 @@
 
 ;; adjust space between line number and content
 (setq linum-relative-current-symbol "->"
-	  linum-relative-format "%2s ")
+      linum-relative-format "%2s ")
 
 ;; disable linum in certin modes(especially for doc-view-mode,
 ;; enabling linum may hangs emacs out)
 (setq linum-disable-mode-list
-	  '(org-mode dired-mode doc-view-mode help-mode undo-tree-visualizer-mode Info-mode))
-(defadvice linum-mode (around my/setup-linum activate)
-  (when (not (and (boundp 'linum-disable-mode-list)
-				  (member major-mode linum-disable-mode-list)))
-	ad-do-it))
+      '(org-mode
+        dired-mode
+        doc-view-mode
+        pdf-view-mode
+        help-mode
+        undo-tree-visualizer-mode
+        Info-mode
+        eshell-mode
+        compilation-mode
+        org-mode))
+(after-load 'linum
+  (defadvice linum-on (around my/setup-linum activate)
+    (when (not (and (boundp 'linum-disable-mode-list)
+                    (member major-mode linum-disable-mode-list)))
+      ad-do-it)))
 (global-linum-mode)
 
 
