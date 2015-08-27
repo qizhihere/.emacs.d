@@ -31,7 +31,24 @@
   (defadvice wg-switch-to-workgroup (around my/wg-switch-to-new-empty activate)
     (with-temp-advice
      'wg-make-and-add-workgroup
-     ad-do-it)))
+     ad-do-it))
+
+  (defadvice wg-auto-associate-buffer (around my/wg-special-buffer-patch activate)
+    "Patch to ignore special buffers such as company-mode completion buffer."
+    (when wg-buffer-auto-association-on
+      (-when-let* ((wg (wg-current-workgroup t frame))
+                   (b (get-buffer buffer)))
+        (message "1111")
+        (unless (or (wg-workgroup-bufobj-association-type wg buffer)
+                    (member wg wg-deactivation-list)
+                    (string-match-p "^*temp" (buffer-name b))
+                    (member (buffer-name b) wg-associate-blacklist)
+                    (not (or (buffer-file-name b)
+                             (eq (buffer-local-value 'major-mode b) 'dired-mode))))
+          (message "2222")
+          (wg-auto-associate-buffer-helper
+           wg buffer (wg-local-value 'wg-buffer-auto-association wg))))))
+  )
 
 (custom-set-default 'wg-first-wg-name "All")
 
