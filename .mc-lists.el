@@ -25,6 +25,7 @@
         evil-previous-line
         evil-replace
         indent-for-tab-command
+        ispell-minor-check
         smex
         yas-expand
         ))

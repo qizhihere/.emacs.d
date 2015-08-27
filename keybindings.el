@@ -21,6 +21,16 @@
       (scroll-other-window-down arg)
     (scroll-other-window-down 2)))
 
+(defun my/dired-batch-command (command)
+  "Run COMMAND on all marked files."
+  (interactive "CRun on marked files M-x ")
+  (save-window-excursion
+    (mapc (lambda (filename)
+            (with-temp-file filename
+              (insert-file-contents filename)
+              (call-interactively command)))
+          (dired-get-marked-files))))
+
 (defun my/insert-numbers (start end)
   (interactive "nStart: \nnEnd: ")
   (dolist (ind (number-sequence start end))
