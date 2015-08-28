@@ -11,7 +11,7 @@
         yaml-mode))
 
 (after-load 'evil
-  (dolist (mode '(view-mode))
+  (dolist (mode '(view-mode pdf-outline-buffer-mode))
     (add-to-list 'evil-emacs-state-modes mode)))
 
 (defun should-be-evil-normal-state ()

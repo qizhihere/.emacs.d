@@ -3,6 +3,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(bmkp-last-as-first-bookmark-file "/home/qizhi/.emacs.d/tmp/.bookmarks.el")
  '(cfs--current-profile-name "program" t)
  '(cfs--fontsize-steps (quote (4 2)) t)
  '(git-gutter:added-sign "+")
