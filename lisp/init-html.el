@@ -12,7 +12,7 @@
         '(("php"    . "\\.tpl\\'")
           ("blade"  . "\\.blade\\."))))
 
-(add-auto-mode 'web-mode "\\.\\(jsp\\|tmpl\\|tpl\\)\\'")
+(add-auto-mode 'web-mode "\\.\\(jsp\\|tmpl\\|tpl\\|blade\\.php\\)\\'")
 
 (my/install '(jade-mode sws-mode))
 (add-auto-mode 'jade-mode "\\.jade\\'")
@@ -20,7 +20,6 @@
 (dolist (mode '(jade-mode web-mode sws-mode))
   (eval `(after-load ',mode
            (derive-from-prog-mode ',mode))))
-
 
 (my/install 'emmet-mode)
 (with-installed 'helm
