@@ -4,19 +4,19 @@
 (my/install 'helm)
 (require 'helm-config)
 (setq helm-split-window-in-side-p           nil ; open helm buffer inside current window, not occupy whole other window
-	  helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
-	  helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
-	  helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
-	  helm-ff-file-name-history-use-recentf t
-	  helm-move-to-line-cycle-in-source     nil
+      helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
+      helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
+      helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
+      helm-ff-file-name-history-use-recentf t
+      helm-move-to-line-cycle-in-source     nil
 
-	  helm-buffers-fuzzy-matching t
-	  helm-semantic-fuzzy-match   t
-	  helm-imenu-fuzzy-match      t
-	  helm-M-x-fuzzy-match        t
-	  helm-apropos-fuzzy-match    t
-	  helm-lisp-fuzzy-completion  t
-	  helm-recentf-fuzzy-match    t)
+      helm-buffers-fuzzy-matching t
+      helm-semantic-fuzzy-match   t
+      helm-imenu-fuzzy-match      t
+      helm-M-x-fuzzy-match        t
+      helm-apropos-fuzzy-match    t
+      helm-lisp-fuzzy-completion  t
+      helm-recentf-fuzzy-match    t)
 
 
 
@@ -28,9 +28,9 @@
 (after-load 'projectile
   (diminish 'projectile-mode)
   (setq projectile-completion-system 'helm
-		projectile-enable-caching t
-		projectile-cache-file (my/init-dir "tmp/projectile.cache")
-		projectile-known-projects-file (my/init-dir "tmp/projectile-bookmarks.eld"))
+        projectile-enable-caching t
+        projectile-cache-file (my/init-dir "tmp/projectile.cache")
+        projectile-known-projects-file (my/init-dir "tmp/projectile-bookmarks.eld"))
   (add-to-list 'projectile-globally-ignored-directories "vendor"))
 
 
@@ -52,7 +52,6 @@
 
   (global-set-key (kbd "C-c h") 'helm-command-prefix)
 
-  (global-set-key (kbd "M-y")      'helm-show-kill-ring)
   (global-set-key (kbd "C-x C-b")  'helm-mini)
   (global-set-key (kbd "C-x C-f")  'helm-find-files)
   (global-set-key (kbd "C-c h o")  'helm-occur)
