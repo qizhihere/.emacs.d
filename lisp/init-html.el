@@ -25,7 +25,7 @@
 (with-installed 'helm
   (my/try-install 'helm-emmet))
 (dolist (hook '(html-mode-hook jade-mode-hook css-mode-hook web-mode-hook))
-  (and (boundp hook) (add-hook hook 'emmet-mode)))
+  (add-hook hook 'emmet-mode))
 
 (with-installed 'company
   (when (my/try-install 'company-web)

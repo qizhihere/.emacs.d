@@ -19,14 +19,21 @@
         evil-exit-emacs-state
         evil-forward-char
         evil-forward-word-begin
+        evil-inner-double-quote
         evil-insert
         evil-next-line
         evil-normal-state
         evil-previous-line
         evil-replace
+        evil-visual-char
         indent-for-tab-command
         ispell-minor-check
+        org-force-self-insert
+        orgtbl-self-insert-command
+        sgml-slash
         smex
+        undefined
+        xpaste
         yas-expand
         ))
 
