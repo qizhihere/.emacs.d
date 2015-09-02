@@ -5,7 +5,7 @@
         web-mode-code-indent-offset 2
         web-mode-css-indent-offset 2
         web-mode-comment-style 2
-        web-mode-enable-auto-pairing t
+        web-mode-enable-auto-pairing nil
         web-mode-enable-current-element-highlight t)
   ;; set template engines
   (setq web-mode-engines-alist

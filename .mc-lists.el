@@ -17,6 +17,7 @@
         evil-digit-argument-or-evil-beginning-of-line
         evil-emacs-state
         evil-exit-emacs-state
+        evil-find-char
         evil-forward-char
         evil-forward-word-begin
         evil-inner-double-quote
@@ -25,7 +26,9 @@
         evil-normal-state
         evil-previous-line
         evil-replace
+        evil-snipe-s
         evil-visual-char
+        helm-mini
         indent-for-tab-command
         ispell-minor-check
         org-force-self-insert
