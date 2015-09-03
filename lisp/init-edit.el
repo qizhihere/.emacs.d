@@ -133,10 +133,7 @@
   (setq show-trailing-whitespace t)
   (require 'smartparens-config)
   (turn-on-smartparens-mode)
-  (ignore-errors
-    (hs-minor-mode 1)
-    (hideshowvis-enable)
-    (hideshowvis-symbols)))
+  (hs-minor-mode 1))
 (add-hook 'prog-mode-hook 'my/edit-hooks)
 
 ;; remove above `my/edit-hook' in compilation mode
