@@ -161,11 +161,10 @@
 
 ;; automatically indent code on editing
 (my/install '(aggressive-indent))
-(dolist (x '(emacs-lisp-mode-hook
-             css-mode-hook
-             js2-mode-hook))
-  (and (boundp x) (add-hook x (lambda () (when (< (count-lines (point-min) (point-max)) 500)
-                                       (aggressive-indent-mode 1))))))
+(if (boundp 'emacs-lisp-mode-hook)
+    (add-hook 'emacs-lisp-mode-hook
+              (lambda () (when (< (count-lines (point-min) (point-max)) 500)
+                       (aggressive-indent-mode 1)))))
 (after-load 'aggressive-indent
   (diminish 'aggressive-indent-mode))
 

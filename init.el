@@ -50,7 +50,6 @@
 (require 'init-hydra)
 (require 'init-guide-key)
 (require 'init-session)
-(require 'init-workgroups2)
 
 (require 'init-dictionary)
 (require 'init-flycheck)
