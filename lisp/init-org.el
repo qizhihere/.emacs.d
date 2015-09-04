@@ -20,6 +20,7 @@
             (pangu-spacing-mode 1)
             (setq truncate-lines nil
                   fill-column 86)
+            (set (make-local-variable 'pangu-spacing-real-insert-separtor) t)
             (linum-mode -1)))
 
 ;; fix org html export bug
