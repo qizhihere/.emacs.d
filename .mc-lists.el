@@ -29,9 +29,11 @@
         evil-snipe-s
         evil-visual-char
         helm-mini
+        ido-switch-buffer
         indent-for-tab-command
         ispell-minor-check
         org-force-self-insert
+        org-self-insert-command
         orgtbl-self-insert-command
         sgml-slash
         smex
