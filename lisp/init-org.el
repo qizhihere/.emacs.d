@@ -1,4 +1,4 @@
-(my/install '(org org-plus-contrib htmlize pangu-spacing))
+(my/install '(org org-plus-contrib graphviz-dot-mode htmlize pangu-spacing))
 
 (setq org-support-shift-select   nil
       org-catch-invisible-edits 'org
