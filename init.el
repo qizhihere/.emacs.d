@@ -67,6 +67,7 @@
 (require 'init-markdown)
 (require 'init-sql)
 (require 'init-org)
+(require 'init-org-blog)
 (require 'init-pdf)
 (require 'init-lisp)
 ;; ;; minor modes which need only very little configuration
