@@ -189,10 +189,6 @@
     (add-hook 'regex-tool-mode-hook
               (lambda () (evil-local-set-key 'normal [remap evil-record-macro] 'regex-tool-quit)))))
 
-;; pdf tools
-(my/install 'pdf-tools)
-(pdf-tools-install)
-
 
 
 (provide 'init-edit)

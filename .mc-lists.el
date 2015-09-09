@@ -9,10 +9,12 @@
         c-electric-slash
         comment-region
         electric-pair-delete-pair
+        emmet-expand-line
         evil-backward-char
         evil-backward-word-begin
         evil-change
         evil-delete
+        evil-delete-backward-char-and-join
         evil-delete-char
         evil-digit-argument-or-evil-beginning-of-line
         evil-emacs-state
@@ -32,6 +34,8 @@
         ido-switch-buffer
         indent-for-tab-command
         ispell-minor-check
+        kill-region
+        my/open-next-line
         org-force-self-insert
         org-self-insert-command
         orgtbl-self-insert-command

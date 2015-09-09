@@ -232,7 +232,7 @@ _VI_DEO      _SP_ACE(​)
                           "#+EMAIL: qizhihere@gmail.com\n"
                           "#+DATE: <" (format-time-string "%Y-%m-%d %b %H:%M") ">\n"
                           "#+STARTUP: indent hideblocks content\n"
-                          "#+OPTIONS: ^:{} toc:nil\n"
+                          "#+OPTIONS: ^:{} toc:t\n"
                           "#+SETUPFILE: ~/org/layouts/blog.setup\n"))
           (previous-line 9)
           (evil-append-line 1)))
@@ -270,7 +270,7 @@ _VI_DEO      _SP_ACE(​)
   ("py" (insert-src "python2"))
   ("ph" (insert-src "php"))
   ("ng" (insert-src "nginx"))
-  ("sh" (insert-src "sh :shebang #!/usr/bin/env bash"))
+  ("sh" (insert-src "sh"))
 
   ("js" (insert-src "js"))
   ("ht" (insert-src "html"))

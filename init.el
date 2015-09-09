@@ -6,8 +6,9 @@
 ;; (package-initialize)
 
 (defconst *is-gui* (if (getenv "EMACS_NO_GUI") nil window-system))
-(defvar *startup-silently* t)
-(defvar *start-at-time* (float-time))
+;; (defconst *use-session* t)
+(defconst *startup-silently* t)
+(defconst *start-at-time* (float-time))
 
 (defun my/init-dir (path)
   "Return the absolute path of subdirectory in dotemacs."
@@ -66,6 +67,7 @@
 (require 'init-markdown)
 (require 'init-sql)
 (require 'init-org)
+(require 'init-pdf)
 (require 'init-lisp)
 ;; ;; minor modes which need only very little configuration
 (require 'init-small-minor-modes)
