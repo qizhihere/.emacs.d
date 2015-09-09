@@ -17,6 +17,10 @@
               (php-enable-default-coding-style)
               (php-eldoc-enable))))
 
+;; try load ob-php
+(ignore-errors
+  (require 'ob-php))
+
 
 
 (provide 'init-php)

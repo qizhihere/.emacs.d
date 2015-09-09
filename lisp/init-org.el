@@ -23,6 +23,26 @@
             (set (make-local-variable 'pangu-spacing-real-insert-separtor) t)
             (linum-mode -1)))
 
+;; set babel
+(after-load 'org
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (java . t)
+     (dot . t)
+     (ditaa . t)
+     (R . t)
+     (python . t)
+     (ruby . t)
+     (gnuplot . t)
+     (clojure . t)
+     (sh . t)
+     (ledger . t)
+     (org . t)
+     (plantuml . t)
+     (latex . t)
+     (php . t))))
+
 ;; fix org html export bug
 ;; (defun org-font-lock-ensure ()
 ;;   (font-lock-fontify-buffer))
