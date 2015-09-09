@@ -1,4 +1,4 @@
-(my/install '(org htmlize pangu-spacing))
+(my/install '(org org-plus-contrib htmlize pangu-spacing))
 
 (setq org-support-shift-select   nil
       org-catch-invisible-edits 'org
@@ -23,22 +23,20 @@
             (set (make-local-variable 'pangu-spacing-real-insert-separtor) t)
             (linum-mode -1)))
 
-;; set babel
 (after-load 'org
   (org-babel-do-load-languages
    'org-babel-load-languages
-   '((emacs-lisp . t)
-     (java . t)
-     (dot . t)
-     (ditaa . t)
-     (R . t)
+   '((sh     . t)
      (python . t)
-     (ruby . t)
-     (gnuplot . t)
+     (R      . t)
+     (ruby   . t)
+     (ditaa  . t)
+     (dot    . t)
+     (octave . t)
+     (sqlite . t)
+     (perl   . t)
+     (C      . t)
      (clojure . t)
-     (sh . t)
-     (ledger . t)
-     (org . t)
      (plantuml . t)
      (latex . t)
      (php . t))))
