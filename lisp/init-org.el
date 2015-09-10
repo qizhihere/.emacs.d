@@ -15,6 +15,8 @@
       org-todo-keywords		'((sequence "TODO(t)" "|" "DOING" "DELAY" "DONE(d)" "CANCEL(c)"))
       org-todo-keyword-faces    '(("DELAY" . "orange") ("CANCEL" . "gray")))
 
+(after-load 'pangu-spacing (diminish 'pangu-spacing-mode))
+
 (my/install 'graphviz-dot-mode)
 (after-load 'org
   (add-to-list 'org-src-lang-modes '("dot" . graphviz-dot)))
@@ -49,6 +51,9 @@
      (plantuml . t)
      (latex . t)
      (php . t))))
+
+(after-load 'org-indent (diminish 'org-indent-mode))
+(after-load 'org-table (diminish 'orgtbl-mode))
 
 
 
