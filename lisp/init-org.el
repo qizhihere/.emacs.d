@@ -115,32 +115,35 @@
                "#+end_html"))))
 
   (setq helm-source-org-src
-        (mapcar (lambda (x) (list x (list x #'my/org-insert-src)))
-                '("c"
-                  "coffee"
-                  "c++"
-                  "css"
-                  "dot :file ../img/example1.png :cmdline -Kdot -Tpng"
-                  "emacs-lisp"
-                  "html"
-                  "java"
-                  "javascript"
-                  "less"
-                  "lisp"
-                  "lua"
-                  "nginx"
-                  "org"
-                  "php"
-                  "python"
-                  "sass"
-                  "sh"
-                  "sql"
-                  "sql"
-                  "src"))
+        (append
+         (mapcar (lambda (x) (list x (list x #'my/org-insert-src)))
+                 '("c"
+                   "coffee"
+                   "c++"
+                   "css"
+                   "emacs-lisp"
+                   "html"
+                   "java"
+                   "javascript"
+                   "less"
+                   "lisp"
+                   "lua"
+                   "nginx"
+                   "org"
+                   "php"
+                   "python"
+                   "sass"
+                   "sh"
+                   "sql"
+                   "sql"
+                   "src"))
+         '(("dot" (lambda () (my/org-insert-src
+                              (format "dot :file ../img/figure-%s.svg :cmdline -Kdot -Tsvg"
+                                      (substring (my/random-uuid) 0 8)))))
+           ))
 
         helm-source-org-block
-        '(
-          ("#+begin_center" (lambda () (hot-expand "<c")))
+        '(("#+begin_center" (lambda () (hot-expand "<c")))
           ("#+begin_comment" (lambda () (my/org-insert-block "comment")))
           ("#+begin_example" (lambda () (hot-expand "<e")))
           ("#+begin_html" (lambda () (hot-expand "<h")))
@@ -148,8 +151,7 @@
           ("#+begin_verse" (lambda () (hot-expand "<v")))
           ("drawer" org-insert-drawer)
           ("video" my/org-insert-video)
-          ("table column" org-insert-columns-dblock)
-          )
+          ("table column" org-insert-columns-dblock))
 
         helm-source-org-inline
         '(("header" my/org-insert-header)

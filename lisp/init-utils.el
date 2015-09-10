@@ -188,5 +188,46 @@ elements."
 (defun symbol-concat (&rest args)
   (intern (apply #'concatenate  'string (mapcar #'symbol-name args))))
 
+;; From Xah Lee
+(defun xah-random-uuid ()
+  "Insert a UUID. This uses a simple hashing of variable data.
+Example of a UUID: 1df63142-a513-c850-31a3-535fc3520c3d
+
+Note: this code uses https://en.wikipedia.org/wiki/Md5 , which is not cryptographically safe. I'm not sure what's the implication of its use here.
+
+Version 2015-01-30
+URL `http://ergoemacs.org/emacs/elisp_generate_uuid.html'
+"
+  ;; by Christopher Wellons, 2011-11-18. Editted by Xah Lee.
+  ;; Edited by Hideki Saito further to generate all valid variants for "N" in xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx format.
+  (interactive)
+  (let ((myStr (md5 (format "%s%s%s%s%s%s%s%s%s%s"
+                            (user-uid)
+                            (emacs-pid)
+                            (system-name)
+                            (user-full-name)
+                            (current-time)
+                            (emacs-uptime)
+                            (garbage-collect)
+                            (buffer-string)
+                            (random)
+                            (recent-keys)))))
+
+    (format "%s-%s-4%s-%s%s-%s"
+            (substring myStr 0 8)
+            (substring myStr 8 12)
+            (substring myStr 13 16)
+            (format "%x" (+ 8 (random 4)))
+            (substring myStr 17 20)
+            (substring myStr 20 32))))
+
+(defalias 'my/random-uuid 'xah-random-uuid)
+;; (defun my/random-uuid ()
+;;   (cond ((executable-find "uuidgen")
+;;          (replace-regexp-in-string
+;;           "\n" "" (shell-command-to-string "uuidgen")))
+;;         (t (xah-random-uuid))))
+
+
 
 (provide 'init-utils)
