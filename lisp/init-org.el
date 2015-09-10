@@ -52,7 +52,7 @@
      (latex . t)
      (php . t)))
 
-  ;; i prefer to lowercase templates
+  ;; i prefer to use lowercase templates
   (custom-set-variables
    '(org-structure-template-alist
      (mapcar (lambda (x) (setcdr x (mapcar #'downcase (cdr x))) x)

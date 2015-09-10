@@ -171,10 +171,6 @@
 (when (fboundp 'global-prettify-symbols-mode)
   (global-prettify-symbols-mode))
 
-;; quick access kill-ring
-(my/install 'browse-kill-ring)
-(global-set-key (kbd "M-y") 'browse-kill-ring)
-
 ;; quick navigate in Info/help mode...
 (my/install 'ace-link)
 (after-init (ace-link-setup-default))
