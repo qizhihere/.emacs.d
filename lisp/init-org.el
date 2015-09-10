@@ -144,7 +144,7 @@
           ("#+begin_comment" (lambda () (my/org-insert-block "comment")))
           ("#+begin_example" (lambda () (hot-expand "<e")))
           ("#+begin_html" (lambda () (hot-expand "<h")))
-          ("#+begin_quote" (lambda () (hot-expand "<c")))
+          ("#+begin_quote" (lambda () (hot-expand "<q")))
           ("#+begin_verse" (lambda () (hot-expand "<v")))
           ("drawer" org-insert-drawer)
           ("video" my/org-insert-video)
