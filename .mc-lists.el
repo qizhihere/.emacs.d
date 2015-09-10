@@ -3,6 +3,7 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        browse-kill-ring
         c-electric-colon
         c-electric-paren
         c-electric-semi&comma

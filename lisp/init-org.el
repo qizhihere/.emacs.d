@@ -50,7 +50,13 @@
      (clojure . t)
      (plantuml . t)
      (latex . t)
-     (php . t))))
+     (php . t)))
+
+  ;; i prefer to lowercase templates
+  (custom-set-variables
+   '(org-structure-template-alist
+     (mapcar (lambda (x) (setcdr x (mapcar #'downcase (cdr x))) x)
+             org-structure-template-alist))))
 
 (after-load 'org-indent (diminish 'org-indent-mode))
 (after-load 'org-table (diminish 'orgtbl-mode))
