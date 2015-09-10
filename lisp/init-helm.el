@@ -68,5 +68,11 @@
  '(helm-ag-insert-at-point 'symbol))
 
 
+;;----------------------------------------------------------------------------
+;; helm-org
+;;----------------------------------------------------------------------------
+(define-key org-mode-map (kbd "C-c l") 'helm-org-in-buffer-headings)
+
+
 
 (provide 'init-helm)
