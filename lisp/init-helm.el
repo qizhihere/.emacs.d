@@ -57,6 +57,11 @@
   (global-set-key (kbd "C-c h o")  'helm-occur)
   (global-set-key (kbd "C-c h x")  'helm-register))
 
+;; disable evil-mode in helm buffers
+(when (fboundp 'turn-off-evil-mode)
+  (add-hook 'helm--minor-mode-hook 'turn-off-evil-mode))
+
+
 
 ;;----------------------------------------------------------------------------
 ;; helm-ag

@@ -1,7 +1,3 @@
-;; fix org html export bug
-;; (defun org-font-lock-ensure ()
-;;   (font-lock-fontify-buffer))
-
 ;; set blog page header and footer html raw string
 (setq org-html-preamble-format (list (list "en" (cat "~/org/layouts/header.html")))
       org-html-postamble-format (list (list "en" (cat "~/org/layouts/footer.html"))))
@@ -11,18 +7,18 @@
       my/org-post-directory (concat my/org-base-directory "posts/"))
 
 (defun my/new-note (file)
-  "create a new note."
+  "Create a new note."
   (interactive "sPlease input note filename: ")
   (find-file (concat my/org-post-directory file))
-  (my/send-keys "M-o iHE"))
+  (my/org-insert-header))
 
 (defun my/open-note ()
-  "open a note."
+  "Open a note."
   (interactive)
   (find-file (read-file-name "Select a note: " my/org-post-directory)))
 
 (defun my/current-timestamp ()
-  "insert current timestamp."
+  "Insert current timestamp."
   (interactive)
   (insert (format-time-string "%Y-%m-%d %b %H:%M:%S")))
 
