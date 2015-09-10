@@ -76,7 +76,8 @@
 ;;----------------------------------------------------------------------------
 ;; helm-org
 ;;----------------------------------------------------------------------------
-(define-key org-mode-map (kbd "C-c l") 'helm-org-in-buffer-headings)
+(after-load 'org
+  (define-key org-mode-map (kbd "C-c l") 'helm-org-in-buffer-headings))
 
 
 

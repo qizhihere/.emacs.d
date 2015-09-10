@@ -198,8 +198,8 @@
           (funcall func str)))
        ((stringp item) (insert item)))))
 
-  (define-key org-mode-map (kbd "C-c i") 'my/helm-org-snippets)
-  (define-key org-mode-map (kbd "C-c l") 'helm-org-headlines)
+  (after-load 'org
+    (define-key org-mode-map (kbd "C-c i") 'my/helm-org-snippets))
 
   )
 
