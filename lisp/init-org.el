@@ -108,7 +108,7 @@
                     (my/select-file "Select an video: " "~/sync/Dropbox/video/")))))
       (insert (concat
                "#+begin_html \n"
-               "<video autoplay loop>\n"
+               "<video autoplay controls loop>\n"
                "\t<source src='" file "' type='video/mp4'/>\n"
                "\tYour browser does not support the video tag.\n"
                "</video>\n"
