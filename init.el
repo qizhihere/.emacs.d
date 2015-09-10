@@ -70,7 +70,7 @@
 (require 'init-org-blog)
 (require 'init-pdf)
 (require 'init-lisp)
-;; ;; minor modes which need only very little configuration
+;; minor modes which need only very little configuration
 (require 'init-small-minor-modes)
 
 
