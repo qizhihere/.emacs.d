@@ -9,17 +9,29 @@
     (propertize s 'face 'window-numbering-face)))
 (after-init (window-numbering-mode 1))
 
+(setq my/scroll-other-window-use-mouse-wheel-modes
+      '(pdf-view-mode doc-view-mode))
+
 (defun other-window-move-down(&optional arg)
   "Other window move-down 2 lines."
-  (interactive "p")
-  (scroll-other-window 2))
+  (interactive "P")
+  (let* ((other-window (other-window-for-scrolling))
+         (other-window-mode (with-selected-window other-window major-mode)))
+    (if (member other-window-mode my/scroll-other-window-use-mouse-wheel-modes)
+        (with-selected-window other-window
+          (funcall mwheel-scroll-up-function nil))
+      (scroll-other-window 2))))
 
 (defun other-window-move-up(&optional arg)
-  "Other window move-down 2 lines."
+  "Other window move-up 2 lines."
   (interactive "P")
-  (if arg
-      (scroll-other-window-down arg)
-    (scroll-other-window-down 2)))
+  (let* ((other-window (other-window-for-scrolling))
+         (other-window-mode (with-selected-window other-window
+                              major-mode)))
+    (if (member other-window-mode my/scroll-other-window-use-mouse-wheel-modes)
+        (with-selected-window other-window
+          (funcall mwheel-scroll-down-function nil))
+      (scroll-other-window-down 2))))
 
 (defun my/dired-batch-command (command)
   "Run COMMAND on all marked files."
