@@ -13,25 +13,36 @@
       '(pdf-view-mode doc-view-mode))
 
 (defun other-window-move-down(&optional arg)
-  "Other window move-down 2 lines."
-  (interactive "P")
+  "Other window move-down ARG lines."
+  (interactive)
   (let* ((other-window (other-window-for-scrolling))
-         (other-window-mode (with-selected-window other-window major-mode)))
+         (other-window-mode (with-selected-window other-window major-mode))
+         (arg (or arg 2)))
     (if (member other-window-mode my/scroll-other-window-use-mouse-wheel-modes)
         (with-selected-window other-window
-          (funcall mwheel-scroll-up-function nil))
-      (scroll-other-window 2))))
+          (funcall mwheel-scroll-up-function arg))
+      (scroll-other-window arg))))
 
 (defun other-window-move-up(&optional arg)
-  "Other window move-up 2 lines."
-  (interactive "P")
-  (let* ((other-window (other-window-for-scrolling))
+  "Other window move-up ARG lines."
+  (interactive)
+  (let* ((current-window (selected-window))
+         (other-window (other-window-for-scrolling))
          (other-window-mode (with-selected-window other-window
-                              major-mode)))
+                              major-mode))
+         (arg (or arg 2)))
     (if (member other-window-mode my/scroll-other-window-use-mouse-wheel-modes)
-        (with-selected-window other-window
-          (funcall mwheel-scroll-down-function nil))
-      (scroll-other-window-down 2))))
+        (progn
+          (with-selected-window other-window
+            (funcall mwheel-scroll-down-function arg))
+          ;; unknown bug(or not a bug?), after calling
+          ;; `mwheel-scroll-down-function', the other window position
+          ;; won't change immediately until a new window created or we
+          ;; switch to the adjusted window. Thus we simply switch to
+          ;; the window and then swtich back.
+          (select-window other-window)
+          (select-window current-window))
+      (scroll-other-window-down arg))))
 
 (defun my/dired-batch-command (command)
   "Run COMMAND on all marked files."
