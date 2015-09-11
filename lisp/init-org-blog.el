@@ -82,11 +82,21 @@ holding export options."
      "</div>"
      "</body>\n</html>")))
 
-(defun my/org-update-index (&rest x)
+(defun my/update-note-index ()
+  "Update post lists."
   (interactive)
-  (shell-command "touch ~/org/posts/post-list.org")
-  (shell-command "touch ~/org/index.org")
-  (shell-command "touch ~/org/sitemap.org"))
+  (require 'ox-publish)
+  ;; regenerate note list
+  (flet ((org-publish-file (&rest args) '()))
+    (org-publish-projects (list (assoc "notes" org-publish-project-alist))))
+  ;; force update index.org
+  (shell-command (concat "touch " my/org-base-directory "index.org"))
+  (org-publish-project (assoc "notes-index" org-publish-project-alist) t))
+
+(defadvice org-publish-org-sitemap (around my/org-publish-sitemap-advice activate)
+  "Disable some modes to speed up sitemap generating."
+  (flet ((evil-mode-enable-in-buffers () t))
+    ad-do-it))
 
 ;; export settings
 (setq org-export-with-sub-superscripts '{}
@@ -122,10 +132,10 @@ holding export options."
          :base-directory ,my/org-base-directory
          :base-extension "org"
          :html-extension "html"
-         :exclude "node_modules\\|gulpfile.js\\|.git"
+         :exclude "node_modules\\|gulpfile.js\\|.git\\|\\.#.*"
          :publishing-directory ,my/org-publish-directory
          :recursive nil
-         :publishing-function (my/org-update-index org-html-publish-to-html)
+         :publishing-function org-html-publish-to-html
          :html-postamble t
          :html-preamble t
          )

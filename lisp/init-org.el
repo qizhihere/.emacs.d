@@ -21,9 +21,6 @@
 (after-load 'org
   (add-to-list 'org-src-lang-modes '("dot" . graphviz-dot)))
 
-(dolist (hook '(message-mode-hook text-mode-hook mail-mode-hook))
-  (add-hook hook 'turn-on-orgtbl))
-
 (add-hook 'org-mode-hook
           (lambda ()
             (my/custom-org-html-funcs)
