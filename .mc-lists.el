@@ -21,6 +21,7 @@
         evil-emacs-state
         evil-exit-emacs-state
         evil-find-char
+        evil-forward-WORD-end
         evil-forward-char
         evil-forward-word-begin
         evil-inner-double-quote

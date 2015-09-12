@@ -87,7 +87,7 @@ holding export options."
   (interactive)
   (require 'ox-publish)
   ;; regenerate note list
-  (flet ((org-publish-file (&rest args) '()))
+  (cl-flet (((symbol-function 'org-publish-file) (lambda (&rest args) '())))
     (org-publish-projects (list (assoc "notes" org-publish-project-alist))))
   ;; force update index.org
   (shell-command (concat "touch " my/org-base-directory "index.org"))
@@ -95,7 +95,7 @@ holding export options."
 
 (defadvice org-publish-org-sitemap (around my/org-publish-sitemap-advice activate)
   "Disable some modes to speed up sitemap generating."
-  (flet ((evil-mode-enable-in-buffers () t))
+  (cl-flet (((symbol-function 'evil-mode-enable-in-buffers) (lambda () t)))
     ad-do-it))
 
 ;; export settings
