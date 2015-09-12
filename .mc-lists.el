@@ -11,6 +11,7 @@
         comment-region
         electric-pair-delete-pair
         emmet-expand-line
+        evil-backward-WORD-begin
         evil-backward-char
         evil-backward-word-begin
         evil-change
