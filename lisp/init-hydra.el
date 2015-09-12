@@ -8,6 +8,7 @@
   ("o" hydra-org/body "org")
   ("q" nil "quit" :exit t))
 
+
 ;; text zoom
 (defhydra hydra-zoom (:color red)
   "zoom"
@@ -45,30 +46,35 @@ Adjust: _}_/_{_ ↔+/-    ↕ _+_/_-_    _=_ balance      [_q_] quit
   ("q" nil :exit t))
 
 
-(after-load 'org (define-key org-mode-map [M-o] 'hydra-org/body))
-(defhydra hydra-org (:exit nil :foreign-keys run :hint nil)
+(after-load 'org (define-key org-mode-map (kbd "M-o") 'hydra-org/body))
+(defhydra hydra-org (:exit t :foreign-keys run :hint nil)
   "
-Move:   [_p_/_n_/_P_/_N_]   prev/next (same) heading
-Export: [_eh_] html  [_em_] markdown  [_ea_] ascii  [_eu_] utf8
-Others: [_i_] insert [_q_] quit
+Press:   [_p_/_n_/_P_/_N_] prev/next heading  [_i_]nsert  [_e_]xport  [_q_]uit
 "
   ;; navigate
-  ("p" outline-previous-visible-heading)
-  ("n" outline-next-visible-heading)
-  ("P" org-backward-heading-same-level)
-  ("N" org-forward-heading-same-level)
-  ("^" org-up-element)
+  ("p" outline-previous-visible-heading :exit nil)
+  ("n" outline-next-visible-heading :exit nil)
+  ("P" org-backward-heading-same-level :exit nil)
+  ("N" org-forward-heading-same-level :exit nil)
+  ("^" org-up-element :exit nil)
 
   ;; publish
-  ("eh" org-publish-current-file)
-  ("em" org-md-export-to-markdown)
-  ("ea" org-ascii-export-to-ascii)
-  ("eu" org-html-export-to-html)
+  ("e" hydra-org-export/body)
 
   ;; insert snippets
   ("i" my/helm-org-snippets)
 
   ("q" nil :exit t))
+
+
+(defhydra hydra-org-export (:exit t :hint nil)
+  "
+Export: [_h_]tml  [_m_]arkdown  [_a_]scii  [_u_]tf8
+"
+  ("h" org-publish-current-file)
+  ("m" org-md-export-to-markdown)
+  ("a" org-ascii-export-to-ascii)
+  ("u" org-html-export-to-html))
 
 
 
