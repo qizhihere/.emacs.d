@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: str_replace(...)
+# key: str
+# --
+str_replace(${$search}, ${$replace} , ${$subject}${[, ${$count}]})$0

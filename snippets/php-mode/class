@@ -1,0 +1,10 @@
+#contributor : Andrew Gwozdziewycz <web@apgwoz.com>
+#name : class ...
+# --
+class ${1:class_name} ${2:extends ${3:AnotherClass}}
+{
+    public function ${4:__construct}(${5:$args})
+    {
+	$0
+    }
+}

@@ -1,3 +1,6 @@
 /.cache/*
 /elpa/*
 /quelpa/*
+/custom.el
+/custom-*.el
+/elpa-mirror

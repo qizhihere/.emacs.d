@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: React render() {...}
+# key: render
+# --
+render($1) {
+  return (
+    ${2:<div>
+      $0
+    </div>}
+  )
+}

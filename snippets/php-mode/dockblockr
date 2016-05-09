@@ -1,0 +1,21 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: docblockr
+# key: /**
+# binding: direct-keybinding
+# --
+/**
+ * ${1:Description}
+ *
+ `(progn
+     (next-line 3)
+     (when (looking-at ".*function[^(]+(\\(.+?\\))")
+          (let* ((args (split-string (match-string-no-properties 1) "," t "\\s-"))
+                 (argvs (mapcar (lambda (arg) (replace-regexp-in-string "=.*" "" arg)) args))
+                 (fixed-w (reduce #'max (mapcar #'length argvs))))
+            (mapconcat (lambda (arg)
+                         (concat "* @param  type "
+                                 (format (concat "%-" (int-to-string fixed-w) "s") arg)
+                                 " description"))
+                  argvs "\n")))))`
+ * @return ${2:type} $0
+ */

@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: bash script header
+# key: sh
+# binding: direct-keybinding
+# --
+#!/usr/bin/env bash
+
+$0

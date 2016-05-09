@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: export default React.createClass({...
+# key: export
+# --
+export default React.createClass({
+  ${${render}() {
+    return (
+      $0
+    )
+  }}
+})

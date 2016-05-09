@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: underline
+# key: _
+# binding: direct-keybinding
+# --
+ _$0_

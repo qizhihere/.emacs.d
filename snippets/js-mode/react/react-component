@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: class ... React.Component{...}
+# key: class
+# --
+class ${1:Component} extends ${2:React.Component} {
+  ${${render}() {
+    return (
+      ${<div>
+        $0
+      </div>}
+    )
+  }}
+}

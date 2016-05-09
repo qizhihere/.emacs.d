@@ -5,7 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (which-key wgrep-ag spacemacs-theme spaceline smartparens smart-mode-line session regex-tool rainbow-mode rainbow-delimiters quelpa-use-package projectile persp-mode page-break-lines magit linum-relative key-chord ipretty hl-defined highlight-symbol highlight-parentheses highlight-numbers git-timemachine git-messenger git-gutter evil-surround evil-snipe evil-matchit evil-leader evil-exchange evil-escape evil-args evil-anzu esup elisp-slime-nav eldoc-eval drag-stuff dired-filter dired-efap dired+ diff-hl counsel company-statistics comment-dwim-2 bookmark+ beacon aggressive-indent ag ace-link)))
+    (multi-term flycheck-status-emoji flycheck-irony zoom-frm youdao-dictionary yaml-mode window-numbering which-key wgrep-ag web-mode web-beautify vimrc-mode use-package sudo-edit spacemacs-theme spaceline smex smartparens session sass-mode robe regex-tool rainbow-mode rainbow-delimiters psysh projectile-rails project-explorer popwin php-eldoc page-break-lines nginx-mode magit lua-mode linum-relative json-mode js2-mode irony ibuffer-vc hydra hl-defined highlight-symbol highlight-parentheses highlight-numbers git-timemachine git-messenger git-gutter flycheck flx fish-mode evil-surround evil-snipe evil-quickscope evil-matchit evil-leader evil-exchange evil-escape evil-args evil-anzu emmet-mode elisp-slime-nav eldoc-eval drag-stuff dockerfile-mode dired-toggle-sudo dired-filter dired-efap dired+ diff-hl css-eldoc counsel company-web company-tern company-statistics comment-dwim-2 coffee-mode bookmark+ benchmark-init beacon aggressive-indent ag ace-link ac-php)))
  '(session-use-package t nil (session)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

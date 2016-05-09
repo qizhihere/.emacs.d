@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: export default class ... React.Component{...}
+# key: export
+# --
+${export default }class ${Component} extends React.Component {
+  ${${render}() {
+    return (
+      $0
+    )
+  }}
+}
