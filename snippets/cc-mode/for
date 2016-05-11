@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: for (int i = 0; i < N; ++i) {...}
+# key: for
+# --
+for (${1:int }${2:i} = ${3:0}; $2 < ${4:N}; ++$2) {
+    $0
+}

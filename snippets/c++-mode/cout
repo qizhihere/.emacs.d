@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: cout
+# key: cout
+# --
+`(progn (save-excursion) (goto-char (point-min)) (unless (re-search-forward
+"^using\\s-+namespace std;" nil 'no-errer) "std::"))
+`cout << $1${2: << "${3:\n}"};$0

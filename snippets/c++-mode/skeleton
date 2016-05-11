@@ -1,0 +1,14 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: skeleton
+# key: #
+# --
+#include "${1:iostream}"
+
+using namespace ${2:std};
+
+int main (${3:int argc, char *argv[]})
+{
+    $0
+
+    return 0;
+}
