@@ -30,9 +30,6 @@ session, auto saved files, and recently opened files will be put here.")
   clean all problematic whitespaces including empty lines,
   `trailing' means only clean trailing whitespaces.")
 
-(defvar m|re-indent-on-newline t
-  "Whether re-indent current text block when a new line is opened by RET.")
-
 (defvar elpa-mirror-directory "~/.emacs.d/elpa-mirror")
 
 (defvar m|use-elpa-mirror nil
