@@ -4,10 +4,6 @@
 (setq gc-cons-threshold 100000000)
 (setq ad-redefinition-action 'accept)
 
-(setq max-specpdl-size 3000)
-(load (locate-user-emacs-file "elpa/benchmark-init-20150905.238/benchmark-init-autoloads.el") nil t)
-(benchmark-init/activate)
-
 (defconst m|home (expand-file-name user-emacs-directory)
   "The absolute emacs dotfiles path.")
 (defconst m|conf-dir "bootstrap"
