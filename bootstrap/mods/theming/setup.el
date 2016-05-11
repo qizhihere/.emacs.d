@@ -74,7 +74,9 @@
     (m|add-startup-hook #'beacon-mode)
     :config
     (setq beacon-blink-when-window-scrolls nil)
-    (add-to-list 'beacon-dont-blink-major-modes 'debugger-mode)))
+    (merge-to beacon-dont-blink-major-modes
+      '(debugger-mode
+        term-mode))))
 
 (defun theming/init-spacemacs-theme ()
   (use-package spacemacs-dark-theme

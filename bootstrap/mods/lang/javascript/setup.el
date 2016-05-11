@@ -17,6 +17,20 @@
     (loaded company-utils
       (add-hook 'js-mode-hook #'m|company-add-yasnippet-general-backend t))))
 
+(defun javascript/init-repl ()
+  (loaded js
+    (define-repl node-repl ()
+      "Interactively run node in a buffer."
+      (term-run "node"))
+    (defalias 'js-repl 'node-repl)
+    (defalias 'js-repl-maximized 'node-repl-maximized)
+    (defalias 'javascript-repl 'node-repl)
+    (defalias 'javascript-repl-maximized 'node-repl-maximized)
+
+    (bind-keys :map js-mode-map
+      ("C-c <f12>" . js-repl)
+      ("C-c C-<f12>" . js-repl-maximized))))
+
 (defun javascript/init-tern ()
   (use-package tern
     :defer t
@@ -27,6 +41,7 @@
       (defun m|company-add-tern-backend ()
         (company/add-local-backend 'company-tern))
       (add-hook 'tern-mode-hook #'m|company-add-tern-backend)))
+
   (use-package company-tern
     :defer t
     :config

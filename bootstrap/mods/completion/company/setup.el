@@ -15,14 +15,15 @@
           company-tooltip-align-annotations t)
 
     (m|load-conf "company-utils" company)
+    (make-variable-buffer-local 'company-backends)
 
     (m|be-quiet company-ispell))
 
   (use-package company-utils
     :load-path (lambda () (__dir__))
     :commands (company/add-local-backend
-               company/add-local-general-backend
-               company/remove-local-general-backend)))
+               company/add-general-backend
+               company/remove-general-backend)))
 
 (defun company/init-company-statistics ()
   (use-package company-statistics

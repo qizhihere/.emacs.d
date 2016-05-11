@@ -35,3 +35,13 @@
       (let (auto-complete-mode)
         (apply orig-func args)))
     (advice-add 'php-eldoc-enable :around #'m|php-eldoc-enable--fix-ac-error)))
+
+(defun php/init-repl ()
+  (loaded php-mode
+    (define-repl php-repl ()
+      "Interactively run node in a buffer."
+      (term-run "php" nil nil "-a"))
+
+    (bind-keys :map php-mode-map
+      ("C-c <f12>" . php-repl)
+      ("C-c C-<f12>" . php-repl-maximized))))

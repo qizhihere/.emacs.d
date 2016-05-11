@@ -4,8 +4,7 @@
   (make-local-variable 'company-backends)
   (add-to-list 'company-backends backend append))
 
-(defun company/add-local-general-backend (backend)
-  (make-local-variable 'company-backends)
+(defun company/add-general-backend (backend)
   (loop for x in company-backends
         for i from 0
         for x = (if (listp x) x (list x))
@@ -17,8 +16,7 @@
           (setf (nth i company-backends) x))
         collect x))
 
-(defun company/remove-local-general-backend (backend)
-  (make-local-variable 'company-backends)
+(defun company/remove-general-backend (backend)
   (loop for x in company-backends
         for i from 0
         for x = (if (listp x) x (list x))
@@ -34,4 +32,4 @@
         collect x))
 
 (defun m|company-add-yasnippet-general-backend ()
-  (company/add-local-general-backend 'company-yasnippet))
+  (company/add-general-backend 'company-yasnippet))

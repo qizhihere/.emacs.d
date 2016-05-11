@@ -13,11 +13,8 @@
         smartparens))
 
 (defun edit/init ()
-  (m|add-startup-hook #'show-paren-mode)
-  (loaded subword (diminish 'subword-mode))
-  (loaded simple (diminish 'auto-fill-function))
-  (loaded autorevert (diminish 'auto-revert-mode))
-  (loaded abbrev (diminish 'abbrev-mode))
+  ;; replaced by `show-smartparens-mode'
+  ;; (m|add-startup-hook #'show-paren-mode)
   (bind-keys ("RET" . newline-and-indent)
              ("C-c s" . sort-lines))
 
@@ -30,6 +27,14 @@
   (when (fboundp 'global-prettify-symbols-mode)
     (m|add-startup-hook #'global-prettify-symbols-mode)))
 
+(defun edit/init-diminish ()
+  (loaded abbrev (diminish 'abbrev-mode))
+  (loaded autorevert (diminish 'auto-revert-mode))
+  (loaded compile (diminish 'compilation-shell-minor-mode))
+  (loaded hideif (diminish 'hide-ifdef-mode))
+  (loaded simple (diminish 'auto-fill-function))
+  (loaded subword (diminish 'subword-mode)))
+
 (defun edit/init-aggressive-indent ()
   (use-package aggressive-indent
     :defer t
@@ -37,9 +42,9 @@
 
   (defvar m|aggressive-indent-max-lines 1000)
   (defun m|try-turn-on-aggressive-indent ()
-      (when (< (count-lines (point-min) (point-max))
-               m|aggressive-indent-max-lines)
-        (aggressive-indent-mode 1)))
+    (when (< (count-lines (point-min) (point-max))
+             m|aggressive-indent-max-lines)
+      (aggressive-indent-mode 1)))
   (add-hook 'emacs-lisp-mode-hook #'m|try-turn-on-aggressive-indent))
 
 (defun edit/init-prog-mode-hooks ()
@@ -67,40 +72,39 @@
 
 (defun edit/init-smartparens ()
   (use-package smartparens
-    :defer t
     :diminish smartparens-mode
     :init
     (m|add-startup-hook #'smartparens-global-mode)
-
+    :bind (:map smartparens-mode-map
+           ("C-M-a" . sp-beginning-of-sexp)
+           ("C-M-e" . sp-end-of-sexp)
+           ("C-M-f" . sp-forward-sexp)
+           ("C-M-b" . sp-backward-sexp)
+           ("C-M-n" . sp-next-sexp)
+           ("C-M-p" . sp-previous-sexp)
+           ("C-S-f" . sp-forward-symbol)
+           ("C-S-b" . sp-backward-symbol)
+           ("C-M-w" . sp-copy-sexp)
+           ("M-]"   . sp-unwrap-sexp)
+           ("M-["   . sp-backward-unwrap-sexp))
     :config
-    ;; disable default quote pair in certain modes
-    (dolist (mode '(text-mode minibuffer-inactive-mode))
-      (sp-local-pair mode "'" "")
-      (sp-local-pair mode "`" ""))
+    ;; disable smartparens verbose messages
+    (setq sp-message-width nil)
+    (show-smartparens-global-mode 1)
+    (m|load-conf "setup-smartparens" edit))
 
-    ;; advice to temporarily disable smartparens
-    (defvar smartparens-temp-disabled nil)
-    (defun m|smartparens-temp-disable (&rest args)
-      "Temporary disable smartparens during ac-php-company completion."
-      (when smartparens-mode
-        (smartparens-mode -1)
-        (setq-local smartparens-temp-disabled t)))
-    (defun m|smartparens-maybe-reenable (&rest args)
-      (when smartparens-temp-disabled
-        (setq-local smartparens-temp-disabled nil)
-        (smartparens-mode 1)))
-
-    ;; disable smartparens during company completion
-    (loaded company
-      (add-hook 'company-completion-started-hook #'m|smartparens-temp-disable)
-      (advice-add 'company-cancel :after #'m|smartparens-maybe-reenable))
-
-    ;; enable smartparens in eval expression minibuffer
-    (defun m|eval-expression-minibuffer-enable-smartparens ()
-      (let (sp-ignore-modes-list)
-        (smartparens-mode 1)))
-    (add-hook 'eval-expression-minibuffer-setup-hook
-              #'m|eval-expression-minibuffer-enable-smartparens)))
+  (use-package setup-smartparens
+    :ensure nil
+    :commands (m|smartparens-temp-disable
+               m|smartparens-maybe-reenable)
+    :bind (:map smartparens-mode-map
+           ("C-c ("  . sp-wrap-with-parens)
+           ("C-c ["  . sp-wrap-with-brackets)
+           ("C-c {"  . sp-wrap-with-braces)
+           ("C-c '"  . sp-wrap-with-single-quotes)
+           ("C-c \"" . sp-wrap-with-double-quotes)
+           ("C-c _"  . sp-wrap-with-underscores)
+           ("C-c `"  . sp-wrap-with-back-quotes))))
 
 (defun edit/init-highlight-parentheses ()
   (use-package highlight-parentheses
@@ -182,7 +186,8 @@
     :commands kill-line--just-one-space
     :load-path (lambda () (__dir__))
     :leader ("re" query-replace-from-region-or-symbol
-             "tmr" read-only-mode)
+             "tmr" read-only-mode
+             "tot" toggle-truncate-lines)
     :bind (("M-j" . join-next-line)
            ("S-<return>" . open-next-line)
            ("C-<return>" . open-previous-line)

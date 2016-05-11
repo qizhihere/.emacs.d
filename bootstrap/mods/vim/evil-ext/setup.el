@@ -36,7 +36,11 @@
            ("H" . evil-backward-arg))))
 
 (defun evil-ext/init-evil-exchange ()
-  (loaded evil (evil-exchange-install))
+  (loaded evil
+    (defun m|evil-exchange-install ()
+      (evil-exchange-install)
+      (remove-hook 'evil-local-mode-hook #'m|evil-exchange-install))
+    (add-hook 'evil-local-mode-hook #'m|evil-exchange-install))
   (use-package evil-exchange
     :defer t
     :config
@@ -67,6 +71,7 @@
   (loaded evil
     (add-hook 'evil-local-mode-hook #'evil-surround-mode))
   (use-package evil-surround
+    :defer t
     :config
     (add-hook 'emacs-lisp-mode-hook
               (lambda () (push '(?` . ("`" . "'")) evil-surround-pairs-alist)))))

@@ -98,10 +98,9 @@ the mark is inactive."
       (let ((program (x-clipboard--find-program x-clipboard-read-programs)))
         (unless program
           (error "Failed to find an available program to access clipboard."))
-        (eval
-         (with-temp-buffer
-           `(call-process ,(car program) nil t nil ,@(cdr program))
-           (setq str (buffer-substring (point-min) (point-max)))))))
+        (with-temp-buffer
+          (eval `(call-process ,(car program) nil t nil ,@(cdr program)))
+          (setq str (buffer-substring (point-min) (point-max))))))
     (save-excursion
       (unless no-insert
         (when (use-region-p)

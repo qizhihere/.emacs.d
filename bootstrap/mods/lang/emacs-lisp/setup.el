@@ -17,6 +17,20 @@
       :bind (:map emacs-lisp-mode-map
              ("C-x C-e" . pp-eval-last-sexp)))))
 
+(defun emacs-list/init-repl ()
+  (loaded elisp-mode
+    (define-repl elisp-repl ()
+      "Run Emacs lisp REPL in a buffer."
+      (cl-letf (((symbol-function 'pop-to-buffer-same-window) #'pop-to-buffer))
+        (ielm)
+        (process-make-buffer-dedicated (current-buffer))))
+    (defalias 'emacs-lisp-repl 'elisp-repl)
+    (defalias 'emacs-lisp-repl-maximized 'elisp-repl-maximized)
+
+    (bind-keys :map emacs-lisp-mode-map
+      ("C-c <f12>" . elisp-repl)
+      ("C-c C-<f12>" . elisp-repl-maximized))))
+
 (defun emacs-lisp/post-init-flycheck ()
   (setq-default flycheck-disabled-checkers
                 (add-to-list 'flycheck-disabled-checkers 'emacs-lisp-checkdoc)))

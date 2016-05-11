@@ -20,7 +20,15 @@
       (term-send-raw-string (xpaste t)))
     (add-hook 'term-mode-hook
               (lambda () (bind-keys :map term-raw-map
-                       ("C-c cp" . m|xpaste-to-term))))))
+                       ("C-c cp" . m|xpaste-to-term)))))
+
+  ;; make term/comint buffer dedicated to process
+  (add-hooks '(comint-exec-hook term-exec-hook)
+             '(process-make-buffer-dedicated m|comint-setup-C-l))
+
+  (defun m|comint-setup-C-l (&optional buffer)
+    (with-current-buffer (or buffer (current-buffer))
+      (local-set-key (kbd "C-l") 'comint-clear-buffer))))
 
 (defun term/init-multi-term ()
   (use-package multi-term

@@ -75,4 +75,9 @@
     (bind-keys :map Info-mode-map
       ("l" . Info-history)
       ("H" . Info-history-back)
-      ("L" . Info-history-forward))))
+      ("L" . Info-history-forward)))
+
+  (loaded help-mode
+    (bind-keys :map help-mode-map
+      ("H" . help-go-back)
+      ("L" . help-go-forward))))

@@ -62,26 +62,6 @@ region then symbol is used."
     (current-word)))
 
 
-(defun maybe-set-dedicated-window (window)
-  (when (and (windowp window)
-             (not (window-dedicated-p window))
-             (bound-and-true-p new-window-dedicated))
-    (set-window-dedicated-p window t))
-  window)
-(advice-add 'split-window :filter-return #'maybe-set-dedicated-window)
-
-(defun new-window-dedicated (orig-func &rest args)
-  (let ((new-window-dedicated t))
-    (apply orig-func args)))
-
-
-(defmacro dedicative (&rest funcs)
-  "Make any window created in FUNCS become dedicated."
-  (declare (indent defun))
-  `(dolist (f '(,@funcs))
-     (advice-add f :around #'new-window-dedicated)))
-
-
 (defmacro merge-to (old new)
   "Merge NEW list into OLD list. Duplicates are removed."
   (declare (indent defun))
@@ -242,11 +222,11 @@ or a list of symbols."
   (execute-kbd-macro (read-kbd-macro keys)))
 
 
+;; by Christopher Wellons, 2011-11-18. Editted by Xah Lee.  Edited
+;; by Hideki Saito further to generate all valid variants for "N" in
+;; xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx format.
 (defun random-uuid ()
   "Insert a UUID."
-  ;; by Christopher Wellons, 2011-11-18. Editted by Xah Lee.  Edited
-  ;; by Hideki Saito further to generate all valid variants for "N" in
-  ;; xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx format.
   (interactive)
   (let ((myStr (md5 (format "%s%s%s%s%s%s%s%s%s%s"
                             (user-uid)
@@ -266,3 +246,77 @@ or a list of symbols."
             (format "%x" (+ 8 (random 4)))
             (substring myStr 17 20)
             (substring myStr 20 32))))
+
+
+(defvar process-dedicated-buffers-exclude '("^*\\[.*\\]*$")
+  "Buffer name regexps which will not be set dedicated to process.")
+(defun process-make-buffer-dedicated (&optional buffer)
+  "Make a BUFFER dedicated to its process. When the process is
+finished or exited the BUFFER will be killed. Note that the
+window of the buffer will be deleted as well."
+  (let* ((buffer (or buffer (current-buffer)))
+         (process (get-buffer-process buffer)))
+    (when (and (processp process)
+               (not (find (buffer-name buffer)
+                          process-dedicated-buffers-exclude
+                          :test (lambda (x s) (string-match-p s x)))))
+      (set-process-sentinel
+       process
+       (lambda (proc change)
+         (when (string-match "\\(finished\\|exited\\)" change)
+           (let* ((buf (process-buffer proc))
+                  (win (get-buffer-window buf)))
+             (when win (set-window-dedicated-p win t))
+             (when (buffer-live-p buf) (kill-buffer buf)))))))
+    buffer))
+
+(defun comint-clear-buffer ()
+  "Clear the content of current comint buffer."
+  (interactive)
+  (let ((comint-buffer-maximum-size 0))
+    (save-excursion
+      (goto-char (point-max))
+      (comint-truncate-buffer))))
+
+
+(defmacro define-repl (repl &optional no-max-func docstring &rest body)
+  "Define a REPL. If NO-MAX-FUNC is not set, then the maximized
+version function named REPL-maximized will also be defined. BODY
+is a list of sexp, it should return either a interpreter process
+or a buffer which contains the interpreter process."
+  (declare (doc-string 3))
+  (let* ((repl-max (intern (format "%s-maximized" repl)))
+         (docstring (if (stringp docstring)
+                        docstring
+                      (setq body (cons docstring body))
+                      nil))
+         (func `(defun ,repl (&optional maximized)
+                  ,docstring
+                  (interactive "P")
+                  (let* ((res (progn ,@body))
+                         (buf (if (bufferp res) res (process-buffer res))))
+                    (if maximized
+                        (progn
+                          (switch-to-buffer buf)
+                          (delete-other-windows))
+                      (pop-to-buffer buf))))))
+    (if no-max-func
+        func
+      `(progn
+         ,func
+         (defun ,repl-max ()
+           ,(when docstring
+              (format "%s This is the maximized version." docstring))
+           (interactive)
+           (,repl t))))))
+
+(defun term-run (program &optional name maximized &rest switches)
+  "Run command in a new term."
+  (let* ((name (or name program))
+         (buf (format "*%s*" name)))
+    (set-buffer (apply #'make-term `(,name ,program nil ,@(remq nil switches))))
+    (term-mode)
+    (term-char-mode)
+    (if maximized
+        (switch-to-buffer buf)
+      (pop-to-buffer buf))))
