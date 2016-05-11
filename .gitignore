@@ -7,12 +7,11 @@
 .*
 *.*#
 
-!/.gitignore
-!/.projectile
-
-/*
 !/init.el
 !/bootstrap/
 !/bin
 !/dicts/
 !/snippets/
+
+!/.gitignore
+!/.projectile
