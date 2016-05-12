@@ -81,3 +81,12 @@
     (bind-keys :map help-mode-map
       ("H" . help-go-back)
       ("L" . help-go-forward))))
+
+(defun base/init-compilation ()
+  (loaded compile
+    (require 'ansi-color)
+    (defun colorize-compilation-buffer ()
+      (toggle-read-only)
+      (ansi-color-apply-on-region compilation-filter-start (point))
+      (toggle-read-only))
+    (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)))
