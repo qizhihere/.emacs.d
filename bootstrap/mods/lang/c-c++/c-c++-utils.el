@@ -43,17 +43,25 @@
   "Run compiled binary of current file. When called with a
 prefix, prompts for flags to run the executable."
   (interactive "P")
-  (let ((bin (compile--output-filename))
-        flags)
+  (let ((bin (compile--output-filename)))
     (cond
      ((not (file-exists-p bin))
       (signal 'file-error
               (format "Binary `%s' not found. Maybe need recompile?" bin)))
      ((not (file-executable-p bin))
       (signal 'file-error (format "File `%s' is not executable." bin)))
-     (t (term-run bin (format "[%s]" bin) nil
-                  (when set-flags
-                    (string-remove-prefix bin (read-string "Run: " bin))))))))
+     (t (let* ((flags (when set-flags
+                        (string-remove-prefix bin (read-string "Run: " bin))))
+               (buf (term-run
+                     bin (format "[%s]" bin) nil flags))
+               (proc (get-buffer-process buf)))
+          (when (processp proc)
+            (set-process-sentinel
+             proc
+             (lambda (pr ch)
+               (when (string-match-p "\\(finished\\|exited\\)" ch)
+                 (with-current-buffer (process-buffer pr)
+                   (view-mode 1)))))))))))
 
 (defun clean-current-compiled (&optional no-message)
   "Clean compiled binary of current file."
