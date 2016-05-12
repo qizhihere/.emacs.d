@@ -36,5 +36,12 @@ session, auto saved files, and recently opened files will be put here.")
   "When enabled, use elpa mirror in `elpa-mirror-directory'. And all other archive
 repositories will be disabled.")
 
+(defvar m|elpa-mirror-auto-mirroring t
+  "Whether automatically run `mirror-elpa' at time points
+specified by `elpa-mirror-timepoints'.")
+
+(defvar elpa-mirror-timepoints '("9:30" "14:00" "20:30")
+  "The time points when `mirror-elpa' will be run.")
+
 
 (provide 'core-vars)
