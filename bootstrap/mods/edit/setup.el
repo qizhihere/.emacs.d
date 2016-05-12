@@ -191,6 +191,7 @@
            ("C-<return>" . open-previous-line)
            ("M-B" . backward-symbol)
            ("M-F" . forward-symbol)
+           ("C-a" . first-char-or-beginning-of-line)
            ([remap beginning-of-line] . first-char-or-beginning-of-line)
            ("C-h V" . describe-variable-at-point)
            ("C-h F" . describe-function-at-point)))
