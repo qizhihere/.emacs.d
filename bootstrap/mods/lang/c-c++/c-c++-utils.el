@@ -51,9 +51,10 @@ prefix, prompts for flags to run the executable."
      ((not (file-executable-p bin))
       (signal 'file-error (format "File `%s' is not executable." bin)))
      (t (let* ((flags (when set-flags
-                        (string-remove-prefix bin (read-string "Run: " bin))))
-               (buf (term-run
-                     bin (format "[%s]" bin) nil flags))
+                        (split-string
+                         (string-remove-prefix bin (read-string "Run: " bin)))))
+               (buf (eval `(term-run
+                            bin (format "[%s]" bin) nil ,@flags)))
                (proc (get-buffer-process buf)))
           (when (processp proc)
             (set-process-sentinel
@@ -61,7 +62,7 @@ prefix, prompts for flags to run the executable."
              (lambda (pr ch)
                (when (string-match-p "\\(finished\\|exited\\)" ch)
                  (with-current-buffer (process-buffer pr)
-                   (view-mode 1)))))))))))
+                   (local-set-key "q" #'kill-buffer-and-window)))))))))))
 
 (defun clean-current-compiled (&optional no-message)
   "Clean compiled binary of current file."
@@ -90,9 +91,9 @@ prompts for flags to run the executable."
                              (when (window-live-p win)
                                (delete-window win)))
                            (with-current-buffer ,(buffer-name)
-                             (run-current-compiled ,set-flags))))))
+                             (run-current-compiled ,@set-flags))))))
         (when sentinel
           (when (symbolp sentinel)
             (setq sentinel (symbol-function sentinel)))
-          (add-function :after callback sentinel))
+          (add-function :before callback sentinel))
         (set-process-sentinel proc callback)))))
