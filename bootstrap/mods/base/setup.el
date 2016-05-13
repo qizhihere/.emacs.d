@@ -48,6 +48,7 @@
    truncate-partial-width-windows nil
    vc-follow-symlinks t
    blink-cursor-interval 0.4
+   revert-without-query '(".*")
    url-cookie-file (m|cache-dir "url_cookies"))
 
   (setq scroll-margin 3
