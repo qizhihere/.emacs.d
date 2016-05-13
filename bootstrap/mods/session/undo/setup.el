@@ -11,7 +11,7 @@
           undo-outer-limit 50000000
           undo-tree-auto-save-history t
           undo-tree-history-directory-alist `(("." . ,(m|cache-dir "undo")))
-          undo-tree-incompatible-major-modes '(term-mode magit-status-mode))
+          undo-tree-incompatible-major-modes '(term-mode magit-status-mode hexl-mode))
 
     (defun m|undo-tree--split-window-right-advice (orig-func &rest args)
       (let ((split-height-threshold nil)
