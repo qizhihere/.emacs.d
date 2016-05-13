@@ -196,3 +196,10 @@
            ("C-h V" . describe-variable-at-point)
            ("C-h F" . describe-function-at-point)))
   (advice-add 'kill-line :before #'kill-line--just-one-space))
+
+(defun edit/init-hexl ()
+  (loaded hexl
+    (defun m|inhibit-hexlify-buffer-prompt (orig-func &rest args)
+      (let (buffer-undo-list)
+        (apply orig-func args)))
+    (advice-add 'hexlify-buffer :around #'m|inhibit-hexlify-buffer-prompt)))
