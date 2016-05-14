@@ -71,7 +71,8 @@
         (let ((load-file-name ,elpa-mirror-utils-path))
           (elpa-mirror--do-mirror)))
      (lambda (res)
-       (message "ELPA mirror: %s" res)
+       (message "ELPA mirror(%s): %s"
+                (format-time-string "%Y/%m/%d %H:%M:%S") res)
        (setq elpa-mirror--running-p nil)))))
 
 (defun elpa-mirror--check-timepoints ()
