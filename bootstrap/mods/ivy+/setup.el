@@ -25,7 +25,8 @@
           ivy-format-function 'ivy-format-function-arrow)
 
     (setq ivy-re-builders-alist
-          '((t . ivy--regex-fuzzy)))))
+          '((counsel-unicode-char . ivy--regex-plus)
+            (t . ivy--regex-fuzzy)))))
 
 (defun ivy+/post-init-magit ()
   (setq magit-completing-read-function 'ivy-completing-read))
