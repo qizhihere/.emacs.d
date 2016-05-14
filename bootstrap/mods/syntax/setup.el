@@ -1,4 +1,6 @@
-(setq syntax-packages '(flycheck))
+(setq syntax-packages '(flycheck
+                        flyspell-correct
+                        popup))
 
 (defun syntax/init ()
   (use-package ispell
@@ -39,4 +41,13 @@
     ;; maybe use a english words dictionary
     (let ((dict (m|home "dicts/en-words.txt")))
       (when (file-exists-p dict)
-        (setq ispell-alternate-dictionary dict)))))
+        (setq ispell-alternate-dictionary dict))))
+
+  (use-package popup
+    :commands popup-make-item)
+
+  (use-package flyspell-correct
+    :bind (:map flyspell-mode-map
+           ("C-;" . flyspell-correct-word-generic))
+    :config
+    (setq flyspell-correct-interface 'flyspell-correct-popup)))

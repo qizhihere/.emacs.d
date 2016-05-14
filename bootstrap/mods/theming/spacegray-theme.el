@@ -543,6 +543,7 @@
 
    ;; popup
    `(popup-tip-face ((,class (:background ,background+1 :foreground ,foreground))))
+   `(popup-face ((,class (:background ,background-1 :foreground ,foreground-5))))
 
    ;; Powerline
    `(powerline-active1 ((,class (:foreground ,foreground :background ,selection))))
