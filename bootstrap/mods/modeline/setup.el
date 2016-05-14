@@ -18,6 +18,10 @@
           spaceline-window-numbers-unicode t
           spaceline-workspace-numbers-unicode t)
 
+    (loaded spaceline-segments
+      (put 'spaceline-buffer-encoding-abbrev-p
+           :code `(format "%s" buffer-file-coding-system)))
+
     (defun modeline|spaceline-custom-inactive-face (face active)
       (cond
        ((and (eq 'line face) (not active)) 'modeline-inactive)
