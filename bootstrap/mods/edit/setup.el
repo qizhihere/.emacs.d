@@ -48,11 +48,10 @@
   (add-hook 'emacs-lisp-mode-hook #'m|try-turn-on-aggressive-indent))
 
 (defun edit/init-prog-mode-hooks ()
-  (defun m|prog-mode-prepare-edit ()
-    (hs-minor-mode 1)
-    (highlight-numbers-mode 1)
-    (rainbow-delimiters-mode 1))
-  (add-hook 'prog-mode-hook #'m|prog-mode-prepare-edit))
+  (add-hooks 'prog-mode-hook
+             '(hs-minor-mode
+               highlight-numbers-mode
+               rainbow-delimiters-mode)))
 
 (defun edit/init-anzu ()
   (loaded isearch (global-anzu-mode 1))
