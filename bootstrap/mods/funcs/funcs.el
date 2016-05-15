@@ -312,9 +312,10 @@ or a buffer which contains the interpreter process."
 
 (defun term-run (program &optional name maximized &rest switches)
   "Run command in a new term."
+  (require 'term)
   (let* ((name (or name program))
          (buf (format "*%s*" name)))
-    (set-buffer (apply #'make-term `(,name ,program nil ,@(remq nil switches))))
+    (set-buffer (apply #'term-ansi-make-term `(,buf ,program nil ,@(remq nil switches))))
     (term-mode)
     (term-char-mode)
     (if maximized
