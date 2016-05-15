@@ -3,6 +3,9 @@
 (defun term/init ()
   (use-package term
     :defer t
+    :bind (:map term-raw-map
+           ("M-x" . nil)
+           ("M-:" . nil))
     :config
     (defun m|term-basic-setup ()
       (setq show-trailing-whitespace nil
