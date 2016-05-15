@@ -50,7 +50,6 @@
 (defun edit/init-prog-mode-hooks ()
   (defun m|prog-mode-prepare-edit ()
     (hs-minor-mode 1)
-    (setq show-trailing-whitespace t)
     (highlight-numbers-mode 1)
     (rainbow-delimiters-mode 1))
   (add-hook 'prog-mode-hook #'m|prog-mode-prepare-edit))
@@ -165,7 +164,7 @@
     :diminish whitespace-mode
     :config
     (setq whitespace-default-style whitespace-style
-          whitespace-style '(face tabs tab-mark)))
+          whitespace-style '(face tabs trailing tab-mark)))
 
   (defun m|whitespace-cleanup ()
     (case (bound-and-true-p m|whitespace-cleanup-style)
