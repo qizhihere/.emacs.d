@@ -8,8 +8,8 @@
   (use-package cc-mode
     :preface
     (defun m|cc-mode-setup-indent ()
-      (setq c-default-style "Linux"
-            c-basic-offset 4))
+      (setq c-default-style "linux"
+            c-basic-offset 2))
     :init
     (add-hooks '(c-mode-hook c++-mode-hook) #'m|cc-mode-setup-indent)
 
