@@ -35,8 +35,11 @@
                 (company-begin-backend 'company-yasnippet))))))
 
       (bind-keys :map yas-minor-mode-map
+        ("TAB" . m|indent-and-complete)
         ("<tab>" . m|indent-and-complete)
         ("M-j" . m|company-yasnippet))
+
+      (loaded evil (evil-make-overriding-map yas-minor-mode-map))
 
       ;; abort company before yasnippet expansion
       (defun m|yas-abort-company (&rest args)

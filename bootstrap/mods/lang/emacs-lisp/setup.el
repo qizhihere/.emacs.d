@@ -67,8 +67,8 @@
     :diminish elisp-slime-nav-mode
     :bind (:map emacs-lisp-mode-map
            ("M-." . elisp-slime-nav-find-elisp-thing-at-point))
-    :evil (:map emacs-lisp-mode-map :defer elisp-mode
-           ("M-." . elisp-slime-nav-find-elisp-thing-at-point))))
+    :config
+    (evil-make-overriding-map emacs-lisp-mode-map)))
 
 (defun emacs-lisp/init-pp ()
   (use-package pp
