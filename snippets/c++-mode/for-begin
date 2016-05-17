@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: for (auto it = e.begin()...) {...}
+# key: for
+# --
+for (auto ${1:i} = ${2:e}.begin(); $1 != $2.end(); ++$1) {
+  $0
+}

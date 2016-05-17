@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: for (auto it = e.cbegin()...) {...}
+# key: for
+# --
+for (auto ${1:i} = ${2:e}.cbegin(); $1 != $2.cend(); ++$1) {
+  $0
+}
