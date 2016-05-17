@@ -41,13 +41,15 @@
     ;; maybe use a english words dictionary
     (let ((dict (m|home "dicts/en-words.txt")))
       (when (file-exists-p dict)
-        (setq ispell-alternate-dictionary dict))))
+        (setq ispell-alternate-dictionary dict)))
+
+    (bind-keys :map flyspell-mode-map
+      ("C-;" . flyspell-correct-word-generic)))
 
   (use-package popup
     :commands popup-make-item)
 
   (use-package flyspell-correct
-    :bind (:map flyspell-mode-map
-           ("C-;" . flyspell-correct-word-generic))
+    :defer t
     :config
     (setq flyspell-correct-interface 'flyspell-correct-popup)))
