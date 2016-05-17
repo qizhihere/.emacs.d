@@ -163,14 +163,14 @@
     :leader ("tmw" whitespace-mode)
     :diminish whitespace-mode
     :config
-    (setq whitespace-default-style whitespace-style
+    (setq whitespace-cleanup-style whitespace-style
           whitespace-style '(face tabs trailing tab-mark)))
 
   (defun m|whitespace-cleanup ()
     (case (bound-and-true-p m|whitespace-cleanup-style)
       ('all (save-excursion
               (let ((whitespace-style
-                     (or (bound-and-true-p whitespace-default-style)
+                     (or (bound-and-true-p whitespace-cleanup-style)
                          whitespace-style)))
                 (whitespace-cleanup))))
       ('trailing (save-excursion (call-interactively
