@@ -128,6 +128,7 @@
    `(company-tooltip ((,class (:foreground ,foreground-5 :background ,background-1))))
    `(company-tooltip-annotation ((,class (:foreground ,foreground-5 :background ,background-1))))
    `(company-tooltip-selection ((,class (:foreground ,subtle :background ,selection))))
+   `(company-tooltip-search ((,class (:weight bold))))
    `(company-tooltip-mouse ((,class (:background ,selection))))
    `(company-tooltip-common ((,class (:foreground ,foreground-2 :background ,background+1 :weight bold))))
    `(company-tooltip-common-selection ((,class (:background ,selection :weight bold))))
