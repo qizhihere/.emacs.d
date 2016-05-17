@@ -8,19 +8,20 @@
 ;; advice to temporarily disable smartparens
 (defvar smartparens-temp-disabled nil)
 (defun m|smartparens-temp-disable (&rest args)
-  "Temporary disable smartparens during ac-php-company completion."
+  "Temporary disable smartparens."
   (when smartparens-mode
     (smartparens-mode -1)
     (setq-local smartparens-temp-disabled t)))
 (defun m|smartparens-maybe-reenable (&rest args)
+  "Re-enable smartparens if it has been temporarily disabled."
   (when smartparens-temp-disabled
     (setq-local smartparens-temp-disabled nil)
     (smartparens-mode 1)))
 
-;; disable smartparens during company completion
-(loaded company
-  (add-hook 'company-completion-started-hook #'m|smartparens-temp-disable)
-  (advice-add 'company-cancel :after #'m|smartparens-maybe-reenable))
+;; disable smartparens during yasnippet expansion
+(loaded yasnippet
+  (advice-add 'yas-expand-snippet :before #'m|smartparens-temp-disable)
+  (advice-add 'yas-expand-snippet :after #'m|smartparens-maybe-reenable))
 
 ;; enable smartparens in eval expression minibuffer
 (defun m|eval-expression-minibuffer-enable-smartparens ()
