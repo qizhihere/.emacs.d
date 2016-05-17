@@ -1,5 +1,6 @@
 (setq c-c++-packages '(irony
                        irony-eldoc
+                       clang-format
                        company-irony
                        company-irony-c-headers
                        flycheck-irony))
@@ -20,6 +21,16 @@
                   ("M-<f5>" . clean-current-compiled))))
       (eval `(bind-keys :map c++-mode-map ,@keys))
       (eval `(bind-keys :map c-mode-map ,@keys)))))
+
+
+(defun c-c++/init-clang-format ()
+  (use-package clang-format
+    :defer t
+    :preface
+    (defun m|setup-clang-format ()
+      (setq indent-region-function 'clang-format-region))
+    :init
+    (add-hook 'c++-mode-hook #'m|setup-clang-format)))
 
 (defun c-c++/init-utils ()
   (use-package c-c++-utils
