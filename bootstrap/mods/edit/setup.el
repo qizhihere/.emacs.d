@@ -16,7 +16,8 @@
   ;; replaced by `show-smartparens-mode'
   ;; (m|add-startup-hook #'show-paren-mode)
   (bind-keys ("RET" . newline-and-indent)
-             ("C-c s" . sort-lines))
+             ("C-c s" . sort-lines)
+             ("<f3>" . indent-buffer))
 
   (use-package hideshow
     :defer t

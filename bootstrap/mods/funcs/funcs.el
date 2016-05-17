@@ -321,3 +321,9 @@ or a buffer which contains the interpreter process."
     (if maximized
         (switch-to-buffer buf)
       (pop-to-buffer buf))))
+
+
+(defun indent-buffer ()
+  "Indent current buffer with `indent-region-function'."
+  (interactive)
+  (indent-region (point-min) (point-max)))
