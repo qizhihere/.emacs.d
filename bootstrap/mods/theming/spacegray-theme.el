@@ -545,7 +545,7 @@
    ;; popup
    `(popup-tip-face ((,class (:background ,background+1 :foreground ,foreground))))
    `(popup-face ((,class (:background ,background-1 :foreground ,foreground-5))))
-   `(popup-menu-selection-face ((,class (:background ,selection))))
+   `(popup-menu-selection-face ((,class (:background ,selection :foreground ,foreground-2))))
    `(popup-isearch-match ((,class (:background ,selection))))
    `(popup-menu-mouse-face ((,class (:inherit popup-menu-selection-face))))
    `(popup-scroll-bar-foreground-face ((,class (:background ,background-2))))
