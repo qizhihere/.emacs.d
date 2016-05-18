@@ -57,10 +57,9 @@
        (background-3 "#343843")
        (current-line "#323A42") ;; tree-row
        (far-background "#333D46") ;; panel-control
-       (far-background-2 "#1C1F26")
        (subtle "#A7ADBA") ;; tree-row-hover-disclosure-button-control
        (selection "#4F5B66") ;; tab-control-dirty-tab-close-button
-       (secondary-selection "#C000C0") ;; tab-control-hover-tab-close-button
+       (secondary-selection "#1C1F26") ;; tab-control-hover-tab-close-button
        (foreground "#FFFFFF")
        (foreground-1 "#DEDEDE")
        (foreground-2 "#CDCDCD")
@@ -195,7 +194,7 @@
    `(match ((,class (:foreground "white"  :background ,secondary-selection))))
    `(isearch ((,class (:foreground "black" :background "moccasin"))))
    `(isearch-lazy-highlight-face ((,class (:foreground "white" :background "#6F6F6F"))))
-   `(isearch-fail ((,class (:foreground "white" :background ,secondary-selection :inherit font-lock-warning-face))))
+   `(isearch-fail ((,class (:foreground "white" :background "magenta" :weight bold))))
 
    ;; Anzu
    `(anzu-mode-line ((,class (:foreground ,orange))))
