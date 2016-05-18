@@ -68,7 +68,7 @@
     :bind (:map emacs-lisp-mode-map
            ("M-." . elisp-slime-nav-find-elisp-thing-at-point))
     :config
-    (evil-make-overriding-map emacs-lisp-mode-map)))
+    (loaded evil (evil-make-overriding-map emacs-lisp-mode-map))))
 
 (defun emacs-lisp/init-pp ()
   (use-package pp
