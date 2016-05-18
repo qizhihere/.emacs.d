@@ -3,7 +3,8 @@
                        clang-format
                        company-irony
                        company-irony-c-headers
-                       flycheck-irony))
+                       flycheck-irony
+                       ggtags))
 
 (defun c-c++/init ()
   (use-package cc-mode
@@ -54,3 +55,19 @@
   (defun m|flycheck-clang-enable-c++11 (&rest args)
     (setq flycheck-clang-language-standard "c++11"))
   (add-hook 'c++-mode-hook #'m|flycheck-clang-enable-c++11))
+
+(defun c-c++/init-ggtags ()
+  (use-package ggtags
+    :diminish ggtags-mode
+    :bind (:map ggtags-mode-map
+           ("M-." . ggtags-find-tag-dwim))
+    :init
+    (add-hook 'c-mode-common-hook
+              (lambda ()
+                (when (derived-mode-p 'c-mode 'c++-mode)
+                  (ggtags-mode 1))))
+
+    :config
+    (m|load-conf "setup-ggtags" c-c++)
+
+    (loaded evil (evil-make-overriding-map ggtags-mode-map 'normal))))

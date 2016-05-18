@@ -76,7 +76,8 @@
     (setq beacon-blink-when-window-scrolls nil)
     (merge-to beacon-dont-blink-major-modes
       '(debugger-mode
-        term-mode))))
+        term-mode
+        ggtags-global-mode))))
 
 (defun theming/init-spacemacs-theme ()
   (use-package spacemacs-dark-theme
