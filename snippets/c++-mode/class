@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: class A {...}
+# key: class
+# --
+class ${1:A} {
+public:
+    $0
+};
