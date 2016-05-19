@@ -115,13 +115,7 @@
     :init
     (add-hook 'prog-mode-hook 'highlight-symbol-mode)
     :config
-    (setq highlight-symbol-idle-delay 1.0)
-
-    ;; if evil is available then remap * and #
-    (loaded evil
-      (bind-keys :map evil-normal-state-map
-        ("*" . highlight-symbol-next)
-        ("#" . highlight-symbol-prev)))))
+    (setq highlight-symbol-idle-delay 1.0)))
 
 (defun edit/init-rainbow-mode ()
   (use-package rainbow-mode
