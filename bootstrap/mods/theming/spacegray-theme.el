@@ -162,7 +162,7 @@
    `(clojure-java-call ((,class (:foreground ,purple))))
 
    ;; ivy
-   `(ivy-remote ((,class (:foreground ,foreground-5))))
+   `(ivy-remote ((,class (:foreground ,green :weight bold))))
    `(ivy-current-match ((,class (:background ,background+1 :foreground ,blue-1 :weight bold))))
    `(ivy-minibuffer-match-face-1 ((,class (:foreground ,foreground-4 :background nil))))
    `(ivy-minibuffer-match-face-2 ((,class (:background ,background-2 :foreground ,blue-1 :weight bold))))
