@@ -62,10 +62,8 @@
     :bind (:map ggtags-mode-map
            ("M-." . ggtags-find-tag-dwim))
     :init
-    (add-hook 'c-mode-common-hook
-              (lambda ()
-                (when (derived-mode-p 'c-mode 'c++-mode)
-                  (ggtags-mode 1))))
+    (add-hook 'c++-mode-hook #'ggtags-mode t)
+    (add-hook 'c-mode-hook #'ggtags-mode t)
 
     :config
     (m|load-conf "setup-ggtags" c-c++)
