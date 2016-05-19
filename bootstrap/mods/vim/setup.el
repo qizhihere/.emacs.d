@@ -19,8 +19,9 @@
           evil-in-single-undo t
           evil-want-C-d-scroll nil
           evil-want-C-i-jump t
-          evil-want-C-w-delete t
-          evil-symbol-word-search t)
+          evil-want-C-w-delete t)
+
+    (setq-default evil-symbol-word-search t)
 
     ;; use evil internal search for `gn/gN` support
     (setq evil-search-module 'evil-search
