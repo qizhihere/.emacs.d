@@ -26,7 +26,9 @@
     (m|be-quiet hs-show-all))
 
   (when (fboundp 'global-prettify-symbols-mode)
-    (m|add-startup-hook #'global-prettify-symbols-mode)))
+    (m|add-startup-hook #'global-prettify-symbols-mode)
+    (loaded prog-mode
+      (setq prettify-symbols-unprettify-at-point 'right-edge))))
 
 (defun edit/init-diminish ()
   (loaded abbrev (diminish 'abbrev-mode))
