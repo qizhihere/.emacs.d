@@ -82,8 +82,7 @@
            ("C-S-f" . sp-forward-symbol)
            ("C-S-b" . sp-backward-symbol)
            ("C-M-w" . sp-copy-sexp)
-           ("M-]"   . sp-unwrap-sexp)
-           ("M-["   . sp-backward-unwrap-sexp))
+           ("M-]"   . sp-unwrap-sexp))
     :config
     ;; disable smartparens verbose messages
     (setq sp-message-width nil)
