@@ -271,6 +271,9 @@
    ;; Parenthesis dimming (parenface)
    `(paren-face ((,class (:foreground ,comment :background nil))))
 
+   ;; semantic
+   `(semantic-highlight-func-current-tag-face ((,class (:background ,background+1))))
+
    `(sh-heredoc ((,class (:foreground nil :inherit font-lock-string-face :weight normal))))
    `(sh-quoted-exec ((,class (:foreground nil :inherit font-lock-preprocessor-face))))
    `(slime-highlight-edits-face ((,class (:weight bold))))
