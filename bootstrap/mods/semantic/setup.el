@@ -2,4 +2,4 @@
   (use-package semantic
     :defer t
     :init
-    (m|add-startup-hook 'semantic-mode)))
+    (add-hook 'prog-mode-hook #'semantic-mode)))
