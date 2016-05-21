@@ -14,7 +14,7 @@
 
 (defun edit/init ()
   ;; replaced by `show-smartparens-mode'
-  ;; (m|add-startup-hook #'show-paren-mode)
+  (m|add-startup-hook #'show-paren-mode)
   (bind-keys ("RET" . newline-and-indent)
              ("C-c s" . sort-lines)
              ("<f3>" . indent-buffer))
@@ -94,7 +94,11 @@
     :config
     ;; disable smartparens verbose messages
     (setq sp-message-width nil)
-    (show-smartparens-global-mode 1)
+
+    ;; only enable in ruby-mode because of its low performance
+    (add-hook 'ruby-mode-hook
+              (lambda () (when (<= (count-screen-lines) 100)
+                       (show-smartparens-mode 1))))
     (m|load-conf "setup-smartparens" edit))
 
   (use-package setup-smartparens
