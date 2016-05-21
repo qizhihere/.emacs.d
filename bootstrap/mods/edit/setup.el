@@ -75,7 +75,7 @@
             '(:eval (anzu--update-mode-line)))
 
     ;; turn off spaceline anzu segment if there is
-    (loaded spaceline (setq spaceline-anzu-p nil))))
+    (loaded spaceline-segments (setq spaceline-anzu-p nil))))
 
 (defun edit/init-smartparens ()
   (use-package smartparens
