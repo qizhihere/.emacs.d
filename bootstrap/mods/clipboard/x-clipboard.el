@@ -94,7 +94,7 @@ the mark is inactive."
   (interactive "P")
   (let (str)
     (if (display-graphic-p)
-        (setq str (gui-get-selection 'CLIPBOARD))
+        (setq str (gui-get-selection 'CLIPBOARD 'TEXT))
       (let ((program (x-clipboard--find-program x-clipboard-read-programs)))
         (unless program
           (error "Failed to find an available program to access clipboard."))
