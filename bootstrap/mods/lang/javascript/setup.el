@@ -34,6 +34,7 @@
 (defun javascript/init-tern ()
   (use-package tern
     :defer t
+    :diminish tern-mode
     :init
     (add-hook 'js-mode-hook #'tern-mode)
     :config
