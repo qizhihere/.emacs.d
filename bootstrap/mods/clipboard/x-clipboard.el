@@ -102,7 +102,7 @@ the mark is inactive."
           (eval `(call-process ,(car program) nil t nil ,@(cdr program)))
           (setq str (buffer-substring (point-min) (point-max))))))
     (save-excursion
-      (unless no-insert
+      (unless (or no-insert (null str))
         (when (use-region-p)
           (delete-region (region-beginning) (region-end)))
         (insert str)))
