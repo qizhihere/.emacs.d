@@ -26,9 +26,7 @@
 ;; enable smartparens in eval expression minibuffer
 (defun m|eval-expression-minibuffer-enable-smartparens ()
   (let (sp-ignore-modes-list)
-    (show-paren-mode -1)
-    (smartparens-mode 1)
-    (show-smartparens-mode 1)))
+    (smartparens-mode 1)))
 (add-hook 'eval-expression-minibuffer-setup-hook
           #'m|eval-expression-minibuffer-enable-smartparens)
 
