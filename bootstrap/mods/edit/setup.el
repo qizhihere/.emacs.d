@@ -160,10 +160,10 @@
 
 (defun edit/init-whitespace ()
   (use-package whitespace
-    :init
-    (add-hook 'prog-mode-hook
-              (lambda () (unless (string-match-p "^\\*[^*]+\\*\\'" (buffer-name))
-                       (whitespace-mode 1))))
+    ;; :init
+    ;; (add-hook 'prog-mode-hook
+    ;;           (lambda () (unless (string-match-p "^\\*[^*]+\\*\\'" (buffer-name))
+    ;;                    (whitespace-mode 1))))
     :bind (("C-c tmw" . whitespace-mode))
     :leader ("tmw" whitespace-mode)
     :diminish whitespace-mode
