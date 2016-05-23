@@ -1,13 +1,5 @@
 (require 'cl)
 
-(defmacro execution-time (&rest code)
-  "Get the execution time of `CODE'."
-  (declare (indent defun))
-  `(let ((start (float-time)))
-     (progn ,@code)
-     (- (float-time) start)))
-
-
 (defun concat-sym (&rest args)
   "Concatenate all symbols to one."
   (intern (reduce #'concat (mapcar #'symbol-name args))))
