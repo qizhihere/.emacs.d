@@ -7,10 +7,8 @@
 (defun dired/init ()
   (loaded dired
     (m|load-conf "dired-ext" dired)
-    (setq dired-dwim-target t)
-
-    ;; (dedicative dired-find-file-other-window)
-    )
+    (setq dired-dwim-target t
+          dired-listing-switches "-aBhl  --group-directories-first"))
 
   (use-package dired-ext
     :ensure nil

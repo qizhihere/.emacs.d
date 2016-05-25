@@ -27,19 +27,6 @@
   :init
   (add-hook 'dired-mode-hook #'diff-hl-dired-mode))
 
-;; List directories first
-(defun m|dired-sort-prefer-directory ()
-  "Dired sort hook to list directories first."
-  (save-excursion
-    (let (buffer-read-only)
-      (forward-line 2) ;; beyond dir. header
-      (sort-regexp-fields t "^.*$" "[ ]*." (point) (point-max))))
-  (and (featurep 'xemacs)
-       (fboundp 'dired-insert-set-properties)
-       (dired-insert-set-properties (point-min) (point-max)))
-  (set-buffer-modified-p nil))
-(add-hook 'dired-after-readin-hook #'m|dired-sort-prefer-directory)
-
 (defun switch-to-dired-buffer ()
   (interactive)
   (let ((bufs (mapcar (lambda (it) (buffer-name it))
@@ -52,4 +39,3 @@
         (switch-to-buffer
          (completing-read "Switch to Dired buffer: " bufs))
       (message "There are no dired buffers."))))
-
