@@ -310,6 +310,8 @@ or a buffer which contains the interpreter process."
     (set-buffer (apply #'term-ansi-make-term `(,buf ,program nil ,@(remq nil switches))))
     (term-mode)
     (term-char-mode)
+    (let (term-escape-char)
+      (term-set-escape-char ?\C-x))
     (if maximized
         (switch-to-buffer buf)
       (pop-to-buffer buf))))
