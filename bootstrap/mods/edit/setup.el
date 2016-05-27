@@ -7,6 +7,7 @@
         highlight-numbers
         highlight-parentheses
         highlight-symbol
+        lorem-ipsum
         page-break-lines
         rainbow-delimiters
         rainbow-mode
