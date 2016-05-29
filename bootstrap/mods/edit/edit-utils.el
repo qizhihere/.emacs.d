@@ -38,15 +38,16 @@ current line."
 (defun query-replace-from-region-or-symbol (&optional from to)
   "Query replace from current region or symbol."
   (interactive)
-  (let* ((from (or from (current-region-or-word)))
-         (to (or to (read-from-minibuffer
-                     (format "Replace 「%s」 to: " from)))))
-    (if (use-region-p)
-        (progn
-          (goto-char (region-beginning))
-          (deactivate-mark t))
-      (backward-symbol 1))
-    (query-replace from to)))
+  (save-excursion
+    (let* ((from (or from (current-region-or-word)))
+           (to (or to (read-from-minibuffer
+                       (format "Replace 「%s」 to: " from)))))
+      (if (use-region-p)
+          (progn
+            (goto-char (region-beginning))
+            (deactivate-mark t))
+        (backward-symbol 1))
+      (query-replace from to))))
 
 (defun kill-line--just-one-space (&rest args)
   "Merge multiple whitespaces into one when kill line."
