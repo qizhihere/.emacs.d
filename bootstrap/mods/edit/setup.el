@@ -15,7 +15,7 @@
 
 (defun edit/init ()
   ;; replaced by `show-smartparens-mode'
-  (m|add-startup-hook #'show-paren-mode)
+  (m|add-startup-hook '(show-paren-mode delete-selection-mode))
   (bind-keys ("RET" . newline-and-indent)
              ("C-c s" . sort-lines)
              ("<f3>" . indent-buffer))
