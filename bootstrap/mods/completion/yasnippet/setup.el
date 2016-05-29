@@ -8,7 +8,8 @@
     :bind (:map yas-minor-mode-map
            ("M-j" . yas-expand))
     :config
-    (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+    (setq yas-snippet-dirs '("~/.emacs.d/snippets")
+          yas-verbosity 4)
     (add-hook 'snippet-mode (lambda () (setq-local m|whitespace-cleanup-style 'trailing)))
 
     (loaded company
