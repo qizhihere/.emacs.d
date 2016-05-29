@@ -167,13 +167,13 @@ or a list of symbols."
 (advice-add 'face-spec-set :around #'locked-face-checker)
 
 
-(defun dos2unix (buffer)
+(defun dos2unix ()
   "Convert `\\r\\n' to `\\n'."
-  (interactive "*b")
+  (interactive)
   (save-excursion
     (goto-char (point-min))
-    (replace-string (string ?\C-m) ""))
-  (set-buffer-file-coding-system 'unix t))
+    (while (search-forward "\r" nil t)
+      (replace-match ""))))
 
 (defun find-recursively(path &rest switches)
   "Find file recursively in `PATH'."
