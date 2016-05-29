@@ -117,6 +117,7 @@
 
 (defun edit/init-highlight-parentheses ()
   (use-package highlight-parentheses
+    :defer t
     :init
     (add-hook 'prog-mode-hook #'highlight-parentheses-mode)
     :diminish highlight-parentheses-mode))
@@ -139,6 +140,7 @@
 
 (defun edit/init-page-break-lines-mode ()
   (use-package page-break-lines
+    :defer t
     :diminish page-break-lines-mode
     :init
     (m|add-startup-hook #'global-page-break-lines-mode)))
