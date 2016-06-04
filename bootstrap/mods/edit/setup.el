@@ -29,12 +29,6 @@
 (defun edit/init-prettify-symbol ()
   (loaded prog-mode
     (setq prettify-symbols-unprettify-at-point 'right-edge)
-
-    (defun m|prog-prettify-symbols ()
-      (merge-to prettify-symbols-alist
-        '(("<=" . (?\s (Br . Bl) ?\s (Bc . Bc) ?⩽))
-          (">=" . (?\s (Br . Bl) ?\s (Bc . Bc) ?⩾)))))
-    (add-hook 'prog-mode-hook #'m|prog-prettify-symbols)
     (global-prettify-symbols-mode 1)))
 
 (defun edit/init-diminish ()
