@@ -39,7 +39,9 @@
     :load-path (lambda () (__dir__))
     :commands (compile-and-run-current-file
                compile-current-file
-               run-current-compiled)))
+               run-current-compiled)
+    :config
+    (push '(c++-mode . ("g++" "-g" "-std=c++11")) compile-run-compiler-alist)))
 
 (defun c-c++/init-irony ()
   (use-package irony
