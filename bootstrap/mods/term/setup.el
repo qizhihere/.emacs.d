@@ -40,6 +40,7 @@
     :config
     (setq multi-term-dedicated-select-after-open-p t)
 
+    (push "q" term-unbind-key-list)
     (merge-to term-bind-key-alist
       '(("M-d" . term-send-forward-kill-word)
         ("M-DEL" . term-send-backward-kill-word)))))
