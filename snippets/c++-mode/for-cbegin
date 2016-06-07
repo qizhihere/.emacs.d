@@ -2,6 +2,6 @@
 # name: for (auto it = e.cbegin()...) {...}
 # key: for
 # --
-for (auto ${1:i} = ${2:e}.cbegin(); $1 != $2.cend(); ++$1) {
+for (auto ${1:it} = ${2:${3:e}.cbegin()}; $1 != ${4:$3.cend()}; ${5:++$1}) {
   $0
 }

@@ -2,6 +2,6 @@
 # name: for (auto it = e.begin()...) {...}
 # key: for
 # --
-for (auto ${1:i} = ${2:e}.begin(); $1 != $2.end(); ++$1) {
+for (auto ${1:it} = ${2:${3:e}.begin()}; $1 != ${4:$3.end()}; ${5:++$1}) {
   $0
 }

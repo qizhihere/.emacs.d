@@ -33,7 +33,7 @@
     (compile--prepare-output-directory)
     ;; set compile arguments
     (setq compiler (cadr item)
-          args (eval `(concat ,@(cddr item))))
+          args (string-join (cddr item) " "))
     ;; start compile
     (compile (format "%s %s '%s' -o '%s'" compiler args
                      (file-name-nondirectory (buffer-file-name))

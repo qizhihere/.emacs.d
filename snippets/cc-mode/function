@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: void func(...) {...}
+# key: function
+# --
+${1:void} ${2:func}($3)
+{
+    $0
+}

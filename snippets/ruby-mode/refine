@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: refine
+# key: refine
+# --
+refine ${1:Class} do
+  $0
+end

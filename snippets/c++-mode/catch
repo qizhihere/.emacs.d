@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: catch (...) {...}
+# key: catch
+# --
+catch (${1:ExceptionType} ${2:e}) {
+    $3
+}$0

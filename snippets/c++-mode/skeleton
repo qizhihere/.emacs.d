@@ -6,7 +6,7 @@
 $2
 using namespace ${3:std};
 
-int main (${4:int argc, char *argv[]})
+int main(${4:int argc, char *argv[]})
 {
     $0
 
