@@ -60,8 +60,10 @@ prefix, prompts for flags to run the executable."
             (set-process-sentinel
              proc
              (lambda (pr ch)
-               (when (string-match-p "\\(finished\\|exited\\)" ch)
-                 (with-current-buffer (process-buffer pr)
+               (let ((status (process-status pr)))
+                 (set-buffer (process-buffer pr))
+                 (when (eq status 'signal) (insert ch))
+                 (when (memq status '(exit signal))
                    (local-set-key "q" #'kill-buffer-and-window)))))))))))
 
 (defun clean-current-compiled (&optional no-message)
