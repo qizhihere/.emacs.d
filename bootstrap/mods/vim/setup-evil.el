@@ -20,3 +20,8 @@
                :map evil-visual-state-map   ,@keys
                :map evil-replace-state-map  ,@keys
                :map evil-operator-state-map ,@keys)))
+
+(defun m|evil-ex-substitute-fix (orig-func &rest args)
+  (let ((evil-search-module 'isearch))
+    (apply orig-func args)))
+(advice-add 'evil-ex-substitute :around #'m|evil-ex-substitute-fix)
