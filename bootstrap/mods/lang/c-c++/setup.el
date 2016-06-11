@@ -61,7 +61,9 @@
 (defun c-c++/post-init-smartparens ()
   (defun m|c-mode-newline-and-indent-in-braces (&rest args)
     (interactive)
-    (save-excursion (newline))
+    (save-excursion
+      (newline)
+      (indent-for-tab-command))
     (indent-for-tab-command))
   (sp-local-pair '(c-mode c++-mode) "{" nil
                  :post-handlers '((m|c-mode-newline-and-indent-in-braces "RET"))))
