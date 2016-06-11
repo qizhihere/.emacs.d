@@ -1,5 +1,5 @@
 (setq syntax-packages '(flycheck
-                        flyspell-correct
+                        flyspell-correct-popup
                         popup))
 
 (defun syntax/init ()
@@ -48,7 +48,8 @@
 
   (use-package popup
     :commands popup-make-item)
-
+  (use-package flyspell-correct-popup
+    :commands flyspell-correct-popup)
   (use-package flyspell-correct
     :defer t
     :config
