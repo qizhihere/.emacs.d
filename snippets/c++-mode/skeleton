@@ -2,7 +2,7 @@
 # name: skeleton
 # key: #
 # --
-#include "${1:iostream}"
+#include <${1:iostream}>
 $2
 using namespace ${3:std};
 

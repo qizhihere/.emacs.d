@@ -5,6 +5,6 @@
 try {
     $1
 }
-catch (${2:ExceptionType} ${3:e}) {
-    $4
+catch (${2:const ${3:exception}} ${4:&e}) {
+    $5
 }$0

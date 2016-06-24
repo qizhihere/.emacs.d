@@ -2,6 +2,6 @@
 # name: catch (...) {...}
 # key: catch
 # --
-catch (${1:ExceptionType} ${2:e}) {
-    $3
+catch (${1:const ${2:exception}} ${3:&e}) {
+    $4
 }$0
