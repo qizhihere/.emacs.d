@@ -50,3 +50,14 @@
                   (double-quote . "\"")
                   (back-quote   . "`")
                   (underscore   . "_")))
+
+
+;; enhancements in some language
+(defun m|c-mode-newline-and-indent-in-braces (&rest args)
+  (interactive)
+  (save-excursion
+    (newline)
+    (indent-for-tab-command))
+  (indent-for-tab-command))
+(sp-local-pair '(c-mode c++-mode go-mode) "{" nil
+               :post-handlers '((m|c-mode-newline-and-indent-in-braces "RET")))

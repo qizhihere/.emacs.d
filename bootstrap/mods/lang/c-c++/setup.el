@@ -58,16 +58,6 @@
     (setq flycheck-clang-language-standard "c++11"))
   (add-hook 'c++-mode-hook #'m|flycheck-clang-enable-c++11))
 
-(defun c-c++/post-init-smartparens ()
-  (defun m|c-mode-newline-and-indent-in-braces (&rest args)
-    (interactive)
-    (save-excursion
-      (newline)
-      (indent-for-tab-command))
-    (indent-for-tab-command))
-  (sp-local-pair '(c-mode c++-mode) "{" nil
-                 :post-handlers '((m|c-mode-newline-and-indent-in-braces "RET"))))
-
 (defun c-c++/init-ggtags ()
   (use-package ggtags
     :diminish ggtags-mode
