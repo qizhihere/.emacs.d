@@ -61,8 +61,7 @@
 (defun c-c++/init-ggtags ()
   (use-package ggtags
     :diminish ggtags-mode
-    :bind (:map ggtags-mode-map
-           ("M-." . ggtags-find-tag-dwim))
+    :defer t
     :init
     (add-hook 'c++-mode-hook #'ggtags-mode t)
     (add-hook 'c-mode-hook #'ggtags-mode t)

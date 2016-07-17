@@ -1,6 +1,10 @@
 ;; keep point after `evil-indent'
 (advice-add 'evil-indent :around #'m|keep-point-advice)
 
+;; unbind some unnecessary keys
+(loaded evil-maps
+  (unbind-key "M-." evil-normal-state-map))
+
 ;; setup emacs style keys
 (let ((keys '(("C-a" . beginning-of-line)
               ("C-e" . end-of-line)
