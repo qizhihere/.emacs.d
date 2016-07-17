@@ -59,5 +59,9 @@
     (newline)
     (indent-for-tab-command))
   (indent-for-tab-command))
-(sp-local-pair '(c-mode c++-mode go-mode) "{" nil
+(sp-local-pair '(c-mode c++-mode go-mode php-mode) "{" nil
                :post-handlers '((m|c-mode-newline-and-indent-in-braces "RET")))
+
+(sp-local-pair '(go-mode) "(" nil
+               :post-handlers '((m|c-mode-newline-and-indent-in-braces "RET")))
+

@@ -6,7 +6,7 @@
 
 (defun html/init-web-mode ()
   (use-package web-mode
-    :mode "\\.\\(blade\\.\\|\\(html\\|xml\\|jsp\\|erb\\|tpl\\)\\'\\)"
+    :mode "\\.\\(blade\\.\\|\\(html\\|xml\\|jsp\\|erb\\|tpl\\)\\'\\)\\|views/.+\\.php"
     :config
     (setq web-mode-markup-indent-offset 2
           web-mode-code-indent-offset 2

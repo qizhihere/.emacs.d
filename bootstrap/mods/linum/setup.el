@@ -2,7 +2,8 @@
 
 (defun linum/init ()
   (defvar linum-disable-mode-list
-    '(compilation-mode
+    '(ag-mode
+      compilation-mode
       dired-mode
       doc-view-mode
       epresent-mode

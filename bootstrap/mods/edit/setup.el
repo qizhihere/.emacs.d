@@ -52,10 +52,13 @@
   (add-hook 'emacs-lisp-mode-hook #'m|try-turn-on-aggressive-indent))
 
 (defun edit/init-prog-mode-hooks ()
+  (defun show-trailing-whitespace()
+    (setq show-trailing-whitespace t))
   (add-hooks 'prog-mode-hook
              '(hs-minor-mode
                highlight-numbers-mode
-               rainbow-delimiters-mode)))
+               rainbow-delimiters-mode
+               show-trailing-whitespace)))
 
 (defun edit/init-anzu ()
   (loaded isearch (global-anzu-mode 1))
@@ -172,11 +175,13 @@
     (case (bound-and-true-p m|whitespace-cleanup-style)
       ('all (save-excursion
               (let ((whitespace-style
-                     (or (bound-and-true-p whitespace-cleanup-style)
-                         whitespace-style)))
+                     '(face tabs spaces trailing lines
+                            space-before-tab newline
+                            indentation empty space-after-tab
+                            space-mark tab-mark newline-mark)))
                 (whitespace-cleanup))))
-      ('trailing (save-excursion (call-interactively
-                                  #'delete-trailing-whitespace)))))
+      (t (save-excursion
+           (call-interactively #'delete-trailing-whitespace)))))
   (add-hook 'before-save-hook #'m|whitespace-cleanup))
 
 (defun edit/init-pratical-edit-utils ()

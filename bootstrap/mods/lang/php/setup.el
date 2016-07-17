@@ -1,6 +1,7 @@
 (setq php-packages '(php-mode
                      php-eldoc
-                     ac-php))
+                     ac-php
+                     company-php))
 
 (defun php/init ()
   (use-package php-mode
@@ -10,12 +11,18 @@
                '(php-enable-default-coding-style
                  subword-mode))
 
+    :leader ("hf" php-search-documentation)
+
+    :bind (:map php-mode-map
+           ("C-c C-f" . ivy-recentf))
+
     :config
-    (setq-default php-lineup-cascaded-calls t)))
+    (setq-default php-lineup-cascaded-calls t
+                  php-manual-path "~/Docs/lang/php-docs"
+                  php-search-documentation-browser-function 'eww-browse-url)))
 
 (defun php/init-completion ()
-  (use-package ac-php-company
-    :ensure ac-php
+  (use-package company-php
     :commands company-ac-php-backend)
 
   (loaded company-utils

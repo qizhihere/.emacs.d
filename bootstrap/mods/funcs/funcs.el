@@ -16,9 +16,9 @@
 (defmacro loaded (file &rest body)
   "Execute BODY after FILE is loaded."
   (declare (indent defun))
-  (when (symbolp file)
-    (setq file (symbol-name file)))
-  `(with-eval-after-load ,file
+  (when (stringp file)
+    (setq file (intern file)))
+  `(with-eval-after-load ',file
      ,@body))
 (put 'loaded 'lisp-indent-function 'defun)
 

@@ -22,7 +22,7 @@
     :bind (:map elpy-mode-map
            ("M-<return>" . elpy-shell-send-current-statement))
     :config
-    (setq elpy-rpc-python-command python-shell-interpreter)
+    (setq-default elpy-rpc-python-command (file-name-base python-shell-interpreter))
     (unbind-key "C-<return>" elpy-mode-map)
     (unbind-key "S-<return>" elpy-mode-map)
 

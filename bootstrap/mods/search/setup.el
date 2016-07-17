@@ -32,7 +32,8 @@
   (use-package wgrep
     :defer t
     :config
-    (setq wgrep-enable-key (kbd "C-c '"))))
+    (setq wgrep-enable-key (kbd "C-c '")
+          wgrep-auto-save-buffer t)))
 
 (defun search/init-dired-keys ()
   (loaded dired
@@ -40,27 +41,19 @@
     (bind-keys :map dired-mode-map
       ("sbg" . grep)
       ("sbG" . grep-find)
-      ("sba" . ag))))
+      ("sba" . ag)
+      ("sbA" . ag-regexp))))
 
 (defun search/init-ag ()
   (use-package ag
     :leader ("sba" ag
+             "sbA" ag-regexp
              "pa" ag-project)
     :config
-    (setq ag-arguments '("-fUi"
+    (setq ag-arguments '("--follow"
                          "--search-zip"
-                         "--line-number"
                          "--smart-case"
-                         "--nogroup"
-                         "--column"
-                         "--stats"
-                         "--")
+                         "--stats")
           ag-highlight-search t
-          ag-reuse-buffers t))
-
-  ;; setup keys for dired
-  (loaded dired
-    (m|unbind-key "s" dired-mode-map :if #'commandp)
-    (bind-keys :map dired-mode-map
-      ("sba" . ag)
-      ("S" . dired-sort-toggle-or-edit))))
+          ag-reuse-buffers t
+          ag-group-matches nil)))
