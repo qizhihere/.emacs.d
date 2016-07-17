@@ -20,7 +20,7 @@
     (loaded python (elpy-enable))
 
     :bind (:map elpy-mode-map
-           ("M-<return>" . elpy-shell-send-current-statement))
+           ("M-<return>" . elpy-shell-send-region-or-buffer))
     :config
     (setq-default elpy-rpc-python-command (file-name-base python-shell-interpreter))
     (unbind-key "C-<return>" elpy-mode-map)
@@ -36,7 +36,7 @@
   (loaded python
     (define-repl python-repl ()
       "Run python interpreter."
-      (run-python))
+      (elpy-shell-switch-to-shell))
 
     (bind-keys :map python-mode-map
       ("C-c <f12>" . python-repl)
