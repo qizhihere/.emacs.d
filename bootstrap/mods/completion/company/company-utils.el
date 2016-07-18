@@ -33,3 +33,7 @@
 
 (defun m|company-add-yasnippet-general-backend ()
   (company/add-general-backend 'company-yasnippet))
+
+
+
+(provide 'company-utils)

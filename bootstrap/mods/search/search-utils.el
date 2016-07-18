@@ -17,3 +17,7 @@
   (require 'browse-url)
   (browse-url-default-browser
    (concat "https://www.google.com/#q=" keywords)))
+
+
+
+(provide 'search-utils)

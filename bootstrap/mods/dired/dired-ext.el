@@ -39,3 +39,7 @@
         (switch-to-buffer
          (completing-read "Switch to Dired buffer: " bufs))
       (message "There are no dired buffers."))))
+
+
+
+(provide 'dired-ext)

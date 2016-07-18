@@ -79,3 +79,7 @@ current line."
       (if (boundp word)
           (describe-variable word)
         (call-interactively #'describe-variable)))))
+
+
+
+(provide 'edit-utils)

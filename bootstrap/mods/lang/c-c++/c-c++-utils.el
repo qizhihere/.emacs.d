@@ -99,3 +99,7 @@ prompts for flags to run the executable."
             (setq sentinel (symbol-function sentinel)))
           (add-function :before callback sentinel))
         (set-process-sentinel proc callback)))))
+
+
+
+(provide 'c-c++-utils)

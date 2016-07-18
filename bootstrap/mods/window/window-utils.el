@@ -49,3 +49,7 @@
         (when toggle-window-dedicated-p-message
           (message "Window dedicated ON"))
         (set-window-dedicated-p win t)))))
+
+
+
+(provide 'window-utils)
