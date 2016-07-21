@@ -67,7 +67,7 @@
   (bind-keys ("<C-mouse-4>" . text-scale-increase)
              ("<C-mouse-5>" . text-scale-decrease)))
 
-(defun edit/init-beacon ()
+(defun theming/init-beacon ()
   (use-package beacon
     :defer t
     :init
