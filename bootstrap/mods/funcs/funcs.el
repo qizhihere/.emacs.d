@@ -198,16 +198,16 @@ or a list of symbols."
 (defun rename-this-file-and-buffer (&optional new-name)
   "Renames both current buffer and file it's visiting to NEW-NAME."
   (interactive)
-  (let* ((name (buffer-name))
-         (filename (buffer-file-name))
+  (let* ((filename (buffer-file-name))
+         (name (file-name-nondirectory filename))
          (new-name (or new-name (read-string "New name: " name))))
-    (if (get-buffer new-name)
-        (message "A buffer named '%s' already exists!" new-name)
-      (progn
-        (when (and filename (file-exists-p filename))
-          (rename-file filename new-name 1))
-        (rename-buffer new-name)
-        (set-visited-file-name new-name)))))
+    (if (and filename (file-exists-p filename))
+        (if (y-or-n-p (format-message "New filename `%s' exists; overwrite? " new-name))
+            (progn
+              (rename-file filename new-name t)
+              (set-visited-file-name new-name))
+          (user-error "Canceled"))
+      (set-visited-file-name new-name))))
 
 
 (defun send-keys (keys)
