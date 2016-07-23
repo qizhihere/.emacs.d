@@ -57,3 +57,12 @@
     :defer t
     :config
     (setq org-babel-python-command "python2")))
+
+(defun org/init-snippet-completion ()
+  (use-package org-snippets
+    :ensure nil
+    :load-path (lambda () (__dir__))
+    :commands org-insert-snippet)
+  (loaded org
+    (bind-keys :map org-mode-map
+      ("C-c i" . org-insert-snippet))))
