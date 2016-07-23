@@ -9,6 +9,7 @@
       epresent-mode
       eshell-mode
       help-mode
+      image-mode
       markdown-mode
       org-mode
       pdf-view-mode
