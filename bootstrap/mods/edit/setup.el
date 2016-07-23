@@ -102,15 +102,7 @@
   (use-package setup-smartparens
     :ensure nil
     :commands (m|smartparens-temp-disable
-               m|smartparens-maybe-reenable)
-    :bind (:map smartparens-mode-map
-           ("C-c ("  . sp-wrap-with-parens)
-           ("C-c ["  . sp-wrap-with-brackets)
-           ("C-c {"  . sp-wrap-with-braces)
-           ("C-c '"  . sp-wrap-with-single-quotes)
-           ("C-c \"" . sp-wrap-with-double-quotes)
-           ("C-c _"  . sp-wrap-with-underscores)
-           ("C-c `"  . sp-wrap-with-back-quotes))))
+               m|smartparens-maybe-reenable)))
 
 (defun edit/init-highlight-parentheses ()
   (use-package highlight-parentheses
