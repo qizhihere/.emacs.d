@@ -349,5 +349,6 @@ Operate on selected region or whole buffer."
    (if (use-region-p)
        (list (region-beginning) (region-end))
      (list (point-min) (point-max))))
+  (require 'ansi-color)
   (let ((inhibit-read-only t))
     (ansi-color-apply-on-region beg end)))
