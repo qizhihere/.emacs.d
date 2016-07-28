@@ -68,7 +68,7 @@
             ("footnote" org-footnote-action)
             ("inline footnote" (progn (insert (concat "[fn::]")) (backward-char)))
             ("timestamp" (insert (concat "<" (format-time-string "%Y-%m-%d %b %H:%M") ">")))
-            ("timestamp(from cal)" (lambda () (call-interactively 'org-time-stamp)))
+            ("timestamp(from cal)" (call-interactively 'org-time-stamp))
             (,(s+ (+r "[X]") " checkbox") (progn (org-meta-return) (insert "[ ] ")))
             (,(s+ "* " (+r "TODO")) (call-interactively #'org-insert-todo-heading))
             ))))

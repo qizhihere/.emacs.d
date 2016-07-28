@@ -22,6 +22,7 @@
       (add-hook 'desktop-save-hook #'session-save-session)
       :commands session-save-session
       :config
+      (setq session-name-disable-regexp "\\(?:\\.git/[A-Z_]+\\'\\|\\`/tmp/\\)")
       (m|be-quiet session-initialize session-save-session)))
 
   (m|evil-leader ";dl" 'desktop-lazy-complete))

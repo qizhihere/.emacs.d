@@ -39,8 +39,9 @@
     (add-hook 'projectile-mode-hook
               (lambda () (require 'hydra nil t)
                 (projectile-rails-on)))
-    :bind (:map projectile-rails-mode-map
-           ("M-o" . hydra-projectile-rails/body))))
+    :config
+    (bind-keys :map projectile-rails-mode-map
+      ("M-o" . hydra-projectile-rails/body))))
 
 (defun ruby/init-repl ()
   (use-package inf-ruby :defer t)

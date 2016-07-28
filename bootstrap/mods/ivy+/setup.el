@@ -1,6 +1,7 @@
 (setq ivy+-packages '(flx
                       smex
                       ivy
+                      ivy-hydra
                       counsel))
 
 (defun ivy+/init ()

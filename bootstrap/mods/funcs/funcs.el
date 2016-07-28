@@ -202,11 +202,10 @@ or a list of symbols."
          (name (file-name-nondirectory filename))
          (new-name (or new-name (read-string "New name: " name))))
     (if (and filename (file-exists-p filename))
-        (if (y-or-n-p (format-message "New filename `%s' exists; overwrite? " new-name))
-            (progn
-              (rename-file filename new-name t)
-              (set-visited-file-name new-name))
-          (user-error "Canceled"))
+        (when (or (not (file-exists-p new-name))
+                  (y-or-n-p (format-message "New filename `%s' exists; overwrite? " new-name)))
+          (rename-file filename new-name t)
+          (set-visited-file-name new-name))
       (set-visited-file-name new-name))))
 
 
@@ -322,3 +321,33 @@ or a buffer which contains the interpreter process."
   "Indent current buffer with `indent-region-function'."
   (interactive)
   (indent-region (point-min) (point-max)))
+
+(defun simple-complete (data &optional prompt)
+  "A simple completion provider."
+  (let* ((res (completing-read
+               (or prompt "Select an item:")
+               (mapcar
+                (lambda (it)
+                  (let ((pa (if (listp it) it `(,it ,it))))
+                    (propertize (car pa) 'scmp-data (cadr pa))))
+                data)))
+         (data (get-text-property 0 'scmp-data res))
+         (s (pcase data
+              ((pred stringp) (insert data))
+              ((or (pred symbolp) `(lambda . ,_))
+               (eval `(,data)))
+              (`(,(or (pred symbolp) `(lambda . ,_)) . ,_)
+               (eval `(,(car data) ,@(cdr data))))
+              (_ (user-error "Invalid completion item.")))))
+    (when (stringp s) (insert s))))
+
+
+(defun toggle-display-ansi-color (&optional beg end)
+  "Interpret ANSI color esacape sequence by colorifying cotent.
+Operate on selected region or whole buffer."
+  (interactive
+   (if (use-region-p)
+       (list (region-beginning) (region-end))
+     (list (point-min) (point-max))))
+  (let ((inhibit-read-only t))
+    (ansi-color-apply-on-region beg end)))
