@@ -47,7 +47,7 @@
   (use-package inf-ruby :defer t)
   (loaded ruby-mode
     (define-repl ruby-repl ()
-      "Run irb in a buffer."
+      "Run Ruby REPL in a buffer."
       (let ((buf (bound-and-true-p inf-ruby-buffer)))
         (or (and buf (get-buffer buf))
             (inf-ruby-console-auto))))
