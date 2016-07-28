@@ -48,7 +48,9 @@
   (loaded ruby-mode
     (define-repl ruby-repl ()
       "Run irb in a buffer."
-      (get-buffer-process (inf-ruby)))
+      (let ((buf (bound-and-true-p inf-ruby-buffer)))
+        (or (and buf (get-buffer buf))
+            (inf-ruby-console-auto))))
 
     (bind-keys :map ruby-mode-map
       ("C-c <f12>" . ruby-repl)
