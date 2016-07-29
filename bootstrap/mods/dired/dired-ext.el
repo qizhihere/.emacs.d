@@ -12,12 +12,14 @@
 
 (use-package dired+
   :commands dired-hide-details-mode
+  :bind (:map dired-mode-map
+         (")" . dired-hide-details-mode))
+
   :init
   (m|be-quiet diredp-make-find-file-keys-not-reuse-dirs
               diredp-make-find-file-keys-reuse-dirs)
-  (toggle-diredp-find-file-reuse-dir 1)
-  :bind (:map dired-mode-map
-         (")" . dired-hide-details-mode)))
+  (setq diredp-hide-details-initially-flag nil)
+  (toggle-diredp-find-file-reuse-dir 1))
 
 (use-package dired-efap
   :bind (:map dired-mode-map
