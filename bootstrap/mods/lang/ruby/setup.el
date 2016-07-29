@@ -44,7 +44,15 @@
       ("M-o" . hydra-projectile-rails/body))))
 
 (defun ruby/init-repl ()
-  (use-package inf-ruby :defer t)
+  (use-package inf-ruby
+    :defer t
+    :config
+    (defun m|inf-ruby-back-to-irb (orig-func &rest args)
+      (condition-case err
+          (apply orig-func args)
+        (error (inf-ruby))))
+    (advice-add 'inf-ruby-console-auto :around #'m|inf-ruby-back-to-irb))
+
   (loaded ruby-mode
     (define-repl ruby-repl ()
       "Run Ruby REPL in a buffer."
