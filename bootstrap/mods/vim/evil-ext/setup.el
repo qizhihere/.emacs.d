@@ -19,7 +19,10 @@
 (defun evil-ext/init-evil-matchit ()
   (loaded evil
     (add-hook 'evil-local-mode-hook #'evil-snipe-local-mode))
-  (use-package evil-matchit :defer t))
+  (use-package evil-matchit
+    :defer t
+    :init
+    (loaded evil (global-evil-matchit-mode 1))))
 
 (defun evil-ext/init-evil-args ()
   (use-package evil-args
