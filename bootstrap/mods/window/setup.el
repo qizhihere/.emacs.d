@@ -2,6 +2,12 @@
                         window-numbering))
 
 (defun window/init ()
+  (use-package window
+    :bind (("C--" . shrink-window)
+           ("C-=" . enlarge-window)
+           ("M--" . shrink-window-horizontally)
+           ("M-=" . enlarge-window-horizontally)))
+
   (use-package winner
     :init
     (m|add-startup-hook #'winner-mode)
