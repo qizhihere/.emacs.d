@@ -8,6 +8,7 @@
     :diminish projectile-mode
     :leader ("pb" projectile-switch-to-buffer
              "pd" projectile-dired
+             "pp" projectile-switch-project
              "pl" projectile-switch-project
              "pf" projectile-find-file
              "ff" projectile-find-file
