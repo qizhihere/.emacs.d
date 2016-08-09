@@ -51,7 +51,8 @@
    revert-without-query '(".*")
    url-cookie-file (m|cache-dir "url_cookies"))
 
-  (setq scroll-margin 3
+  (setq kill-ring-max 1000
+        scroll-margin 3
         scroll-conservatively 10000
         frame-title-format "emacs@%b"
         ring-bell-function nil
