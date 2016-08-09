@@ -65,4 +65,5 @@
     :commands org-insert-snippet)
   (loaded org
     (bind-keys :map org-mode-map
-      ("C-c i" . org-insert-snippet))))
+      ("C-c i" . org-insert-snippet)
+      ("C-c -" . org-insert-hr))))

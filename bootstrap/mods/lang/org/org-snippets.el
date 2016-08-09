@@ -49,6 +49,7 @@
             ,(~b "quote" "<q")
             ,(~b "verse" "<v")
             (,(+b "drawer") org-insert-drawer)
+            (,(+b "hr") org-insert-hr)
 
             ;; attr fields
             ("#+include: " ,(~~ "<I"))
@@ -101,6 +102,11 @@
     (setq org-last-image-dir (file-name-directory file))
     (insert (concat "[[" file "]]"))))
 
+(defun org-insert-hr ()
+  (interactive)
+  (when (looking-back "^-+\\s-*")
+    (delete-region (line-beginning-position) (line-end-position)))
+  (insert (make-string 80 ?-)))
 
 
 (provide 'org-snippets)
