@@ -3,7 +3,6 @@
                        clang-format
                        company-irony
                        company-irony-c-headers
-                       flycheck-irony
                        ggtags))
 
 (defun c-c++/init ()

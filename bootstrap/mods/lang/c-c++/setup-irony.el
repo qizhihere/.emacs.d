@@ -28,7 +28,3 @@
 
 ;; eldoc
 (add-hook 'irony-mode-hook #'irony-eldoc)
-
-;; flycheck
-(loaded flycheck
-  (add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
