@@ -27,6 +27,7 @@
 
     (setq ivy-re-builders-alist
           '((counsel-unicode-char . ivy--regex-plus)
+            (swiper . ivy--regex-plus)
             (t . ivy--regex-fuzzy)))))
 
 (defun ivy+/post-init-magit ()
