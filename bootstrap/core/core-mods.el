@@ -14,6 +14,9 @@
 (defvar m|disabled-mods '()
   "Disabled configuration modules.")
 
+(defvar m|loaded-mods '()
+  "Loaded configuration modules.")
+
 (defvar m|mod-policy 'allow
   "The module loading policy. Posibilities include: allow, deny.
 If set to allow, `m|enabled-mods' is ignored, and only modules
@@ -47,8 +50,6 @@ can be loaded.")
                     :initform ())
    (setup :initarg :setup
           :initform nil)
-   (loaded :initarg :loaded
-           :initform nil)
    (disabled :initarg :disabled
              :initform nil))
   "The base configuration module class.")
@@ -150,7 +151,7 @@ a `m|module-setup-file'."
     (let* ((name (oref mod :name))
            (init-func (intern (format "%s/init" name)))
            (load-file-name (m|mod-setup-file mod)))
-      (unless (oref mod :loaded)
+      (unless (memq name m|loaded-mods)
         ;; call module init function
         (when (fboundp init-func)
           (funcall init-func)
@@ -164,7 +165,7 @@ a `m|module-setup-file'."
               (eval
                `(with-eval-after-load ',pkg
                   (funcall ',func)))))
-          (oset mod :loaded t))))))
+          (push name m|loaded-mods))))))
 
 (defun m|load-mods ()
   (unless m|mods (m|init-mods))
