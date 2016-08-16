@@ -16,7 +16,7 @@
     :diminish ivy-mode
     :init
     (m|add-startup-hook #'ivy-mode)
-    :leader ("fr" ivy-recentf)
+    :leader ("rf" ivy-recentf)
     :bind (("C-c C-f" . ivy-recentf)
            :map ivy-minibuffer-map
            ("C-l" . ivy-backward-kill-word)
