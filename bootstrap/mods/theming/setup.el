@@ -40,7 +40,8 @@
               theme-rev m|gui-color-theme))
       (load-theme theme t t)
       (enable-theme theme)
-      (disable-theme theme-rev))))
+      (when (not (eq theme theme-rev))
+        (disable-theme theme-rev)))))
 
 (defun theming|frame-setup-fonts (&optional frame)
   (with-selected-frame (or frame (selected-frame))
