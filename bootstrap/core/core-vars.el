@@ -13,7 +13,7 @@ session, auto saved files, and recently opened files will be put here.")
 (defvar m|console-color-theme 'spacemacs-dark
   "The theme applied when Emacs running in console mode.")
 
-(defvar m|gui-color-theme 'spacegray
+(defvar m|gui-color-theme 'spacemacs-dark
   "The theme applied when Emacs running in graphical mode.")
 
 (defvar m|gui-font '("Source Code Pro" :size 12)
