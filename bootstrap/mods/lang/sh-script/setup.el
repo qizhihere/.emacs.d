@@ -3,6 +3,7 @@
 (defun sh-script/init ()
   (use-package sh-script
     :defer t
+    :mode "\\zshrc"
     :config
     (defun m|sh-setup-whitespace-clean ()
       (setq-local m|whitespace-cleanup-style 'trailing))
@@ -11,4 +12,11 @@
 (defun sh-script/init-fish ()
   (use-package fish-mode
     :defer t
-    :mode "\\.fishrc\\'"))
+    :mode "\\.fishrc\\'"
+    :config
+    (setq fish-imenu-generic-function
+          '(("Alias" "^[ib]?alias *\\([^ \n]*\\)" 1)
+            ("Function" "^function *\\([^ \n]*\\)" 1)))
+    (add-hook 'fish-mode-hook
+              (lambda ()
+                (setq imenu-generic-expression fish-imenu-generic-function)))))

@@ -61,6 +61,5 @@
   (indent-for-tab-command))
 (sp-local-pair '(c-mode c++-mode go-mode php-mode js2-mode) "{" nil
                :post-handlers '((m|c-mode-newline-and-indent-in-braces "RET")))
-
 (sp-local-pair '(go-mode) "(" nil
                :post-handlers '((m|c-mode-newline-and-indent-in-braces "RET")))
