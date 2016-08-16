@@ -26,13 +26,12 @@
     (when (not (and (boundp 'linum-disable-mode-list)
                     (memq major-mode linum-disable-mode-list)))
       ad-do-it))
+  (m|add-startup-hook #'global-linum-mode)
 
   (use-package linum-relative
     :defer t
     :diminish linum-relative-mode
+    :init
+    (m|add-startup-hook #'linum-relative-mode)
     :config
-    (setq linum-relative-current-symbol ""
-          linum-relative-format "%2s "))
-
-  (m|add-startup-hook #'global-linum-mode)
-  (m|add-startup-hook #'linum-relative-mode))
+    (setq linum-relative-current-symbol "")))
