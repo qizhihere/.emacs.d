@@ -1,0 +1,10 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: has
+# key: has
+# binding: direct-keybinding
+# --
+has() {
+    for i in "$@"; do
+        type -a "$i" >/dev/null 2>&1 || return 1
+    done
+}

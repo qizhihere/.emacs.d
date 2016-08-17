@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: has_proc
+# key: has_proc
+# binding: direct-keybinding
+# --
+has_proc() {
+    [ "$(pgrep -f "^$*")" ] || return 1
+}
