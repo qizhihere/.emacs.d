@@ -21,7 +21,6 @@
     (defun m|org-basic-setup ()
       (setq truncate-lines nil
             fill-column 86)
-      (linum-relative-off)
       (flyspell-mode-off))
     (add-hook 'org-mode-hook #'m|org-basic-setup)
 
