@@ -3,7 +3,7 @@
 (defun sh-script/init ()
   (use-package sh-script
     :defer t
-    :mode "\\zshrc"
+    :mode (("zshrc\\|zshenv\\|zlogin\\|zlogout\\|zpreztorc\\|zprofile" . sh-mode))
     :config
     (defun m|sh-setup-whitespace-clean ()
       (setq-local m|whitespace-cleanup-style 'trailing))
