@@ -7,7 +7,7 @@
     (run-hooks 'startup-idle-hook))
   (setq startup-idle-timer
         (run-with-idle-timer
-         1 nil #'run-startup-idle-hooks)))
+         0.1 nil #'run-startup-idle-hooks)))
 
 (add-hook 'emacs-startup-hook #'setup-startup-hook-timer)
 
