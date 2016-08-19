@@ -4,9 +4,18 @@
                        lua-mode
                        dockerfile-mode
                        nginx-mode
-                       protobuf-mode))
+                       protobuf-mode
+                       crontab-mode))
 
-(defun lang+/init-nginx()
+(defun lang+/init ()
+  )
+
+(defun lang+/init-nginx ()
   (use-package nginx-mode
     :defer t
     :mode "/nginx/.+"))
+
+(defun lang+/init-crontab ()
+  (use-package crontab-mode
+    :defer t
+    :mode "crontab\\(\\..+\\)?$"))
