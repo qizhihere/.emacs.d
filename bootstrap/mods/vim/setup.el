@@ -8,7 +8,7 @@
     :bind (:map evil-normal-state-map
            ([remap evil-next-line] . evil-next-visual-line)
            ([remap evil-previous-line] . evil-previous-visual-line)
-           ([remap evil-yank-line] . yank-line-no-eol))
+           ([remap evil-yank-line] . yank-to-line-end))
     :init
     (m|add-startup-hook #'evil-mode)
 

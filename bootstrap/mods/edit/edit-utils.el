@@ -31,9 +31,9 @@ current line."
   (interactive "p")
   (forward-symbol (- (or arg 1))))
 
-(defun yank-line-no-eol ()
+(defun yank-to-line-end ()
   (interactive)
-  (kill-ring-save (line-beginning-position) (line-end-position)))
+  (kill-ring-save (point) (line-end-position)))
 
 (defun query-replace-from-region-or-symbol (&optional from to)
   "Query replace from current region or symbol."
