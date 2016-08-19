@@ -6,16 +6,14 @@
 
 (defconst m|home (expand-file-name user-emacs-directory)
   "The absolute emacs dotfiles path.")
-(defconst m|conf-dir "bootstrap"
-  "The root directory name of my emacs configs.")
-(defconst m|conf (expand-file-name m|conf-dir m|home)
+(defconst m|conf m|home
   "The absolute path of my emacs configs.")
 
 (defconst m|emacs-min-version "24.3"
   "Required minimal Emacs version.")
 
 (if (not (version< emacs-version m|emacs-min-version))
-    (let ((boot-file (format "%s/boot.el" m|conf)))
+    (let ((boot-file (expand-file-name "boot.el" m|conf)))
       (if (file-exists-p boot-file)
           (load boot-file nil t)
         (message "No boot file found. Emacs boot failed.")))

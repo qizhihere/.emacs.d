@@ -35,6 +35,7 @@
    indent-tabs-mode nil
    buffers-menu-max-size 30
    delete-selection-mode t
+   eshell-directory-name (m|cache-dir "eshell")
    help-window-select t
    make-backup-files nil
    mode-require-final-newline t
@@ -46,6 +47,8 @@
    tooltip-delay 1.5
    truncate-lines nil
    truncate-partial-width-windows nil
+   tramp-persistency-file-name (m|cache-dir "tramp")
+   tramp-histfile-override (m|cache-dir "tramp_history")
    vc-follow-symlinks t
    blink-cursor-interval 0.4
    revert-without-query '(".*")

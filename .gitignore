@@ -8,8 +8,11 @@
 *.*#
 
 !/init.el
+!/boot.el
 !/bootstrap/
-!/bin
+!/bin/
+!/mods/
+!/core/
 !/dicts/
 !/snippets/
 

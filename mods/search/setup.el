@@ -53,7 +53,11 @@
     (setq ag-arguments '("--follow"
                          "--search-zip"
                          "--smart-case"
-                         "--stats")
+                         "--stats"
+                         ;; skip .gitignore because of Ag's bug:
+                         ;; https://github.com/ggreer/the_silver_searcher/issues/915
+                         "--skip-vcs-ignores"
+                         )
           ag-highlight-search t
           ag-reuse-buffers t
           ag-group-matches nil)))

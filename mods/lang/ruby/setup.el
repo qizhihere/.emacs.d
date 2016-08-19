@@ -7,7 +7,9 @@
   (use-package ruby-mode
     :defer t
     :config
-    (setq ruby-insert-encoding-magic-comment nil)
+    (setq-default
+     ruby-insert-encoding-magic-comment nil
+     rake-cache-file (m|cache-dir "rake.cache"))
 
     (loaded smartparens (require 'smartparens-ruby))))
 
