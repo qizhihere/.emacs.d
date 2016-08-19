@@ -14,8 +14,10 @@
         smartparens))
 
 (defun edit/init ()
-  ;; replaced by `show-smartparens-mode'
-  (m|add-startup-hook '(show-paren-mode delete-selection-mode))
+  ;; WARNING: `show-smartparens-mode' maybe slow in big buffers.
+  (m|add-startup-hook '(show-paren-mode
+                        show-smartparens-global-mode
+                        delete-selection-mode))
   (bind-keys ("RET" . newline-and-indent)
              ("C-c s" . sort-lines)
              ("<f3>" . indent-buffer))
