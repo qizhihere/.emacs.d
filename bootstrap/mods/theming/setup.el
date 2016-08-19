@@ -87,6 +87,7 @@
     :config
     (custom-theme-set-faces
      'spacemacs-dark
+     '(show-paren-match ((t (:inherit (sp-show-pair-match-face highlight)))))
      '(highlight-symbol-face ((t (:background "#2c2c2c"))))
      '(font-lock-doc-face ((t (:background nil))))
      '(font-lock-string-face ((t (:background nil))))
