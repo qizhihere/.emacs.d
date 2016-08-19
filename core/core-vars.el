@@ -1,12 +1,8 @@
 ;; This file define some basic variables used by My Emacs.
 
 (defconst m|cache-dir (concat user-emacs-directory ".cache")
-  "The cache directory of myemacs. Temporary resources such as
+  "The cache directory of Emacs. Temporary resources such as
 session, auto saved files, and recently opened files will be put here.")
-
-(defconst m|session-dir (concat user-emacs-directory ".session")
-  "Session directory of myemacs. Desktop and session files will
-  be put here.")
 
 (defvar m|boot-silently nil "Disable verbose boot messages.")
 
