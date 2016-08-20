@@ -18,4 +18,6 @@
 (defun lang+/init-crontab ()
   (use-package crontab-mode
     :defer t
-    :mode "crontab\\(\\..+\\)?$"))
+    :mode "crontab\\(\\..+\\)?$"
+    :config
+    (unbind-key "C-c c" crontab-mode-map)))
