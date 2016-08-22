@@ -13,7 +13,8 @@
                 x-underline-at-descent-line t)
   (setq default-frame-alist '((width . 80)
                               (height . 30)))
-  (add-to-list 'initial-frame-alist '(fullscreen . maximized)))
+  (unless (not (bound-and-true-p m|boot-maximized))
+    (add-hook 'window-setup-hook #'toggle-frame-maximized)))
 
 (defun theming/init-frame ()
   ;; disable dialogs

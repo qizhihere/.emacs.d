@@ -6,6 +6,8 @@ session, auto saved files, and recently opened files will be put here.")
 
 (defvar m|boot-silently nil "Disable verbose boot messages.")
 
+(defvar m|boot-maximized t "Maximize window after startup.")
+
 (defvar m|console-color-theme 'spacemacs-dark
   "The theme applied when Emacs running in console mode.")
 
