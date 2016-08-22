@@ -32,12 +32,12 @@
 (defun emacs-lisp/post-init-smartparens ()
   (loaded elisp-mode
     ;; disable ' pair
-    (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
+    (sp-local-pair '(emacs-lisp-mode inferior-emacs-lisp-mode) "'" nil :actions nil)
 
     ;; add `' pair for comments
     (defun m|sp-point-in-string-or-comment (&rest args)
       (sp-point-in-string-or-comment))
-    (sp-local-pair 'emacs-lisp-mode "`" "'"
+    (sp-local-pair '(emacs-lisp-mode inferior-emacs-lisp-mode) "`" "'"
                    :when '(m|sp-point-in-string-or-comment))))
 
 (defun emacs-lisp/init-eldoc ()
@@ -46,7 +46,10 @@
     :defer t
     :diminish eldoc-mode
     :init
-    (add-hooks '(emacs-lisp-mode-hook ielm-mode-hook) #'eldoc-mode)
+    (add-hooks '(emacs-lisp-mode-hook
+                 ielm-mode-hook
+                 eval-expression-minibuffer-setup-hook)
+               #'eldoc-mode)
     :config
     (eldoc-in-minibuffer-mode 1)))
 
