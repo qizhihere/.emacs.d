@@ -4,12 +4,6 @@
                             hl-defined))
 
 (defun emacs-lisp/init ()
-  (defun emacs-lisp/setup-elisp-mode ()
-    (hdefd-highlight-mode 1)
-    (elisp-slime-nav-mode 1)
-    (eldoc-mode 1))
-  (add-hooks '(emacs-lisp-mode-hook ielm-mode-hook) #'emacs-lisp/setup-elisp-mode)
-
   (loaded elisp-mode
     (m|load-conf "redef-lisp-indent" emacs-lisp)
     (use-package pp
@@ -17,7 +11,7 @@
       :bind (:map emacs-lisp-mode-map
              ("C-x C-e" . pp-eval-last-sexp)))))
 
-(defun emacs-list/init-repl ()
+(defun emacs-lisp/init-repl ()
   (loaded elisp-mode
     (define-repl elisp-repl ()
       "Run Emacs lisp REPL in a buffer."
@@ -51,12 +45,16 @@
   (use-package eldoc
     :defer t
     :diminish eldoc-mode
+    :init
+    (add-hooks '(emacs-lisp-mode-hook ielm-mode-hook) #'eldoc-mode)
     :config
     (eldoc-in-minibuffer-mode 1)))
 
 (defun emacs-lisp/init-hl-defined ()
   (use-package hl-defined
     :commands hdefd-highlight-mode
+    :init
+    (add-hooks '(emacs-lisp-mode-hook ielm-mode-hook) #'hdefd-highlight-mode)
     :config
     (custom-set-faces
      '(hdefd-functions ((t (:inherit font-lock-function-name-face))))
@@ -65,7 +63,9 @@
 (defun emacs-lisp/init-elisp-slime-nav ()
   (use-package elisp-slime-nav
     :defer t
-    :diminish elisp-slime-nav-mode))
+    :diminish elisp-slime-nav-mode
+    :init
+    (add-hooks '(emacs-lisp-mode-hook ielm-mode-hook) #'elisp-slime-nav-mode)))
 
 (defun emacs-lisp/init-pp ()
   (use-package pp
