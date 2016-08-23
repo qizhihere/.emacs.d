@@ -12,6 +12,7 @@
   (setq default-frame-alist '((width . 80)
                               (height . 30)))
   (unless (not (bound-and-true-p m|boot-maximized))
+    ;; Fix frame size restore after desktop restore.
     (add-to-list 'initial-frame-alist '(fullscreen . maximized))
     (add-hook 'window-setup-hook #'maximize-frame)))
 
