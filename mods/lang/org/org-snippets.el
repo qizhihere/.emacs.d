@@ -30,6 +30,7 @@
             ,(~s "html")
             ,(~s "java")
             ,(~s "javascript")
+            ,(~s "json")
             ,(~s "less")
             ,(~s "lisp")
             ,(~s "lua")
