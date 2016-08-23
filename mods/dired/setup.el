@@ -1,7 +1,6 @@
 (setq dired-packages '(async
                        dired+
                        dired-efap
-                       diff-hl
                        dired-filter))
 
 (defun dired/init ()

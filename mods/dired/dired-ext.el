@@ -25,10 +25,6 @@
   :bind (:map dired-mode-map
          ("r" . dired-efap)))
 
-(use-package diff-hl
-  :init
-  (add-hook 'dired-mode-hook #'diff-hl-dired-mode))
-
 (defun switch-to-dired-buffer ()
   (interactive)
   (let ((bufs (mapcar (lambda (it) (buffer-name it))
