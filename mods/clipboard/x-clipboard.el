@@ -31,19 +31,22 @@
   :type 'sexp)
 
 (defcustom x-clipboard-default-text-obj 'line
-  "Default text object to operate when no region selected."
-  :group 'x-clipboard
-  :type '(choice (const :tag "Paragraph" paragraph)
-                 (const :tag "Line" line)
-                 (const :tag "Word" word)
-                 (const :tag "Symbol" symbol)
-                 (const :tag "Sentence" sentence)))
+  "Default text object to operate when no region selected.
+Possible values: `word', `line', `line-end', `symbol', `sentence', `paragraph'."
+  :group 'x-clipboard :type
+  '(choice (const :tag "Paragraph" paragraph)
+           (const :tag "Line" line)
+           (const :tag "Word" word)
+           (const :tag "Symbol" symbol)
+           (const :tag "Sentence" sentence)))
 
 (defun x-clipboard--get-thing-bounds (type)
   (case type
     ((word line symbol sentence)
      (let ((bounds (bounds-of-thing-at-point type)))
        (list (car bounds) (cdr bounds))))
+    (line-end
+     (list (point) (line-end-position)))
     (paragraph
      (save-excursion
        (start-of-paragraph-text)
@@ -62,31 +65,33 @@
     nil))
 
 ;;;###autoload
+(defun xcopy-text (content)
+  (if (display-graphic-p)
+      (gui-set-selection 'CLIPBOARD content)
+    (let ((program (x-clipboard--find-program x-clipboard-write-programs)))
+      (unless program
+        (error "Failed to find an available program to set clipboard."))
+      (with-temp-buffer
+        (insert content)
+        (eval
+         `(call-process-region
+           (point-min) (point-max)
+           ,(car program) nil nil nil ,@(cdr program)))))))
+
+;;;###autoload
 (defun xcopy (&optional start end)
-  "Copy content between START and END to system clipboard. If
-called interactively, START and END are the start/end of the
-region if the mark is active, or the begin/end of current line if
-the mark is inactive."
+  "Copy content between START and END to system clipboard.
+If a region is active, use it. Or use content pointed by
+`x-clipboard-default-text-obj'."
   (interactive (if (use-region-p)
                    (list (region-beginning) (region-end))
                  (x-clipboard--get-thing-bounds x-clipboard-default-text-obj)))
-  (let ((content (buffer-substring-no-properties start end)))
-    (if (display-graphic-p)
-        (gui-set-selection 'CLIPBOARD content)
-      (let ((program (x-clipboard--find-program x-clipboard-write-programs)))
-        (unless program
-          (error "Failed to find an available program to set clipboard."))
-        (with-temp-buffer
-          (insert content)
-          (eval
-           `(call-process-region
-             (point-min) (point-max)
-             ,(car program) nil nil nil ,@(cdr program))))))
-    (when x-clipboard-show-message
-      (message "Copied to clipboard."))
-    (when (and x-clipboard-abort-region-after-copy
-               (use-region-p))
-      (deactivate-mark))))
+  (xcopy-text (buffer-substring-no-properties start end))
+  (when x-clipboard-show-message
+    (message "Copied to clipboard."))
+  (when (and x-clipboard-abort-region-after-copy
+             (use-region-p))
+    (deactivate-mark)))
 
 ;;;###autoload
 (defun xpaste (&optional no-insert)
