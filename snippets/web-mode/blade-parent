@@ -1,6 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: blade parent
-# key: @par
+# key: @parent
 # binding: direct-keybinding
 # --
 @parent

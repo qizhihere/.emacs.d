@@ -1,8 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: script header
-# key: fish
+# name: #!/usr/bin/env sh
+# key: #!
 # binding: direct-keybinding
 # --
-#!/usr/bin/env fish
-
-$0
+#!/usr/bin/env sh

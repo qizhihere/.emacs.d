@@ -1,6 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: blade extends
-# key: @ext
+# key: @extends
 # binding: direct-keybinding
 # --
 @extends('$0')

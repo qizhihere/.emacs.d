@@ -1,4 +1,5 @@
-#name : any? { |...| ... }
-#group : collections
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: any? { |...| ... }
+# group: collections
 # --
 any? { |${e}| $0 }
