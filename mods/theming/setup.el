@@ -88,11 +88,4 @@
     :config
     (custom-theme-set-faces
      'spacemacs-dark
-     '(show-paren-match ((t (:inherit (sp-show-pair-match-face highlight)))))
-     '(highlight-symbol-face ((t (:background "#2c2c2c"))))
-     '(font-lock-doc-face ((t (:background nil))))
-     '(font-lock-string-face ((t (:background nil))))
-     '(linum-relative-current-face ((t (:background "#292b2e"))))
-     '(git-gutter:added ((t (:background nil))))
-     '(git-gutter:deleted ((t (:background nil))))
-     '(git-gutter:modified ((t (:background nil)))))))
+     '(show-paren-match ((t (:inherit (sp-show-pair-match-face highlight))))))))
