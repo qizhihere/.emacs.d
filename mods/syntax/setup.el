@@ -83,7 +83,9 @@
       ("C-;" . flyspell-correct-word-generic)))
 
   (use-package popup
-    :commands popup-make-item)
+    :commands popup-make-item
+    :bind (:map popup-menu-keymap
+           ("<escape>" . keyboard-quit)))
   (use-package flyspell-correct-popup
     :commands flyspell-correct-popup)
   (use-package flyspell-correct
