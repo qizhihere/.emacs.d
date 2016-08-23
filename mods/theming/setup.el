@@ -9,12 +9,11 @@
   "Initial frame during Emacs startup.")
 
 (defun theming/init ()
-  (setq-default line-spacing 5
-                x-underline-at-descent-line t)
   (setq default-frame-alist '((width . 80)
                               (height . 30)))
   (unless (not (bound-and-true-p m|boot-maximized))
-    (add-hook 'window-setup-hook #'toggle-frame-maximized)))
+    (add-to-list 'initial-frame-alist '(fullscreen . maximized))
+    (add-hook 'window-setup-hook #'maximize-frame)))
 
 (defun theming/init-frame ()
   ;; disable dialogs

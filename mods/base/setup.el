@@ -31,28 +31,30 @@
 
 (defun base/reset-options ()
   (setq-default
-   tab-width 4  ;; no evil tabs
-   indent-tabs-mode nil
+   blink-cursor-interval 0.4
    buffers-menu-max-size 30
    delete-selection-mode t
    eshell-directory-name (m|cache-dir "eshell")
    help-window-select t
+   indent-tabs-mode nil
+   line-spacing 5
    make-backup-files nil
    mode-require-final-newline t
    require-final-newline t
+   revert-without-query '(".*")
    save-interprogram-paste-before-kill t
    scroll-preserve-screen-position 'always
    shift-select-mode t
    show-trailing-whitespace nil
+   tab-width 4  ;; no evil tabs
    tooltip-delay 1.5
+   tramp-histfile-override (m|cache-dir "tramp_history")
+   tramp-persistency-file-name (m|cache-dir "tramp")
    truncate-lines nil
    truncate-partial-width-windows nil
-   tramp-persistency-file-name (m|cache-dir "tramp")
-   tramp-histfile-override (m|cache-dir "tramp_history")
+   url-cookie-file (m|cache-dir "url_cookies")
    vc-follow-symlinks t
-   blink-cursor-interval 0.4
-   revert-without-query '(".*")
-   url-cookie-file (m|cache-dir "url_cookies"))
+   x-underline-at-descent-line t)
 
   (setq kill-ring-max 1000
         scroll-margin 3
