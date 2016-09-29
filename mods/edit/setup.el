@@ -174,8 +174,8 @@
                             indentation empty space-after-tab
                             space-mark tab-mark newline-mark)))
                 (whitespace-cleanup))))
-      (t (save-excursion
-           (call-interactively #'delete-trailing-whitespace)))))
+      ('trailing (save-excursion
+                   (call-interactively #'delete-trailing-whitespace)))))
   (add-hook 'before-save-hook #'m|whitespace-cleanup))
 
 (defun edit/init-pratical-edit-utils ()

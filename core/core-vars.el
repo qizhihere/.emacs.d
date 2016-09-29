@@ -26,7 +26,8 @@ session, auto saved files, and recently opened files will be put here.")
 (defvar m|whitespace-cleanup-style 'all
   "Tell `m|clean-whitespace' how to clean whitespace. `all' means
 clean all problematic whitespaces including empty lines,
-`trailing' means only clean trailing whitespaces.")
+`trailing' means only clean trailing whitespaces. `nil' means
+don't clean whitespaces.")
 
 (defvar elpa-mirror-directory "~/.emacs.d/elpa-mirror")
 
